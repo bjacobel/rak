@@ -1,0 +1,27 @@
+language: node_js
+sudo: false
+cache:
+  directories:
+  - node_modules
+env:
+  - NODE_ENV=production
+script:
+  - npm run lint
+  - npm test
+before_deploy:
+  - npm run compile
+  - cp index-prod.html dist/index.html
+deploy:
+  provider: s3
+  region: us-east-1
+  bucket: BUCKET_NAME_HERE
+  acl: public_read
+  local_dir: dist
+  skip_cleanup: true
+  on:
+    branch: master
+after_deploy:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - aws configure set preview.cloudfront true
+  - aws cloudfront create-invalidation --distribution-id CLOUDFRONT_DISTRO_NAME_HERE --paths /index.html /main.js /main.css
