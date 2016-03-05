@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --hot --history-api-fallback --output-public-path /",
-    "compile": "webpack --progress -pc",
+    "compile": "webpack --progress -p",
     "test": "mocha ./test/**/*.test.js --require ./test/node-setup",
     "lint": "eslint . && sass-lint -v"
   },
