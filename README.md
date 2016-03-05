@@ -2,6 +2,7 @@
 
 Skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
+[![Dependency Status](https://david-dm.org/bjacobel/react-redux-boilerplate.svg)](https://david-dm.org/bjacobel/react-redux-boilerplate)
 
 Full contents:
   - react
