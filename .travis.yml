@@ -19,16 +19,16 @@ before_deploy:
   - |
     aws s3api create-bucket \
       --acl public-read \
-      --bucket react-redux-boilerplate \
+      --bucket react-redux-boilerplate.bjacobel.com \
       --region us-east-1
   - |
-    aws s3 website s3://react-redux-boilerplate/ \
+    aws s3 website s3://react-redux-boilerplate.bjacobel.com/ \
       --index-document index.html \
       --error-document error.html
 deploy:
   provider: s3
   region: us-east-1
-  bucket: react-redux-boilerplate
+  bucket: react-redux-boilerplate.bjacobel.com
   acl: public_read
   local_dir: dist
   skip_cleanup: true
@@ -39,4 +39,4 @@ after_deploy:
   - |
     aws cloudfront create-invalidation \
       --distribution-id $CFDISTRO \
-      --paths /index.html /main.js /main.css
+      --paths /index.html /main.js
