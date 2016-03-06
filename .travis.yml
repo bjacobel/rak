@@ -5,6 +5,7 @@ cache:
   - node_modules
 env:
   - NODE_ENV=production
+  - CFDISTRO=your_cf_distro_id_here
 script:
   - npm run lint
   - npm test
@@ -14,6 +15,15 @@ before_deploy:
   - cp index-prod.html dist/index.html
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
+  - |
+  aws s3api create-bucket \
+    --acl public-read \
+    --bucket react-redux-boilerplate \
+    --region us-east-1
+  - |
+  aws s3 website s3://react-redux-boilerplate/ \
+    --index-document index.html \
+    --error-document error.html
 deploy:
   provider: s3
   region: us-east-1
@@ -25,4 +35,7 @@ deploy:
     branch: master
 after_deploy:
   - aws configure set preview.cloudfront true
-  - aws cloudfront create-invalidation --distribution-id E1XDYVWECD7OV8 --paths /index.html /main.js /main.css
+  - |
+  aws cloudfront create-invalidation \
+    --distribution-id $CFDISTRO \
+    --paths /index.html /main.js /main.css

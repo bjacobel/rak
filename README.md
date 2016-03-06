@@ -28,3 +28,7 @@ Full contents:
 
 Requires:
   - nvm, or node 5.7.0
+  - a Travis CI account set up with AWS credentials (either through the web UI or by adding encrypted values to the `.travis.yml` `env` section)
+
+Manual steps:
+  - The Travis deploy script will create an S3 bucket automatically, but does not currently create a Cloudfront distribution automatically. You must do this yourself, as well as linking things up in S3. When you do, add the Cloudfront distribution ID to the `env` section of `travis.yml`
