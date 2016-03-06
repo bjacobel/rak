@@ -43,6 +43,9 @@
     "react-router": "^2.0.0",
     "react-router-redux": "^4.0.0",
     "redux": "^3.3.1",
+    "redux-devtools": "^3.1.1",
+    "redux-devtools-dock-monitor": "^1.1.0",
+    "redux-devtools-log-monitor": "^1.0.5",
     "redux-thunk": "^2.0.1",
     "sinon": "^1.17.3",
     "sinon-as-promised": "^4.0.0",
@@ -55,9 +58,6 @@
   "devDependencies": {
     "babel-plugin-react-transform": "^2.0.2",
     "react-transform-hmr": "^1.0.4",
-    "redux-devtools": "^3.1.1",
-    "redux-devtools-dock-monitor": "^1.1.0",
-    "redux-devtools-log-monitor": "^1.0.5",
     "webpack-dev-server": "^1.14.1"
   }
 }
