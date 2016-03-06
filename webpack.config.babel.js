@@ -1,7 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const precss = require('precss');
+const postcssImport = require('postcss-import');
+const stylelint = require('stylelint');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -25,8 +27,8 @@ const wpconfig = {
         loader: 'babel'
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass!postcss-loader')
+        test: /\.css$/,
+        loader: 'style-loader!css-loader!postcss-loader'
       },
       {
         test: /\.(eot|ttf|woff|svg)(\?[a-z0-9=]+)?$/,
@@ -34,13 +36,19 @@ const wpconfig = {
       }
     ]
   },
-  postcss: [autoprefixer({ browsers: ['last 2 versions'] })],
+  postcss() {
+    return [
+      stylelint,
+      autoprefixer({ browsers: ['last 2 versions'] }),
+      precss,
+      postcssImport
+    ];
+  },
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx', '.scss']
+    extensions: ['', '.js', '.json', '.jsx', '.css']
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env': {
         production: isProd
