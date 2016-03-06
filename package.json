@@ -33,6 +33,7 @@
     "imports-loader": "^0.6.5",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "postcss-import": "^8.0.2",
     "postcss-loader": "^0.8.1",
     "precss": "^1.4.0",
     "react": "^0.14.7",
