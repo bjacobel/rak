@@ -16,14 +16,14 @@ before_deploy:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
   - |
-  aws s3api create-bucket \
-    --acl public-read \
-    --bucket react-redux-boilerplate \
-    --region us-east-1
+    aws s3api create-bucket \
+      --acl public-read \
+      --bucket react-redux-boilerplate \
+      --region us-east-1
   - |
-  aws s3 website s3://react-redux-boilerplate/ \
-    --index-document index.html \
-    --error-document error.html
+    aws s3 website s3://react-redux-boilerplate/ \
+      --index-document index.html \
+      --error-document error.html
 deploy:
   provider: s3
   region: us-east-1
@@ -36,6 +36,6 @@ deploy:
 after_deploy:
   - aws configure set preview.cloudfront true
   - |
-  aws cloudfront create-invalidation \
-    --distribution-id $CFDISTRO \
-    --paths /index.html /main.js /main.css
+    aws cloudfront create-invalidation \
+      --distribution-id $CFDISTRO \
+      --paths /index.html /main.js /main.css
