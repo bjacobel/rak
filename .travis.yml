@@ -14,7 +14,7 @@ before_deploy:
 deploy:
   provider: s3
   region: us-east-1
-  bucket: BUCKET_NAME_HERE
+  bucket: react-redux-boilerplate
   acl: public_read
   local_dir: dist
   skip_cleanup: true
@@ -24,4 +24,4 @@ after_deploy:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
   - aws configure set preview.cloudfront true
-  - aws cloudfront create-invalidation --distribution-id CLOUDFRONT_DISTRO_NAME_HERE --paths /index.html /main.js /main.css
+  - aws cloudfront create-invalidation --distribution-id E1XDYVWECD7OV8 --paths /index.html /main.js /main.css

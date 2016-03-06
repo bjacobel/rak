@@ -21,7 +21,9 @@ class Main extends Component {
   render() {
     const { title } = this.props;
 
-    return <h1 className="title">{ title.error || title.content }</h1>;
+    return (
+      <h1 className="title">{ title.error || title.content }</h1>
+    );
   }
 }
 
