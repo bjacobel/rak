@@ -34,10 +34,10 @@ ReactDOM.render(
   <Provider store={ store }>
     <div>
       <Router history={ browserHistory }>
-        <Route path="/" component={ Main }/>
-        <Route path="/error" component={ Err }/>
+        <Route path="/" component={ Main } />
+        <Route path="/error" component={ Err } />
       </Router>
-      { showDevTools ? <DevTools/> : null }
+      { showDevTools ? <DevTools /> : null }
     </div>
   </Provider>,
   document.getElementById('main')

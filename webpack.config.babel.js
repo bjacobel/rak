@@ -6,7 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const isProd = process.env.NODE_ENV === 'production';
 
 const sassPaths = bourbon.includePaths.map((sassPath) => {
-  return 'includePaths[]=' + sassPath;
+  return `includePaths[]=${sassPath}`;
 }).join('&');
 
 const wpconfig = {
@@ -16,7 +16,7 @@ const wpconfig = {
     ]
   },
   output: {
-    path: __dirname + '/dist',
+    path: `${__dirname}/dist`,
     filename: '[name].js'
   },
   debug: true,
@@ -30,7 +30,7 @@ const wpconfig = {
       },
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css!sass?' + sassPaths)
+        loader: ExtractTextPlugin.extract('style', `css!sass?${sassPaths}`)
       },
       {
         test: /\.(eot|ttf|woff|svg)(\?[a-z0-9=]+)?$/,
@@ -43,10 +43,10 @@ const wpconfig = {
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin(`[name].css`),
+    new ExtractTextPlugin('[name].css'),
     new webpack.DefinePlugin({
       'process.env': {
-        'production': isProd
+        production: isProd
       }
     })
   ]
