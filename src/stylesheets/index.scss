@@ -1,1 +1,6 @@
 @import 'bourbon';
+@import 'colors';
+
+.title {
+  color: $blue;
+}
