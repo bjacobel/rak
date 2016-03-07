@@ -3,10 +3,12 @@ sudo: false
 cache:
   directories:
   - node_modules
+  - $HOME/.local/bin
 env:
   global:
     - NODE_ENV=production
-    - CFDISTRO=your_cf_distro_id_here
+    - PATH=$PATH:$HOME/.local/bin
+    - SITEURL=react-redux-boilerplate.bjacobel.com
 script:
   - npm run lint
   - npm test
@@ -14,29 +16,17 @@ before_deploy:
   - npm run compile
   - mkdir -p dist
   - cp index-prod.html dist/index.html
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
-  - |
-    aws s3api create-bucket \
-      --acl public-read \
-      --bucket react-redux-boilerplate.bjacobel.com \
-      --region us-east-1
-  - |
-    aws s3 website s3://react-redux-boilerplate.bjacobel.com/ \
-      --index-document index.html \
-      --error-document error.html
 deploy:
   provider: s3
   region: us-east-1
-  bucket: react-redux-boilerplate.bjacobel.com
+  bucket: $SITEURL
   acl: public_read
   local_dir: dist
   skip_cleanup: true
   on:
     branch: master
 after_deploy:
+  - pip install --user awscli
   - aws configure set preview.cloudfront true
-  - |
-    aws cloudfront create-invalidation \
-      --distribution-id $CFDISTRO \
-      --paths /index.html /main.js
+  - export CFDISTRO=$(aws cloudfront list-distributions --output json | jq -r --arg siteurl "$SITEURL" '.DistributionList.Items | map(select(.Aliases.Items[0] == $siteurl)) | .[0].Id')
+  - aws cloudfront create-invalidation --distribution-id $CFDISTRO --paths /index.html /main.js
