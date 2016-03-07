@@ -17,12 +17,10 @@ Full contents:
   - Jest
   - Enzyme
   - .travis.yml configured to lint, test, build and deploy to S3/Cloudfront
+  - CloudFormation template to set up those AWS resources for you
   - Other goodies
 
 
 Requires:
   - Node 6
   - a Travis CI account set up with AWS credentials (either through the web UI or by adding encrypted values to the `.travis.yml` `env` section)
-
-Manual steps:
-  - The Travis deploy script will create an S3 bucket automatically, but does not currently create a Cloudfront distribution automatically. You must do this yourself, as well as linking things up in Route 53. When you do, add the Cloudfront distribution ID to the `env` section of `travis.yml`.
