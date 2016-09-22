@@ -1,7 +1,7 @@
-import { title } from '../constants';
+import { TITLE } from '../constants';
 
 export const getTitle = () => {
   return new Promise((resolve) => {
-    resolve(title);
+    resolve(TITLE);
   });
 };

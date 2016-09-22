@@ -7,10 +7,6 @@ Skeleton to quickly set up a project with React, Redux, Webpack, PostCSS & frien
 Full contents:
   - React
   - Redux
-  - `react-redux`
-  - `react-router`
-  - `react-router-redux`
-  - `redux-devtools`
   - Webpack
   - Webpack Hot Module Reload
   - Babel (with ES6 and React presets)
@@ -18,16 +14,14 @@ Full contents:
   - Autoprefixer
   - Stylelint
   - ESLint (setup with a version of Airbnb's style guide)
-  - Mocha
-  - Chai
-  - Sinon
-  - Some Chai and Sinon utilities
+  - Jest
+  - Enzyme
   - .travis.yml configured to lint, test, build and deploy to S3/Cloudfront
   - Other goodies
 
 
 Requires:
-  - nvm, or node 5.7.0
+  - Node > 4
   - a Travis CI account set up with AWS credentials (either through the web UI or by adding encrypted values to the `.travis.yml` `env` section)
 
 Manual steps:

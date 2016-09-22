@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
 const postcssImport = require('postcss-import');
+const postcssFontMagician = require('postcss-font-magician');
 const stylelint = require('stylelint');
 
 const isProd = process.env.NODE_ENV === 'production';
@@ -10,55 +11,68 @@ const isProd = process.env.NODE_ENV === 'production';
 const wpconfig = {
   entry: {
     main: [
-      './src/index.js'
-    ]
+      './src/index.js',
+    ],
   },
   output: {
     path: `${__dirname}/dist`,
-    filename: '[name].js'
+    filename: '[name].js',
   },
   debug: true,
-  devtool: isProd ? null : 'eval',
+  devtool: isProd ? null : 'source-map',
   module: {
     loaders: [
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         include: path.join(__dirname, 'src'),
-        loader: 'babel'
+        loader: 'babel',
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader!postcss-loader'
+        loader: 'style!css?sourceMap!postcss',
       },
       {
         test: /\.(eot|ttf|woff|svg)(\?[a-z0-9=]+)?$/,
-        loader: 'file-loader'
-      }
-    ]
+        loader: 'file',
+      },
+    ],
   },
-  postcss() {
+  postcss(wp) {
     return [
+      postcssImport({
+        addDependencyTo: wp,
+      }),
       stylelint,
-      autoprefixer({ browsers: ['last 2 versions'] }),
       precss,
-      postcssImport
+      postcssFontMagician,
+      autoprefixer({ browsers: ['last 2 versions'] }),
     ];
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.jsx', '.css']
+    extensions: ['', '.js', '.json', '.css'],
   },
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      'process.env': {
-        production: isProd
-      }
-    })
-  ]
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    }),
+  ],
+  devServer: {
+    hot: true,
+    publicPath: '/',
+  },
 };
 
 if (!isProd) {
-  wpconfig.entry.main = ['webpack/hot/dev-server', ...wpconfig.entry.main];
+  wpconfig.entry.main = [
+    'webpack/hot/only-dev-server',
+    ...wpconfig.entry.main,
+  ];
+
+  wpconfig.plugins = [
+    new webpack.HotModuleReplacementPlugin(),
+    ...wpconfig.plugins,
+  ];
 }
 
 module.exports = wpconfig;
