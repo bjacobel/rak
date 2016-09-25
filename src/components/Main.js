@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import '../stylesheets/main.css';
-import { getTitleAsync } from '../actions/title.js';
+import { getTitleAsync } from '../actions/title';
 
 const mapStateToProps = state => ({
   title: state.title,

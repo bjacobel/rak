@@ -1,8 +1,6 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-jest.unmock('../../src/actions/title');
-jest.unmock('../../src/actions/loading');
 import {
   GET_TITLE_FAILED,
   GET_TITLE_SUCCEEDED,
@@ -14,6 +12,8 @@ import {
   LOADING_STARTED,
   LOADING_ENDED,
 } from '../../src/actions/loading';
+
+jest.mock('../../src/services/title');
 import { getTitle } from '../../src/services/title';
 
 const mockStore = configureMockStore([thunk]);

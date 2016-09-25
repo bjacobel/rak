@@ -1,4 +1,3 @@
-jest.unmock('../../src/services/title');
 import { getTitle } from '../../src/services/title';
 import { TITLE } from '../../src/constants';
 

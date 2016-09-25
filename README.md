@@ -2,7 +2,7 @@
 
 Skeleton to quickly set up a project with React, Redux, Webpack, PostCSS & friends.
 
-[![Build Status](https://travis-ci.org/bjacobel/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/bjacobel/react-redux-boilerplate) [![Dependency Status](https://david-dm.org/bjacobel/react-redux-boilerplate.svg)](https://david-dm.org/bjacobel/react-redux-boilerplate)
+[![Build Status](https://travis-ci.org/bjacobel/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/bjacobel/react-redux-boilerplate) [![codecov](https://codecov.io/gh/bjacobel/react-redux-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/react-redux-boilerplate) [![Dependency Status](https://david-dm.org/bjacobel/react-redux-boilerplate.svg)](https://david-dm.org/bjacobel/react-redux-boilerplate)
 
 Full contents:
   - React
@@ -21,7 +21,7 @@ Full contents:
 
 
 Requires:
-  - Node > 4
+  - Node 6
   - a Travis CI account set up with AWS credentials (either through the web UI or by adding encrypted values to the `.travis.yml` `env` section)
 
 Manual steps:

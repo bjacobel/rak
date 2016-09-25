@@ -1,5 +1,3 @@
-jest.unmock('../../src/reducers/loading');
-jest.unmock('../../src/actions/loading');
 import loading from '../../src/reducers/loading';
 import {
   LOADING_ENDED,

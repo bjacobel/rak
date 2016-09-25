@@ -1,4 +1,3 @@
-jest.unmock('../../src/components/Main');
 import { MainComponent } from '../../src/components/Main';
 
 import React from 'react';
@@ -25,9 +24,5 @@ describe('main component', () => {
       shallow(<MainComponent title={ { contents: 'foo' } } getTitleAsync={ getTitleAsync } />);
       expect(getTitleAsync).toHaveBeenCalled();
     });
-  });
-
-  describe('Main connect()ed with react-redux', () => {
-
   });
 });

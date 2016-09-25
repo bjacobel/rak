@@ -1,17 +1,15 @@
 language: node_js
 sudo: false
 node_js:
-  - 4
   - 6
-cache:
-  directories:
-  - node_modules
-  - $HOME/.local/bin
 env:
   global:
-    - NODE_ENV=development
+    - NODE_ENV=production
     - PATH=$PATH:$HOME/.local/bin
     - SITEURL=react-redux-boilerplate.bjacobel.com
+install:
+  - npm install
+  - npm install --only=dev
 script:
   - npm run lint
   - npm test -- --coverage
@@ -20,7 +18,7 @@ after_success:
 before_deploy:
   - npm run compile
   - mkdir -p dist
-  - cp index-prod.html dist/index.html
+  - cp index.html dist/index.html
 deploy:
   provider: s3
   region: us-east-1
@@ -33,7 +31,11 @@ deploy:
 after_deploy:
   - pip install --user awscli
   - aws configure set preview.cloudfront true
-  - export CFDISTRO=$(aws cloudfront list-distributions --output json | jq -r --arg siteurl "$SITEURL" '.DistributionList.Items | map(select(.Aliases.Items[0] == $siteurl)) | .[0].Id')
+  - >
+    export CFDISTRO=$(aws cloudfront list-distributions --output json |\
+    jq -r --arg siteurl "$SITEURL" '.DistributionList.Items |\
+    map(select(.Aliases.Items[0] == $siteurl)) |\
+    .[0].Id')
   - aws cloudfront create-invalidation --distribution-id $CFDISTRO --paths /index.html /main.js
 notifications:
   email: false

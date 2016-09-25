@@ -1,5 +1,3 @@
-jest.unmock('../../src/reducers/title');
-jest.unmock('../../src/actions/title');
 import title from '../../src/reducers/title';
 import {
   GET_TITLE_FAILED,

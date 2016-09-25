@@ -1,4 +1,3 @@
-jest.unmock('../../src/actions/loading');
 import {
   loadingStarted,
   loadingEnded,

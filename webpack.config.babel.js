@@ -65,6 +65,7 @@ const wpconfig = {
 
 if (!isProd) {
   wpconfig.entry.main = [
+    'webpack-dev-server/client',
     'webpack/hot/only-dev-server',
     ...wpconfig.entry.main,
   ];
