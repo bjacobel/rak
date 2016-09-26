@@ -1,20 +1,20 @@
 import {
   GET_TITLE_FAILED,
-  GET_TITLE_SUCCEEDED
+  GET_TITLE_SUCCEEDED,
 } from '../actions/title';
 
 const title = (state = {}, action) => {
   switch (action.type) {
   case GET_TITLE_SUCCEEDED:
-    return {
+    return Object.assign({}, state, {
       content: action.payload.title,
-      error: false
-    };
+      error: false,
+    });
   case GET_TITLE_FAILED:
-    return {
+    return Object.assign({}, state, {
       content: null,
-      error: action.payload.error
-    };
+      error: action.payload.error,
+    });
   default:
     return state;
   }

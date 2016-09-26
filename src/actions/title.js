@@ -1,6 +1,6 @@
 import {
   loadingStarted,
-  loadingEnded
+  loadingEnded,
 } from './loading';
 import { getTitle } from '../services/title';
 

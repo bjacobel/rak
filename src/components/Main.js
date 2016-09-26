@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { getTitleAsync } from '../actions/title.js';
+import '../stylesheets/main.css';
+import { getTitleAsync } from '../actions/title';
 
-const mapStateToProps = (state) => {
-  return {
-    title: state.title
-  };
-};
+const mapStateToProps = state => ({
+  title: state.title,
+});
 
 const mapDispatchToProps = {
-  getTitleAsync
+  getTitleAsync,
 };
 
-class Main extends Component {
+// Separately export the MainComponent so it can be tested without being wrapped by connect()
+export class MainComponent extends Component {
   componentWillMount() {
     this.props.getTitleAsync();
   }
@@ -30,4 +30,4 @@ class Main extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Main);
+)(MainComponent);

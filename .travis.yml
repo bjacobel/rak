@@ -1,21 +1,24 @@
 language: node_js
 sudo: false
-cache:
-  directories:
-  - node_modules
-  - $HOME/.local/bin
+node_js:
+  - 6
 env:
   global:
     - NODE_ENV=production
     - PATH=$PATH:$HOME/.local/bin
     - SITEURL=react-redux-boilerplate.bjacobel.com
+install:
+  - npm install
+  - npm install --only=dev
 script:
   - npm run lint
-  - npm test
+  - npm test -- --coverage
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 before_deploy:
   - npm run compile
   - mkdir -p dist
-  - cp index-prod.html dist/index.html
+  - cp index.html dist/index.html
 deploy:
   provider: s3
   region: us-east-1
@@ -28,5 +31,13 @@ deploy:
 after_deploy:
   - pip install --user awscli
   - aws configure set preview.cloudfront true
-  - export CFDISTRO=$(aws cloudfront list-distributions --output json | jq -r --arg siteurl "$SITEURL" '.DistributionList.Items | map(select(.Aliases.Items[0] == $siteurl)) | .[0].Id')
+  - >
+    export CFDISTRO=$(aws cloudfront list-distributions --output json |\
+    jq -r --arg siteurl "$SITEURL" '.DistributionList.Items |\
+    map(select(.Aliases.Items[0] == $siteurl)) |\
+    .[0].Id')
   - aws cloudfront create-invalidation --distribution-id $CFDISTRO --paths /index.html /main.js
+notifications:
+  email: false
+  slack:
+    secure: IhGd0NkKkldDt6xwvNi4wK37fTN/0RMPy89bSYUsaLVazNRi29KfkmWbxpRY4MFB2xe6aEOjii4lC4i0/uO/i9ya7wVwoLWErdRLq1rPZH/feKYvhvPqJd8pTjk/nkBEVpPf0REE3YlrO9gNrdpklCIhCqv97fGQBNIVWeQhoqWdDSOQl63MWRPpumS0bZMtpPCzt+m28c1Y2wirYtUlbnHpHMEYPN/fJjlKMNl8fs+EiQT224HJFP49xnPO4tcvjgLx90yB6I+SiINCRtviHc1P7Gve1Et/qyI0JnRbbXYP4SXAThq6WjjEtG+EeLZl9n5s4HRs96EKiy3gvHcpd/q9dps94RYL638ETXiADhx5bpwm3QpQCj96bY1mJsMINhoXvqXFhlNfIICTOPYdf9AK5Fv1oW8wFRQk1GsS1daNKmMcHZwyGzGJ1YmtXFZ8iu2BJYyv+1N5OWEpuLRSRHFg3SdyRKIExLf39soyU5VfO6tRhPAI9kDoD4IoItASC3ahsZmUtqAj81NGnr0s8bLzGDms8kuYMZIPCeG8on5fj4IJZB7gJ8Y+2LvQU+QYeU75nxW2SKuH0qaEbZuydLkWG4qEgjxiMV2lMmOIpIG+OmE5LiZlieyTO4qS+Vdu0KrEMeWyBNWpDN5LZoT+BPSObbmr9WfSvE6Z/4x6+kQ=

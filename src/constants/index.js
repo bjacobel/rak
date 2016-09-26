@@ -1,3 +1,2 @@
-export const showDevTools = !process.env.production;
-
-export const title = 'react-redux-boilerplate';
+export const SHOW_DEV_TOOLS = !process.env.production;
+export const TITLE = 'react-redux-boilerplate';

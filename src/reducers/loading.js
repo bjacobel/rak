@@ -1,6 +1,6 @@
 import {
   LOADING_STARTED,
-  LOADING_ENDED
+  LOADING_ENDED,
 } from '../actions/loading';
 
 const loading = (state = false, action) => {
