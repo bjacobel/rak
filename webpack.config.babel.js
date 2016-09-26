@@ -5,6 +5,7 @@ const precss = require('precss');
 const postcssImport = require('postcss-import');
 const postcssFontMagician = require('postcss-font-magician');
 const stylelint = require('stylelint');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -29,7 +30,7 @@ const wpconfig = {
       },
       {
         test: /\.css$/,
-        loader: 'style!css?sourceMap!postcss',
+        loader: isProd ? ExtractTextPlugin.extract('style', 'css!postcss?sourceMap') : 'style!css?sourceMap!postcss',
       },
       {
         test: /\.(eot|ttf|woff|svg)(\?[a-z0-9=]+)?$/,
@@ -72,6 +73,13 @@ if (!isProd) {
 
   wpconfig.plugins = [
     new webpack.HotModuleReplacementPlugin(),
+    ...wpconfig.plugins,
+  ];
+} else {
+  wpconfig.plugins = [
+    new ExtractTextPlugin('[name].css'),
+    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(true),
     ...wpconfig.plugins,
   ];
 }
