@@ -6,8 +6,7 @@ env:
   global:
     - NODE_ENV=production
     - PATH=$PATH:$HOME/.local/bin
-    - > PROJECTNAME=$(jq -r '.|map(select(.ParameterKey=="ProjectName"))[0].ParameterValue' parameters.json)
-    - > PROJECTFULLDOMAIN=$(jq -r '.|map(select(.ParameterKey=="ProjectFullDomain"))[0].ParameterValue' parameters.json)
+    - PROJECTFQDOMAIN=$(node -e "console.log(require('./cloudformation/template').ProjectFQDomain);")
 install:
   - npm install
   - npm install --only=dev
@@ -34,7 +33,7 @@ after_deploy:
   - aws configure set preview.cloudfront true
   - >
     export CFDISTRO=$(aws cloudfront list-distributions --output json |\
-    jq -r --arg siteurl "$PROJECTFULLDOMAIN" '.DistributionList.Items |\
+    jq -r --arg siteurl "$PROJECTFQDOMAIN" '.DistributionList.Items |\
     map(select(.Aliases.Items[0] == $siteurl)) |\
     .[0].Id')
   - aws cloudfront create-invalidation --distribution-id $CFDISTRO --paths /index.html /main.js

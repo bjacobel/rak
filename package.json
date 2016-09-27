@@ -6,6 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "compile": "webpack -pc",
+    "cfn": "node cloudformation/stack.js",
     "test": "jest",
     "lint": "eslint . && stylelint src/stylesheets/*.css"
   },
@@ -26,6 +27,7 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "cloudformer-node": "bjacobel/cloudformer-node",
     "cloudfriend": "^1.1.0",
     "css-loader": "^0.25.0",
     "enzyme": "^2.4.1",

@@ -9,7 +9,8 @@ module.exports = {
   Properties: {
     DistributionConfig: {
       Aliases: [
-        ref('ProjectFullDomain'),
+        ref('ProjectFQDomain'),
+        join('.', ['www', ref('ProjectFQDomain')]),  // If we don't create the WWW route, this doesn't do any harm.
       ],
       Enabled: true,
       DefaultRootObject: 'index.html',
@@ -35,7 +36,7 @@ module.exports = {
       },
       Origins: [
         {
-          DomainName: join([ref('ProjectFullDomain'), '.s3.amazonaws.com']),
+          DomainName: join([ref('ProjectFQDomain'), '.s3.amazonaws.com']),
           Id: join(['S3-', ref('ProjectName')]),
           CustomOriginConfig: {
             OriginProtocolPolicy: 'https-only',
@@ -46,6 +47,13 @@ module.exports = {
         AcmCertificateArn: ref('ACMCertificate'),
         SslSupportMethod: 'sni-only',
       },
+      // This is so pushState routing works
+      CustomErrorResponses: [{
+        ErrorCachingMinTTL: 0,
+        ErrorCode: 404,
+        ResponseCode: 200,
+        ResponsePagePath: '/index.html',
+      }],
     },
   },
 };
