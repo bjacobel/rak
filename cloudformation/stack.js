@@ -1,17 +1,20 @@
 const Stack = require('cloudformer-node');
-const { params, template } = require('./template');
+const template = require('./template');
+const config = require('../config');
+
 
 const main = () => {
-  const stack = new Stack(params.ProjectName);
+  const stack = new Stack(config.ProjectName);
   stack.apply(template, {
-    Parameters: params,
+    Parameters: config,
     Tags: {
-      Name: params.ProjectName,
+      Name: config.ProjectName,
     },
   }, console.log);
   console.log(
     `Check on the progress of the stack in the AWS console:
-    \rhttps://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filter=active\n`
+    \rhttps://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filter=active\n
+    \rLeaving this process running will tail CloudFormation stack events to the console as well.\n`
   );
 };
 
