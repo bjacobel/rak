@@ -27,9 +27,7 @@ deploy:
   local_dir: dist
   skip_cleanup: true
   on:
-    branch:
-      - master
-      - cloudformation
+    branch: master
 after_deploy:
   - npm run invalidate
 notifications:
