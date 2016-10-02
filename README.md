@@ -10,7 +10,7 @@ Skeleton to quickly set up a project with React, Redux, Webpack & friends.
   - [React](https://facebook.github.io/react/)
   - [Redux](http://redux.js.org/)
   - [Webpack](https://webpack.github.io/) (with [HMR](https://webpack.github.io/docs/hot-module-replacement.html))
-  - [Babel](https://babeljs.io/) (with [ES2015](http://babeljs.io/docs/plugins/preset-es2015/) and (React)[http://babeljs.io/docs/plugins/preset-react/] presets)
+  - [Babel](https://babeljs.io/) (with [ES2015](http://babeljs.io/docs/plugins/preset-es2015/) and [React](http://babeljs.io/docs/plugins/preset-react/) presets)
   - [PostCSS](http://postcss.org/) (with [CSS Modules](https://github.com/css-modules/css-modules) and [precss](https://github.com/jonathantneal/precss) syntax)
   - [Autoprefixer](https://github.com/postcss/autoprefixer)
   - [Stylelint](http://stylelint.io/) (with [`stylelint-config-standard`](https://github.com/stylelint/stylelint-config-standard))
