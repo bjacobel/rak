@@ -1,7 +1,7 @@
 const AWS = require('aws-sdk');
-const config = require('../config');
+const config = require('../../config');
 
-const main = () => {
+module.exports = () => {
   // Invalidate the CloudFront distro associated with this project.
   const cloudfront = new AWS.CloudFront();
   return new Promise((resolve, reject) => {
@@ -41,5 +41,3 @@ const main = () => {
     console.error(`Error: ${err.message}\nTry invalidaing the distribution through the AWS console.`);
   });
 };
-
-main();
