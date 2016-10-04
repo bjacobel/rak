@@ -29,7 +29,6 @@ deploy:
   on:
     branch:
       - master
-      - utils
     condition: $(npm -s run awsUtils -- bucketExists) = "true"
 after_deploy:
   - npm run awsUtils -- invalidate
