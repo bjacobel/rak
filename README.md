@@ -4,8 +4,6 @@
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
-
-
 ###What's inside
 Rak includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
 
