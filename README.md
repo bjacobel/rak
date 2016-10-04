@@ -1,11 +1,13 @@
-# react-redux-boilerplate
+# Rak
 
-Skeleton to quickly set up a project with React, Redux, Webpack & friends.
+[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak)
 
-[![Build Status](https://travis-ci.org/bjacobel/react-redux-boilerplate.svg?branch=master)](https://travis-ci.org/bjacobel/react-redux-boilerplate) [![codecov](https://codecov.io/gh/bjacobel/react-redux-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/react-redux-boilerplate) [![Dependency Status](https://david-dm.org/bjacobel/react-redux-boilerplate.svg)](https://david-dm.org/bjacobel/react-redux-boilerplate)
+Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
+
+
 
 ###What's inside
-`react-redux-boilerplate` includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
+Rak includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
 
   - [React](https://facebook.github.io/react/)
   - [Redux](http://redux.js.org/)
@@ -21,10 +23,10 @@ Skeleton to quickly set up a project with React, Redux, Webpack & friends.
   - [CloudFormation](https://aws.amazon.com/cloudformation/) template to set up those AWS resources for you
 
 ###Using it in a project
-`react-redux-boilerplate` requires Node 6. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
+Rak requires Node 6. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
 
 ###Deployment
-`react-redux-boilerplate` includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:
+Rak includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:
 
 1. Add AWS configuration to your environment. See the AWS doc on [configuring the command-line interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 2. Add project configuration to `./config.js`, including the name of your project and the domain it'll live at.

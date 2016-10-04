@@ -1,7 +1,7 @@
 {
-  "name": "react-redux-boilerplate",
-  "version": "1.0.0",
-  "description": "Skeleton to quickly set up a project with React, Redux, Webpack, Babel, PostCSS & friends.",
+  "name": "rak",
+  "version": "0.0.0",
+  "description": "Opinionated skeleton to quickly set up a new React app.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
@@ -14,8 +14,8 @@
   },
   "author": "Brian Jacobel",
   "license": "MIT",
-  "private": true,
-  "repository": "http://github.com/bjacobel/react-redux-boilerplate",
+  "repository": "http://github.com/bjacobel/rak",
+  "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
