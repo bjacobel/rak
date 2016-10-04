@@ -2,7 +2,20 @@
   "name": "rak",
   "version": "0.0.0",
   "description": "Opinionated skeleton to quickly set up a new React app.",
-  "main": "index.js",
+  "keywords": [
+    "boilerplate",
+    "starter",
+    "scaffold",
+    "skeleton",
+    "react",
+    "redux",
+    "webpack"
+  ],
+  "bugs": "https://github.com/bjacobel/rak/issues",
+  "license": "MIT",
+  "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
+  "bin": "install.js",
+  "repository": "http://github.com/bjacobel/rak",
   "scripts": {
     "start": "webpack-dev-server",
     "test": "jest",
@@ -11,10 +24,6 @@
     "awsUtils": "node aws/utils",
     "getconfig": "node -e \"console.log(JSON.stringify(require('./config')));\" | jq -r "
   },
-  "author": "Brian Jacobel",
-  "license": "MIT",
-  "repository": "http://github.com/bjacobel/rak",
-  "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -54,6 +63,10 @@
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.14.1"
   },
+  "engines": {
+    "node": ">= 6"
+  },
+  "preferGlobal": true,
   "jest": {
     "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
     "testRegex": "tests/.*/.*-test.js$",
@@ -63,8 +76,5 @@
     "moduleNameMapper": {
       "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
     }
-  },
-  "engines": {
-    "node": ">= 6"
   }
 }

@@ -6,10 +6,10 @@
  * You still need both values even if they are the same.
  */
 module.exports = {
-  // The common name for your project.
+  // The common name for your project. Used for naming CloudFormation stacks and CloudFront distros.
   ProjectName: 'rak',
 
-  // The root domain that your project will live at.
+  // The root domain that your project will live at. Used for creating hosted zones and connecting DNS.
   ProjectDomain: 'bjacobel.com',
 
   // If project will live on a subdomain, give the fully qualified domain here. Otherwise use the same value as above.
