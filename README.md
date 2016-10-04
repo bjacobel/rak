@@ -30,7 +30,7 @@ Rak includes a CloudFormation template that can create & configure all the AWS r
 
 1. Add AWS configuration to your environment. See the AWS doc on [configuring the command-line interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 2. Add project configuration to `./config.js`, including the name of your project and the domain it'll live at.
-3. Build your CloudFormation stack with `npm run cfn`.
+3. Build your CloudFormation stack with `npm run awsUtils -- launch`.
 
 CloudFormation will create the following resources:
 
@@ -50,7 +50,7 @@ This will take about 30 minutes. While it's going:
   - Update the badge at the top of the readme to point to your new Codecov SVG
 3. Update the readme to remove all the stuff about the boilerplate and to say a bit about your new project!
 
-Leaving the `npm run cfn` process running will tail CloudFormation events to your console. You can also log into the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks?filter=active) to track the progress of your stack. Once it's reached the `CREATE_COMPLETE` status:
+Leaving the `npm run awsUtils -- launch` process running will tail CloudFormation events to your console. You can also log into the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active) to track the progress of your stack. Once it's reached the `CREATE_COMPLETE` status:
 
 1. Get the nameservers (`ns-xxx.awsdns-xxx.tld`) for your new Route53 hosted zone, and point your domain to these nameservers in your registrar's DNS console. These changes may take a while to take effect.
 2. Push or merge your code to the `master` branch. Travis will test, lint, bundle and deploy your code to S3, and you should see it at your domain shortly.

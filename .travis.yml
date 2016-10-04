@@ -21,15 +21,18 @@ before_deploy:
   - pip install --user awscli
 deploy:
   provider: s3
-  region: us-east-1
+  region: $(npm -s run getconfig -- .AWSRegion)
   bucket: $(npm -s run getconfig -- .ProjectFQDomain)
   acl: public_read
   local_dir: dist
   skip_cleanup: true
   on:
-    branch: master
+    branch:
+      - master
+      - utils
+    condition: $(npm -s run awsUtils -- bucketExists) = "true"
 after_deploy:
-  - npm run invalidate
+  - npm run awsUtils -- invalidate
 notifications:
   email: false
   slack:

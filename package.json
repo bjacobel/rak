@@ -8,8 +8,7 @@
     "test": "jest",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
     "webpack": "webpack -pc",
-    "cfn": "node cloudformation/stack.js",
-    "invalidate": "node cloudformation/invalidate.js",
+    "awsUtils": "node aws/utils",
     "getconfig": "node -e \"console.log(JSON.stringify(require('./config')));\" | jq -r "
   },
   "author": "Brian Jacobel",

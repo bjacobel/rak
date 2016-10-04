@@ -14,4 +14,7 @@ module.exports = {
 
   // If project will live on a subdomain, give the fully qualified domain here. Otherwise use the same value as above.
   ProjectFQDomain: 'rak.bjacobel.com',
+
+  // The AWS region you want to create these resources in.
+  AWSRegion: 'us-east-1',
 };
