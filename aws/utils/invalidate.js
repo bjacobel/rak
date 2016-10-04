@@ -9,7 +9,12 @@ module.exports = () => {
       if (err) {
         reject(err);
       } else {
-        resolve(data.DistributionList.Items.find(x => x.Aliases.Items.includes(config.ProjectFQDomain)).Id);
+        const distro = data.DistributionList.Items.find(x => x.Aliases.Items.includes(config.ProjectFQDomain));
+        if (distro) {
+          resolve(distro.Id);
+        } else {
+          reject(new Error('No distribution matching ProjectFQDomain found'));
+        }
       }
     });
   }).then((DistributionId) => {
