@@ -1,5 +1,8 @@
+#!/usr/local/bin/node
+
 const fs = require('fs');
 const path = require('path');
+const mkdirp = require('mkdirp');
 const replaceStream = require('replacestream');
 const config = require('./config');
 
@@ -31,10 +34,26 @@ const rreaddir = (root) => {
 };
 
 (() => {
-  if (process.argv[1]) {
-    flatten(rreaddir(__dirname)).forEach((file) => {
-      fs.createReadStream(file).pipe(replaceStream(config.ProjectName, process.argv[1])).pipe(process.stdout);
+  const newProjectName = process.argv[2];
+  if (newProjectName) {
+    console.log(`Creating project ${newProjectName} in ${process.cwd()}`);
+    const rakRoot = __dirname;
+
+    flatten(rreaddir(rakRoot)).forEach((srcFile) => {
+      const dstFileRelPath = path.relative(rakRoot, srcFile);
+      const dstFileAbsPath = path.join(process.cwd(), dstFileRelPath);
+      const subfolder = path.parse(dstFileAbsPath).dir;
+
+      mkdirp.sync(subfolder);
+      const dstFile = fs.createWriteStream(dstFileAbsPath);
+
+      fs.createReadStream(srcFile).pipe(replaceStream(config.ProjectName, newProjectName))
+        .on('read', (chunk) => {
+          dstFile.write(chunk);
+        });
     });
+
+    // remove mkcdirp and replacestream from package.json
   } else {
     console.error('Usage: rak <projectName>');
   }
