@@ -1,7 +1,17 @@
 {
-  "name": "rak",
-  "version": "0.0.0",
+  "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
+  "bugs": "https://github.com/bjacobel/rak/issues",
   "description": "Opinionated skeleton to quickly set up a new React app.",
+  "jest": {
+    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
+    "testRegex": "tests/.*/.*-test.js$",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
+    }
+  },
   "keywords": [
     "boilerplate",
     "starter",
@@ -11,21 +21,7 @@
     "redux",
     "webpack"
   ],
-  "bugs": "https://github.com/bjacobel/rak/issues",
-  "license": "MIT",
-  "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
-  "bin": "install.js",
-  "repository": "http://github.com/bjacobel/rak",
-  "scripts": {
-    "start": "webpack-dev-server",
-    "test": "jest",
-    "lint": "eslint . && stylelint src/stylesheets/*.css",
-    "webpack": "webpack -pc",
-    "awsUtils": "node aws/utils",
-    "getconfig": "node -e \"console.log(JSON.stringify(require('./config')));\" | jq -r "
-  },
   "dependencies": {
-    "mkdirp": "^0.5.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -58,7 +54,6 @@
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.3.2",
     "redux-mock-store": "^1.2.1",
-    "replacestream": "^4.0.2",
     "style-loader": "^0.13.1",
     "stylelint": "^7.3.1",
     "stylelint-config-standard": "^13.0.2",
@@ -68,15 +63,17 @@
   "engines": {
     "node": ">= 6"
   },
-  "preferGlobal": true,
-  "jest": {
-    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
-    "testRegex": "tests/.*/.*-test.js$",
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
-    }
-  }
+  "license": "MIT",
+  "name": "rak",
+  "repository": "http://github.com/bjacobel/rak",
+  "scripts": {
+    "awsUtils": "node aws/utils",
+    "getconfig": "node -e \"console.log(JSON.stringify(require('./config')));\" | jq -r ",
+    "lint": "eslint . && stylelint src/stylesheets/*.css",
+    "postinstall": "node install.js",
+    "start": "webpack-dev-server",
+    "test": "jest",
+    "webpack": "webpack -pc"
+  },
+  "version": "0.0.0"
 }
