@@ -1,20 +1,40 @@
-#!/usr/local/bin/node
+/* eslint-disable global-require, import/no-extraneous-dependencies, import/no-dynamic-require */
 
 const fs = require('fs');
 const path = require('path');
-const mkdirp = require('mkdirp');
-const replaceStream = require('replacestream');
 const config = require('./config');
+const { execSync } = require('child_process');
 
 const ignorePaths = [
   'install.js',
-  'node_modules',
-  '.git',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce(
     (a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []
 );
+
+const clean = (pDJ, projName) => {
+  const blacklist = [
+    'description',
+    'readme',
+    'readmeFilename',
+    'optionalDependencies',
+    'gitHead',
+    'keywords',
+  ];
+  const newPackageJson = {};
+
+  Object.keys(pDJ).forEach((key) => {
+    if (!blacklist.includes(key) && !key.startsWith('_')) {
+      newPackageJson[key] = pDJ[key];
+    }
+  });
+
+  delete newPackageJson.scripts.postinstall;
+  newPackageJson.name = projName;
+
+  return JSON.stringify(newPackageJson, null, 2);
+};
 
 const rreaddir = (root) => {
   return fs.readdirSync(root).map((file) => {
@@ -34,27 +54,43 @@ const rreaddir = (root) => {
 };
 
 (() => {
-  const newProjectName = process.argv[2];
-  if (newProjectName) {
-    console.log(`Creating project ${newProjectName} in ${process.cwd()}`);
-    const rakRoot = __dirname;
+  console.log("Installing Rak's setup requirements...");
+  execSync('npm install replacestream mkdirp', { stdio: [0, 1, 2] });
+  const replaceStream = require('replacestream');
+  const mkdirp = require('mkdirp');
 
-    flatten(rreaddir(rakRoot)).forEach((srcFile) => {
-      const dstFileRelPath = path.relative(rakRoot, srcFile);
-      const dstFileAbsPath = path.join(process.cwd(), dstFileRelPath);
-      const subfolder = path.parse(dstFileAbsPath).dir;
+  console.log("Setting up new Rak project's file structure...");
+  const newProjectRoot = path.join(process.cwd(), '..', '..');
+  const newProjectName = path.parse(newProjectRoot).name;
+  const copyPromises = flatten(rreaddir(__dirname)).map((srcFileAbsPath) => {
+    const srcFileRelFromSrcRoot = path.relative(__dirname, srcFileAbsPath);
+    const dstFileAbsPath = path.join(newProjectRoot, srcFileRelFromSrcRoot);
+    const dstFileSubfolder = path.parse(dstFileAbsPath).dir;
 
-      mkdirp.sync(subfolder);
+    return new Promise((resolve, reject) => {
+      mkdirp.sync(dstFileSubfolder);
       const dstFile = fs.createWriteStream(dstFileAbsPath);
 
-      fs.createReadStream(srcFile).pipe(replaceStream(config.ProjectName, newProjectName))
-        .on('read', (chunk) => {
-          dstFile.write(chunk);
-        });
+      if (srcFileRelFromSrcRoot === 'package.json') {
+        const packageDotJson = require(srcFileAbsPath);
+        dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
+      } else {
+        fs.createReadStream(srcFileAbsPath)
+          .pipe(replaceStream(config.ProjectName, newProjectName))
+          .pipe(dstFile)
+          .on('finish', resolve)
+          .on('error', reject);
+      }
     });
+  });
 
-    // remove mkcdirp and replacestream from package.json
-  } else {
-    console.error('Usage: rak <projectName>');
-  }
+  return Promise.all(copyPromises).then(() => {
+    execSync('rm install.js', { stdio: [0, 1, 2] });
+    execSync('tree . -aIC node_modules', { stdio: [0, 1, 2] });
+
+    console.log('Installing devDependencies of your new Rak project...');
+    execSync('npm install --only-dev', { stdio: [0, 1, 2] });
+
+    console.log('Done!');
+  });
 })();
