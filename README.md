@@ -23,6 +23,34 @@ Rak includes and configures the following components to help you build a rock-so
 ###Using it in a project
 Rak requires Node 6. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
 
+Start a new Project with Rak by creating an empty directory and installing `rak` into it.
+
+    mkdir rak
+    cd rak
+    npm install rak
+
+Next, run the new `rak` command-line executable. It doesn't take any arguments, and will set up a project using the name of the folder you created as the project name.
+
+    $(npm bin)/rak
+
+Some details about your newly created folder structure and dependencies will be printed while Rak is setting up. After it's done, you can uninstall rak if you want:
+
+    npm uninstall rak
+
+and commit your project to git:
+
+    git init && git add --all && git commit -m "Initial commit"
+
+and start developing! Your next steps might include:
+
+- Setting up [Travis CI](https://travis-ci.org) for your repo.
+  - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to Travis CI, either using their web interface or [their Ruby gem and the `travis encrypt` command](https://docs.travis-ci.com/user/environment-variables/).
+  - Remember to update the badge at the top of the readme to point to your new Travis SVG.
+- Setting up [Codecov](https://codecov.io) for your repo.
+  - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.
+- Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
+- Removing or modifying the example actions/reducers/services to do... whatever your new app does. 
+
 ###Deployment
 Rak includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:
 
@@ -39,16 +67,9 @@ CloudFormation will create the following resources:
 - A Route53 DNS record for your site
 - Another Route53 DNS record for www.<yoursite>, if your site sits at a domain apex
 
-This will take about 30 minutes. While it's going:
+This will take about 30 minutes. While it's going, leaving the `npm run awsUtils -- launch` process running will tail CloudFormation events to your console. You can also log into the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active) to track the progress of your stack.
 
-1. Set up [Travis CI](https://travis-ci.org) for your repo.
-  - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to Travis CI, either using their web interface or [their Ruby gem and the `travis encrypt` command](https://docs.travis-ci.com/user/environment-variables/).
-  - Update the badge at the top of the readme to point to your new Travis SVG
-2. Set up [Codecov](https://codecov.io) for your repo (Optional but recommended)
-  - Update the badge at the top of the readme to point to your new Codecov SVG
-3. Update the readme to remove all the stuff about the boilerplate and to say a bit about your new project!
-
-Leaving the `npm run awsUtils -- launch` process running will tail CloudFormation events to your console. You can also log into the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active) to track the progress of your stack. Once it's reached the `CREATE_COMPLETE` status:
+Once it's reached the `CREATE_COMPLETE` status:
 
 1. Get the nameservers (`ns-xxx.awsdns-xxx.tld`) for your new Route53 hosted zone, and point your domain to these nameservers in your registrar's DNS console. These changes may take a while to take effect.
 2. Push or merge your code to the `master` branch. Travis will test, lint, bundle and deploy your code to S3, and you should see it at your domain shortly.
