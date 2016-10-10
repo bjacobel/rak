@@ -25,8 +25,8 @@ Rak requires Node 6. In addition, to use the automatic AWS deployment features, 
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
-    mkdir rak
-    cd rak
+    mkdir my-new-project
+    cd my-new-project
     npm install rak
 
 Next, run the new `rak` command-line executable. It doesn't take any arguments, and will set up a project using the name of the folder you created as the project name.

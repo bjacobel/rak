@@ -1,4 +1,6 @@
-/* eslint-disable global-require, import/no-extraneous-dependencies, import/no-dynamic-require */
+#!/usr/local/bin/node
+
+/* eslint-disable global-require, import/no-extraneous-dependencies, import/no-dynamic-require, import/no-unresolved */
 
 const fs = require('fs');
 const path = require('path');
@@ -6,7 +8,7 @@ const config = require('./config');
 const { execSync } = require('child_process');
 
 const ignorePaths = [
-  'install.js',
+  '.npmignore',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce(
@@ -54,13 +56,13 @@ const rreaddir = (root) => {
 };
 
 (() => {
-  console.log("Installing Rak's setup requirements...");
-  execSync('npm install replacestream mkdirp', { stdio: [0, 1, 2] });
+  console.log("\nInstalling Rak's setup requirements...\n");
+  execSync('npm -s install replacestream mkdirp', { stdio: [0, 1, 2] });
   const replaceStream = require('replacestream');
   const mkdirp = require('mkdirp');
 
-  console.log("Setting up new Rak project's file structure...");
-  const newProjectRoot = path.join(process.cwd(), '..', '..');
+  console.log("\nSetting up new Rak project's file structure...\n");
+  const newProjectRoot = process.cwd();
   const newProjectName = path.parse(newProjectRoot).name;
   const copyPromises = flatten(rreaddir(__dirname)).map((srcFileAbsPath) => {
     const srcFileRelFromSrcRoot = path.relative(__dirname, srcFileAbsPath);
@@ -78,7 +80,7 @@ const rreaddir = (root) => {
         fs.createReadStream(srcFileAbsPath)
           .pipe(replaceStream(config.ProjectName, newProjectName))
           .pipe(dstFile)
-          .on('finish', resolve)
+          .on('close', resolve)
           .on('error', reject);
       }
     });
@@ -86,11 +88,13 @@ const rreaddir = (root) => {
 
   return Promise.all(copyPromises).then(() => {
     execSync('rm install.js', { stdio: [0, 1, 2] });
-    execSync('tree . -aIC node_modules', { stdio: [0, 1, 2] });
 
-    console.log('Installing devDependencies of your new Rak project...');
-    execSync('npm install --only-dev', { stdio: [0, 1, 2] });
+    // Will only tree if tree is installed
+    execSync('command -v tree > /dev/null && tree . -aIC node_modules', { stdio: [0, 1, 2] });
 
-    console.log('Done!');
+    console.log('\nInstalling devDependencies of your new Rak project...\n');
+    execSync('npm -s install --only-dev', { stdio: [0, 1, 2] });
+
+    console.log('\nDone!');
   });
 })();

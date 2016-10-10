@@ -1,5 +1,6 @@
 {
   "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
+  "bin": "install.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "jest": {
@@ -70,7 +71,6 @@
     "awsUtils": "node aws/utils",
     "getconfig": "node -e \"console.log(JSON.stringify(require('./config')));\" | jq -r ",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
-    "postinstall": "node install.js",
     "start": "webpack-dev-server",
     "test": "jest",
     "webpack": "webpack -pc"
