@@ -18,12 +18,15 @@ const flatten = list => list.reduce(
 
 const clean = (pDJ, projName) => {
   const blacklist = [
+    'bin',
+    'bugs',
     'description',
+    'gitHead',
+    'homepage',
+    'keywords',
+    'optionalDependencies',
     'readme',
     'readmeFilename',
-    'optionalDependencies',
-    'gitHead',
-    'keywords',
   ];
   const newPackageJson = {};
 
@@ -35,6 +38,9 @@ const clean = (pDJ, projName) => {
 
   delete newPackageJson.scripts.postinstall;
   newPackageJson.name = projName;
+  newPackageJson.repository = Object.assign({}, newPackageJson.repository, {
+    url: newPackageJson.repository.url.replace(config.ProjectName, projName),
+  });
 
   return JSON.stringify(newPackageJson, null, 2);
 };
