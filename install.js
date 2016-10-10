@@ -9,6 +9,7 @@ const { execSync } = require('child_process');
 
 const ignorePaths = [
   '.npmignore',
+  'install.js',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce(
@@ -87,7 +88,8 @@ const rreaddir = (root) => {
   });
 
   return Promise.all(copyPromises).then(() => {
-    execSync('rm install.js', { stdio: [0, 1, 2] });
+    // .gitignore is never included in npm installs even if explicitly !.npmignored
+    execSync('echo -e "coverage\ndist\nnode_modules" > .gitignore');
 
     // Will only tree if tree is installed
     execSync('command -v tree > /dev/null && tree . -aIC node_modules', { stdio: [0, 1, 2] });
