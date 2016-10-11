@@ -2,26 +2,6 @@
   "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
   "bin": "install.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
-  "description": "Opinionated skeleton to quickly set up a new React app.",
-  "jest": {
-    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
-    "testRegex": "tests/.*/.*-test.js$",
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
-    }
-  },
-  "keywords": [
-    "boilerplate",
-    "starter",
-    "scaffold",
-    "skeleton",
-    "react",
-    "redux",
-    "webpack"
-  ],
   "dependencies": {
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -29,6 +9,7 @@
     "redux-thunk": "^2.1.0",
     "redux": "^3.6.0"
   },
+  "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
     "autoprefixer": "^6.4.1",
     "aws-sdk": "^2.6.6",
@@ -64,11 +45,30 @@
   "engines": {
     "node": "^6.7.0"
   },
+  "jest": {
+    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
+    "testRegex": "tests/.*/.*-test.js$",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
+    }
+  },
+  "keywords": [
+    "boilerplate",
+    "starter",
+    "scaffold",
+    "skeleton",
+    "react",
+    "redux",
+    "webpack"
+  ],
   "license": "MIT",
   "name": "rak",
   "repository": {
-    "type": "git",
-    "url": "http://github.com/bjacobel/rak"
+    "url": "git@github.com:bjacobel/rak.git",
+    "type": "git"
   },
   "scripts": {
     "awsUtils": "node aws/utils",
