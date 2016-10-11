@@ -72,7 +72,7 @@
     "getconfig": "node -e \"console.log(JSON.stringify(require('./config')));\" | jq -r ",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
     "start": "webpack-dev-server",
-    "test": "jest",
+    "test": "jest && ./install-test.sh",
     "webpack": "webpack -pc"
   },
   "version": "0.0.0"

@@ -10,6 +10,7 @@ const { execSync } = require('child_process');
 const ignorePaths = [
   '.npmignore',
   'install.js',
+  'install-test.sh',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce(
@@ -37,7 +38,10 @@ const clean = (pDJ, projName) => {
   });
 
   delete newPackageJson.scripts.postinstall;
+  newPackageJson.scripts.test = newPackageJson.scripts.test.split(' && ')[0];
+
   newPackageJson.name = projName;
+
   newPackageJson.repository = Object.assign({}, newPackageJson.repository, {
     url: newPackageJson.repository.url.replace(config.ProjectName, projName),
   });
