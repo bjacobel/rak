@@ -3,11 +3,11 @@
   "bin": "install.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
+    "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
-    "react": "^15.3.2",
-    "redux-thunk": "^2.1.0",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.1.0"
   },
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
@@ -21,11 +21,11 @@
     "cloudfriend": "^1.1.0",
     "css-loader": "^0.25.0",
     "enzyme": "^2.4.1",
+    "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-plugin-import": "^1.16.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
-    "eslint": "^3.7.1",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "imports-loader": "^0.6.5",
@@ -37,31 +37,31 @@
     "react-addons-test-utils": "^15.3.2",
     "redux-mock-store": "^1.2.1",
     "style-loader": "^0.13.1",
-    "stylelint-config-standard": "^13.0.2",
     "stylelint": "^7.3.1",
-    "webpack-dev-server": "^1.14.1",
-    "webpack": "^1.13.2"
+    "stylelint-config-standard": "^13.0.2",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.14.1"
   },
   "engines": {
     "node": "^6.7.0"
   },
   "jest": {
-    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
-    "testRegex": "tests/.*/.*-test.js$",
     "collectCoverageFrom": [
       "src/**/*.js"
     ],
+    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
     "moduleNameMapper": {
       "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
-    }
+    },
+    "testRegex": "tests/.*/.*-test.js$"
   },
   "keywords": [
     "boilerplate",
-    "starter",
-    "scaffold",
-    "skeleton",
     "react",
     "redux",
+    "scaffold",
+    "skeleton",
+    "starter",
     "webpack"
   ],
   "license": "MIT",
