@@ -8,9 +8,11 @@ const config = require('./config');
 const { execSync } = require('child_process');
 
 const ignorePaths = [
+  '.git',
   '.npmignore',
   'install.js',
   'install-test.sh',
+  'node_modules',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce(
