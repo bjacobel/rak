@@ -104,7 +104,7 @@ const rreaddir = (root) => {
     execSync('echo -e "coverage\ndist\nnode_modules" > .gitignore');
 
     // Will only tree if tree is installed
-    execSync('command -v tree > /dev/null && tree . -aIC node_modules', { stdio: [0, 1, 2] });
+    execSync('command -v tree > /dev/null && tree . -aIC node_modules || true', { stdio: [0, 1, 2] });
 
     console.log('\nInstalling devDependencies of your new Rak project...\n');
     execSync('npm -s install --only-dev', { stdio: [0, 1, 2] });
