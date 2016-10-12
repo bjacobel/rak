@@ -2,20 +2,24 @@ language: node_js
 sudo: false
 node_js:
   - 6
+cache:
+  directories:
+    - node_modules
 env:
   global:
     - NODE_ENV=production
     - PATH=$PATH:$HOME/.local/bin
+before_install:
+  - npm install --global yarnpkg
 install:
-  - npm install
-  - npm install --only=dev
+  - yarn
 script:
-  - npm run lint
-  - npm test -- --coverage
+  - yarn run lint
+  - yarn run test -- --coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
 before_deploy:
-  - npm run webpack
+  - yarn run webpack
   - mkdir -p dist
   - cp index.html dist/index.html
   - pip install --user awscli
@@ -31,7 +35,7 @@ deploy:
       - master
     condition: $(npm -s run awsUtils -- bucketExists) = "true"
 after_deploy:
-  - npm run awsUtils -- invalidate
+  - yarn run awsUtils -- invalidate
 notifications:
   email: false
   slack: bjacobel:xasDl3nTxo2feJGba70E43oR
