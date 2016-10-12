@@ -2,13 +2,12 @@
 
 set -e
 
-npm -s link
-
 mkdir -p my-new-project
 pushd my-new-project
 
-rak
-npm test
+yarn add file:../
+$(yarn bin)/rak
+yarn run test
 
 popd
 rm -rf my-new-project

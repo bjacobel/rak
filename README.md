@@ -25,6 +25,8 @@ Rak requires Node 6. In addition, to use the automatic AWS deployment features, 
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
+(Note: This document's snippets use `npm` as a package manager, but [Yarn](https://yarnpkg.com) is fully supported.)
+
     mkdir my-new-project
     cd my-new-project
     npm install rak
@@ -49,7 +51,7 @@ and start developing! Your next steps might include:
 - Setting up [Codecov](https://codecov.io) for your repo.
   - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.
 - Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
-- Removing or modifying the example actions/reducers/services to do... whatever your new app does. 
+- Removing or modifying the example actions/reducers/services to do... whatever your new app does.
 
 ###Deployment
 Rak includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:

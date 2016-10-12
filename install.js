@@ -70,7 +70,7 @@ const rreaddir = (root) => {
 
 (() => {
   console.log("\nInstalling Rak's setup requirements...\n");
-  execSync('npm -s install replacestream mkdirp', { stdio: [0, 1, 2] });
+  execSync('yarn add replacestream mkdirp || npm -s install replacestream mkdirp', { stdio: [0, 1, 2] });
   const replaceStream = require('replacestream');
   const mkdirp = require('mkdirp');
 
@@ -107,7 +107,7 @@ const rreaddir = (root) => {
     execSync('command -v tree > /dev/null && tree . -aIC node_modules || true', { stdio: [0, 1, 2] });
 
     console.log('\nInstalling devDependencies of your new Rak project...\n');
-    execSync('npm -s install --only-dev', { stdio: [0, 1, 2] });
+    execSync('yarn || npm -s install --only-dev', { stdio: [0, 1, 2] });
 
     console.log('\nDone!');
   });
