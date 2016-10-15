@@ -78,5 +78,5 @@
     "test": "jest && ./install-test.sh",
     "webpack": "webpack -pc"
   },
-  "version": "0.0.0"
+  "version": "0.0.1"
 }
