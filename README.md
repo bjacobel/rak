@@ -1,6 +1,6 @@
 # Rak
 
-[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak)
+[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak) [![devDependency Status](https://david-dm.org/bjacobel/rak/dev-status.svg)]
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
@@ -25,19 +25,19 @@ Rak requires Node 6. In addition, to use the automatic AWS deployment features, 
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
-(Note: This document's snippets use `npm` as a package manager, but [Yarn](https://yarnpkg.com) is fully supported.)
+(Note: This section's snippets use [`yarn`](https://yarnpkg.com) as a package manager. NPM works too. See below.)
 
     mkdir my-new-project
     cd my-new-project
-    npm install rak
+    yarn add rak
 
 Next, run the new `rak` command-line executable. It doesn't take any arguments, and will set up a project using the name of the folder you created as the project name.
 
-    $(npm bin)/rak
+    $(yarn bin)/rak
 
 Some details about your newly created folder structure and dependencies will be printed while Rak is setting up. After it's done, you can uninstall rak if you want:
 
-    npm uninstall rak
+    yarn remove rak
 
 and commit your project to git:
 
@@ -45,6 +45,7 @@ and commit your project to git:
 
 and start developing! Your next steps might include:
 
+- Configuring project information (like domain and name) in `./config.js`.
 - Setting up [Travis CI](https://travis-ci.org) for your repo.
   - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to Travis CI, either using their web interface or [their Ruby gem and the `travis encrypt` command](https://docs.travis-ci.com/user/environment-variables/).
   - Remember to update the badge at the top of the readme to point to your new Travis SVG.
@@ -52,6 +53,13 @@ and start developing! Your next steps might include:
   - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.
 - Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
 - Removing or modifying the example actions/reducers/services to do... whatever your new app does.
+
+Note that while these instructions are given using Yarn, npm is also supported:
+
+    mkdir my-new-project && cd my-new-project
+    npm install rak
+    $(npm bin)/rak
+    npm uninstall rak
 
 ###Deployment
 Rak includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:
