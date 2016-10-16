@@ -1,10 +1,17 @@
-@import 'colors';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+@value blue from './colors.css';
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
 
 .title {
-  color: $blue;
-  width: 350px;
-  margin-top: 100px;
-  transform: rotate(-30deg);
+  color: blue;
   font-family: 'Open Sans', sans-serif;
 
   &::after {

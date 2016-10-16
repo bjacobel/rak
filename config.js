@@ -19,10 +19,9 @@ const config = {
   AWSRegion: 'us-east-1',
 };
 
-(() => {
-  if (!module.parent && process.argv[2]) {  // script is being executed directly
-    console.log(config[process.argv[2]] || `${process.argv[2]} not a config param.`);
-  }
-})();
+if (!module.parent && process.argv[2]) {
+  const param = process.argv[2];
+  console.log(config[param] || 'Not passed a valid config param.');
+}
 
 module.exports = config;

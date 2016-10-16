@@ -3,6 +3,7 @@
   "bin": "install.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
+    "postcss-modules-values": "^1.2.2",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.5",
@@ -30,8 +31,6 @@
     "file-loader": "^0.9.0",
     "imports-loader": "^0.6.5",
     "jest-cli": "^16.0.1",
-    "postcss-font-magician": "^1.4.0",
-    "postcss-import": "^8.1.2",
     "postcss-loader": "^1.0.0",
     "precss": "^1.4.0",
     "react-addons-test-utils": "^15.3.2",
