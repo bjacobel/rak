@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '../stylesheets/main.css';
+import styles from '../stylesheets/main.css';
 import { getTitleAsync } from '../actions/title';
 
 const mapStateToProps = state => ({
@@ -22,7 +22,7 @@ export class MainComponent extends Component {
     const { title } = this.props;
 
     return (
-      <h1 className="title">{ title.error || title.content }</h1>
+      <h1 className={ styles.title }>{ title.error || title.content }</h1>
     );
   }
 }

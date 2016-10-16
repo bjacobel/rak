@@ -1,13 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
-const postcssImport = require('postcss-import');
-const postcssFontMagician = require('postcss-font-magician');
-const stylelint = require('stylelint');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const isProd = process.env.NODE_ENV === 'production';
+const cssLoaderConfig = 'modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
 
 const wpconfig = {
   entry: {
@@ -30,24 +26,15 @@ const wpconfig = {
       },
       {
         test: /\.css$/,
-        loader: isProd ? ExtractTextPlugin.extract('style', 'css!postcss?sourceMap') : 'style!css?sourceMap!postcss',
+        loader: isProd ?
+          ExtractTextPlugin.extract('style', `css?${cssLoaderConfig}!postcss`) :
+          `style!css?sourceMap&${cssLoaderConfig}!postcss`,
       },
       {
         test: /\.(eot|ttf|woff|svg)(\?[a-z0-9=]+)?$/,
         loader: 'file',
       },
     ],
-  },
-  postcss(wp) {
-    return [
-      postcssImport({
-        addDependencyTo: wp,
-      }),
-      stylelint,
-      precss,
-      postcssFontMagician,
-      autoprefixer({ browsers: ['last 2 versions'] }),
-    ];
   },
   resolve: {
     extensions: ['', '.js', '.json', '.css'],
