@@ -5,7 +5,7 @@
  * case, and will add extra resources (an additional A record and SAN for www.ProjectDomain).
  * You still need both values even if they are the same.
  */
-module.exports = {
+const config = {
   // The common name for your project. Used for naming CloudFormation stacks and CloudFront distros.
   ProjectName: 'rak',
 
@@ -18,3 +18,11 @@ module.exports = {
   // The AWS region you want to create these resources in.
   AWSRegion: 'us-east-1',
 };
+
+(() => {
+  if (!module.parent && process.argv[2]) {  // script is being executed directly
+    console.log(config[process.argv[2]] || `${process.argv[2]} not a config param.`);
+  }
+})();
+
+module.exports = config;

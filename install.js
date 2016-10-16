@@ -40,7 +40,7 @@ const clean = (pDJ, projName) => {
   });
 
   delete newPackageJson.scripts.postinstall;
-  newPackageJson.scripts.test = newPackageJson.scripts.test.split(' && ')[0];
+  newPackageJson.scripts.test = 'jest';
 
   newPackageJson.name = projName;
 
