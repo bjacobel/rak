@@ -13,6 +13,7 @@ module.exports = {
     'import/no-extraneous-dependencies': [2, { devDependencies: true }],
     'react/jsx-curly-spacing': [2, 'always'],
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
+    'react/prefer-stateless-function': 0,
     'react/prop-types': 0,
   },
   parserOptions: {

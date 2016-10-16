@@ -48,6 +48,7 @@ const wpconfig = {
   devServer: {
     hot: true,
     publicPath: '/',
+    historyApiFallback: true,
   },
 };
 

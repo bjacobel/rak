@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
+import { Match, Miss, BrowserRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducer from './reducers';
 import { SHOW_DEVTOOLS } from './constants';
+import NotFound from './components/NotFound';
+import Child from './components/Child';
 
 const composeEnhancers = (!SHOW_DEVTOOLS && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;  // eslint-disable-line max-len, no-underscore-dangle
 
@@ -21,7 +24,13 @@ const render = () => {
 
   ReactDOM.render(
     <Provider store={ store }>
-      <Main />
+      <BrowserRouter>
+        <div>
+          <Match pattern="/" exactly component={ Main } />
+          <Match pattern="/child/:id" component={ Child } />
+          <Miss component={ NotFound } />
+        </div>
+      </BrowserRouter>
     </Provider>,
     rootEl
   );

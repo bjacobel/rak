@@ -1,0 +1,3 @@
+.not-found {
+  composes: center from './shared.css';
+}

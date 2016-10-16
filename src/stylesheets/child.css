@@ -1,13 +1,10 @@
 @import 'https://fonts.googleapis.com/css?family=Open+Sans';
 
-@value blue from './colors.css';
+@value lightgrey from './colors.css';
 
-.title {
+.id {
   composes: center from './shared.css';
-  color: blue;
+  color: lightgrey;
   font-family: 'Open Sans', sans-serif;
-
-  &::after {
-    content: '!';
-  }
+  font-style: italic;
 }
