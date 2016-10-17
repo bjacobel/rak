@@ -1,7 +1,7 @@
 import Child from '../../src/components/Child';
 
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 
 describe('child component', () => {
   it('displays the param it recieves in props', () => {
@@ -12,11 +12,10 @@ describe('child component', () => {
   });
 
   it('has a link back to home', () => {
-    const child = mount(<Child params={ { id: 'foo' } } />);
-    const homeLink = child.find('a');
+    const child = shallow(<Child params={ { id: 'foo' } } />);
+    const homeLink = child.find('Link');
 
     expect(homeLink.length).toBe(1);
-    homeLink.simulate('click');
-    expect(window.location).toEqual('/');
+    expect(homeLink.prop('to')).toEqual('/');
   });
 });
