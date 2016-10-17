@@ -13,6 +13,7 @@ const wpconfig = {
   },
   output: {
     path: `${__dirname}/dist`,
+    publicPath: '/',
     filename: '[name].js',
   },
   debug: true,

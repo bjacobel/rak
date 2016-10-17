@@ -1,10 +1,8 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans';
-
 @value lightgrey from './colors.css';
 
 .id {
   composes: center from './shared.css';
+  composes: open-sans from './shared.css';
   color: lightgrey;
-  font-family: 'Open Sans', sans-serif;
   font-style: italic;
 }

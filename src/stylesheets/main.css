@@ -1,11 +1,9 @@
-@import 'https://fonts.googleapis.com/css?family=Open+Sans';
-
 @value blue from './colors.css';
 
 .title {
   composes: center from './shared.css';
+  composes: open-sans from './shared.css';
   color: blue;
-  font-family: 'Open Sans', sans-serif;
 
   &::after {
     content: '!';
