@@ -50,9 +50,8 @@
     "collectCoverageFrom": [
       "src/**/*.js"
     ],
-    "mocksPattern": "(?:[\\/]|^)mocks[\\/]",
     "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
+      "^.+\\.css$": "<rootDir>/__mocks__/stylesheets.js"
     },
     "testPathDirs": [
       "./tests"
