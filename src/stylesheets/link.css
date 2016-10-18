@@ -1,11 +1,9 @@
-@value blue from './colors.css';
-
-.title {
+.link {
   composes: center from './shared.css';
   composes: open-sans from './shared.css';
-  color: blue;
+  text-decoration: none;
 
-  &::after {
-    content: '!';
+  &:hover {
+    text-decoration: underline;
   }
 }

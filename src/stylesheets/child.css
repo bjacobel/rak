@@ -1,0 +1,8 @@
+@value lightgrey from './colors.css';
+
+.id {
+  composes: center from './shared.css';
+  composes: open-sans from './shared.css';
+  color: lightgrey;
+  font-style: italic;
+}

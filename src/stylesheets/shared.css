@@ -1,0 +1,12 @@
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.open-sans {
+  @import 'https://fonts.googleapis.com/css?family=Open+Sans';
+
+  font-family: 'Open Sans', sans-serif;
+}

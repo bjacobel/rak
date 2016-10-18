@@ -13,6 +13,7 @@ const wpconfig = {
   },
   output: {
     path: `${__dirname}/dist`,
+    publicPath: '/',
     filename: '[name].js',
   },
   debug: true,
@@ -48,6 +49,7 @@ const wpconfig = {
   devServer: {
     hot: true,
     publicPath: '/',
+    historyApiFallback: true,
   },
 };
 
