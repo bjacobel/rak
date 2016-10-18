@@ -54,7 +54,10 @@
     "moduleNameMapper": {
       "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
     },
-    "testRegex": "tests/.*/.*-test.js$"
+    "testPathDirs": [
+      "./tests"
+    ],
+    "testRegex": ".*.js"
   },
   "keywords": [
     "boilerplate",
