@@ -33,11 +33,4 @@ if (module.hot) {
   });
 }
 
-
-if (!module.parent) {
-  // when Webpack execs this file
-  render();
-}
-
-// otherwise export for testing
-export default render;
+render();

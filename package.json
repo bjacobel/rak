@@ -56,7 +56,7 @@
     "testPathDirs": [
       "./tests"
     ],
-    "testRegex": ".*.js"
+    "testRegex": "tests/.*/.*-test.js$"
   },
   "keywords": [
     "boilerplate",
