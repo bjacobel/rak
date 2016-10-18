@@ -1,4 +1,4 @@
-import render from '../src/index';
+// import render from '../src/index';
 
 jest.mock('react-dom');
 jest.mock('redux-thunk');
@@ -6,7 +6,7 @@ jest.mock('react-redux');
 jest.mock('redux');
 jest.mock('../src/reducers');
 jest.mock('../src/components/Routes');
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 
 describe('app index file', () => {
