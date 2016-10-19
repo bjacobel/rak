@@ -1,6 +1,7 @@
 const { ref, equals } = require('cloudfriend');
 const HostedZone = require('./stack/HostedZone');
-const DNSRecordSet = require('./stack/DNSRecordSet');
+const DNSRecord = require('./stack/DNSRecord');
+const DNSRecordWWW = require('./stack/DNSRecordWWW');
 const CloudFrontDistribution = require('./stack/CloudFrontDistribution');
 const ACMCertificate = require('./stack/ACMCertificate');
 const S3Bucket = require('./stack/S3Bucket');
@@ -26,13 +27,14 @@ const template = {
   },
   Conditions: {
     CreateWWW: equals(ref('ProjectDomain'), ref('ProjectFQDomain')),
-    CreateHostedZone: equals(ref('ExistingHostedZone'), ''),
+    CreateHostedZone: equals(ref('ExistingHostedZone'), 'false'),
   },
   Resources: {
-    HostedZone,
-    DNSRecordSet,
-    CloudFrontDistribution,
     ACMCertificate,
+    CloudFrontDistribution,
+    DNSRecord,
+    DNSRecordWWW,
+    HostedZone,
     S3Bucket,
     S3BucketPolicy,
   },

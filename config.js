@@ -15,10 +15,9 @@ const config = {
   // If project will live on a subdomain, give the fully qualified domain here. Otherwise use the same value as above.
   ProjectFQDomain: 'rak.bjacobel.com',
 
-  // If you already have a Route53 hosted zone for the ProjectDomain domain, list it here. Get the ID with:
-  // aws --output=json route53 list-hosted-zones | jq '.HostedZones[]|select(.Name|startswith("<ProjectDomain>"))|.Id'
-  // Leave it as an empty string otherwise.
-  ExistingHostedZone: 'Z3EWHA33A6DPWQ',
+  // If you already have a Route53 hosted zone for the ProjectDomain domain, setting this value to `'true'` will
+  // re-use the zone. Setting it to `'false'` will create a new zone.
+  ExistingHostedZone: 'true',
 };
 
 if (!module.parent && process.argv[2]) {
