@@ -1,13 +1,10 @@
 const { ref, getAtt, join } = require('cloudfriend');
+const cfif = require('cloudfriend').if;  // this is a very weird design choice
 
 module.exports = {
   Type: 'AWS::Route53::RecordSetGroup',
-  DependsOn: [
-    'HostedZone',
-    'CloudFrontDistribution',
-  ],
   Properties: {
-    HostedZoneId: ref('HostedZone'),
+    HostedZoneId: cfif('CreateHostedZone', ref('HostedZone'), ref('ExistingHostedZone')),
     RecordSets: [
       {
         Name: join([ref('ProjectFQDomain'), '.']),

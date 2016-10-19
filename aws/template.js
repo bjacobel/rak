@@ -20,9 +20,13 @@ const template = {
     ProjectFQDomain: {
       Type: 'String',
     },
+    ExistingHostedZone: {
+      Type: 'String',
+    },
   },
   Conditions: {
     CreateWWW: equals(ref('ProjectDomain'), ref('ProjectFQDomain')),
+    CreateHostedZone: equals(ref('ExistingHostedZone'), ''),
   },
   Resources: {
     HostedZone,

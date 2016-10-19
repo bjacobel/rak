@@ -2,10 +2,6 @@ const { ref, join } = require('cloudfriend');
 
 module.exports = {
   Type: 'AWS::CloudFront::Distribution',
-  DependsOn: [
-    'S3Bucket',
-    'ACMCertificate',
-  ],
   Properties: {
     DistributionConfig: {
       Aliases: [
