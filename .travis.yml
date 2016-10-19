@@ -25,7 +25,7 @@ before_deploy:
   - pip install --user awscli
 deploy:
   provider: s3
-  region: $(node config AWSRegion)
+  region: us-east-1
   bucket: $(node config ProjectFQDomain)
   acl: public_read
   local_dir: dist

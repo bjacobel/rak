@@ -2,10 +2,6 @@ const { ref, join } = require('cloudfriend');
 
 module.exports = {
   Type: 'AWS::CloudFront::Distribution',
-  DependsOn: [
-    'S3Bucket',
-    'ACMCertificate',
-  ],
   Properties: {
     DistributionConfig: {
       Aliases: [
@@ -38,9 +34,7 @@ module.exports = {
         {
           DomainName: join([ref('ProjectFQDomain'), '.s3.amazonaws.com']),
           Id: join(['S3-', ref('ProjectName')]),
-          CustomOriginConfig: {
-            OriginProtocolPolicy: 'https-only',
-          },
+          S3OriginConfig: {},
         },
       ],
       ViewerCertificate: {
