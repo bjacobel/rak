@@ -13,6 +13,7 @@ const ignorePaths = [
   'install.js',
   'install-test.sh',
   'node_modules',
+  'CHANGELOG.md',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce(

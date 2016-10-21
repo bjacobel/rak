@@ -80,5 +80,5 @@
     "test": "jest --coverage && ./install-test.sh",
     "webpack": "webpack -pc"
   },
-  "version": "0.0.1"
+  "version": "0.0.2"
 }
