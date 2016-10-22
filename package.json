@@ -37,7 +37,7 @@
     "react-addons-test-utils": "^15.3.2",
     "redux-mock-store": "^1.2.1",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.3.1",
+    "stylelint": "^7.5",
     "stylelint-config-css-modules": "^0.1.0",
     "stylelint-config-standard": "^14.0.0",
     "webpack": "^1.13.2",
