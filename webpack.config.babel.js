@@ -21,6 +21,14 @@ const wpconfig = {
   module: {
     loaders: [
       {
+        test: /\.woff(2)?(\?[a-z0-9=]+)?$/,
+        loader: 'url?limit=64000',
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[a-z0-9=]+)?$/,
+        loader: 'file',
+      },
+      {
         test: /\.js$/,
         include: path.join(__dirname, 'src'),
         loader: 'babel',
@@ -30,10 +38,6 @@ const wpconfig = {
         loader: isProd ?
           ExtractTextPlugin.extract('style', `css?${cssLoaderConfig}!postcss`) :
           `style!css?sourceMap&${cssLoaderConfig}!postcss`,
-      },
-      {
-        test: /\.(eot|ttf|woff|svg)(\?[a-z0-9=]+)?$/,
-        loader: 'file',
       },
     ],
   },
