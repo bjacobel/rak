@@ -2,6 +2,13 @@ module.exports = {
   extends: 'eslint-config-airbnb',
   rules: {
     'arrow-body-style': 0,
+    'comma-dangle': [2, {
+      arrays: 'always-multiline',
+      objects: 'always-multiline',
+      imports: 'always-multiline',
+      exports: 'always-multiline',
+      functions: 'always-multiline',
+    }],
     'func-names': 0,
     'indent': [2, 2, { SwitchCase: 0 }],
     'max-len': [2, 120, 2],
@@ -17,7 +24,7 @@ module.exports = {
     'react/prop-types': 0,
   },
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 8,
     sourceType: 'module',
     ecmaFeatures: {
       modules: true,

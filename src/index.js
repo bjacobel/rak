@@ -10,7 +10,7 @@ import { SHOW_DEVTOOLS } from './constants';
 const composeEnhancers = (!SHOW_DEVTOOLS && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;  // eslint-disable-line max-len, no-underscore-dangle
 
 const store = createStore(reducer, {}, composeEnhancers(
-  applyMiddleware(...[thunk])
+  applyMiddleware(...[thunk]),
 ));
 
 const rootEl = document.getElementById('main');
@@ -23,7 +23,7 @@ const render = () => {
     <Provider store={ store }>
       <Routes />
     </Provider>,
-    rootEl
+    rootEl,
   );
 };
 
