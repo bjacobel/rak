@@ -37,5 +37,5 @@ export class MainComponent extends Component {
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(MainComponent);
