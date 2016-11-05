@@ -11,6 +11,7 @@ module.exports = {
       Enabled: true,
       DefaultRootObject: 'index.html',
       PriceClass: 'PriceClass_100',
+      HttpVersion: 'http2',
       DefaultCacheBehavior: {
         TargetOriginId: join(['S3-', ref('ProjectName')]),
         ViewerProtocolPolicy: 'redirect-to-https',
