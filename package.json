@@ -29,7 +29,7 @@
     "eslint-plugin-import": "^2.1.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.6.0",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
     "jest-cli": "^17.0.3",
     "postcss-font-magician": "^1.5.0",
@@ -43,8 +43,8 @@
     "stylelint-config-css-modules": "^0.1.0",
     "stylelint-config-standard": "^15.0.0",
     "url-loader": "^0.5.7",
-    "webpack": "^1.14.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.10"
   },
   "engines": {
     "node": "^6.7.0"
@@ -79,9 +79,9 @@
   "scripts": {
     "awsUtils": "node aws/utils",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --https",
     "test": "jest --coverage && ./install-test.sh",
-    "webpack": "webpack -pc"
+    "webpack": "webpack -p"
   },
   "version": "0.0.2"
 }
