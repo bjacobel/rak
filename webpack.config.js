@@ -25,7 +25,10 @@ const wpconfig = {
     rules: [
       {
         test: /\.woff(2)?(\?[a-z0-9=]+)?$/,
-        loader: 'url?limit=64000',
+        loader: 'url',
+        query: {
+          limit: 64000,
+        },
       },
       {
         test: /\.(ttf|eot|svg)(\?[a-z0-9=]+)?$/,
