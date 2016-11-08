@@ -1,4 +1,5 @@
 const Stack = require('cloudformer-node');
+
 const template = require('../template');
 const config = require('../../config');
 

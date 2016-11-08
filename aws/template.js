@@ -1,4 +1,5 @@
 const { ref, equals } = require('cloudfriend');
+
 const HostedZone = require('./stack/HostedZone');
 const DNSRecord = require('./stack/DNSRecord');
 const DNSRecordWWW = require('./stack/DNSRecordWWW');

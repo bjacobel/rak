@@ -1,10 +1,11 @@
+import React from 'react';
+import { mount } from 'enzyme';
+
+import Routes from '../../src/components/Routes';
+
 jest.mock('../../src/components/Main');
 jest.mock('../../src/components/Child');
 jest.mock('../../src/components/NotFound');
-import Routes from '../../src/components/Routes';
-
-import React from 'react';
-import { mount } from 'enzyme';
 
 const setPath = (value) => {
   // thanks @cpojer! https://github.com/facebook/jest/issues/890#issuecomment-209698782

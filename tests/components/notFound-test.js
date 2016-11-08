@@ -1,7 +1,7 @@
-import NotFound from '../../src/components/NotFound';
-
 import React from 'react';
 import { shallow } from 'enzyme';
+
+import NotFound from '../../src/components/NotFound';
 
 describe('404 component', () => {
   it('displays 404 message', () => {

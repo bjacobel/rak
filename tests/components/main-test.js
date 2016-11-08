@@ -1,7 +1,7 @@
-import { MainComponent } from '../../src/components/Main';
-
 import React from 'react';
 import { shallow } from 'enzyme';
+
+import { MainComponent } from '../../src/components/Main';
 
 describe('main component', () => {
   describe('un-Connected component', () => {
