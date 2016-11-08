@@ -7,8 +7,9 @@
 
 const fs = require('fs');
 const path = require('path');
-const config = require('./config');
 const { execSync } = require('child_process');
+
+const config = require('./config');
 
 const ignorePaths = [
   '.git',

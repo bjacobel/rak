@@ -12,9 +12,9 @@ import {
   LOADING_STARTED,
   LOADING_ENDED,
 } from '../../src/actions/loading';
+import { getTitle } from '../../src/services/title';
 
 jest.mock('../../src/services/title');
-import { getTitle } from '../../src/services/title';
 
 const mockStore = configureMockStore([thunk]);
 

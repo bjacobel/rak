@@ -15,9 +15,12 @@ module.exports = {
     'no-else-return': 0,
     'no-console': 0,
     'quote-props': [2, 'consistent-as-needed'],
-    'import/imports-first': 0,  // doesn't play nice with Jest
     'import/prefer-default-export': 1,
     'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+    'import/order': [2, {
+      'groups': [['builtin', 'external']],
+      'newlines-between': 'always',
+    }],
     'react/jsx-curly-spacing': [2, 'always'],
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
     'react/prefer-stateless-function': 0,

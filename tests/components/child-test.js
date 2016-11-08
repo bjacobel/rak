@@ -1,7 +1,7 @@
-import Child from '../../src/components/Child';
-
 import React from 'react';
 import { shallow } from 'enzyme';
+
+import Child from '../../src/components/Child';
 
 describe('child component', () => {
   it('displays the param it recieves in props', () => {

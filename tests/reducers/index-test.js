@@ -1,10 +1,11 @@
-jest.mock('redux');
 import { combineReducers } from 'redux';
 
-jest.mock('../../src/reducers/title');
-jest.mock('../../src/reducers/loading');
 import title from '../../src/reducers/title';
 import loading from '../../src/reducers/loading';
+
+jest.mock('redux');
+jest.mock('../../src/reducers/title');
+jest.mock('../../src/reducers/loading');
 
 describe('reducer index', () => {
   it('combines all my reducers', () => {
