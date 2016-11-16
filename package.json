@@ -3,7 +3,7 @@
   "bin": "install.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
-    "react": "^15.3.2",
+    "react": "^15.4.0",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.6",
     "react-router": "^4.0.0-alpha.4",
