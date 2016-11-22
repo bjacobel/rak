@@ -36,7 +36,6 @@
     "postcss-loader": "^1.0.0",
     "postcss-modules-values": "^1.2.2",
     "precss": "^1.4.0",
-    "react-addons-test-utils": "^15.3.2",
     "redux-mock-store": "^1.2.1",
     "style-loader": "^0.13.1",
     "stylelint": "^7.5",
