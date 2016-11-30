@@ -13,6 +13,7 @@ module.exports = {
       PriceClass: 'PriceClass_100',
       HttpVersion: 'http2',
       DefaultCacheBehavior: {
+        Compress: true,
         TargetOriginId: join(['S3-', ref('ProjectName')]),
         ViewerProtocolPolicy: 'redirect-to-https',
         MinTTL: 0,
