@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 
-import title from './title';
+import data from './data';
+import errors from './errors';
 import loading from './loading';
 
 export default combineReducers({
   loading,
-  title,
+  data,
+  errors,
 });

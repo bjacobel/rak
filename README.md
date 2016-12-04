@@ -1,4 +1,4 @@
-# Rak
+# ![Rak](https://raw.githubusercontent.com/bjacobel/rak/master/src/assets/images/logo.svg)
 
 [![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak) [![devDependency Status](https://david-dm.org/bjacobel/rak/dev-status.svg)](https://david-dm.org/bjacobel/rak?type=dev)
 
@@ -83,3 +83,7 @@ Once it's reached the `CREATE_COMPLETE` status:
 
 1. Get the nameservers (`ns-xxx.awsdns-xxx.tld`) for your new Route53 hosted zone, and point your domain to these nameservers in your registrar's DNS console. These changes may take a while to take effect.
 2. Push or merge your code to the `master` branch. Travis will test, lint, bundle and deploy your code to S3, and you should see it at your domain shortly.
+
+###Thanks to
+- all the developers of all the awesome code and systems Rak is built on
+- [Simon Mettler](https://thenounproject.com/search/?q=rocket&i=113198) from the [Noun Project](https://thenounproject.com/search/?q=rocket&i=113198)
