@@ -5,24 +5,24 @@ import { MainComponent } from '../../src/components/Main';
 
 describe('main component', () => {
   describe('un-Connected component', () => {
-    it("renders an h1 with a title if title doesn't have an error", () => {
-      const main = shallow(<MainComponent title={ { content: 'foo' } } getTitleAsync={ jest.fn() } />);
+    it("renders an h3 with data if it didn't hit an error", () => {
+      const main = shallow(<MainComponent data={ { text: 'foo' } } getDataAsync={ jest.fn() } />);
 
-      expect(main.find('h1').length).toBe(1);
-      expect(main.find('h1').text()).toEqual('foo');
+      expect(main.find('h3').length).toBe(1);
+      expect(main.find('h3').text()).toEqual('foo');
     });
 
-    it('renders an h1 with an err if title has an error', () => {
-      const main = shallow(<MainComponent title={ { error: 'err' } } getTitleAsync={ jest.fn() } />);
+    it('renders no data but an error if data-fetching hits an error', () => {
+      const main = shallow(<MainComponent data={ {} } errors={ ['error'] } getDataAsync={ jest.fn() } />);
 
-      expect(main.find('h1').length).toBe(1);
-      expect(main.find('h1').text()).toEqual('err');
+      expect(main.find('h3').length).toBe(1);
+      expect(main.find('h3').text()).toEqual('');
     });
 
-    it('calls getTitleAsync on mount', () => {
-      const getTitleAsync = jest.fn();
-      shallow(<MainComponent title={ { contents: 'foo' } } getTitleAsync={ getTitleAsync } />);
-      expect(getTitleAsync).toHaveBeenCalled();
+    it('calls getDataAsync on mount', () => {
+      const getDataAsync = jest.fn();
+      shallow(<MainComponent data={ { text: 'foo' } } getDataAsync={ getDataAsync } />);
+      expect(getDataAsync).toHaveBeenCalled();
     });
   });
 });

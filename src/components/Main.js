@@ -26,7 +26,7 @@ export class MainComponent extends Component {
     return (
       <div>
         <div className={ styles.logo } />
-        <h3 className={ styles.data }>{ data.text }</h3>
+        <h3 className={ styles.data }>{ data.text || '' }</h3>
         <Link className={ link } to={ `/child/${Math.floor(Math.random() * 100)}` }>
           Component with passed params
         </Link>
