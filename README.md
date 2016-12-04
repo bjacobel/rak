@@ -1,4 +1,4 @@
-# ![Rak](https://raw.githubusercontent.com/bjacobel/rak/master/src/assets/images/logo.svg)
+<img src="https://rak.bjacobel.com/logo.svg" alt="Rak" width="200px">
 
 [![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak) [![devDependency Status](https://david-dm.org/bjacobel/rak/dev-status.svg)](https://david-dm.org/bjacobel/rak?type=dev)
 
