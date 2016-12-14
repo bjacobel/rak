@@ -5,7 +5,7 @@
   "dependencies": {
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-redux": "^4.4.6",
+    "react-redux": "^5.0.0",
     "react-router": "^4.0.0-alpha.4",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0"
