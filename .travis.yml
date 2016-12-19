@@ -19,7 +19,6 @@ after_success:
 before_deploy:
   - NODE_ENV=production yarn run webpack
   - mkdir -p dist
-  - cp index.html dist/index.html
   - pip install --user awscli
 deploy:
   provider: s3

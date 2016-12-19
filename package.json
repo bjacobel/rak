@@ -31,6 +31,7 @@
     "eslint-plugin-react": "^6.6.0",
     "extract-text-webpack-plugin": "^2.0.0-beta.4",
     "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.24.1",
     "jest-cli": "^17.0.3",
     "postcss-font-magician": "^1.5.0",
     "postcss-loader": "^1.2.1",
@@ -79,7 +80,7 @@
   "scripts": {
     "awsUtils": "node aws/utils",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
-    "start": "webpack-dev-server --https",
+    "start": "webpack-dev-server",
     "test": "jest --coverage && ./install-test.sh",
     "webpack": "webpack -p"
   },

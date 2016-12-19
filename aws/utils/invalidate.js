@@ -25,11 +25,8 @@ module.exports = () => {
         InvalidationBatch: {
           CallerReference: `${Date.now()}`,
           Paths: {
-            Quantity: 3,
             Items: [
-              '/main.js',
-              '/main.css',
-              '/index.html',
+              '*',
             ],
           },
         },
