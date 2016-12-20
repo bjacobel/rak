@@ -83,7 +83,7 @@ const wpconfig = {
       },
       {
         test: /\.css$/,
-        use: isProd ? prodCssConfig : devCssConfig,
+        loader: isProd ? prodCssConfig : devCssConfig,
       },
     ],
   },
@@ -135,7 +135,5 @@ if (!isProd) {
     ...wpconfig.plugins,
   ];
 }
-
-console.log(JSON.stringify(wpconfig, null, 2));
 
 module.exports = wpconfig;
