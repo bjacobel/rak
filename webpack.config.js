@@ -55,7 +55,7 @@ const wpconfig = {
     // https://github.com/webpack/css-loader/issues/232
     // https://github.com/webpack/css-loader/issues/216
     // https://github.com/webpack/style-loader/issues/55
-    publicPath: 'http://localhost:8080/',
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
     filename: '[hash].[name].js',
   },
   devtool: isProd ? false : 'source-map',
@@ -115,6 +115,9 @@ const wpconfig = {
     hot: true,
     publicPath: '/',
     historyApiFallback: true,
+  },
+  performance: {
+    assetFilter: name => !(/(\.map|\.hot\-update\.js)$/.test(name)),
   },
 };
 
