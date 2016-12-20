@@ -6,7 +6,38 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const projectConfig = require('./config.js');
 
 const isProd = process.env.NODE_ENV === 'production';
-const cssLoaderConfig = 'modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]';
+
+const cssLoaderConfig = {
+  modules: true,
+  importLoaders: 1,
+  localIdentName: '[name]__[local]___[hash:base64:5]',
+};
+
+const prodCssConfig = ExtractTextPlugin.extract({
+  fallbackLoader: 'style-loader',
+  loader: [
+    {
+      loader: 'css-loader',
+      query: cssLoaderConfig,
+    },
+    { loader: 'postcss-loader' },
+  ],
+  publicPath: '/',
+});
+
+const devCssConfig = [
+  { loader: 'style-loader' },
+  {
+    loader: 'css-loader',
+    options: Object.assign(
+      {},
+      { sourceMap: true },
+      // This doesn't go through Babel so no ES2017 stuff
+      cssLoaderConfig  // eslint-disable-line comma-dangle
+    ),
+  },
+  { loader: 'postcss-loader' },
+];
 
 const wpconfig = {
   entry: {
@@ -32,29 +63,27 @@ const wpconfig = {
     rules: [
       {
         test: /\.woff(2)?(\?[a-z0-9=]+)?$/,
-        loader: 'url-loader',
-        query: {
-          limit: 64000,
-        },
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 64000,
+            },
+          },
+        ],
       },
       {
-        test: /\.(ttf|eot|svg)(\?[a-z0-9=]+)?$/,
-        loader: 'file-loader',
+        test: /\.(png|jpe?g|gif|svg)(\?[a-z0-9=]+)?$/,
+        use: 'file-loader',
       },
       {
         test: /\.js$/,
         include: path.join(__dirname, 'src'),
-        loader: 'babel-loader',
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
-        loader: isProd ?
-          ExtractTextPlugin.extract({
-            fallbackLoader: 'style-loader',
-            loader: `css-loader?${cssLoaderConfig}!postcss-loader`,
-            publicPath: '/',
-          }) :
-          `style-loader!css-loader?sourceMap&${cssLoaderConfig}!postcss-loader`,
+        use: isProd ? prodCssConfig : devCssConfig,
       },
     ],
   },
@@ -78,6 +107,9 @@ const wpconfig = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
+    new webpack.LoaderOptionsPlugin({
+      debug: !isProd,
+    }),
   ],
   devServer: {
     hot: true,
@@ -89,23 +121,21 @@ const wpconfig = {
 if (!isProd) {
   wpconfig.plugins = [
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      debug: true,
-    }),
     ...wpconfig.plugins,
   ];
 } else {
   wpconfig.plugins = [
     new ExtractTextPlugin({
-      filename: '[name].css',
+      filename: '[hash].[name].css',
     }),
     new webpack.LoaderOptionsPlugin({
-      debug: false,
       minimize: true,
     }),
     new webpack.optimize.UglifyJsPlugin(),
     ...wpconfig.plugins,
   ];
 }
+
+console.log(JSON.stringify(wpconfig, null, 2));
 
 module.exports = wpconfig;
