@@ -3,7 +3,7 @@ const AWS = require('aws-sdk');
 const config = require('../../config');
 
 module.exports = () => {
-  // Invalidate the CloudFront distro associated with this project.
+  // Invalidate objects in the CloudFront distro associated with this project.
   const cloudfront = new AWS.CloudFront();
   return new Promise((resolve, reject) => {
     cloudfront.listDistributions({}, (err, data) => {
@@ -25,8 +25,9 @@ module.exports = () => {
         InvalidationBatch: {
           CallerReference: `${Date.now()}`,
           Paths: {
+            Quantity: process.argv.slice(3).length,
             Items: [
-              '*',
+              ...process.argv.slice(3),
             ],
           },
         },
