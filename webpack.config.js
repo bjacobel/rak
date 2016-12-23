@@ -1,9 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const projectConfig = require('./config.js');
+const packageJson = require('./package.json');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -41,13 +43,8 @@ const devCssConfig = [
 
 const wpconfig = {
   entry: {
-    main: [
-      './src/index.js',
-    ],
-    vendor: [
-      'react',
-      'react-dom',
-    ],
+    main: './src/index.js',
+    vendor: Object.keys(packageJson.dependencies),
   },
   output: {
     path: `${__dirname}/dist`,
@@ -56,7 +53,7 @@ const wpconfig = {
     // https://github.com/webpack/css-loader/issues/216
     // https://github.com/webpack/style-loader/issues/55
     publicPath: isProd ? '/' : 'http://localhost:8080/',
-    filename: '[hash].[name].js',
+    filename: isProd ? '[name].[chunkhash].js' : '[name].js',
   },
   devtool: isProd ? false : 'source-map',
   module: {
@@ -93,13 +90,6 @@ const wpconfig = {
   plugins: [
     new webpack.NoErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: [
-        'vendor',
-        'manifest',
-      ],
-      minChunks: Infinity,
-    }),
     new HtmlWebpackPlugin({
       title: projectConfig.ProjectName,
       template: './src/index.html',
@@ -131,6 +121,13 @@ if (!isProd) {
     new ExtractTextPlugin({
       filename: '[hash].[name].css',
     }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: [
+        'vendor',
+        'manifest',
+      ],
+    }),
+    new InlineManifestWebpackPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     }),
