@@ -107,6 +107,7 @@ const wpconfig = {
     new HtmlWebpackPlugin({
       title: projectConfig.ProjectName,
       template: './src/index.html',
+      favicon: './src/assets/images/favicon.ico',
     }),
   ],
   devServer: {
@@ -128,7 +129,7 @@ if (!isProd) {
 } else {
   wpconfig.plugins = [
     new ExtractTextPlugin({
-      filename: '[hash].[name].css',
+      filename: isProd ? '[name].[contenthash].css' : '[name].css',
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
