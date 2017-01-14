@@ -16,6 +16,7 @@ deploy:
   region: us-east-1
   bucket: $(node config ProjectFQDomain)
   acl: public_read
+  cache_control: "max-age=31536000"
   local_dir: dist
   skip_cleanup: true
   on:
