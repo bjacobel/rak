@@ -5,7 +5,6 @@ const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const projectConfig = require('./config.js');
-const packageJson = require('./package.json');
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -44,7 +43,6 @@ const devCssConfig = [
 const wpconfig = {
   entry: {
     main: './src/index.js',
-    vendor: ['core-js', ...Object.keys(packageJson.dependencies)],
   },
   output: {
     path: `${__dirname}/dist`,
@@ -97,12 +95,10 @@ const wpconfig = {
       debug: !isProd,
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: [
-        'vendor',
-        'manifest',
-      ],
-      minChunks: Infinity,
+      name: 'vendor',
+      minChunks: ({ resource }) => /node_modules/.test(resource),
     }),
+    new webpack.optimize.CommonsChunkPlugin('manifest'),
     new InlineManifestWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: projectConfig.ProjectName,
@@ -117,7 +113,7 @@ const wpconfig = {
   },
   performance: {
     hints: isProd ? false : 'warning',
-    assetFilter: name => !(/(\.map|\.hot-update\.js)$/.test(name)),
+    assetFilter: name => !(/(\.map$|\.hot-update\.js(on)?$)/.test(name)),
   },
 };
 
