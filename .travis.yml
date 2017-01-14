@@ -5,16 +5,12 @@ cache: yarn
 env:
   global:
     - NODE_ENV=test
-    - PATH=$PATH:$HOME/.local/bin
 script:
   - yarn run lint
   - yarn run test -- --coverage
+  - NODE_ENV=production yarn run webpack
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-before_deploy:
-  - NODE_ENV=production yarn run webpack
-  - mkdir -p dist
-  - pip install --user awscli
 deploy:
   provider: s3
   region: us-east-1
