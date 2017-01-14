@@ -107,7 +107,8 @@ const wpconfig = {
     historyApiFallback: true,
   },
   performance: {
-    assetFilter: name => !(/(\.map|\.hot\-update\.js)$/.test(name)),
+    hints: isProd ? false : 'warning',
+    assetFilter: name => !(/(\.map|\.hot-update\.js)$/.test(name)),
   },
 };
 
