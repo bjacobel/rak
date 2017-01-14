@@ -55,7 +55,7 @@
       "src/**/*.js"
     ],
     "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/__mocks__/stylesheets.js"
+      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
     },
     "testPathDirs": [
       "./tests"
