@@ -14,8 +14,7 @@ const mapDispatchToProps = {
   getDataAsync,
 };
 
-// Separately export the MainComponent so it can be tested without being wrapped by connect()
-export class MainComponent extends Component {
+class Main extends Component {
   componentWillMount() {
     this.props.getDataAsync();
   }
@@ -39,4 +38,4 @@ export class MainComponent extends Component {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(MainComponent);
+)(Main);

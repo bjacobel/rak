@@ -19,7 +19,7 @@ describe('Routes component', () => {
   it('has a home route', () => {
     setPath('/');
     const routes = mount(<Routes />);
-    expect(routes.find('MainComponent').length).toBe(1);
+    expect(routes.find('Connect(Main)').length).toBe(1);
   });
 
   it('has a route for child views that takes a url param', () => {

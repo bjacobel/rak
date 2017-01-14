@@ -16,7 +16,6 @@ module.exports = {
         Compress: true,
         TargetOriginId: join(['S3-', ref('ProjectName')]),
         ViewerProtocolPolicy: 'redirect-to-https',
-        MinTTL: 0,
         AllowedMethods: [
           'HEAD',
           'GET',
