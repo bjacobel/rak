@@ -25,7 +25,7 @@ deploy:
       - webpack2
     condition: $(node aws/utils bucketExists) = "true"
 after_deploy:
-  - node aws/utils invalidate index.html
+  - node aws/utils invalidate "/index.html"
 notifications:
   email: false
   slack: bjacobel:xasDl3nTxo2feJGba70E43oR
