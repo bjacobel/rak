@@ -3,6 +3,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const projectConfig = require('./config.js');
 
@@ -105,6 +106,9 @@ const wpconfig = {
       template: './src/index.html',
       favicon: './src/assets/images/favicon.ico',
     }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer',
+    }),
   ],
   devServer: {
     hot: true,
@@ -112,8 +116,9 @@ const wpconfig = {
     historyApiFallback: true,
   },
   performance: {
-    hints: isProd ? false : 'warning',
-    assetFilter: name => !(/(\.map$|\.hot-update\.js(on)?$)/.test(name)),
+    maxAssetSize: 350000,
+    maxEntrypointSize: 500000,
+    hints: isProd ? 'warning' : false,
   },
 };
 
