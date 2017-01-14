@@ -44,7 +44,7 @@ const devCssConfig = [
 const wpconfig = {
   entry: {
     main: './src/index.js',
-    vendor: Object.keys(packageJson.dependencies),
+    vendor: ['core-js', ...Object.keys(packageJson.dependencies)],
   },
   output: {
     path: `${__dirname}/dist`,
@@ -88,17 +88,25 @@ const wpconfig = {
     extensions: ['.js', '.json', '.css'],
   },
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
-    new HtmlWebpackPlugin({
-      title: projectConfig.ProjectName,
-      template: './src/index.html',
-    }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
     new webpack.LoaderOptionsPlugin({
       debug: !isProd,
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: [
+        'vendor',
+        'manifest',
+      ],
+      minChunks: Infinity,
+    }),
+    new InlineManifestWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: projectConfig.ProjectName,
+      template: './src/index.html',
     }),
   ],
   devServer: {
@@ -122,13 +130,6 @@ if (!isProd) {
     new ExtractTextPlugin({
       filename: '[hash].[name].css',
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      names: [
-        'vendor',
-        'manifest',
-      ],
-    }),
-    new InlineManifestWebpackPlugin(),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
     }),

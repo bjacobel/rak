@@ -17,6 +17,7 @@ module.exports = {
         TargetOriginId: join(['S3-', ref('ProjectName')]),
         ViewerProtocolPolicy: 'redirect-to-https',
         MinTTL: 0,
+        DefaultTTL: 86400,
         AllowedMethods: [
           'HEAD',
           'GET',

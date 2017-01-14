@@ -6,7 +6,10 @@
           "last 2 versions"
         ]
       },
-      "useBuiltIns": true
+      "useBuiltIns": true,
+      "exclude": [
+        "transform-regenerator"
+      ]
     }],
     "react"
   ],
