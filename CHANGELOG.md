@@ -1,3 +1,10 @@
+### v0.0.3
+- Upgrade to Webpack 2 (RC 4) & other necessary plugins
+- Update handling of index.html and favicon.ico using [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin)
+- Restructure Webpack to split code into a separate first-party and vendor bundle
+- Undertake other performance work (cache headers, hashing/invalidation)
+- Optimize SVG for logo
+
 ### v0.0.2 (10/20/2016)
 - Added React Router. ([#18](https://github.com/bjacobel/rak/issues/18))
 - Added ability to use an existing Route53 hosted zone ([#20](https://github.com/bjacobel/rak/issues/20))
