@@ -1,5 +1,4 @@
 language: node_js
-sudo: false
 node_js:
   - 6
 cache: yarn
@@ -7,10 +6,6 @@ env:
   global:
     - NODE_ENV=test
     - PATH=$PATH:$HOME/.local/bin
-before_install:
-  - npm install --global yarnpkg
-install:
-  - yarn
 script:
   - yarn run lint
   - yarn run test -- --coverage
