@@ -30,4 +30,15 @@ describe('errors reducer', () => {
       })).toEqual(['foo', 'bar', 'fizz', 'baz']);
     });
   });
+
+  describe('by default', () => {
+    it('does nothing', () => {
+      expect(errors({}, { type: 'foo' })).toEqual({});
+    });
+
+    it('preserves passed state', () => {
+      const state = { foo: 'bar' };
+      expect(errors(state, { type: 'foo' })).toEqual(state);
+    });
+  });
 });
