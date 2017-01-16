@@ -31,6 +31,5 @@ module.exports = {
     commonjs: true,
     es6: true,
     jest: true,
-    jasmine: true,
   },
 };

@@ -51,7 +51,7 @@ describe('data actions', () => {
 
     it('dispatches loadingStarted', () => {
       return store.dispatch(getDataAsync()).then(() => {
-        expect(store.getActions()).toEqual(jasmine.arrayContaining([
+        expect(store.getActions()).toEqual(expect.arrayContaining([
           { type: LOADING_STARTED },
         ]));
       });
@@ -59,9 +59,9 @@ describe('data actions', () => {
 
     it('calls getData, then on success it dispatches loadingEnded and getDataSucceeded', () => {
       return store.dispatch(getDataAsync()).then(() => {
-        expect(store.getActions()).toEqual(jasmine.arrayContaining([
+        expect(store.getActions()).toEqual(expect.arrayContaining([
           { type: LOADING_ENDED },
-          jasmine.objectContaining({ type: GET_DATA_SUCCEEDED }),
+          expect.objectContaining({ type: GET_DATA_SUCCEEDED }),
         ]));
       });
     });
@@ -70,9 +70,9 @@ describe('data actions', () => {
       getData.mockImplementationOnce(() => Promise.reject('error'));
 
       return store.dispatch(getDataAsync()).then(() => {
-        expect(store.getActions()).toEqual(jasmine.arrayContaining([
+        expect(store.getActions()).toEqual(expect.arrayContaining([
           { type: LOADING_ENDED },
-          jasmine.objectContaining({ type: GET_DATA_FAILED }),
+          expect.objectContaining({ type: GET_DATA_FAILED }),
         ]));
       });
     });
