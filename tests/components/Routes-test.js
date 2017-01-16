@@ -26,7 +26,7 @@ describe('Routes component', () => {
     setPath('/child/1');
     const routes = mount(<Routes />);
     expect(routes.find('Child').length).toBe(1);
-    expect(routes.find('Child').props()).toEqual(jasmine.objectContaining({ params: { id: '1' } }));
+    expect(routes.find('Child').props()).toEqual(expect.objectContaining({ params: { id: '1' } }));
   });
 
   it('has a fallthrough 404', () => {
