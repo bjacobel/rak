@@ -1,3 +1,6 @@
+### v0.0.4
+- Upgrade to Webpack 2.2 final (& ecosystem dependencies)
+
 ### v0.0.3
 - Upgrade to Webpack 2 (RC 4) & other necessary plugins
 - Update handling of index.html and favicon.ico using [html-webpack-plugin](https://github.com/ampedandwired/html-webpack-plugin)
