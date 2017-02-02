@@ -24,6 +24,7 @@
     "cloudfriend": "https://github.com/mapbox/cloudfriend",
     "css-loader": "^0.26.1",
     "enzyme": "^2.7.1",
+    "enzyme-to-json": "^1.4.5",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-import": "^2.1.0",
@@ -59,6 +60,9 @@
     "moduleNameMapper": {
       "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
     },
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
     "testPathDirs": [
       "./tests"
     ],
