@@ -5,6 +5,8 @@
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
 ###What's inside
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/bjacobel/rak.svg)](https://greenkeeper.io/)
 Rak includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
 
   - [React](https://facebook.github.io/react/)
