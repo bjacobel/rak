@@ -1,12 +1,11 @@
 <img src="https://rak.bjacobel.com/logo.svg" alt="Rak" width="200px">
 
-[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak) [![devDependency Status](https://david-dm.org/bjacobel/rak/dev-status.svg)](https://david-dm.org/bjacobel/rak?type=dev)
+[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://david-dm.org/bjacobel/rak.svg)](https://david-dm.org/bjacobel/rak) [![devDependency Status](https://david-dm.org/bjacobel/rak/dev-status.svg)](https://david-dm.org/bjacobel/rak?type=dev) [![Greenkeeper badge](https://badges.greenkeeper.io/bjacobel/rak.svg)](https://greenkeeper.io/)
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
 ###What's inside
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/bjacobel/rak.svg)](https://greenkeeper.io/)
 Rak includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
 
   - [React](https://facebook.github.io/react/)
