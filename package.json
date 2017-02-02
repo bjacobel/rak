@@ -42,7 +42,7 @@
     "redux-mock-store": "^1.2.1",
     "script-ext-html-webpack-plugin": "^1.5.0",
     "style-loader": "^0.13.1",
-    "stylelint": "^7.7.1",
+    "stylelint": "^7.8.0",
     "stylelint-config-css-modules": "^0.1.0",
     "stylelint-config-standard": "^16.0.0",
     "url-loader": "^0.5.7",
