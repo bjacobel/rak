@@ -26,7 +26,7 @@ class Main extends Component {
       <div>
         <div className={ styles.logo } />
         <h3 className={ styles.data }>{ data.text || '' }</h3>
-        <Link className={ link } to={ `/child/${Math.floor(Math.random() * 100)}` }>
+        <Link className={ link } to={ '/child/foo' }>
           Component with passed params
         </Link>
         <Link className={ link } to="/asdf">Dead link</Link>

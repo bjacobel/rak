@@ -12,7 +12,7 @@ exports[`main component un-Connected component matches snapshot 1`] = `
     isActive={[Function]}
     replace={false}
     style={Object {}}
-    to="/child/70">
+    to="/child/foo">
     Component with passed params
   </Link>
   <Link
