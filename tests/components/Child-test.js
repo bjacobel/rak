@@ -4,6 +4,10 @@ import { shallow } from 'enzyme';
 import Child from '../../src/components/Child';
 
 describe('child component', () => {
+  it('matches snapshot', () => {
+    expect(shallow(<Child params={ { id: 'foo' } } />)).toMatchSnapshot();
+  });
+
   it('displays the param it recieves in props', () => {
     const child = shallow(<Child params={ { id: 'foo' } } />);
 

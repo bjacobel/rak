@@ -1,0 +1,19 @@
+exports[`child component matches snapshot 1`] = `
+<div>
+  <h3>
+    received param: 
+    foo
+  </h3>
+  <Link
+    activeClassName=""
+    activeOnlyWhenExact={false}
+    activeStyle={Object {}}
+    className=""
+    isActive={[Function]}
+    replace={false}
+    style={Object {}}
+    to="/">
+    Home
+  </Link>
+</div>
+`;

@@ -1,0 +1,30 @@
+exports[`main component un-Connected component matches snapshot 1`] = `
+<div>
+  <div />
+  <h3>
+    foo
+  </h3>
+  <Link
+    activeClassName=""
+    activeOnlyWhenExact={false}
+    activeStyle={Object {}}
+    className=""
+    isActive={[Function]}
+    replace={false}
+    style={Object {}}
+    to="/child/70">
+    Component with passed params
+  </Link>
+  <Link
+    activeClassName=""
+    activeOnlyWhenExact={false}
+    activeStyle={Object {}}
+    className=""
+    isActive={[Function]}
+    replace={false}
+    style={Object {}}
+    to="/asdf">
+    Dead link
+  </Link>
+</div>
+`;
