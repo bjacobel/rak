@@ -5,6 +5,10 @@ import Main from '../../src/components/Main';
 
 describe('main component', () => {
   describe('un-Connected component', () => {
+    it('matches snapshot', () => {
+      expect(shallow(<Main.WrappedComponent data={ { text: 'foo' } } getDataAsync={ jest.fn() } />)).toMatchSnapshot();
+    });
+
     it("renders an h3 with data if it didn't hit an error", () => {
       const main = shallow(<Main.WrappedComponent data={ { text: 'foo' } } getDataAsync={ jest.fn() } />);
 

@@ -4,6 +4,10 @@ import { shallow } from 'enzyme';
 import NotFound from '../../src/components/NotFound';
 
 describe('404 component', () => {
+  it('matches snapshot', () => {
+    expect(shallow(<NotFound />)).toMatchSnapshot();
+  });
+
   it('displays 404 message', () => {
     const notFound = shallow(<NotFound />);
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 import Routes from '../../src/components/Routes';
 
@@ -16,6 +16,10 @@ const setPath = (value) => {
 };
 
 describe('Routes component', () => {
+  it('matches snapshot', () => {
+    expect(shallow(<Routes />)).toMatchSnapshot();
+  });
+
   it('has a home route', () => {
     setPath('/');
     const routes = mount(<Routes />);
