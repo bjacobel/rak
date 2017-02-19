@@ -114,6 +114,7 @@ const wpconfig = {
     hot: true,
     publicPath: '/',
     historyApiFallback: true,
+    overlay: true,
   },
   performance: {
     maxAssetSize: 350000,
