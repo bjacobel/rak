@@ -11,6 +11,12 @@
     http-proxy-agent "^0.2.6"
     lodash "^3.6.0"
 
+"@mapbox/cloudfriend@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/cloudfriend/-/cloudfriend-1.8.1.tgz#77258c52590675a6e4c547db08cfdf89249af227"
+  dependencies:
+    aws-sdk "^2.4.11"
+
 JSONStream@^0.8.4:
   version "0.8.4"
   resolved "https://registry.yarnpkg.com/JSONStream/-/JSONStream-0.8.4.tgz#91657dfe6ff857483066132b4618b62e8f4887bd"
@@ -1272,12 +1278,6 @@ clone-regexp@^1.0.0:
 clone@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/clone/-/clone-1.0.2.tgz#260b7a99ebb1edfe247538175f783243cb19d149"
-
-"cloudfriend@https://github.com/mapbox/cloudfriend":
-  version "1.7.0"
-  resolved "https://github.com/mapbox/cloudfriend#4ce6a1edb186d1a376033097ef2fb94edcbcb978"
-  dependencies:
-    aws-sdk "^2.4.11"
 
 co@^4.6.0:
   version "4.6.0"
