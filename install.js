@@ -73,6 +73,15 @@ const rreaddir = (root) => {
   });
 };
 
+const isBin = (fileAbsPath) => {
+  switch (path.extname(fileAbsPath)) {
+  case '.ico':
+    return true;
+  default:
+    return false;
+  }
+};
+
 (() => {
   console.log("\nInstalling Rak's setup requirements...\n");
   execSync('yarn add replacestream mkdirp || npm -s install replacestream mkdirp', { stdio: [0, 1, 2] });
@@ -96,7 +105,7 @@ const rreaddir = (root) => {
         dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
       } else {
         fs.createReadStream(srcFileAbsPath)
-          .pipe(replaceStream(config.ProjectName, newProjectName))
+          .pipe(isBin(srcFileAbsPath) ? () => {} : replaceStream(config.ProjectName, newProjectName))
           .pipe(dstFile)
           .on('close', resolve)
           .on('error', reject);
