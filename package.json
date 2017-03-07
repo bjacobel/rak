@@ -58,12 +58,12 @@
       "src/**/*.js"
     ],
     "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/mocks/stylesheets.js"
+      "^.+\\.css$": "<rootDir>/__mocks__/stylesheets.js"
     },
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "testPathDirs": [
+    "roots": [
       "./tests"
     ],
     "testRegex": "tests/.*/.*-test.js$"
