@@ -1,3 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`main component un-Connected component matches snapshot 1`] = `
 <div>
   <div />
@@ -12,7 +14,8 @@ exports[`main component un-Connected component matches snapshot 1`] = `
     isActive={[Function]}
     replace={false}
     style={Object {}}
-    to="/child/foo">
+    to="/child/foo"
+  >
     Component with passed params
   </Link>
   <Link
@@ -23,7 +26,8 @@ exports[`main component un-Connected component matches snapshot 1`] = `
     isActive={[Function]}
     replace={false}
     style={Object {}}
-    to="/asdf">
+    to="/asdf"
+  >
     Dead link
   </Link>
 </div>

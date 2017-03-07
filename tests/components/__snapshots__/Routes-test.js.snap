@@ -1,16 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
 exports[`Routes component matches snapshot 1`] = `
 <BrowserRouter>
   <div>
     <Match
       component={[Function]}
       exactly={true}
-      pattern="/" />
+      pattern="/"
+    />
     <Match
       component={[Function]}
       exactly={false}
-      pattern="/child/:id" />
+      pattern="/child/:id"
+    />
     <Miss
-      component={[Function]} />
+      component={[Function]}
+    />
   </div>
 </BrowserRouter>
 `;
