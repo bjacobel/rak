@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { Match, Miss, BrowserRouter } from 'react-router';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 import NotFound from './NotFound';
 import Child from './Child';
@@ -10,9 +14,11 @@ export default class Routes extends Component {
     return (
       <BrowserRouter>
         <div>
-          <Match pattern="/" exactly component={ Main } />
-          <Match pattern="/child/:id" component={ Child } />
-          <Miss component={ NotFound } />
+          <Switch>
+            <Route path="/" exact component={ Main } />
+            <Route path="/child/:id" component={ Child } />
+            <Route component={ NotFound } />
+          </Switch>
         </div>
       </BrowserRouter>
     );

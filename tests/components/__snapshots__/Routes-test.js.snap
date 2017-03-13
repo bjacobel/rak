@@ -3,19 +3,20 @@
 exports[`Routes component matches snapshot 1`] = `
 <BrowserRouter>
   <div>
-    <Match
-      component={[Function]}
-      exactly={true}
-      pattern="/"
-    />
-    <Match
-      component={[Function]}
-      exactly={false}
-      pattern="/child/:id"
-    />
-    <Miss
-      component={[Function]}
-    />
+    <Switch>
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/child/:id"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
   </div>
 </BrowserRouter>
 `;

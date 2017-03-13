@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import styles from '../stylesheets/child.css';
 import { link } from '../stylesheets/link.css';
 
 export default class Child extends Component {
   render() {
+    const { match } = this.props;
     return (
       <div>
-        <h3 className={ styles.id }>received param: { this.props.params.id }</h3>
+        <h3 className={ styles.id }>received param: { match.params.id }</h3>
         <Link className={ link } to="/">Home</Link>
       </div>
     );
