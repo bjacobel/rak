@@ -6,13 +6,7 @@ exports[`404 component matches snapshot 1`] = `
     404: page not found
   </h1>
   <Link
-    activeClassName=""
-    activeOnlyWhenExact={false}
-    activeStyle={Object {}}
-    className=""
-    isActive={[Function]}
     replace={false}
-    style={Object {}}
     to="/"
   >
     Home
