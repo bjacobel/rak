@@ -8,10 +8,8 @@
 }
 
 .logo {
-  composes: center from './shared.css';
   height: 100px;
   background-image: url('../assets/images/logo.svg');
-  background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
