@@ -4,7 +4,7 @@
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
-###What's inside
+### What's inside
 
 Rak includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
 
@@ -21,7 +21,7 @@ Rak includes and configures the following components to help you build a rock-so
   - [.travis.yml](https://docs.travis-ci.com/user/customizing-the-build) configured to lint, test, build and deploy to S3/CloudFront
   - [CloudFormation](https://aws.amazon.com/cloudformation/) template to set up those AWS resources for you
 
-###Using it in a project
+### Using it in a project
 Rak requires Node 6. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
@@ -62,7 +62,7 @@ Note that while these instructions are given using Yarn, npm is also supported:
     $(npm bin)/rak
     npm uninstall rak
 
-###Deployment
+### Deployment
 Rak includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:
 
 1. Add AWS configuration to your environment. See the AWS doc on [configuring the command-line interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
@@ -85,6 +85,6 @@ Once it's reached the `CREATE_COMPLETE` status:
 1. Get the nameservers (`ns-xxx.awsdns-xxx.tld`) for your new Route53 hosted zone, and point your domain to these nameservers in your registrar's DNS console. These changes may take a while to take effect.
 2. Push or merge your code to the `master` branch. Travis will test, lint, bundle and deploy your code to S3, and you should see it at your domain shortly.
 
-###Thanks to
+### Thanks to
 - all the developers of all the awesome code and systems Rak is built on
 - [Simon Mettler](https://thenounproject.com/search/?q=rocket&i=113198) from the [Noun Project](https://thenounproject.com/search/?q=rocket&i=113198)
