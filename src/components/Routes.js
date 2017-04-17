@@ -8,7 +8,7 @@ import {
 import NotFound from './NotFound';
 import Child from './Child';
 import Main from './Main';
-import Analytics from '../services/analytics';
+import Analytics from '../services/Analytics';
 
 class GARoute extends Route {
   render() {

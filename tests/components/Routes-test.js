@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 
 import Routes from '../../src/components/Routes';
-import Analytics from '../../src/services/analytics';
+import Analytics from '../../src/services/Analytics';
 
 jest.mock('../../src/components/Main');
 jest.mock('../../src/components/Child');
@@ -53,15 +53,13 @@ describe('Router', () => {
 
   describe('Analytics functionality', () => {
     beforeEach(() => {
-      Analytics.prototype = jest.fn(() => ({
-        constructor: jest.fn(),
-        pageview: jest.fn(),
-      }));
+      // reset call count before each test
+      Analytics.prototype.pageview.mockClear();
     });
 
     it('inits the analytics class', () => {
       mount(<Routes />);
-      expect(Analytics.prototype.constructor).toHaveBeenCalled();
+      expect(Analytics).toHaveBeenCalled();
     });
 
     it('calls the analytics pageview fn when you navigate to a new route', () => {
@@ -70,10 +68,10 @@ describe('Router', () => {
       expect(Analytics.prototype.pageview).toHaveBeenCalledTimes(1);
     });
 
-    it('supplies GA to routed components via context', () => {
+    it('supplies GA to routed components via props', () => {
       const routes = mount(<Routes />);
-      expect(routes.find('Route')[0]).props.toEqual(expect.objectContaining({
-        ga: undefined,
+      expect(routes.find('Route').props()).toEqual(expect.objectContaining({
+        ga: {},
       }));
     });
   });
