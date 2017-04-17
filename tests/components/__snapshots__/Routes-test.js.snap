@@ -7,17 +7,17 @@ exports[`Router matches snapshot 1`] = `
       <GARoute
         component={[Function]}
         exact={true}
-        ga={Analytics {}}
+        ga={Object {}}
         path="/"
       />
       <GARoute
         component={[Function]}
-        ga={Analytics {}}
+        ga={Object {}}
         path="/child/:id"
       />
       <GARoute
         component={[Function]}
-        ga={Analytics {}}
+        ga={Object {}}
       />
     </Switch>
   </div>
