@@ -1,17 +1,17 @@
 /* eslint-disable class-methods-use-this */
 
-import {
-  GA_ID,
-  TRACK_ANALYTICS,
-} from '../constants';
+import { GA_ID, TRACK_ANALYTICS } from '../constants';
 
 // @TODO: I'd really like to not install ga onto window; it should be self-contained by this class
 
 export default class Analytics {
   constructor() {
-    window.ga = window.ga || function (...args) {
-      (window.ga.q = window.ga.q || []).push(args);
-    };
+    window.ga =
+      window.ga ||
+      // eslint-disable-next-line func-names
+      function(...args) {
+        (window.ga.q = window.ga.q || []).push(args);
+      };
     window.ga.l = +new Date();
     window.ga('create', GA_ID, 'auto');
 

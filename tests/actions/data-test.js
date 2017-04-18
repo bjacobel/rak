@@ -8,10 +8,7 @@ import {
   getDataSucceeded,
   getDataAsync,
 } from '../../src/actions/data';
-import {
-  LOADING_STARTED,
-  LOADING_ENDED,
-} from '../../src/actions/loading';
+import { LOADING_STARTED, LOADING_ENDED } from '../../src/actions/loading';
 import { getData } from '../../src/services/data';
 
 jest.mock('../../src/services/data');
@@ -49,31 +46,25 @@ describe('data actions', () => {
       getData.mockImplementation(() => Promise.resolve('data'));
     });
 
-    it('dispatches loadingStarted', () => {
-      return store.dispatch(getDataAsync()).then(() => {
-        expect(store.getActions()).toEqual(expect.arrayContaining([
-          { type: LOADING_STARTED },
-        ]));
-      });
-    });
+    it('dispatches loadingStarted', () =>
+      store.dispatch(getDataAsync()).then(() => {
+        expect(store.getActions()).toEqual(expect.arrayContaining([{ type: LOADING_STARTED }]));
+      }));
 
-    it('calls getData, then on success it dispatches loadingEnded and getDataSucceeded', () => {
-      return store.dispatch(getDataAsync()).then(() => {
-        expect(store.getActions()).toEqual(expect.arrayContaining([
-          { type: LOADING_ENDED },
-          expect.objectContaining({ type: GET_DATA_SUCCEEDED }),
-        ]));
-      });
-    });
+    it('calls getData, then on success it dispatches loadingEnded and getDataSucceeded', () =>
+      store.dispatch(getDataAsync()).then(() => {
+        expect(store.getActions()).toEqual(
+          expect.arrayContaining([{ type: LOADING_ENDED }, expect.objectContaining({ type: GET_DATA_SUCCEEDED })])
+        );
+      }));
 
     it('calls getData, on fail it dispatches loadingEnded and getDataFailed', () => {
       getData.mockImplementationOnce(() => Promise.reject('error'));
 
       return store.dispatch(getDataAsync()).then(() => {
-        expect(store.getActions()).toEqual(expect.arrayContaining([
-          { type: LOADING_ENDED },
-          expect.objectContaining({ type: GET_DATA_FAILED }),
-        ]));
+        expect(store.getActions()).toEqual(
+          expect.arrayContaining([{ type: LOADING_ENDED }, expect.objectContaining({ type: GET_DATA_FAILED })])
+        );
       });
     });
   });

@@ -10,19 +10,17 @@ import reducer from './reducers';
 import Routes from './components/Routes';
 import { SHOW_DEV_TOOLS } from './constants';
 
-const composeEnhancers = (SHOW_DEV_TOOLS && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;  // eslint-disable-line max-len, no-underscore-dangle
+const composeEnhancers = (SHOW_DEV_TOOLS && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose; // eslint-disable-line max-len, no-underscore-dangle
 
-const store = createStore(reducer, {}, composeEnhancers(
-  applyMiddleware(...[thunk]),
-));
+const store = createStore(reducer, {}, composeEnhancers(applyMiddleware(...[thunk])));
 
 const rootEl = document.getElementById('main');
 const render = () => {
   ReactDOM.render(
-    <Provider store={ store }>
+    <Provider store={store}>
       <Routes />
     </Provider>,
-    rootEl,
+    rootEl
   );
 };
 

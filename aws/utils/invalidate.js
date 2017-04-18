@@ -18,30 +18,35 @@ module.exports = () => {
         }
       }
     });
-  }).then((DistributionId) => {
-    return new Promise((resolve, reject) => {
-      cloudfront.createInvalidation({
-        DistributionId,
-        InvalidationBatch: {
-          CallerReference: `${Date.now()}`,
-          Paths: {
-            Quantity: process.argv.slice(3).length,
-            Items: [
-              ...process.argv.slice(3),
-            ],
-          },
-        },
-      }, (err, data) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(data.Invalidation.Id);
-        }
-      });
+  })
+    .then(
+      DistributionId =>
+        new Promise((resolve, reject) => {
+          cloudfront.createInvalidation(
+            {
+              DistributionId,
+              InvalidationBatch: {
+                CallerReference: `${Date.now()}`,
+                Paths: {
+                  Quantity: process.argv.slice(3).length,
+                  Items: [...process.argv.slice(3)],
+                },
+              },
+            },
+            (err, data) => {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data.Invalidation.Id);
+              }
+            }
+          );
+        })
+    )
+    .then(invalidationId => {
+      console.log(`Invalidation with id ${invalidationId} in progress.`);
+    })
+    .catch(err => {
+      console.error(`Error: ${err.message}\nTry invalidaing the distribution through the AWS console.`);
     });
-  }).then((invalidationId) => {
-    console.log(`Invalidation with id ${invalidationId} in progress.`);
-  }).catch((err) => {
-    console.error(`Error: ${err.message}\nTry invalidaing the distribution through the AWS console.`);
-  });
 };

@@ -11,18 +11,11 @@ const { execSync } = require('child_process');
 
 const config = require('./config');
 
-const ignorePaths = [
-  '.git',
-  '.npmignore',
-  'install.js',
-  'install-test.sh',
-  'node_modules',
-  'CHANGELOG.md',
-].map(x => path.resolve(__dirname, x));
-
-const flatten = list => list.reduce(
-    (a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []
+const ignorePaths = ['.git', '.npmignore', 'install.js', 'install-test.sh', 'node_modules', 'CHANGELOG.md'].map(x =>
+  path.resolve(__dirname, x)
 );
+
+const flatten = list => list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 
 const clean = (pDJ, projName) => {
   const blacklist = [
@@ -38,7 +31,7 @@ const clean = (pDJ, projName) => {
   ];
   const newPackageJson = {};
 
-  Object.keys(pDJ).forEach((key) => {
+  Object.keys(pDJ).forEach(key => {
     if (!blacklist.includes(key) && !key.startsWith('_')) {
       newPackageJson[key] = pDJ[key];
     }
@@ -56,8 +49,8 @@ const clean = (pDJ, projName) => {
   return JSON.stringify(newPackageJson, null, 2);
 };
 
-const rreaddir = (root) => {
-  return fs.readdirSync(root).map((file) => {
+const rreaddir = root =>
+  fs.readdirSync(root).map(file => {
     const fileAbsPath = path.join(root, file);
 
     if (ignorePaths.includes(fileAbsPath)) {
@@ -71,14 +64,13 @@ const rreaddir = (root) => {
       return fileAbsPath;
     }
   });
-};
 
-const isBin = (fileAbsPath) => {
+const isBin = fileAbsPath => {
   switch (path.extname(fileAbsPath)) {
-  case '.ico':
-    return true;
-  default:
-    return false;
+    case '.ico':
+      return true;
+    default:
+      return false;
   }
 };
 
@@ -91,7 +83,7 @@ const isBin = (fileAbsPath) => {
   console.log("\nSetting up new Rak project's file structure...\n");
   const newProjectRoot = process.cwd();
   const newProjectName = path.parse(newProjectRoot).name;
-  const copyPromises = flatten(rreaddir(__dirname)).map((srcFileAbsPath) => {
+  const copyPromises = flatten(rreaddir(__dirname)).map(srcFileAbsPath => {
     const srcFileRelFromSrcRoot = path.relative(__dirname, srcFileAbsPath);
     const dstFileAbsPath = path.join(newProjectRoot, srcFileRelFromSrcRoot);
     const dstFileSubfolder = path.parse(dstFileAbsPath).dir;
@@ -104,7 +96,8 @@ const isBin = (fileAbsPath) => {
         const packageDotJson = require(srcFileAbsPath);
         dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
       } else {
-        fs.createReadStream(srcFileAbsPath)
+        fs
+          .createReadStream(srcFileAbsPath)
           .pipe(isBin(srcFileAbsPath) ? () => {} : replaceStream(config.ProjectName, newProjectName))
           .pipe(dstFile)
           .on('close', resolve)

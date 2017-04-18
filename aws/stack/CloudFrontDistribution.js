@@ -6,7 +6,7 @@ module.exports = {
     DistributionConfig: {
       Aliases: [
         ref('ProjectFQDomain'),
-        join('.', ['www', ref('ProjectFQDomain')]),  // If we don't create the WWW route, this doesn't do any harm.
+        join('.', ['www', ref('ProjectFQDomain')]), // If we don't create the WWW route, this doesn't do any harm.
       ],
       Enabled: true,
       DefaultRootObject: 'index.html',
@@ -16,14 +16,8 @@ module.exports = {
         Compress: true,
         TargetOriginId: join(['S3-', ref('ProjectName')]),
         ViewerProtocolPolicy: 'redirect-to-https',
-        AllowedMethods: [
-          'HEAD',
-          'GET',
-        ],
-        CachedMethods: [
-          'HEAD',
-          'GET',
-        ],
+        AllowedMethods: ['HEAD', 'GET'],
+        CachedMethods: ['HEAD', 'GET'],
         ForwardedValues: {
           Cookies: {
             Forward: 'none',
@@ -43,12 +37,14 @@ module.exports = {
         SslSupportMethod: 'sni-only',
       },
       // This is so pushState routing works
-      CustomErrorResponses: [{
-        ErrorCachingMinTTL: 0,
-        ErrorCode: 404,
-        ResponseCode: 200,
-        ResponsePagePath: '/index.html',
-      }],
+      CustomErrorResponses: [
+        {
+          ErrorCachingMinTTL: 0,
+          ErrorCode: 404,
+          ResponseCode: 200,
+          ResponsePagePath: '/index.html',
+        },
+      ],
     },
   },
 };
