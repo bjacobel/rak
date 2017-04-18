@@ -1,5 +1,11 @@
 module.exports = {
-  extends: 'eslint-config-airbnb',
+  extends: [
+    'eslint-config-airbnb',
+    'prettier',
+  ],
+  plugins: [
+    'prettier',
+  ],
   rules: {
     'arrow-body-style': 0,
     'func-names': 0,
@@ -14,6 +20,7 @@ module.exports = {
       'groups': [['builtin', 'external']],
       'newlines-between': 'always',
     }],
+    'prettier/prettier': [2, { singleQuote: true, trailingComma: 'all' }],
     'react/jsx-curly-spacing': [2, 'always'],
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
     'react/prefer-stateless-function': 0,
