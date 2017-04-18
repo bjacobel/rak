@@ -9,7 +9,7 @@ jest.mock('../../src/components/Child');
 jest.mock('../../src/components/NotFound');
 jest.mock('../../src/services/Analytics');
 
-const setPath = (value) => {
+const setPath = value => {
   // thanks @cpojer! https://github.com/facebook/jest/issues/890#issuecomment-209698782
   Object.defineProperty(window.location, 'pathname', {
     writable: true,
@@ -40,7 +40,7 @@ describe('Router', () => {
               id: '1',
             },
           }),
-        }),
+        })
       );
     });
 
@@ -70,9 +70,11 @@ describe('Router', () => {
 
     it('supplies GA to routed components via props', () => {
       const routes = mount(<Routes />);
-      expect(routes.find('Route').props()).toEqual(expect.objectContaining({
-        ga: {},
-      }));
+      expect(routes.find('Route').props()).toEqual(
+        expect.objectContaining({
+          ga: {},
+        })
+      );
     });
   });
 });

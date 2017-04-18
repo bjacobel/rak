@@ -8,10 +8,5 @@ const fontMagician = require('postcss-font-magician')({
 });
 
 module.exports = {
-  plugins: [
-    stylelint,
-    fontMagician,
-    precss,
-    autoprefixer,
-  ],
+  plugins: [stylelint, fontMagician, precss, autoprefixer],
 };

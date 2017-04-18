@@ -35,7 +35,7 @@ const devCssConfig = [
       {},
       { sourceMap: true },
       // This doesn't go through Babel so no ES2017 stuff
-      cssLoaderConfig  // eslint-disable-line comma-dangle
+      cssLoaderConfig // eslint-disable-line comma-dangle
     ),
   },
   { loader: 'postcss-loader' },
@@ -119,10 +119,7 @@ const wpconfig = {
 };
 
 if (!isProd) {
-  wpconfig.plugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    ...wpconfig.plugins,
-  ];
+  wpconfig.plugins = [new webpack.HotModuleReplacementPlugin(), ...wpconfig.plugins];
 } else {
   wpconfig.plugins = [
     new ExtractTextPlugin({

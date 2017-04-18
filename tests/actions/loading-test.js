@@ -1,9 +1,4 @@
-import {
-  loadingStarted,
-  loadingEnded,
-  LOADING_STARTED,
-  LOADING_ENDED,
-} from '../../src/actions/loading';
+import { loadingStarted, loadingEnded, LOADING_STARTED, LOADING_ENDED } from '../../src/actions/loading';
 
 describe('loading actions', () => {
   describe('loadingStarted', () => {

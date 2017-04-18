@@ -4,14 +4,19 @@ import { GET_DATA_SUCCEEDED } from '../../src/actions/data';
 describe('data reducer', () => {
   describe(`action type ${GET_DATA_SUCCEEDED}`, () => {
     it('returns the data and no errors', () => {
-      expect(data({}, {
-        type: GET_DATA_SUCCEEDED,
-        payload: {
-          data: {
-            text: 'foo',
-          },
-        },
-      })).toEqual({ text: 'foo' });
+      expect(
+        data(
+          {},
+          {
+            type: GET_DATA_SUCCEEDED,
+            payload: {
+              data: {
+                text: 'foo',
+              },
+            },
+          }
+        )
+      ).toEqual({ text: 'foo' });
     });
   });
 

@@ -10,7 +10,7 @@ module.exports = {
     Name: join(['www.', ref('ProjectDomain'), '.']),
     Type: 'A',
     AliasTarget: {
-      HostedZoneId: 'Z2FDTNDATAQYW2',  // default Cloudfront distro hosted zone
+      HostedZoneId: 'Z2FDTNDATAQYW2', // default Cloudfront distro hosted zone
       DNSName: getAtt('CloudFrontDistribution', 'DomainName'),
     },
   },

@@ -7,19 +7,19 @@ describe('Analytics service', () => {
   describe('constructor', () => {
     it('(tries to) load code from google', () => {
       document.body.appendChild = jest.fn();
-      new Analytics();  // eslint-disable-line no-new
+      new Analytics(); // eslint-disable-line no-new
       expect(document.body.appendChild).toHaveBeenCalledWith(expect.any(Element));
     });
 
     it('puts stuff on window.ga', () => {
-      new Analytics();  // eslint-disable-line no-new
+      new Analytics(); // eslint-disable-line no-new
       expect(window.ga).toBeDefined();
     });
   });
 
   describe('when TRACK_ANALYTICS is disabled', () => {
     beforeEach(() => {
-      new Analytics();  // eslint-disable-line no-new
+      new Analytics(); // eslint-disable-line no-new
       window.ga = jest.fn();
     });
 

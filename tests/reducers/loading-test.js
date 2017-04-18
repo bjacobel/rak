@@ -1,8 +1,5 @@
 import loading from '../../src/reducers/loading';
-import {
-  LOADING_ENDED,
-  LOADING_STARTED,
-} from '../../src/actions/loading';
+import { LOADING_ENDED, LOADING_STARTED } from '../../src/actions/loading';
 
 describe('loading reducer', () => {
   describe(`action type ${LOADING_STARTED}`, () => {
