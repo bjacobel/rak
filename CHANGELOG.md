@@ -1,3 +1,6 @@
+### v0.0.5
+- Refactor with Prettier
+
 ### v0.0.4
 - Upgrade to Webpack 2.2 final (& ecosystem dependencies)
 
