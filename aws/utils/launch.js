@@ -15,9 +15,7 @@ module.exports = () => {
     },
     console.log
   );
-  console.log(
-    `Check on the progress of the stack in the AWS console:
+  console.log(`Check on the progress of the stack in the AWS console:
     \rhttps://console.aws.amazon.com/cloudformation/home#/stacks?filter=active\n
-    \rLeaving this process running will tail CloudFormation stack events to the console as well.\n`
-  );
+    \rLeaving this process running will tail CloudFormation stack events to the console as well.\n`);
 };
