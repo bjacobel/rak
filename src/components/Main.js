@@ -27,9 +27,9 @@ class Main extends Component {
         <div className={styles.logo} />
         <h3 className={styles.data}>{data.text || ''}</h3>
         <Link className={link} to={'/child/foo'}>
-          Component with passed params
+          Routing demo
         </Link>
-        <Link className={link} to="/asdf">Dead link</Link>
+        <Link className={link} to="/asdf">404 demo</Link>
       </div>
     );
   }
