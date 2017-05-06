@@ -46,9 +46,10 @@ and commit your project to git:
 
 and start developing! Your next steps might include:
 
-- Configuring project information (like domain and name) in `./config.js`.
+- Configuring project information (like domain, name and analytics/error logging IDs) in `./config.js`.
 - Setting up [Travis CI](https://travis-ci.org) for your repo.
   - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to Travis CI, either using their web interface or [their Ruby gem and the `travis encrypt` command](https://docs.travis-ci.com/user/environment-variables/).
+  - Also add other optional environment variables, like `SENTRY_AUTH_TOKEN` for deploy tracking and sourcemap support in Sentry.
   - Remember to update the badge at the top of the readme to point to your new Travis SVG.
 - Setting up [Codecov](https://codecov.io) for your repo.
   - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.

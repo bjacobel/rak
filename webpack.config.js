@@ -50,7 +50,7 @@ const wpconfig = {
     filename: isProd ? '[name].[chunkhash].js' : '[name].js',
     publicPath: isProd ? '/' : 'http://localhost:8080',
   },
-  devtool: isProd ? false : 'source-map',
+  devtool: isProd ? 'hidden-source-map' : 'source-map',
   module: {
     rules: [
       {
@@ -88,9 +88,6 @@ const wpconfig = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     }),
-    new webpack.LoaderOptionsPlugin({
-      debug: !isProd,
-    }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: ({ resource }) => /node_modules/.test(resource),
@@ -126,10 +123,7 @@ if (!isProd) {
     new ExtractTextPlugin({
       filename: isProd ? '[name].[contenthash].css' : '[name].css',
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-    }),
-    new webpack.optimize.UglifyJsPlugin(),
+    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     ...wpconfig.plugins,
   ];
 }

@@ -20,8 +20,12 @@ const config = {
   ExistingHostedZone: 'true',
 
   // Configuration for sentry.io error and release monitoring
-  SentryProjectId: '114591',
-  SentryReleaseWebhookId: 'b2298467ee84cb1ca754369ef0b121fe07af3fbe95c7cfcde3a4eebde8d9ac88',
+  SentryOrg: 'bjacobelcom',
+  SentryProject: 'rak',
+  RavenDSN: 'https://a47a3c1a936941379cb5e0318bb4333a@sentry.io/114591',
+
+  // Configuration for Google Analytics
+  GAProperty: 'UA-34138258-8',
 };
 
 if (!module.parent && process.argv[2]) {
