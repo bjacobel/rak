@@ -26,9 +26,9 @@ deploy:
     condition: $(node aws/utils bucketExists) = "true"
 after_deploy:
   - node aws/utils invalidate "/index.html"
-  - curl -sL https://sentry.io/get-cli/ | bash
-  - sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) new $(git rev-parse HEAD)
-  - sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) files $(git rev-parse HEAD) upload-sourcemaps dist
+  # This package is broken with Yarn
+  - node_modules/sentry-cli-binary/bin/sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) new $(git rev-parse HEAD)
+  - node_modules/sentry-cli-binary/bin/sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) files $(git rev-parse HEAD) upload-sourcemaps dist
 notifications:
   email: false
   slack: bjacobel:xasDl3nTxo2feJGba70E43oR
