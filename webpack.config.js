@@ -4,7 +4,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const PrepackWebpackPlugin = require('prepack-webpack-plugin').default;
 
 const projectConfig = require('./config.js');
 
@@ -131,7 +130,6 @@ if (!isProd) {
       minimize: true,
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    // new PrepackWebpackPlugin(),
     ...wpconfig.plugins,
   ];
 }
