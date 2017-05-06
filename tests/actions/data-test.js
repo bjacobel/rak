@@ -10,8 +10,10 @@ import {
 } from '../../src/actions/data';
 import { LOADING_STARTED, LOADING_ENDED } from '../../src/actions/loading';
 import { getData } from '../../src/services/data';
+import '../../src/services/errors';
 
 jest.mock('../../src/services/data');
+jest.mock('../../src/services/errors');
 
 const mockStore = configureMockStore([thunk]);
 
