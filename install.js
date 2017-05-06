@@ -11,9 +11,15 @@ const { execSync } = require('child_process');
 
 const config = require('./config');
 
-const ignorePaths = ['.git', '.npmignore', 'install.js', 'install-test.sh', 'node_modules', 'CHANGELOG.md'].map(x =>
-  path.resolve(__dirname, x)
-);
+const ignorePaths = [
+  '.git',
+  '.npmignore',
+  'install.js',
+  'install-test.sh',
+  'node_modules',
+  'CHANGELOG.md',
+  'yarn.sh',
+].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 
