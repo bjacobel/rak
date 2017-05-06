@@ -50,7 +50,7 @@ const wpconfig = {
     filename: isProd ? '[name].[chunkhash].js' : '[name].js',
     publicPath: isProd ? '/' : 'http://localhost:8080',
   },
-  devtool: isProd ? 'hidden-source-map' : 'source-map',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -87,6 +87,7 @@ const wpconfig = {
     new webpack.NamedModulesPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+      'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
     }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
