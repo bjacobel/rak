@@ -8,7 +8,7 @@ env:
 script:
   - yarn run lint
   - yarn run test -- --coverage
-  - NODE_ENV=production yarn run webpack
+  - NODE_ENV=production $(yarn bin)/webpack
 after_success:
   - bash yarn.sh
   - bash <(curl -s https://codecov.io/bash)

@@ -90,8 +90,7 @@
     "awsUtils": "node aws/utils",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
     "start": "webpack-dev-server",
-    "test": "jest --coverage && ./install-test.sh",
-    "webpack": "webpack -p"
+    "test": "jest --coverage && ./install-test.sh"
   },
   "version": "0.0.5"
 }
