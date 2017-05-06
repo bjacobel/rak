@@ -14,7 +14,7 @@
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
     "@bjacobel/cloudformer-node": "^0.0.13",
-    "autoprefixer": "^6.7.2",
+    "autoprefixer": "^7.0.0",
     "aws-sdk": "^2.9.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
