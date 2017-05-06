@@ -26,6 +26,11 @@ deploy:
     condition: $(node aws/utils bucketExists) = "true"
 after_deploy:
   - node aws/utils invalidate "/index.html"
+  - |
+    curl https://sentry.io/api/hooks/release/builtin/$(node config SentryProjectId)/$(node config SentryReleaseWebhookId)/ \
+      -X POST \
+      -H 'Content-Type: application/json' \
+      -d '{"version": "$(git rev-parse HEAD)"}'
 notifications:
   email: false
   slack: bjacobel:xasDl3nTxo2feJGba70E43oR

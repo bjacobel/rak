@@ -18,6 +18,10 @@ const config = {
   // If you already have a Route53 hosted zone for the ProjectDomain domain, setting this value to `'true'` will
   // re-use the zone. Setting it to `'false'` will create a new zone.
   ExistingHostedZone: 'true',
+
+  // Configuration for sentry.io error and release monitoring
+  SentryProjectId: '114591',
+  SentryReleaseWebhookId: 'b2298467ee84cb1ca754369ef0b121fe07af3fbe95c7cfcde3a4eebde8d9ac88',
 };
 
 if (!module.parent && process.argv[2]) {
