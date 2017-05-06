@@ -68,9 +68,6 @@
     "snapshotSerializers": [
       "enzyme-to-json/serializer"
     ],
-    "roots": [
-      "./tests"
-    ],
     "testRegex": "tests/.*/.*-test.js$"
   },
   "keywords": [
