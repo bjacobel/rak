@@ -2704,9 +2704,9 @@ globjoin@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/globjoin/-/globjoin-0.1.4.tgz#2f4494ac8919e3767c5cbb691e9f463324285d43"
 
-google-fonts-complete@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/google-fonts-complete/-/google-fonts-complete-1.1.0.tgz#afd2e88e2058f815c2a8dc38532e46a87f06d72f"
+google-fonts-complete@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/google-fonts-complete/-/google-fonts-complete-1.1.1.tgz#c2e33b7566d8619e31950d6f97767a141e05ff5d"
   dependencies:
     postcss "^4.1.16"
 
@@ -4620,14 +4620,14 @@ postcss-filter-plugins@^2.0.0:
     postcss "^5.0.4"
     uniqid "^4.0.0"
 
-postcss-font-magician@^1.6.0:
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/postcss-font-magician/-/postcss-font-magician-1.6.0.tgz#4bbe9404b1d5b4ec6f11ac45b49c43a7608bef4e"
+postcss-font-magician@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/postcss-font-magician/-/postcss-font-magician-2.0.0.tgz#dff347e6b40b6519c4645d2ed19cb0d99016396d"
   dependencies:
     bootstrap-fonts-complete "^1.0.0"
     directory-fonts-complete "^1.1.0"
-    google-fonts-complete "^1.1.0"
-    postcss "^5.0.12"
+    google-fonts-complete "^1.1.1"
+    postcss "^6.0.1"
 
 postcss-less@^0.14.0:
   version "0.14.0"
@@ -4948,6 +4948,14 @@ postcss@^5.0.0, postcss@^5.0.10, postcss@^5.0.11, postcss@^5.0.12, postcss@^5.0.
 postcss@^6.0.0, postcss@^6.x:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.0.tgz#ef75a67e75fe2bfff53971045697202c018b2e81"
+  dependencies:
+    chalk "^1.1.3"
+    source-map "^0.5.6"
+    supports-color "^3.2.3"
+
+postcss@^6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.1.tgz#000dbd1f8eef217aa368b9a212c5fc40b2a8f3f2"
   dependencies:
     chalk "^1.1.3"
     source-map "^0.5.6"
