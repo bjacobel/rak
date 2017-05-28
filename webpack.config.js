@@ -48,7 +48,7 @@ const wpconfig = {
   output: {
     path: `${__dirname}/dist`,
     filename: isProd ? '[name].[chunkhash].js' : '[name].js',
-    publicPath: isProd ? '/' : 'http://localhost:8080',
+    publicPath: isProd ? '/' : 'http://localhost:8080/',
   },
   devtool: 'source-map',
   module: {
