@@ -8,6 +8,13 @@
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
+const { Transform } = require('stream');
+
+const NoopTransform = new Transform({
+  transform(chunk, encoding, callback) {
+    callback(undefined, chunk);
+  },
+});
 
 const config = require('./config');
 
@@ -82,7 +89,7 @@ const isBin = fileAbsPath => {
 
 (() => {
   console.log("\nInstalling Rak's setup requirements...\n");
-  execSync('yarn add replacestream mkdirp || npm -s install replacestream mkdirp', { stdio: [0, 1, 2] });
+  execSync('yarn add replacestream mkdirp || npm install replacestream mkdirp', { stdio: [0, 1, 2] });
   const replaceStream = require('replacestream');
   const mkdirp = require('mkdirp');
 
@@ -100,11 +107,11 @@ const isBin = fileAbsPath => {
 
       if (srcFileRelFromSrcRoot === 'package.json') {
         const packageDotJson = require(srcFileAbsPath);
-        dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
+        return dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
       } else {
-        fs
+        return fs
           .createReadStream(srcFileAbsPath)
-          .pipe(isBin(srcFileAbsPath) ? () => {} : replaceStream(config.ProjectName, newProjectName))
+          .pipe(isBin(srcFileAbsPath) ? NoopTransform : replaceStream(config.ProjectName, newProjectName))
           .pipe(dstFile)
           .on('close', resolve)
           .on('error', reject);
@@ -117,10 +124,12 @@ const isBin = fileAbsPath => {
     execSync('echo -e "coverage\ndist\nnode_modules" > .gitignore');
 
     // Will only tree if tree is installed
-    execSync('command -v tree > /dev/null && tree . -aIC node_modules || true', { stdio: [0, 1, 2] });
+    execSync('command -v tree > /dev/null && tree . -aIC "node_modules|.yalc" || true', { stdio: [0, 1, 2] });
 
     console.log('\nInstalling devDependencies of your new Rak project...\n');
     execSync('yarn || npm -s install --only-dev', { stdio: [0, 1, 2] });
+
+    execSync('rm -rf yalc* .yalc');
 
     console.log('\nDone!');
   });

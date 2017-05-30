@@ -25,6 +25,7 @@
     "babel-preset-react": "^6.22.0",
     "cloudfriend": "https://github.com/mapbox/cloudfriend",
     "css-loader": "^0.28.0",
+    "detour-stream": "^0.0.1",
     "enzyme": "^2.7.1",
     "enzyme-to-json": "^1.4.5",
     "eslint": "^3.19.0",
