@@ -1,4 +1,4 @@
-const { ref, getAtt, join } = require('cloudfriend');
+const { ref, getAtt, join } = require('@mapbox/cloudfriend');
 
 module.exports = {
   // Only create this resource if ProjectDomain and ProjectFQDomain are the same.
