@@ -1,4 +1,4 @@
-const { ref, getAtt, join } = require('cloudfriend');
+const { ref, getAtt, join } = require('@mapbox/cloudfriend');
 
 module.exports = {
   Type: 'AWS::Route53::RecordSet',

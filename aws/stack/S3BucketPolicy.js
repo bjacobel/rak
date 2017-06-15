@@ -1,4 +1,4 @@
-const { ref, join } = require('cloudfriend');
+const { ref, join } = require('@mapbox/cloudfriend');
 
 module.exports = {
   Type: 'AWS::S3::BucketPolicy',

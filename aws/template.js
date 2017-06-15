@@ -1,4 +1,4 @@
-const { ref, equals } = require('cloudfriend');
+const { ref, equals } = require('@mapbox/cloudfriend');
 
 const HostedZone = require('./stack/HostedZone');
 const DNSRecord = require('./stack/DNSRecord');

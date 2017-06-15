@@ -1,4 +1,4 @@
-const { ref } = require('cloudfriend');
+const { ref } = require('@mapbox/cloudfriend');
 
 module.exports = {
   Type: 'AWS::S3::Bucket',
