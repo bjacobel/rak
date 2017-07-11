@@ -30,7 +30,7 @@
     "eslint-config-airbnb": "^15.0.0",
     "eslint-config-prettier": "^2.0.0",
     "eslint-plugin-import": "^2.1.0",
-    "eslint-plugin-jsx-a11y": "^5.0.1",
+    "eslint-plugin-jsx-a11y": "^6.0.0",
     "eslint-plugin-prettier": "^2.0.1",
     "eslint-plugin-react": "^7.0.1",
     "extract-text-webpack-plugin": "^2.1.2",
