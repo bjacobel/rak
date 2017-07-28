@@ -9,8 +9,12 @@ export default class Child extends Component {
     const { match } = this.props;
     return (
       <div>
-        <h3 className={styles.id}>received param: {match.params.id}</h3>
-        <Link className={link} to="/">Home</Link>
+        <h3 className={styles.id}>
+          received param: {match.params.id}
+        </h3>
+        <Link className={link} to="/">
+          Home
+        </Link>
       </div>
     );
   }

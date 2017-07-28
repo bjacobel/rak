@@ -9,7 +9,9 @@ export default class NotFound extends Component {
     return (
       <div>
         <h1 className={styles['not-found']}>404: page not found</h1>
-        <Link className={link} to="/">Home</Link>
+        <Link className={link} to="/">
+          Home
+        </Link>
       </div>
     );
   }
