@@ -25,11 +25,15 @@ class Main extends Component {
     return (
       <div>
         <div className={styles.logo} />
-        <h3 className={styles.data}>{data.text || ''}</h3>
+        <h3 className={styles.data}>
+          {data.text || ''}
+        </h3>
         <Link className={link} to={'/child/foo'}>
           Routing demo
         </Link>
-        <Link className={link} to="/asdf">404 demo</Link>
+        <Link className={link} to="/asdf">
+          404 demo
+        </Link>
       </div>
     );
   }
