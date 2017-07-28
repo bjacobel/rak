@@ -50,7 +50,7 @@
     "sentry-cli-binary": "^1.8.0",
     "style-loader": "^0.18.1",
     "stylelint": "^8.0.0",
-    "stylelint-config-css-modules": "^0.1.0",
+    "stylelint-config-css-modules": "^1.1.0",
     "stylelint-config-standard": "^17.0.0",
     "url-loader": "^0.5.7",
     "webpack": "^3.4.1",
