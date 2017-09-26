@@ -4,7 +4,7 @@
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
     "raven-js": "^3.14.2",
-    "react": "^15.4.2",
+    "react": "^16.0.0",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
     "react-router": "4.1.1",
