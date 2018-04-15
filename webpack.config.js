@@ -1,9 +1,9 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+// const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+// const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const projectConfig = require('./config.js');
 
@@ -15,9 +15,10 @@ const cssLoaderConfig = {
   localIdentName: '[name]__[local]___[hash:base64:5]',
 };
 
-const prodCssConfig = ExtractTextPlugin.extract({
+const prodCssConfig = {
   fallbackLoader: 'style-loader',
   loader: [
+    { loader: MiniCssExtractPlugin.loader },
     {
       loader: 'css-loader',
       query: cssLoaderConfig,
@@ -25,7 +26,7 @@ const prodCssConfig = ExtractTextPlugin.extract({
     { loader: 'postcss-loader' },
   ],
   publicPath: '/',
-});
+};
 
 const devCssConfig = [
   { loader: 'style-loader' },
@@ -45,6 +46,7 @@ const wpconfig = {
   entry: {
     main: './src/index.js',
   },
+  mode: isProd ? 'production' : 'development',
   output: {
     path: `${__dirname}/dist`,
     filename: isProd ? '[name].[chunkhash].js' : '[name].js',
@@ -82,6 +84,18 @@ const wpconfig = {
   resolve: {
     extensions: ['.js', '.json', '.css'],
   },
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minChunks: 1,
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+        },
+      },
+    },
+  },
   plugins: [
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.NamedModulesPlugin(),
@@ -89,20 +103,15 @@ const wpconfig = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
     }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: ({ resource }) => /node_modules/.test(resource),
-    }),
-    new webpack.optimize.CommonsChunkPlugin('manifest'),
-    new InlineManifestWebpackPlugin(),
+    // new InlineManifestWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: projectConfig.ProjectName,
       template: './src/index.html',
       favicon: './src/assets/images/favicon.ico',
     }),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'defer',
-    }),
+    // new ScriptExtHtmlWebpackPlugin({
+    //   defaultAttribute: 'defer',
+    // }),
   ],
   devServer: {
     hot: true,
@@ -121,10 +130,9 @@ if (!isProd) {
   wpconfig.plugins = [new webpack.HotModuleReplacementPlugin(), ...wpconfig.plugins];
 } else {
   wpconfig.plugins = [
-    new ExtractTextPlugin({
+    new MiniCssExtractPlugin({
       filename: isProd ? '[name].[contenthash].css' : '[name].css',
     }),
-    new webpack.optimize.UglifyJsPlugin({ sourceMap: true }),
     ...wpconfig.plugins,
   ];
 }
