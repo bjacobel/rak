@@ -1,9 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-// const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const projectConfig = require('./config.js');
 
@@ -103,15 +102,14 @@ const wpconfig = {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
       'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
     }),
-    // new InlineManifestWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: projectConfig.ProjectName,
       template: './src/index.html',
       favicon: './src/assets/images/favicon.ico',
     }),
-    // new ScriptExtHtmlWebpackPlugin({
-    //   defaultAttribute: 'defer',
-    // }),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'defer',
+    }),
   ],
   devServer: {
     hot: true,
