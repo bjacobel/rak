@@ -61,7 +61,7 @@ describe('data actions', () => {
       }));
 
     it('calls getData, on fail it dispatches loadingEnded and getDataFailed', () => {
-      getData.mockImplementationOnce(() => Promise.reject('error'));
+      getData.mockImplementationOnce(() => Promise.reject(new Error('error')));
 
       return store.dispatch(getDataAsync()).then(() => {
         expect(store.getActions()).toEqual(
