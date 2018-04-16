@@ -29,7 +29,7 @@ export default class Analytics {
 
   event(category, action, value) {
     if (TRACK_ANALYTICS) {
-      window.ga('send', 'event', category, action, isNaN(value) ? undefined : value);
+      window.ga('send', 'event', category, action, Number.isNaN(value) ? undefined : value);
     }
   }
 }
