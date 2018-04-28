@@ -29,8 +29,8 @@ deploy:
 after_deploy:
   - node aws/utils invalidate "/index.html"
   # This package is broken with Yarn
-  - node_modules/sentry-cli-binary/bin/sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) new $TRAVIS_COMMIT
-  - node_modules/sentry-cli-binary/bin/sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) files $TRAVIS_COMMIT upload-sourcemaps dist
+  - $(yarn bin)/sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) new $TRAVIS_COMMIT
+  - $(yarn bin)/sentry-cli releases -o $(node config SentryOrg) -p $(node config SentryProject) files $TRAVIS_COMMIT upload-sourcemaps dist
 notifications:
   email: false
   slack: bjacobel:xasDl3nTxo2feJGba70E43oR
