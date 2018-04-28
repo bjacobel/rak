@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'react-router-dom/Link';
 
 import styles from '../stylesheets/child.css';
 import { link } from '../stylesheets/link.css';

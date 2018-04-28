@@ -70,8 +70,11 @@ const wpconfig = {
       minChunks: 1,
       name: true,
       cacheGroups: {
-        vendors: {
+        vendor: {
           test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          enforce: true,
+          chunks: 'all',
         },
       },
     },
