@@ -17,7 +17,7 @@
   "devDependencies": {
     "@bjacobel/cloudformer-node": "^0.0.13",
     "@mapbox/cloudfriend": "^1.8.1",
-    "autoprefixer": "^7.0.0",
+    "autoprefixer": "^8.4.0",
     "aws-sdk": "^2.9.0",
     "babel-core": "^6.24.1",
     "babel-loader": "^7.0.0",
