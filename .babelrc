@@ -18,8 +18,6 @@
     "transform-object-rest-spread"
   ],
   "env":{
-    // Babel transpilation of ES Modules is off by default so Webpack can tree-shake them.
-    // In envs where webpack doesn't run (Jest), we must transpile ESM to CommonJS.
     "test": {
       "presets": [["env", { "modules": "commonjs" }]]
     },
