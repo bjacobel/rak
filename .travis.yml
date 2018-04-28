@@ -5,12 +5,14 @@ cache: yarn
 env:
   global:
     - NODE_ENV=test
+before_install: yarn global add greenkeeper-lockfile
+before_script: greenkeeper-lockfile-update
 script:
-  - yarn run lint
-  - yarn run test -- --coverage
+  - yarn lint
+  - yarn test --coverage
   - NODE_ENV=production $(yarn bin)/webpack
 after_success:
-  - bash yarn.sh
+  - greenkeeper-lockfile-upload
   - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: s3
