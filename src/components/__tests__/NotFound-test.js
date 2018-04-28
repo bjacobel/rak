@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NotFound from '../../src/components/NotFound';
+import NotFound from 'components/NotFound';
 
 describe('404 component', () => {
   it('matches snapshot', () => {

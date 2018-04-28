@@ -2,10 +2,10 @@
 
 import Raven from 'raven-js';
 
-import logToRaven from '../../src/services/errors';
-import * as constants from '../../src/constants';
+import logToRaven from 'services/errors';
+import * as constants from 'src/constants';
 
-jest.mock('../../src/constants');
+jest.mock('constants');
 jest.mock('raven-js');
 
 const err = new Error('err');

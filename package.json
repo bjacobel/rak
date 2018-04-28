@@ -32,6 +32,7 @@
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
+    "eslint-import-resolver-webpack": "^0.9.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
@@ -60,22 +61,6 @@
   },
   "engines": {
     "node": "^8"
-  },
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.js"
-    ],
-    "moduleNameMapper": {
-      "^.+\\.css$": "<rootDir>/__mocks__/stylesheets.js"
-    },
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ],
-    "setupFiles": [
-      "raf/polyfill",
-      "./jest.js"
-    ],
-    "testRegex": "tests/.*/.*-test.js$"
   },
   "keywords": [
     "boilerplate",

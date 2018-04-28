@@ -1,7 +1,7 @@
-import Analytics from '../../src/services/Analytics';
-import * as constants from '../../src/constants';
+import Analytics from 'services/Analytics';
+import * as constants from 'src/constants';
 
-jest.mock('../../src/constants');
+jest.mock('constants');
 
 describe('Analytics service', () => {
   describe('constructor', () => {

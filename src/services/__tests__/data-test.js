@@ -1,5 +1,5 @@
-import { getData } from '../../src/services/data';
-import { DATA } from '../../src/constants';
+import { getData } from 'services/data';
+import { DATA } from 'src/constants';
 
 describe('data services', () => {
   describe('getData', () => {
