@@ -1,3 +1,10 @@
+### v0.1.0
+- Upgrade to React 16
+- Upgrade to Webpack 4
+- Many, many other package upgrades [see here for more](https://github.com/bjacobel/rak/pull/173/files#diff-b9cfc7f2cdf78a7f4b91a753d10865a2)
+- Refactor test folder structure
+- Shrink bundle size significantly
+
 ### v0.0.5
 - Refactor with Prettier
 
