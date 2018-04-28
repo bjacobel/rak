@@ -8,38 +8,19 @@ const projectConfig = require('./config.js');
 
 const isProd = process.env.NODE_ENV === 'production';
 
-const cssLoaderConfig = {
-  modules: true,
-  importLoaders: 1,
-  localIdentName: '[name]__[local]___[hash:base64:5]',
-};
-
-const prodCssConfig = {
-  fallbackLoader: 'style-loader',
-  loader: [
-    { loader: MiniCssExtractPlugin.loader },
-    {
-      loader: 'css-loader',
-      query: cssLoaderConfig,
-    },
-    { loader: 'postcss-loader' },
-  ],
-  publicPath: '/',
-};
-
-const devCssConfig = [
-  { loader: 'style-loader' },
-  {
-    loader: 'css-loader',
-    options: Object.assign(
-      {},
-      { sourceMap: true },
-      // This doesn't go through Babel so no ES2017 stuff
-      cssLoaderConfig // eslint-disable-line comma-dangle
-    ),
+const cssLoader = {
+  loader: 'css-loader',
+  options: {
+    modules: true,
+    importLoaders: 1,
+    localIdentName: '[name]__[local]___[hash:base64:5]',
+    sourceMap: !isProd,
   },
-  { loader: 'postcss-loader' },
-];
+};
+
+const prodCssConfig = [{ loader: MiniCssExtractPlugin.loader }, cssLoader, { loader: 'postcss-loader' }];
+
+const devCssConfig = [{ loader: 'style-loader' }, cssLoader, { loader: 'postcss-loader' }];
 
 const wpconfig = {
   entry: {
@@ -76,7 +57,7 @@ const wpconfig = {
       },
       {
         test: /\.css$/,
-        loader: isProd ? prodCssConfig : devCssConfig,
+        use: isProd ? prodCssConfig : devCssConfig,
       },
     ],
   },
