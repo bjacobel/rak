@@ -63,6 +63,10 @@ const wpconfig = {
   },
   resolve: {
     extensions: ['.js', '.json', '.css'],
+    modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
+  },
+  node: {
+    constants: false,
   },
   optimization: {
     splitChunks: {

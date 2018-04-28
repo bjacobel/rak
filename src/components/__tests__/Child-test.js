@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Child from '../../src/components/Child';
+import Child from 'components/Child';
 
 describe('child component', () => {
   it('matches snapshot', () => {

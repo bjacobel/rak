@@ -1,5 +1,5 @@
-import data from '../../src/reducers/data';
-import { GET_DATA_SUCCEEDED } from '../../src/actions/data';
+import data from 'reducers/data';
+import { GET_DATA_SUCCEEDED } from 'actions/data';
 
 describe('data reducer', () => {
   describe(`action type ${GET_DATA_SUCCEEDED}`, () => {

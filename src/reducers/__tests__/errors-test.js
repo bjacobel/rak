@@ -1,5 +1,5 @@
-import errors from '../../src/reducers/errors';
-import { GET_DATA_FAILED } from '../../src/actions/data';
+import errors from 'reducers/errors';
+import { GET_DATA_FAILED } from 'actions/data';
 
 describe('errors reducer', () => {
   describe(`action type ${GET_DATA_FAILED}`, () => {

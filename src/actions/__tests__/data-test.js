@@ -1,19 +1,13 @@
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 
-import {
-  GET_DATA_FAILED,
-  GET_DATA_SUCCEEDED,
-  getDataFailed,
-  getDataSucceeded,
-  getDataAsync,
-} from '../../src/actions/data';
-import { LOADING_STARTED, LOADING_ENDED } from '../../src/actions/loading';
-import { getData } from '../../src/services/data';
-import '../../src/services/errors';
+import { GET_DATA_FAILED, GET_DATA_SUCCEEDED, getDataFailed, getDataSucceeded, getDataAsync } from 'actions/data';
+import { LOADING_STARTED, LOADING_ENDED } from 'actions/loading';
+import { getData } from 'services/data';
+import 'services/errors';
 
-jest.mock('../../src/services/data');
-jest.mock('../../src/services/errors');
+jest.mock('services/data');
+jest.mock('services/errors');
 
 const mockStore = configureMockStore([thunk]);
 

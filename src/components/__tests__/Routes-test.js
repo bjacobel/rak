@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import Routes from '../../src/components/Routes';
-import Analytics from '../../src/services/Analytics';
+import Routes from 'components/Routes';
+import Analytics from 'services/Analytics';
 
-jest.mock('../../src/components/Main');
-jest.mock('../../src/components/Child');
-jest.mock('../../src/components/NotFound');
-jest.mock('../../src/services/Analytics');
+jest.mock('components/Main');
+jest.mock('components/Child');
+jest.mock('components/NotFound');
+jest.mock('services/Analytics');
 
 const setPath = value => {
   // thanks @cpojer! https://github.com/facebook/jest/issues/890#issuecomment-209698782
