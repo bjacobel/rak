@@ -17,7 +17,7 @@
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
     "@bjacobel/cloudformer-node": "^0.0.13",
-    "@mapbox/cloudfriend": "^1.9.0",
+    "@mapbox/cloudfriend": "^2.2.0",
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^8.3.0",
     "aws-sdk": "^2.205.0",
