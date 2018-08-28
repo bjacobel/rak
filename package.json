@@ -16,14 +16,17 @@
   },
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/plugin-transform-react-jsx-source": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "@bjacobel/cloudformer-node": "^0.0.13",
     "@mapbox/cloudfriend": "^2.2.0",
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^9.1.5",
     "aws-sdk": "^2.205.0",
     "babel-core": "^6.26.0",
-    "babel-jest": "^23.0.0",
-    "babel-loader": "^7.1.3",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
     "babel-preset-env": "^1.6.1",
@@ -31,6 +34,8 @@
     "css-loader": "^1.0.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.4.0",
+    "babel-jest": "^23.4.2",
+    "babel-loader": "^8.0.0",
     "enzyme-to-json": "^3.3.1",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
@@ -42,7 +47,7 @@
     "eslint-plugin-react": "^7.7.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.4",
-    "jest-cli": "^21.0.2",
+    "jest-cli": "^23.5.0",
     "mini-css-extract-plugin": "^0.4.0",
     "postcss-font-magician": "^2.1.1",
     "postcss-loader": "^3.0.0",
@@ -85,5 +90,8 @@
     "start": "webpack-dev-server",
     "test": "jest --coverage && ./install-test.sh"
   },
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "resolutions": {
+    "babel-jest/**/babel-core": "file:./node_modules/@babel/core"
+  }
 }
