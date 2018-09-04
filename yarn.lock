@@ -510,15 +510,15 @@ autoprefixer@^8.0.0:
     postcss "^6.0.20"
     postcss-value-parser "^3.2.3"
 
-autoprefixer@^8.3.0:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-8.4.1.tgz#c6b30001ea4b3daa6b611e50071f62dd24beb564"
+autoprefixer@^9.1.5:
+  version "9.1.5"
+  resolved "https://registry.yarnpkg.com/autoprefixer/-/autoprefixer-9.1.5.tgz#8675fd8d1c0d43069f3b19a2c316f3524e4f6671"
   dependencies:
-    browserslist "^3.2.6"
-    caniuse-lite "^1.0.30000832"
+    browserslist "^4.1.0"
+    caniuse-lite "^1.0.30000884"
     normalize-range "^0.1.2"
     num2fraction "^1.2.2"
-    postcss "^6.0.22"
+    postcss "^7.0.2"
     postcss-value-parser "^3.2.3"
 
 aws-sdk@^2.1.21:
@@ -1602,12 +1602,13 @@ browserslist@^3.2.0:
     caniuse-lite "^1.0.30000821"
     electron-to-chromium "^1.3.41"
 
-browserslist@^3.2.6:
-  version "3.2.6"
-  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-3.2.6.tgz#138a44d04a9af64443679191d041f28ce5b965d5"
+browserslist@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/browserslist/-/browserslist-4.1.0.tgz#81cbb8e52dfa09918f93c6e051d779cb7360785d"
   dependencies:
-    caniuse-lite "^1.0.30000830"
-    electron-to-chromium "^1.3.42"
+    caniuse-lite "^1.0.30000878"
+    electron-to-chromium "^1.3.61"
+    node-releases "^1.0.0-alpha.11"
 
 bser@^2.0.0:
   version "2.0.0"
@@ -1768,9 +1769,13 @@ caniuse-lite@^1.0.30000817:
   version "1.0.30000830"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000830.tgz#cb96b8a2dd3cbfe04acea2af3c4e894249095328"
 
-caniuse-lite@^1.0.30000821, caniuse-lite@^1.0.30000830, caniuse-lite@^1.0.30000832:
+caniuse-lite@^1.0.30000821:
   version "1.0.30000832"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000832.tgz#22a277f1d623774cc9aea2f7c1a65cb1603c63b8"
+
+caniuse-lite@^1.0.30000878, caniuse-lite@^1.0.30000884:
+  version "1.0.30000884"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000884.tgz#eb82a959698745033b26a4dcd34d89dba7cc6eb3"
 
 caseless@~0.12.0:
   version "0.12.0"
@@ -2774,9 +2779,13 @@ electron-to-chromium@^1.3.30:
   version "1.3.34"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.34.tgz#d93498f40391bb0c16a603d8241b9951404157ed"
 
-electron-to-chromium@^1.3.41, electron-to-chromium@^1.3.42:
+electron-to-chromium@^1.3.41:
   version "1.3.44"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.44.tgz#ef6b150a60d523082388cadad88085ecd2fd4684"
+
+electron-to-chromium@^1.3.61:
+  version "1.3.62"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.62.tgz#2e8e2dc070c800ec8ce23ff9dfcceb585d6f9ed8"
 
 elegant-spinner@^1.0.1:
   version "1.0.1"
@@ -2842,9 +2851,9 @@ envinfo@^4.4.2:
   version "4.4.2"
   resolved "https://registry.yarnpkg.com/envinfo/-/envinfo-4.4.2.tgz#472c49f3a8b9bca73962641ce7cb692bf623cd1c"
 
-enzyme-adapter-react-16@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.3.0.tgz#4cfba44f8c27256d28e171bdf7a5b5aebce6041b"
+enzyme-adapter-react-16@^1.3.1:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/enzyme-adapter-react-16/-/enzyme-adapter-react-16-1.4.0.tgz#c70aa6d085c5a6708b032406f5c73280d3f6a34b"
   dependencies:
     enzyme-adapter-utils "^1.6.0"
     function.prototype.name "^1.1.0"
@@ -6051,6 +6060,12 @@ node-pre-gyp@^0.9.0:
     semver "^5.3.0"
     tar "^4"
 
+node-releases@^1.0.0-alpha.11:
+  version "1.0.0-alpha.11"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.0.0-alpha.11.tgz#73c810acc2e5b741a17ddfbb39dfca9ab9359d8a"
+  dependencies:
+    semver "^5.3.0"
+
 nomnom@^1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/nomnom/-/nomnom-1.8.1.tgz#2151f722472ba79e50a76fc125bb8c8f2e4dc2a7"
@@ -7082,7 +7097,7 @@ postcss@^6.0.11, postcss@^6.0.18, postcss@^6.0.9:
     source-map "^0.6.1"
     supports-color "^5.2.0"
 
-postcss@^6.0.21, postcss@^6.0.22:
+postcss@^6.0.21:
   version "6.0.22"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-6.0.22.tgz#e23b78314905c3b90cbd61702121e7a78848f2a3"
   dependencies:
@@ -7090,7 +7105,7 @@ postcss@^6.0.21, postcss@^6.0.22:
     source-map "^0.6.1"
     supports-color "^5.4.0"
 
-postcss@^7.0.0:
+postcss@^7.0.0, postcss@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.2.tgz#7b5a109de356804e27f95a960bef0e4d5bc9bb18"
   dependencies:
