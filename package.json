@@ -26,12 +26,12 @@
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^9.1.5",
     "aws-sdk": "^2.205.0",
-    "css-loader": "^1.0.0",
-    "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.4.0",
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
+    "css-loader": "^1.0.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.4.0",
     "enzyme-to-json": "^3.3.1",
     "eslint": "^5.5.0",
     "eslint-config-airbnb": "^17.1.0",
@@ -44,6 +44,7 @@
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.0.4",
     "jest-cli": "^23.5.0",
+    "lighthouse": "^3.1.1",
     "mini-css-extract-plugin": "^0.4.0",
     "postcss-font-magician": "^2.1.1",
     "postcss-loader": "^3.0.0",
@@ -84,7 +85,8 @@
     "awsUtils": "node aws/utils",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
     "start": "webpack-dev-server",
-    "test": "jest --coverage && ./install-test.sh"
+    "test": "jest --coverage && ./install-test.sh",
+    "perftest": "bash scripts/perftest.sh"
   },
   "version": "0.1.0",
   "browserslist": [

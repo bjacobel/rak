@@ -11,7 +11,7 @@ before_script: greenkeeper-lockfile-update
 script:
   - yarn lint
   - yarn test --coverage
-  - NODE_ENV=production $(yarn bin)/webpack
+  - NODE_ENV=production yarn webpack
 after_success:
   - greenkeeper-lockfile-upload
   - bash <(curl -s https://codecov.io/bash)
