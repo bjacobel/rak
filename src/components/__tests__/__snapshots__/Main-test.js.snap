@@ -1,7 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main component un-Connected component matches snapshot 1`] = `
-<div>
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <meta
+      charSet="utf-8"
+    />
+    <title>
+      rak
+    </title>
+    <link
+      href="https://rak.bjacobel.com"
+      rel="canonical"
+    />
+    <meta
+      content="width=device-width, initial-scale=1"
+      name="viewport"
+    />
+  </HelmetWrapper>
   <div />
   <h3>
     foo
@@ -18,5 +37,5 @@ exports[`main component un-Connected component matches snapshot 1`] = `
   >
     404 demo
   </Link>
-</div>
+</Fragment>
 `;

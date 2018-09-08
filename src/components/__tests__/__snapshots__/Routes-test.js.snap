@@ -1,25 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Router matches snapshot 1`] = `
-<BrowserRouter>
-  <div>
-    <Switch>
-      <GARoute
-        component={[MockFunction]}
-        exact={true}
-        ga={Object {}}
-        path="/"
-      />
-      <GARoute
-        component={[MockFunction]}
-        ga={Object {}}
-        path="/child/:id"
-      />
-      <GARoute
-        component={[MockFunction]}
-        ga={Object {}}
-      />
-    </Switch>
-  </div>
-</BrowserRouter>
+<Fragment>
+  <HelmetWrapper
+    defer={true}
+    encodeSpecialCharacters={true}
+  >
+    <link
+      href="https://google-analytics.com"
+      rel="preconnect"
+    />
+  </HelmetWrapper>
+  <BrowserRouter>
+    <div>
+      <Switch>
+        <GARoute
+          component={[MockFunction]}
+          exact={true}
+          ga={Object {}}
+          path="/"
+        />
+        <GARoute
+          component={[MockFunction]}
+          ga={Object {}}
+          path="/child/:id"
+        />
+        <GARoute
+          component={[MockFunction]}
+          ga={Object {}}
+        />
+      </Switch>
+    </div>
+  </BrowserRouter>
+</Fragment>
 `;
