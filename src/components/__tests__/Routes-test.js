@@ -9,8 +9,8 @@ jest.mock('components/Child');
 jest.mock('components/NotFound');
 jest.mock('services/Analytics');
 
-const setPath = value => {
- global.history.pushState({}, value, value);
+const setPath = (value) => {
+  global.history.pushState({}, value, value);
 };
 
 describe('Router', () => {

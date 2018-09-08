@@ -10,7 +10,7 @@ module.exports = () => {
       if (err) {
         reject(err);
       } else {
-        const distro = data.DistributionList.Items.find(x => x.Aliases.Items.includes(config.ProjectFQDomain));
+        const distro = data.DistributionList.Items.find((x) => x.Aliases.Items.includes(config.ProjectFQDomain));
         if (distro) {
           resolve(distro.Id);
         } else {
@@ -20,7 +20,7 @@ module.exports = () => {
     });
   })
     .then(
-      DistributionId =>
+      (DistributionId) =>
         new Promise((resolve, reject) => {
           cloudfront.createInvalidation(
             {
@@ -43,10 +43,10 @@ module.exports = () => {
           );
         })
     )
-    .then(invalidationId => {
+    .then((invalidationId) => {
       console.log(`Invalidation with id ${invalidationId} in progress.`);
     })
-    .catch(err => {
+    .catch((err) => {
       console.error(`Error: ${err.message}\nTry invalidaing the distribution through the AWS console.`);
     });
 };

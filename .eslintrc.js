@@ -2,7 +2,7 @@ module.exports = {
   extends: ['eslint-config-airbnb', 'prettier'],
   plugins: ['prettier'],
   rules: {
-    'arrow-parens': 'always',
+    'arrow-parens': [2, 'always'],
     'no-else-return': 0,
     'no-console': 0,
     'import/prefer-default-export': 1,
@@ -21,7 +21,7 @@ module.exports = {
         trailingComma: 'es5',
         bracketSpacing: true,
         printWidth: 120,
-        'arrow-parens': 'always'
+        arrowParens: 'always',
       },
     ],
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
