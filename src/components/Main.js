@@ -6,7 +6,7 @@ import styles from '../stylesheets/main.css';
 import { link } from '../stylesheets/link.css';
 import { getDataAsync } from '../actions/data';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   data: state.data,
 });
 
