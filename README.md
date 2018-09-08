@@ -1,6 +1,6 @@
 <img src="https://rak.bjacobel.com/logo.svg" alt="Rak" width="200px">
 
-[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Dependency Status](https://gemnasium.com/badges/github.com/bjacobel/rak.svg)](https://gemnasium.com/github.com/bjacobel/rak) [![Greenkeeper badge](https://badges.greenkeeper.io/bjacobel/rak.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Greenkeeper badge](https://badges.greenkeeper.io/bjacobel/rak.svg)](https://greenkeeper.io/)
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
@@ -10,7 +10,7 @@ Rak includes and configures the following components to help you build a rock-so
 
   - [React](https://facebook.github.io/react/)
   - [Redux](http://redux.js.org/)
-  - [Webpack 2](https://webpack.github.io/) (with [HMR](https://webpack.github.io/docs/hot-module-replacement.html))
+  - [Webpack](https://webpack.github.io/) (with [HMR](https://webpack.github.io/docs/hot-module-replacement.html))
   - [Babel](https://babeljs.io/) (with [babel-preset-env](https://github.com/babel/babel-preset-env) and [React](http://babeljs.io/docs/plugins/preset-react/) presets)
   - [PostCSS](http://postcss.org/) (with [CSS Modules](https://github.com/css-modules/css-modules) and [precss](https://github.com/jonathantneal/precss) syntax)
   - [Autoprefixer](https://github.com/postcss/autoprefixer)
@@ -22,7 +22,7 @@ Rak includes and configures the following components to help you build a rock-so
   - [CloudFormation](https://aws.amazon.com/cloudformation/) template to set up those AWS resources for you
 
 ### Using it in a project
-Rak requires Node 6. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
+Rak requires Node 8. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
