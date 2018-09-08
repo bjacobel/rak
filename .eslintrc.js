@@ -26,11 +26,12 @@ module.exports = {
     ],
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
     'react/prefer-stateless-function': 0,
+    'react/destructuring-assignment': 0,
     'react/prop-types': 0,
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
   },
   parserOptions: {
-    ecmaVersion: 8,
+    ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
       modules: true,
