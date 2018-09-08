@@ -26,7 +26,6 @@
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^9.1.5",
     "aws-sdk": "^2.205.0",
-    "babel-core": "^6.26.0",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
     "babel-preset-env": "^1.6.1",
@@ -34,6 +33,7 @@
     "css-loader": "^1.0.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.4.0",
+    "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
     "enzyme-to-json": "^3.3.1",
@@ -91,7 +91,7 @@
     "test": "jest --coverage && ./install-test.sh"
   },
   "version": "0.1.0",
-  "resolutions": {
-    "babel-jest/**/babel-core": "file:./node_modules/@babel/core"
-  }
+  "browserslist": [
+    "last 2 versions"
+  ]
 }

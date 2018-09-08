@@ -7,4 +7,5 @@ module.exports = {
   moduleDirectories: [__dirname, 'node_modules', 'src'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFiles: ['raf/polyfill', './jest.setup.js'],
+  testURL: "http://localhost",
 };

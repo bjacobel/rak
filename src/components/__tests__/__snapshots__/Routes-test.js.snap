@@ -5,18 +5,18 @@ exports[`Router matches snapshot 1`] = `
   <div>
     <Switch>
       <GARoute
-        component={[Function]}
+        component={[MockFunction]}
         exact={true}
         ga={Object {}}
         path="/"
       />
       <GARoute
-        component={[Function]}
+        component={[MockFunction]}
         ga={Object {}}
         path="/child/:id"
       />
       <GARoute
-        component={[Function]}
+        component={[MockFunction]}
         ga={Object {}}
       />
     </Switch>
