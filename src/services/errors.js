@@ -1,17 +1,18 @@
-import Raven from 'raven-js';
+import { init, captureException, configureScope } from '@sentry/browser';
 
 import { LOG_ERRORS, RAVEN_ENDPT, RELEASE } from '../constants';
 
 export default (ex, context) => {
   if (LOG_ERRORS) {
-    // eslint-disable-next-line no-underscore-dangle
-    if (!Raven._isRavenInstalled) {
-      Raven.config(RAVEN_ENDPT, { release: RELEASE }).install();
+    init({ dsn: RAVEN_ENDPT });
+
+    configureScope((scope) => scope.setExtra('release', RELEASE));
+
+    if (context) {
+      configureScope((scope) => scope.setExtra('context', context));
     }
 
-    Raven.captureException(ex, {
-      extra: context,
-    });
+    captureException(ex);
   }
 
   return window.console && console.error && console.error(ex);
