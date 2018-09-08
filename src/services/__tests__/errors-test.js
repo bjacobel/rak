@@ -1,20 +1,19 @@
-/* eslint-disable no-underscore-dangle */
-
-import Raven from 'raven-js';
+import { init, captureException, configureScope } from '@sentry/browser';
 
 import logToRaven from 'services/errors';
 import * as constants from 'src/constants';
 
 jest.mock('constants');
-jest.mock('raven-js');
+jest.mock('@sentry/browser');
 
 const err = new Error('err');
 
 describe('error logging service', () => {
   beforeEach(() => {
     console.error = jest.fn();
-    Raven.config().install.mockClear();
-    Raven.captureException.mockClear();
+    init.mockReset();
+    captureException.mockReset();
+    configureScope.mockReset();
   });
 
   describe('in production mode', () => {
@@ -23,23 +22,19 @@ describe('error logging service', () => {
     });
 
     it("sets up Raven if it hasn't been 'installed' yet", () => {
-      Raven._isRavenInstalled = false;
       logToRaven(err);
-      expect(Raven.config().install).toHaveBeenCalled();
+      expect(init).toHaveBeenCalled();
     });
 
-    it('calls config and logs an error to Raven if it has not been set up', () => {
-      Raven._isRavenInstalled = false;
+    it('logs an error to Raven', () => {
       logToRaven(err);
-      expect(Raven.config().install).toHaveBeenCalled();
-      expect(Raven.captureException).toHaveBeenCalled();
+      expect(captureException).toHaveBeenCalled();
     });
 
-    it('solely logs an error to Raven if it has already been set up', () => {
-      Raven._isRavenInstalled = true;
-      logToRaven(err);
-      expect(Raven.config().install).not.toHaveBeenCalled();
-      expect(Raven.captureException).toHaveBeenCalled();
+    it('can set extra context in scope', () => {
+      const context = { foo: 'bar' };
+      logToRaven(err, context);
+      expect(configureScope).toHaveBeenCalled();
     });
 
     it('logs the error to the console too', () => {
@@ -55,12 +50,12 @@ describe('error logging service', () => {
 
     it("does not call Raven initialize, even if it isn't installed", () => {
       logToRaven(err);
-      expect(Raven.config().install).not.toHaveBeenCalled();
+      expect(init).not.toHaveBeenCalled();
     });
 
     it("does not call raven's exception logger", () => {
       logToRaven(err);
-      expect(Raven.captureException).not.toHaveBeenCalled();
+      expect(captureException).not.toHaveBeenCalled();
     });
 
     it('logs to console', () => {

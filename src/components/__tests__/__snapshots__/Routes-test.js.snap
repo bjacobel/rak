@@ -2,15 +2,6 @@
 
 exports[`Router matches snapshot 1`] = `
 <Fragment>
-  <HelmetWrapper
-    defer={true}
-    encodeSpecialCharacters={true}
-  >
-    <link
-      href="https://google-analytics.com"
-      rel="preconnect"
-    />
-  </HelmetWrapper>
   <BrowserRouter>
     <div>
       <Switch>
