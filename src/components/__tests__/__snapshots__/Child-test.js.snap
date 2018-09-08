@@ -3,8 +3,7 @@
 exports[`child component matches snapshot 1`] = `
 <div>
   <h3>
-    received param: 
-    foo
+    received param: foo
   </h3>
   <Link
     replace={false}
