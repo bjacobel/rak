@@ -1,25 +1,17 @@
-module.exports = () => ({
+module.exports = (api) => ({
   presets: [
     [
-      'env',
+      '@babel/preset-env',
       {
-        targets: {
-          browsers: ['last 2 versions'],
-        },
-        useBuiltIns: true,
-        modules: false,
+        useBuiltIns: "entry",
+        modules: api.env("test") ? 'commonjs' : false,
         exclude: ['transform-regenerator'],
       },
     ],
-    'react',
+    '@babel/preset-react',
   ],
-  plugins: ['@babel/plugin-transform-object-rest-spread'],
-  env: {
-    test: {
-      presets: [['env', { modules: 'commonjs' }]],
-    },
-    development: {
-      plugins: ['@babel/plugin-transform-react-jsx-source'],
-    },
-  },
+  plugins: [
+    '@babel/plugin-proposal-object-rest-spread',
+    api.env("development") && '@babel/plugin-transform-react-jsx-source'
+  ].filter(x => x),
 });

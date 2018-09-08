@@ -10,11 +10,7 @@ jest.mock('components/NotFound');
 jest.mock('services/Analytics');
 
 const setPath = value => {
-  // thanks @cpojer! https://github.com/facebook/jest/issues/890#issuecomment-209698782
-  Object.defineProperty(window.location, 'pathname', {
-    writable: true,
-    value,
-  });
+ global.history.pushState({}, value, value);
 };
 
 describe('Router', () => {
