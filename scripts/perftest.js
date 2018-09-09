@@ -8,7 +8,7 @@ const staticfiles = require('koa-static');
 const compress = require('koa-compress');
 const opn = require('opn');
 
-const config = require('../webpack.config.js')({ production: true }, {});
+const config = require('../webpack.config.js')({ production: true });
 
 const webpackCompile = async () => {
   const compiler = webpack(config);
