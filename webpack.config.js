@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
-module.exports = (env = {}, { p }) => {
-  const isProd = p || env.production || ['production', 'staging'].includes(process.env.NODE_ENV);
+module.exports = (env = {}) => {
+  const isProd = env.production || ['production', 'staging'].includes(process.env.NODE_ENV);
 
   const cssLoader = {
     loader: 'css-loader',
