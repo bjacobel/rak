@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-// Some funkiness here because this file is NOT run through Babel, just Node 6
-/* eslint-env { parserOptions: { ecmaVersion: 6 } } */
-/* eslint 'comma-dangle': [2, 'always-multiline'] */
-/* eslint-disable global-require, import/no-extraneous-dependencies, import/no-dynamic-require, import/no-unresolved */
+// Some funkiness here because this file is NOT run through Babel, just Node LTS
+/* eslint-env { parserOptions: { ecmaVersion: 8 }, env: { node: true } } */
+/* eslint-disable global-require, import/no-dynamic-require, import/no-unresolved */
 
 const fs = require('fs');
 const path = require('path');
