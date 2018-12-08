@@ -89,9 +89,8 @@ const isBin = (fileAbsPath) => {
 
 (() => {
   console.log("\nInstalling Rak's setup requirements...\n");
-  execSync('yarn add replacestream mkdirp || npm install replacestream mkdirp', { stdio: [0, 1, 2] });
+  execSync('yarn add replacestream || npm install replacestream', { stdio: [0, 1, 2] });
   const replaceStream = require('replacestream');
-  const mkdirp = require('mkdirp');
 
   console.log("\nSetting up new Rak project's file structure...\n");
   const newProjectRoot = process.cwd();
@@ -102,7 +101,7 @@ const isBin = (fileAbsPath) => {
     const dstFileSubfolder = path.parse(dstFileAbsPath).dir;
 
     return new Promise((resolve, reject) => {
-      mkdirp.sync(dstFileSubfolder);
+      fs.mkdirSync(dstFileSubfolder, { recursive: true });
       const dstFile = fs.createWriteStream(dstFileAbsPath);
 
       if (srcFileRelFromSrcRoot === 'package.json') {
