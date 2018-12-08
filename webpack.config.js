@@ -17,10 +17,6 @@ module.exports = (env = {}) => {
     },
   };
 
-  const prodCssConfig = [{ loader: MiniCssExtractPlugin.loader }, cssLoader, { loader: 'postcss-loader' }];
-
-  const devCssConfig = [{ loader: 'style-loader' }, cssLoader, { loader: 'postcss-loader' }];
-
   const wpconfig = {
     entry: {
       main: './src/index.js',
@@ -35,17 +31,6 @@ module.exports = (env = {}) => {
     module: {
       rules: [
         {
-          test: /\.woff(2)?(\?[a-z0-9=]+)?$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 64000,
-              },
-            },
-          ],
-        },
-        {
           test: /\.(png|jpe?g|gif|svg)(\?[a-z0-9=]+)?$/,
           use: 'file-loader',
         },
@@ -56,7 +41,11 @@ module.exports = (env = {}) => {
         },
         {
           test: /\.css$/,
-          use: isProd ? prodCssConfig : devCssConfig,
+          loaders: [
+            isProd ? { loader: MiniCssExtractPlugin.loader } : { loader: 'style-loader' },
+            cssLoader,
+            { loader: 'postcss-loader' },
+          ],
         },
       ],
     },
@@ -68,6 +57,7 @@ module.exports = (env = {}) => {
       constants: false,
     },
     optimization: {
+      noEmitOnErrors: true,
       splitChunks: {
         chunks: 'async',
         minChunks: 1,
@@ -83,8 +73,6 @@ module.exports = (env = {}) => {
       },
     },
     plugins: [
-      new webpack.NoEmitOnErrorsPlugin(),
-      new webpack.NamedModulesPlugin(),
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
         'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
@@ -114,14 +102,14 @@ module.exports = (env = {}) => {
   };
 
   if (!isProd) {
-    wpconfig.plugins = [new webpack.HotModuleReplacementPlugin(), ...wpconfig.plugins];
+    wpconfig.plugins.push(new webpack.HotModuleReplacementPlugin());
   } else {
-    wpconfig.plugins = [
+    wpconfig.plugins.push(
       new MiniCssExtractPlugin({
-        filename: isProd ? '[name].[contenthash].css' : '[name].css',
-      }),
-      ...wpconfig.plugins,
-    ];
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[id].[contenthash].css',
+      })
+    );
   }
 
   return wpconfig;
