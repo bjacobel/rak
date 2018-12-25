@@ -33,7 +33,7 @@ module.exports = {
         },
       ],
       ViewerCertificate: {
-        AcmCertificateArn: ref('ACMCertificate'),
+        AcmCertificateArn: ref('IssuedCertificate'),
         SslSupportMethod: 'sni-only',
       },
       // This is so pushState routing works
