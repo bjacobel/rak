@@ -68,7 +68,7 @@ Rak includes a CloudFormation template that can create & configure all the AWS r
 
 1. Add AWS configuration to your environment. See the AWS doc on [configuring the command-line interface](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 2. Add project configuration to `./config.js`, including the name of your project and the domain it'll live at.
-3. Build your CloudFormation stack with `yarn run awsUtils -- launch`.
+3. Build your CloudFormation stack with `yarn awsUtils launch`.
 
 CloudFormation will create the following resources:
 
@@ -79,7 +79,7 @@ CloudFormation will create the following resources:
 - A Route53 DNS record for your site
 - Another Route53 DNS record for www.<yoursite>, if your site sits at a domain apex
 
-This will take about 30 minutes. While it's going, leaving the `yarn run awsUtils -- launch` process running will tail CloudFormation events to your console. You can also log into the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active) to track the progress of your stack.
+This will take about 30 minutes. While it's going, leaving the `yarn awsUtils launch` process running will tail CloudFormation events to your console. You can also log into the [AWS Management Console](https://console.aws.amazon.com/cloudformation/home#/stacks?filter=active) to track the progress of your stack.
 
 Once it's reached the `CREATE_COMPLETE` status:
 
