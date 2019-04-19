@@ -50,7 +50,7 @@
     "koa-static": "^5.0.0",
     "lighthouse": "^4.0.0",
     "mini-css-extract-plugin": "^0.6.0",
-    "opn": "^5.3.0",
+    "opn": "^6.0.0",
     "postcss-font-magician": "^2.2.1",
     "postcss-loader": "^3.0.0",
     "postcss-modules-values": "^2.0.0",
