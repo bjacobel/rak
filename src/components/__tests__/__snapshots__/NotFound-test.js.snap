@@ -6,7 +6,6 @@ exports[`404 component matches snapshot 1`] = `
     404: page not found
   </h1>
   <Link
-    replace={false}
     to="/"
   >
     Home
