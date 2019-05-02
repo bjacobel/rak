@@ -45,5 +45,6 @@ module.exports = {
   },
   settings: {
     'import/resolver': 'webpack',
+    'import/core-modules': ['path', 'stream'],
   },
 };
