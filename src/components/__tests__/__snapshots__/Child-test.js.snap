@@ -6,7 +6,6 @@ exports[`child component matches snapshot 1`] = `
     received param: foo
   </h3>
   <Link
-    replace={false}
     to="/"
   >
     Home

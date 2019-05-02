@@ -7,13 +7,11 @@ exports[`main component un-Connected component matches snapshot 1`] = `
     foo
   </h3>
   <Link
-    replace={false}
     to="/child/foo"
   >
     Routing demo
   </Link>
   <Link
-    replace={false}
     to="/asdf"
   >
     404 demo
