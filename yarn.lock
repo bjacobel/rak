@@ -686,9 +686,10 @@
     http-proxy-agent "^0.2.6"
     lodash "^3.6.0"
 
-"@mapbox/cloudfriend@^2.2.0":
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/cloudfriend/-/cloudfriend-2.2.0.tgz#62f9d902f506fb1d52293976daef250a9bdb21ce"
+"@mapbox/cloudfriend@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@mapbox/cloudfriend/-/cloudfriend-3.0.1.tgz#d975746e92327519d65c3e940543680777408dd0"
+  integrity sha512-pbF5fuOcCOhVwm/wyghewki4zDX3RCJrk7N3Ywl00JnPPMEBl0gDerJ0zsgREE3oRax+WK61JwhPgwnPmvkR2w==
   dependencies:
     aws-sdk "^2.4.11"
     minimist "^1.2.0"
