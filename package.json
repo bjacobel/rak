@@ -48,7 +48,7 @@
     "koa": "^2.5.2",
     "koa-compress": "^3.0.0",
     "koa-static": "^5.0.0",
-    "lighthouse": "^4.0.0",
+    "lighthouse": "^5.0.0",
     "mini-css-extract-plugin": "^0.6.0",
     "opn": "^6.0.0",
     "postcss-font-magician": "^2.2.1",
