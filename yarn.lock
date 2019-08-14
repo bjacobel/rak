@@ -1211,20 +1211,6 @@ aws-sdk@^2.1.21:
     xml2js "0.4.17"
     xmlbuilder "4.2.1"
 
-aws-sdk@^2.363.0:
-  version "2.363.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.363.0.tgz#6d366a78d5b008fd927d6ff24815d39d78b54778"
-  dependencies:
-    buffer "4.9.1"
-    events "1.1.1"
-    ieee754 "1.1.8"
-    jmespath "0.15.0"
-    querystring "0.2.0"
-    sax "1.2.1"
-    url "0.10.3"
-    uuid "3.1.0"
-    xml2js "0.4.19"
-
 aws-sdk@^2.4.11:
   version "2.205.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.205.0.tgz#1a93730253e2be027a4bd3af9248cbda0573de80"
@@ -1238,6 +1224,21 @@ aws-sdk@^2.4.11:
     uuid "3.1.0"
     xml2js "0.4.17"
     xmlbuilder "4.2.1"
+
+aws-sdk@^2.510.0:
+  version "2.510.0"
+  resolved "https://npm.hubteam.com/npm-nexus/repository/npm-all/aws-sdk/-/aws-sdk-2.510.0.tgz#2bf73d7fadccfe2e68ffb2e86e7f5f36600bfe2e"
+  integrity sha512-K75v+hCb4Kc/X8rd985ttTRKrdeI8xru1GQBlnmop01tjalA6SUzS81R3Fryh2yxDv45Hp46QBET1Gri0YpEfg==
+  dependencies:
+    buffer "4.9.1"
+    events "1.1.1"
+    ieee754 "1.1.8"
+    jmespath "0.15.0"
+    querystring "0.2.0"
+    sax "1.2.1"
+    url "0.10.3"
+    uuid "3.3.2"
+    xml2js "0.4.19"
 
 aws-sign2@~0.6.0:
   version "0.6.0"
