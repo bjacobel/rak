@@ -5,6 +5,8 @@ cache: yarn
 env:
   global:
     - NODE_ENV=test
+install:
+  - yarn --frozen-lockfile
 script:
   - yarn lint
   - yarn test --coverage
