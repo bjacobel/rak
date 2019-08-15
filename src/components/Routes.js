@@ -9,6 +9,7 @@ import Analytics from '../services/Analytics';
 class GARoute extends Route {
   render() {
     this.props.ga.pageview();
+    // eslint-disable-next-line react/jsx-props-no-spreading
     return <Route {...this.props} />;
   }
 }
@@ -20,7 +21,7 @@ export default class Routes extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <>
         <BrowserRouter>
           <div>
             <Switch>
@@ -30,7 +31,7 @@ export default class Routes extends Component {
             </Switch>
           </div>
         </BrowserRouter>
-      </React.Fragment>
+      </>
     );
   }
 }
