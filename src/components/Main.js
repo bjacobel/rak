@@ -23,7 +23,7 @@ class Main extends Component {
     const { data } = this.props;
 
     return (
-      <React.Fragment>
+      <>
         <div className={styles.logo} />
         <h3 className={styles.data}>{data.text || ''}</h3>
         <Link className={link} to="/child/foo">
@@ -32,7 +32,7 @@ class Main extends Component {
         <Link className={link} to="/asdf">
           404 demo
         </Link>
-      </React.Fragment>
+      </>
     );
   }
 }
