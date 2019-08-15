@@ -3,6 +3,7 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'arrow-parens': [2, 'always'],
+    'max-classes-per-file': 0,
     'no-else-return': 0,
     'no-console': 0,
     'import/prefer-default-export': 1,

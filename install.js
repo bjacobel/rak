@@ -54,9 +54,10 @@ const clean = (pDJ, projName) => {
 
   newPackageJson.name = projName;
 
-  newPackageJson.repository = Object.assign({}, newPackageJson.repository, {
+  newPackageJson.repository = {
+    ...newPackageJson.repository,
     url: newPackageJson.repository.url.replace(config.ProjectName, projName),
-  });
+  };
 
   return JSON.stringify(newPackageJson, null, 2);
 };
