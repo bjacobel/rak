@@ -26,8 +26,6 @@ Rak requires Node 8. In addition, to use the automatic AWS deployment features, 
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
-(Note: This section's snippets use [`yarn`](https://yarnpkg.com) as a package manager. NPM works too. See below.)
-
     mkdir my-new-project
     cd my-new-project
     yarn add rak
@@ -56,12 +54,6 @@ and start developing! Your next steps might include:
 - Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
 - Removing or modifying the example actions/reducers/services to do... whatever your new app does.
 
-Note that while these instructions are given using Yarn, npm is also supported:
-
-    mkdir my-new-project && cd my-new-project
-    npm install rak
-    $(npm bin)/rak
-    npm uninstall rak
 
 ### Deployment
 Rak includes a CloudFormation template that can create & configure all the AWS resources it needs. You'll want to create the CloudFormation stack before you push to your master branch for the first time. To do that:
