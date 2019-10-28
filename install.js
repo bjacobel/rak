@@ -17,15 +17,9 @@ const NoopTransform = new Transform({
 
 const config = require('./config');
 
-const ignorePaths = [
-  '.git',
-  '.npmignore',
-  'install.js',
-  'install-test.sh',
-  'node_modules',
-  'CHANGELOG.md',
-  'yarn.sh',
-].map((x) => path.resolve(__dirname, x));
+const ignorePaths = ['.git', '.npmignore', 'install.js', 'install-test.sh', 'node_modules', 'CHANGELOG.md'].map((x) =>
+  path.resolve(__dirname, x)
+);
 
 const flatten = (list) => list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 
@@ -89,7 +83,9 @@ const isBin = (fileAbsPath) => {
 
 (() => {
   console.log("\nInstalling Rak's setup requirements...\n");
-  execSync('yarn add replacestream || npm install replacestream', { stdio: [0, 1, 2] });
+  execSync('yarn add replacestream --no-lockfile --silent', {
+    stdio: [0, 1, 2],
+  });
   const replaceStream = require('replacestream');
 
   console.log("\nSetting up new Rak project's file structure...\n");
@@ -126,7 +122,7 @@ const isBin = (fileAbsPath) => {
     execSync('command -v tree > /dev/null && tree . -aIC "node_modules|.yalc" || true', { stdio: [0, 1, 2] });
 
     console.log('\nInstalling devDependencies of your new Rak project...\n');
-    execSync('yarn || npm -s install --only-dev', { stdio: [0, 1, 2] });
+    execSync('yarn --pure-lockfile', { stdio: [0, 1, 2] });
 
     execSync('rm -rf yalc* .yalc');
 
