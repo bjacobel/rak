@@ -1,6 +1,6 @@
 <img src="https://rak.bjacobel.com/logo.svg" alt="Rak" width="200px">
 
-[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Greenkeeper badge](https://badges.greenkeeper.io/bjacobel/rak.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Renovate badge](https://badges.renovateapi.com/github/bjacobel/rak)](https://renovatebot.com/)
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
