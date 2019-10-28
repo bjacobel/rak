@@ -14,5 +14,15 @@
   },
   "labels": [
     "dependencies"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": ["^eslint"],
+      "groupName": "ESLint packages"
+    },
+    {
+      "packagePatterns": ["^stylelint"],
+      "groupName": "Stylelint packages"
+    }
   ]
 }
