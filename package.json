@@ -29,7 +29,7 @@
     "babel-core": "^7.0.0-0",
     "babel-jest": "^23.4.2",
     "babel-loader": "^8.0.0",
-    "chrome-launcher": "^0.11.0",
+    "chrome-launcher": "^0.12.0",
     "css-loader": "^2.0.0",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.4.0",
