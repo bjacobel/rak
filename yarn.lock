@@ -2158,20 +2158,7 @@ caniuse-db@^1.0.30000977:
   resolved "https://registry.yarnpkg.com/caniuse-db/-/caniuse-db-1.0.30001005.tgz#a61131ed16f519fbef25612e36dced8e69635455"
   integrity sha512-MSRfm2N6FRDSpAJ00ipCuFe0CNink5JJOFzl4S7fLSBJdowhGq3uMxzkWGTjvvReo1PuWfK5YYJydJJ+9mJebw==
 
-caniuse-lite@^1.0.30000878:
-  version "1.0.30000880"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000880.tgz#b7b6ceaf739e17d0dda0d89426cba4be16d07bb0"
-
-caniuse-lite@^1.0.30000884:
-  version "1.0.30000884"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000884.tgz#eb82a959698745033b26a4dcd34d89dba7cc6eb3"
-
-caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957:
-  version "1.0.30000960"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30000960.tgz#ec48297037e5607f582f246ae7b12bee66a78999"
-  integrity sha512-7nK5qs17icQaX6V3/RYrJkOsZyRNnroA4+ZwxaKJzIKy+crIy0Mz5CBlLySd2SNV+4nbUZeqeNfiaEieUBu3aA==
-
-caniuse-lite@^1.0.30001004:
+caniuse-lite@^1.0.30000878, caniuse-lite@^1.0.30000884, caniuse-lite@^1.0.30000955, caniuse-lite@^1.0.30000957, caniuse-lite@^1.0.30001004:
   version "1.0.30001005"
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001005.tgz#823054210be638c725521edcb869435dae46728d"
   integrity sha512-g78miZm1Z5njjYR216a5812oPiLgV1ssndgGxITHWUopmjUrCswMisA0a2kSB7a0vZRox6JOKhM51+efmYN8Mg==
@@ -3602,10 +3589,10 @@ eslint-plugin-prettier@^3.1.0:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
-eslint-plugin-react-hooks@^2.0.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.2.0.tgz#078264e9e388da6929ace09d6abe92c85963aff4"
-  integrity sha512-jSlnBjV2cmyIeL555H/FbvuSbQ1AtpHjLMHuPrQnt1eVA6lX8yufdygh7AArI2m8ct7ChHGx2uOaCuxq2MUn6g==
+eslint-plugin-react-hooks@^1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-1.7.0.tgz#6210b6d5a37205f0b92858f895a4e827020a7d04"
+  integrity sha512-iXTCFcOmlWvw4+TOE8CLWj6yX1GwzT0Y6cUfHHZqWnSk144VmVIRcVGtUAzrLES7C798lmvnt02C7rxaOX1HNA==
 
 eslint-plugin-react@^7.14.3:
   version "7.14.3"
