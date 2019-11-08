@@ -15,7 +15,7 @@ const mapDispatchToProps = {
 };
 
 class Main extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getDataAsync();
   }
 
