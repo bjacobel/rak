@@ -6,7 +6,18 @@ exports[`Router matches snapshot 1`] = `
     <div>
       <Switch>
         <GARoute
-          component={[MockFunction]}
+          component={
+            Object {
+              "$$typeof": Symbol(react.memo),
+              "WrappedComponent": [MockFunction],
+              "apply": [MockFunction],
+              "bind": [MockFunction],
+              "call": [MockFunction],
+              "compare": null,
+              "displayName": "Connect(Main)",
+              "type": [MockFunction],
+            }
+          }
           exact={true}
           ga={Object {}}
           path="/"
