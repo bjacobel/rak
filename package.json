@@ -22,6 +22,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@bjacobel/cloudformer-node": "^0.0.13",
+    "@bjacobel/perf": "0.0.1",
     "@mapbox/cloudfriend": "^3.0.1",
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^9.1.5",
@@ -29,7 +30,6 @@
     "babel-core": "^7.0.0-0",
     "babel-jest": "^24.0.0",
     "babel-loader": "^8.0.0",
-    "chrome-launcher": "^0.12.0",
     "css-loader": "^3.0.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.15.1",
@@ -46,12 +46,7 @@
     "file-loader": "^4.0.0",
     "html-webpack-plugin": "^3.0.4",
     "jest-cli": "^24.0.0",
-    "koa": "^2.5.2",
-    "koa-compress": "^3.0.0",
-    "koa-static": "^5.0.0",
-    "lighthouse": "^5.0.0",
     "mini-css-extract-plugin": "^0.8.0",
-    "opn": "^6.0.0",
     "postcss-font-magician": "^2.2.1",
     "postcss-loader": "^3.0.0",
     "postcss-modules-values": "^3.0.0",
@@ -91,8 +86,7 @@
     "awsUtils": "node aws/utils",
     "lint": "eslint . && stylelint src/stylesheets/*.css",
     "start": "webpack-dev-server",
-    "test": "jest --coverage && ./install-test.sh",
-    "perftest": "node scripts/perftest"
+    "test": "jest --coverage && ./install-test.sh"
   },
   "version": "0.1.0",
   "browserslist": [
