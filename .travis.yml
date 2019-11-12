@@ -24,7 +24,6 @@ deploy:
   on:
     branch:
       - master
-    node: '8'
     condition: $(node aws/utils bucketExists) = "true"
 after_deploy:
   - node aws/utils invalidate "/index.html"
