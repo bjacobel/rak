@@ -9,11 +9,9 @@ const path = require('path');
 const { execSync } = require('child_process');
 const { Transform } = require('stream');
 
-const NoopTransform = new Transform({
-  transform(chunk, encoding, callback) {
-    callback(undefined, chunk);
-  },
-});
+const noopTransform = (chunk, encoding, callback) => {
+  callback(undefined, chunk);
+};
 
 const config = require('./config');
 
@@ -108,7 +106,11 @@ const isBin = (fileAbsPath) => {
       } else {
         return fs
           .createReadStream(srcFileAbsPath)
-          .pipe(isBin(srcFileAbsPath) ? NoopTransform : replaceStream(config.ProjectName, newProjectName))
+          .pipe(
+            isBin(srcFileAbsPath)
+              ? new Transform({ transform: noopTransform })
+              : replaceStream(config.ProjectName, newProjectName)
+          )
           .pipe(dstFile)
           .on('close', resolve)
           .on('error', reject);
