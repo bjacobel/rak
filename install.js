@@ -76,6 +76,8 @@ const isBin = (fileAbsPath) => {
   switch (path.extname(fileAbsPath)) {
     case '.ico':
       return true;
+    case '.lock':
+      return true;
     default:
       return false;
   }
