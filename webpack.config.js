@@ -3,11 +3,13 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const HtmlWebpackMultiBuildPlugin = require('html-webpack-multi-build-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const config = require('./config.js');
 
-module.exports = (env = {}) => {
-  const isProd = env.production || ['production', 'staging'].includes(process.env.NODE_ENV);
+module.exports = (env = {}, { mode } = {}) => {
+  const isProd = env.production || ['production', 'staging'].includes(process.env.NODE_ENV) || mode === 'production';
 
   const cssLoader = {
     loader: 'css-loader',
@@ -20,14 +22,14 @@ module.exports = (env = {}) => {
     },
   };
 
-  const wpconfig = {
+  const wpconfig = babelPreset => ({
     entry: {
       main: './src/index.js',
     },
     mode: isProd ? 'production' : 'development',
     output: {
       path: `${__dirname}/dist`,
-      filename: isProd ? '[name].[chunkhash].js' : '[name].js',
+      filename: isProd ? `[name].[chunkhash].${babelPreset}.js` : `[name].${babelPreset}.js`,
       publicPath: isProd ? '/' : 'http://localhost:8080/',
     },
     devtool: 'source-map',
@@ -40,7 +42,12 @@ module.exports = (env = {}) => {
         {
           test: /\.js$/,
           include: path.join(__dirname, 'src'),
-          use: 'babel-loader',
+          use: {
+            loader: 'babel-loader',
+            options: {
+              envName: babelPreset,
+            },
+          },
         },
         {
           test: /\.css$/,
@@ -74,6 +81,14 @@ module.exports = (env = {}) => {
           },
         },
       },
+      minimizer: [
+        new TerserPlugin({
+          terserOptions: {
+            ecma: 8,
+            safari10: true,
+          },
+        }),
+      ],
     },
     plugins: [
       new webpack.DefinePlugin({
@@ -81,9 +96,10 @@ module.exports = (env = {}) => {
         'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
       }),
       new HtmlWebpackPlugin({
-        template: './src/index.html',
+        template: './src/index.html.ejs',
         favicon: './src/assets/images/favicon.ico',
         title: config.ProjectName,
+        inject: false,
       }),
       new ScriptExtHtmlWebpackPlugin({
         dynamicChunks: {
@@ -91,7 +107,14 @@ module.exports = (env = {}) => {
         },
         defaultAttribute: 'defer',
       }),
-    ],
+      new HtmlWebpackMultiBuildPlugin(),
+      !isProd && new webpack.HotModuleReplacementPlugin(),
+      isProd &&
+        new MiniCssExtractPlugin({
+          filename: '[name].[contenthash].css',
+          chunkFilename: '[id].[contenthash].css',
+        }),
+    ].filter(Boolean),
     devServer: {
       hot: true,
       publicPath: '/',
@@ -103,18 +126,7 @@ module.exports = (env = {}) => {
       maxEntrypointSize: 500000,
       hints: isProd ? 'warning' : false,
     },
-  };
+  });
 
-  if (!isProd) {
-    wpconfig.plugins.push(new webpack.HotModuleReplacementPlugin());
-  } else {
-    wpconfig.plugins.push(
-      new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css',
-        chunkFilename: '[id].[contenthash].css',
-      }),
-    );
-  }
-
-  return wpconfig;
+  return [wpconfig('modern'), wpconfig('legacy')].filter(Boolean);
 };
