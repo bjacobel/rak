@@ -21,7 +21,7 @@
     "@babel/plugin-transform-react-jsx-source": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
-    "@bjacobel/cloudformer-node": "^0.0.13",
+    "@bjacobel/cloudformer-node": "^0.0.14",
     "@bjacobel/perf": "0.0.1",
     "@mapbox/cloudfriend": "^3.0.1",
     "@sentry/cli": "^1.30.5",
