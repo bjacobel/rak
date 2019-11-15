@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://www.google-analytics.com" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <% for (key in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[key] %>" rel="stylesheet" media="nope!" onload="this.media='all'">
+  <% } %>
+</head>
+<body>
+  <div id="main"></div>
+  <script type="module">
+    <%- include('./partials/scripts', { scripts: htmlWebpackPlugin.options.modernScripts }) %>
+  </script>
+  <script nomodule>
+    <%- include('./partials/scripts', { scripts: htmlWebpackPlugin.options.legacyScripts }) %>
+  </script>
+</body>
+</html>

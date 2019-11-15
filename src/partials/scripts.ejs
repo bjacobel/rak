@@ -1,0 +1,6 @@
+<% for (key in scripts) { %>
+var script<%= [key] %> = document.createElement('script');
+script<%= [key] %>.type = 'text/javascript';
+script<%= [key] %>.src = '<%= scripts[key] %>';
+document.body.appendChild(script<%= [key] %>);
+<% } %>
