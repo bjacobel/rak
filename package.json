@@ -22,7 +22,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "@bjacobel/cloudformer-node": "^0.0.14",
-    "@bjacobel/perf": "0.0.1",
+    "@bjacobel/perf": "0.0.2",
     "@mapbox/cloudfriend": "^3.0.1",
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^9.1.5",
