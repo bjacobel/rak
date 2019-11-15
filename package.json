@@ -3,7 +3,7 @@
   "bin": "install.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
-    "@sentry/browser": "^5.1.1",
+    "@sentry/browser": "^5.9.0",
     "core-js": "^3.0.1",
     "raf": "^3.4.0",
     "react": "^16.8.3",
