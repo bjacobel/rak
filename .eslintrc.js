@@ -13,10 +13,11 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
-    'react/jsx-filename-extension': [2, { extensions: ['.js'] }],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.html.jsx'] }],
     'react/prefer-stateless-function': 0,
     'react/destructuring-assignment': 0,
     'react/prop-types': 0,
+    'react/jsx-props-no-spreading': 0,
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
   },
   parserOptions: {
