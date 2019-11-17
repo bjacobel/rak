@@ -3,7 +3,6 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const HtmlWebpackMultiBuildPlugin = require('html-webpack-multi-build-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const config = require('./config.js');
@@ -57,6 +56,12 @@ module.exports = (env = {}, { mode } = {}) => {
             { loader: 'postcss-loader' },
           ],
         },
+        {
+          test: /\.html\.jsx$/,
+          use: {
+            loader: '@bjacobel/vhtml-loader',
+          },
+        },
       ],
     },
     resolve: {
@@ -96,7 +101,7 @@ module.exports = (env = {}, { mode } = {}) => {
         'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
       }),
       new HtmlWebpackPlugin({
-        template: './src/index.html.ejs',
+        template: './src/index.html.jsx',
         favicon: './src/assets/images/favicon.ico',
         title: config.ProjectName,
         inject: false,
@@ -107,7 +112,6 @@ module.exports = (env = {}, { mode } = {}) => {
         },
         defaultAttribute: 'defer',
       }),
-      new HtmlWebpackMultiBuildPlugin(),
       !isProd && new webpack.HotModuleReplacementPlugin(),
       isProd &&
         new MiniCssExtractPlugin({
@@ -128,5 +132,6 @@ module.exports = (env = {}, { mode } = {}) => {
     },
   });
 
-  return [wpconfig('modern'), wpconfig('legacy')].filter(Boolean);
+  return wpconfig('modern');
+  // return [wpconfig('modern'), wpconfig('legacy')].filter(Boolean);
 };

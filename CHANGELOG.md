@@ -1,3 +1,13 @@
+### v0.2.0
+
+- Implement [module/nomodule pattern](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) for better code size in browsers that support ES2015
+- Externalize a number of features (performance testing scripts, etc)
+- Support writing index.html templates with JSX
+- Use Terser for minification
+- Implement `@babel/plugin-transform-runtime`
+- Support (encourage) Node 12
+- Add configuration file for [Renovate](https://renovatebot.com/)
+
 ### v0.1.0
 
 - Upgrade to React 16
