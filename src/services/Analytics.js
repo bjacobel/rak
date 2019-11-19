@@ -6,19 +6,21 @@ import { GA_ID, TRACK_ANALYTICS } from '../constants';
 
 export default class Analytics {
   constructor() {
-    window.ga =
-      window.ga ||
-      // eslint-disable-next-line func-names
-      function(...args) {
-        (window.ga.q = window.ga.q || []).push(args);
-      };
-    window.ga.l = +new Date();
-    window.ga('create', GA_ID, 'auto');
+    if (!window.ga) {
+      window.ga =
+        window.ga ||
+        // eslint-disable-next-line func-names
+        function(...args) {
+          (window.ga.q = window.ga.q || []).push(args);
+        };
+      window.ga.l = +new Date();
+      window.ga('create', GA_ID, 'auto');
 
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.google-analytics.com/analytics.js';
-    document.body.appendChild(script);
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.google-analytics.com/analytics.js';
+      document.body.appendChild(script);
+    }
   }
 
   pageview() {
