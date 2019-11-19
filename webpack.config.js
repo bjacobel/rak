@@ -21,14 +21,14 @@ module.exports = (env = {}, { mode } = {}) => {
     },
   };
 
-  const wpconfig = babelPreset => ({
+  return {
     entry: {
       main: './src/index.js',
     },
     mode: isProd ? 'production' : 'development',
     output: {
       path: `${__dirname}/dist`,
-      filename: isProd ? `[name].[chunkhash].${babelPreset}.js` : `[name].${babelPreset}.js`,
+      filename: isProd ? '[name].[chunkhash].js' : '[name].js',
       publicPath: isProd ? '/' : 'http://localhost:8080/',
     },
     devtool: 'source-map',
@@ -41,12 +41,7 @@ module.exports = (env = {}, { mode } = {}) => {
         {
           test: /\.js$/,
           include: path.join(__dirname, 'src'),
-          use: {
-            loader: 'babel-loader',
-            options: {
-              envName: babelPreset,
-            },
-          },
+          use: 'babel-loader',
         },
         {
           test: /\.css$/,
@@ -112,13 +107,6 @@ module.exports = (env = {}, { mode } = {}) => {
           test: /\.js$/,
           chunks: 'async',
         },
-        module: /modern\.js$/,
-        custom: [
-          {
-            test: /legacy\.js$/,
-            attribute: 'nomodule',
-          },
-        ],
       }),
       !isProd && new webpack.HotModuleReplacementPlugin(),
       isProd &&
@@ -138,7 +126,5 @@ module.exports = (env = {}, { mode } = {}) => {
       maxEntrypointSize: 500000,
       hints: isProd ? 'warning' : false,
     },
-  });
-
-  return [wpconfig('modern'), isProd && wpconfig('legacy')].filter(Boolean);
+  };
 };
