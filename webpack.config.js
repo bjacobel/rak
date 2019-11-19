@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
+const config = require('./config.js');
+
 module.exports = (env = {}) => {
   const isProd = env.production || ['production', 'staging'].includes(process.env.NODE_ENV);
 
@@ -81,6 +83,7 @@ module.exports = (env = {}) => {
       new HtmlWebpackPlugin({
         template: './src/index.html',
         favicon: './src/assets/images/favicon.ico',
+        title: config.ProjectName,
       }),
       new ScriptExtHtmlWebpackPlugin({
         dynamicChunks: {
