@@ -104,13 +104,21 @@ module.exports = (env = {}, { mode } = {}) => {
         template: './src/index.html.jsx',
         favicon: './src/assets/images/favicon.ico',
         title: config.ProjectName,
-        inject: false,
+        inject: true,
       }),
       new ScriptExtHtmlWebpackPlugin({
-        dynamicChunks: {
-          preload: true,
-        },
         defaultAttribute: 'defer',
+        preload: {
+          test: /\.js$/,
+          chunks: 'async',
+        },
+        module: /modern\.js$/,
+        custom: [
+          {
+            test: /legacy\.js$/,
+            attribute: 'nomodule',
+          },
+        ],
       }),
       !isProd && new webpack.HotModuleReplacementPlugin(),
       isProd &&
@@ -132,6 +140,5 @@ module.exports = (env = {}, { mode } = {}) => {
     },
   });
 
-  return wpconfig('modern');
-  // return [wpconfig('modern'), wpconfig('legacy')].filter(Boolean);
+  return [wpconfig('modern'), isProd && wpconfig('legacy')].filter(Boolean);
 };
