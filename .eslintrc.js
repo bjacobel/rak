@@ -1,8 +1,6 @@
 module.exports = {
-  extends: ['eslint-config-airbnb', 'prettier'],
-  plugins: ['prettier'],
+  extends: ['eslint-config-airbnb', 'eslint-config-prettier'],
   rules: {
-    'arrow-parens': [2, 'always'],
     'max-classes-per-file': 0,
     'no-else-return': 0,
     'no-console': 0,
@@ -13,16 +11,6 @@ module.exports = {
       {
         groups: [['builtin', 'external']],
         'newlines-between': 'always',
-      },
-    ],
-    'prettier/prettier': [
-      2,
-      {
-        singleQuote: true,
-        trailingComma: 'es5',
-        bracketSpacing: true,
-        printWidth: 120,
-        arrowParens: 'always',
       },
     ],
     'react/jsx-filename-extension': [2, { extensions: ['.js'] }],

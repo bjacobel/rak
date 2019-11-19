@@ -9,14 +9,14 @@ module.exports = () => {
     template,
     {
       Parameters: Object.keys(config)
-        .filter((x) => parameters.includes(x))
+        .filter(x => parameters.includes(x))
         .reduce((prev, curr) => ({ ...prev, [curr]: config[curr] }), {}),
       Tags: {
         Name: config.ProjectName,
       },
       Capabilities: ['CAPABILITY_IAM'],
     },
-    (result) => console.log(result)
+    result => console.log(result),
   );
   console.log(`Check on the progress of the stack in the AWS console:
     \rhttps://console.aws.amazon.com/cloudformation/home#/stacks?filter=active\n

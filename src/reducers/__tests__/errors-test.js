@@ -10,7 +10,7 @@ describe('errors reducer', () => {
           payload: {
             errors: ['foo'],
           },
-        })
+        }),
       ).toEqual(['foo']);
     });
 
@@ -21,7 +21,7 @@ describe('errors reducer', () => {
           payload: {
             errors: ['foo'],
           },
-        })
+        }),
       ).toEqual(['foo', 'fizz', 'baz']);
     });
 
@@ -32,7 +32,7 @@ describe('errors reducer', () => {
           payload: {
             errors: ['foo', 'bar'],
           },
-        })
+        }),
       ).toEqual(['foo', 'bar', 'fizz', 'baz']);
     });
   });
