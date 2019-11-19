@@ -1,8 +1,4 @@
 {
-  "extends": [
-    "stylelint-config-standard",
-    "stylelint-config-css-modules"
-  ],
-  "rules": {
-  }
+  "extends": ["stylelint-config-standard", "stylelint-config-css-modules"],
+  "rules": {}
 }

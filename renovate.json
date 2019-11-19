@@ -1,20 +1,13 @@
 {
-  "extends": [
-    "config:base",
-    ":preserveSemverRanges"
-  ],
+  "extends": ["config:base", ":preserveSemverRanges"],
   "statusCheckVerify": true,
-  "ignoreDeps": [
-    "precss"
-  ],
+  "ignoreDeps": ["precss"],
   "automerge": true,
   "automergeType": "branch",
   "major": {
     "automerge": false
   },
-  "labels": [
-    "dependencies"
-  ],
+  "labels": ["dependencies"],
   "packageRules": [
     {
       "packagePatterns": ["^eslint"],

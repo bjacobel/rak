@@ -1,4 +1,4 @@
-module.exports = (api) => ({
+module.exports = api => ({
   presets: [
     [
       '@babel/preset-env',
@@ -13,5 +13,5 @@ module.exports = (api) => ({
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
     api.env('development') && '@babel/plugin-transform-react-jsx-source',
-  ].filter((x) => x),
+  ].filter(x => x),
 });

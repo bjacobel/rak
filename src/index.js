@@ -22,7 +22,7 @@ const render = () => {
     <Provider store={store}>
       <Routes />
     </Provider>,
-    rootEl
+    rootEl,
   );
 };
 

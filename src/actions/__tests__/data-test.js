@@ -50,7 +50,7 @@ describe('data actions', () => {
     it('calls getData, then on success it dispatches loadingEnded and getDataSucceeded', () =>
       store.dispatch(getDataAsync()).then(() => {
         expect(store.getActions()).toEqual(
-          expect.arrayContaining([{ type: LOADING_ENDED }, expect.objectContaining({ type: GET_DATA_SUCCEEDED })])
+          expect.arrayContaining([{ type: LOADING_ENDED }, expect.objectContaining({ type: GET_DATA_SUCCEEDED })]),
         );
       }));
 
@@ -59,7 +59,7 @@ describe('data actions', () => {
 
       return store.dispatch(getDataAsync()).then(() => {
         expect(store.getActions()).toEqual(
-          expect.arrayContaining([{ type: LOADING_ENDED }, expect.objectContaining({ type: GET_DATA_FAILED })])
+          expect.arrayContaining([{ type: LOADING_ENDED }, expect.objectContaining({ type: GET_DATA_FAILED })]),
         );
       });
     });
