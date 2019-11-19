@@ -6,10 +6,10 @@ export default (ex, context) => {
   if (LOG_ERRORS) {
     init({ dsn: RAVEN_ENDPT });
 
-    configureScope((scope) => scope.setExtra('release', RELEASE));
+    configureScope(scope => scope.setExtra('release', RELEASE));
 
     if (context) {
-      configureScope((scope) => scope.setExtra('context', context));
+      configureScope(scope => scope.setExtra('context', context));
     }
 
     captureException(ex);

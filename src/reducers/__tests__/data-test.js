@@ -14,8 +14,8 @@ describe('data reducer', () => {
                 text: 'foo',
               },
             },
-          }
-        )
+          },
+        ),
       ).toEqual({ text: 'foo' });
     });
   });
