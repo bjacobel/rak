@@ -723,10 +723,10 @@
     http-proxy-agent "^2.1.0"
     lodash "^3.6.0"
 
-"@bjacobel/perf@0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@bjacobel/perf/-/perf-0.0.2.tgz#6a38e0699c2f5a52c33b5f1d14c9f75bc8f47ee0"
-  integrity sha512-NEJZomCWgfoKr3lpKy8pOZ5nWd84O+ZROOQSAEm0Ayr+493n7TpA36FHL/kWI/SmstLBQKMvp4UVRqG/HvIRnQ==
+"@bjacobel/perf@0.0.3":
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/@bjacobel/perf/-/perf-0.0.3.tgz#e53fec4c3c7034c4b67c0e435276f974aad10e69"
+  integrity sha512-Q3P2NFtlpdGpGWPITV1M7zmhxJA8DzqWwK/Avi/GXXRdQIh1XjuKhApM191qpv30SJjWtPxOeQGZFRcf6VXrgQ==
   dependencies:
     chalk "^3.0.0"
     chrome-launcher "^0.12.0"
