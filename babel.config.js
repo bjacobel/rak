@@ -3,7 +3,7 @@ module.exports = api => ({
     [
       '@babel/preset-env',
       {
-        useBuiltIns: 'entry',
+        useBuiltIns: 'usage',
         corejs: 3,
         modules: api.env('test') ? 'commonjs' : false,
         exclude: ['transform-regenerator'],
