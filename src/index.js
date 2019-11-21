@@ -1,12 +1,8 @@
-/* eslint-disable import/first */
-import './polyfills';
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
-/* eslint-enable import/first */
 
 import reducer from './reducers';
 import Routes from './components/Routes';
