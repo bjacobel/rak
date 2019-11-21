@@ -89,7 +89,6 @@ module.exports = (env = {}, { mode } = {}) => {
         new TerserPlugin({
           terserOptions: {
             ecma: 8,
-            safari10: true,
           },
         }),
       ],
