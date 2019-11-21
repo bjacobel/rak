@@ -14,7 +14,7 @@ module.exports = api => ({
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
     '@babel/plugin-transform-runtime',
-    '@babel/plugin-transform-react-jsx-source',
+    api.env('development') && '@babel/plugin-transform-react-jsx-source',
     api.env('production') && ['transform-react-remove-prop-types', { removeImport: true }],
   ].filter(Boolean),
 });
