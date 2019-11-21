@@ -95,7 +95,6 @@
   },
   "version": "0.1.0",
   "browserslist": [
-    "last 2 versions",
-    "not dead"
+    "> 1% in US"
   ]
 }
