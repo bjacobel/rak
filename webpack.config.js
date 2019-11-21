@@ -98,7 +98,7 @@ module.exports = (env = {}, { mode } = {}) => {
         'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
         'process.env.TRAVIS_COMMIT': JSON.stringify(process.env.TRAVIS_COMMIT || 'unreleased'),
         process: undefined,
-        rakConfig: JSON.stringify(config),
+        projectConfig: JSON.stringify(config),
       }),
       new HtmlWebpackPlugin({
         template: './src/index.html.jsx',
