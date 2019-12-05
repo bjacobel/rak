@@ -25,7 +25,7 @@
     "@bjacobel/cloudformer-node": "^0.0.14",
     "@bjacobel/perf": "0.0.4",
     "@bjacobel/vhtml-loader": "^1.0.1",
-    "@mapbox/cloudfriend": "^3.0.1",
+    "@mapbox/cloudfriend": "^4.0.0",
     "@sentry/cli": "^1.30.5",
     "autoprefixer": "^9.1.5",
     "aws-sdk": "^2.510.0",
