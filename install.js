@@ -120,7 +120,7 @@ const isBin = fileAbsPath => {
 
   return Promise.all(copyPromises).then(() => {
     // .gitignore is never included in npm installs even if explicitly !.npmignored
-    execSync('echo -e "coverage\ndist\nnode_modules" > .gitignore');
+    execSync('echo "coverage\ndist\nnode_modules" > .gitignore');
 
     // Will only tree if tree is installed
     execSync('command -v tree > /dev/null && tree . -aIC "node_modules|.yalc" || true', { stdio: [0, 1, 2] });
