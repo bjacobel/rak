@@ -4,7 +4,9 @@ const config = require('../../config');
 
 module.exports = () => {
   // Invalidate objects in the CloudFront distro associated with this project.
-  const cloudfront = new AWS.CloudFront();
+  const cloudfront = new AWS.CloudFront({
+    region: config.Region,
+  });
   return new Promise((resolve, reject) => {
     cloudfront.listDistributions({}, (err, data) => {
       if (err) {
