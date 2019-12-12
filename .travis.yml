@@ -15,7 +15,7 @@ after_success:
   - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: s3
-  region: us-east-1
+  region: $(node config Region)
   bucket: $(node config ProjectFQDomain)
   acl: public_read
   cache_control: 'max-age=31536000'

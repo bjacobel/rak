@@ -1,7 +1,10 @@
-const Stack = require('@bjacobel/cloudformer-node');
-
 const { template, parameters } = require('../template');
 const config = require('../../config');
+
+// Required because cloudformer-node sets up its region config as a import-time side effect (ugh)
+process.env.AWS_DEFAULT_REGION = config.Region;
+// eslint-disable-next-line import/order
+const Stack = require('@bjacobel/cloudformer-node');
 
 module.exports = () => {
   const stack = new Stack(config.ProjectName);
