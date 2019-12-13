@@ -9,4 +9,4 @@ export const DATA = {
 };
 export const RAVEN_ENDPT = projectConfig.RavenDSN;
 export const GA_ID = projectConfig.GAProperty;
-export const RELEASE = process.env.TRAVIS_COMMIT;
+export const RELEASE = process.env.GITHUB_SHA;

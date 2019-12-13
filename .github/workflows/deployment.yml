@@ -1,0 +1,79 @@
+name: 'Deployment'
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: 'Build static site'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: 'Checkout'
+        uses: actions/checkout@master
+      - name: Grab config
+        id: config
+        run: |
+          echo "::set-output name=Region::$(node config Region)"
+          echo "::set-output name=ProjectFQDomain::$(node config ProjectFQDomain)"
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ steps.config.outputs.Region }}
+      - name: Cache node_modules
+        id: cache
+        uses: actions/cache@v1
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
+      - name: Install
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --frozen-lockfile --ignore-scripts
+      - name: Build
+        run: yarn webpack
+        env:
+          NODE_ENV: production
+          GITHUB_SHA: ${{ github.sha }}
+      - name: Verify bucket exists
+        run: if [ "$(yarn --silent awsUtils bucketExists)" = "false" ]; then exit 1; fi
+      - name: Upload dist to bucket
+        run: |
+          aws s3 sync dist s3://${{ steps.config.outputs.ProjectFQDomain }} \
+            --acl public-read \
+            --cache-control max-age=31536000
+      - uses: actions/upload-artifact@v1
+        with:
+          name: dist
+          path: ./dist
+      - name: Invalidate CloudFront
+        run: yarn awsUtils invalidate "/index.html"
+  sentry:
+    name: 'Track Deploy In Sentry'
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@master
+      - name: Grab config
+        id: config
+        run: |
+          echo "::set-output name=SentryOrg::$(node config SentryOrg)"
+          echo "::set-output name=SentryProject::$(node config SentryProject)"
+      - uses: actions/download-artifact@v1
+        with:
+          name: dist
+      - name: Notify Sentry of deploy
+        uses: bjacobel/sentry-cli-action@master
+        with:
+          args: releases -o ${{ steps.config.outputs.SentryOrg }} -p ${{ steps.config.outputs.SentryProject }} new ${{ github.sha }}
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+      - name: Add sourcemaps to Sentry
+        uses: bjacobel/sentry-cli-action@master
+        with:
+          args: releases -o ${{ steps.config.outputs.SentryOrg }} -p ${{ steps.config.outputs.SentryProject }} files ${{ github.sha }} upload-sourcemaps dist
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
