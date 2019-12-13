@@ -47,11 +47,12 @@ and commit your project to git:
 and start developing! Your next steps might include:
 
 - Configuring project information (like domain, name and analytics/error logging IDs) in `./config.js`.
-- Setting up [Travis CI](https://travis-ci.org) for your repo.
-  - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to Travis CI, either using their web interface or [their Ruby gem and the `travis encrypt` command](https://docs.travis-ci.com/user/environment-variables/).
+- Setting up [GitHub Actions](https://github.com/features/actions) for your repo.
+  - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to the Secrets for your repo at `https://github.com/[username]/[repo]/settings/secrets`
   - Also add other optional environment variables, like `SENTRY_AUTH_TOKEN` for deploy tracking and sourcemap support in Sentry.
-  - Remember to update the badge at the top of the readme to point to your new Travis SVG.
 - Setting up [Codecov](https://codecov.io) for your repo.
+  - Add a API key for Codecov to the Secrets for the repo as `CODECOV_TOKEN`
+  - Coverage stats will be automatically uploaded, but you'll need to authorize Codecov against your GitHub account and add the app to the repo to get pull request comments with coverage information.
   - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.
 - Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
 - Removing or modifying the example actions/reducers/services to do... whatever your new app does.

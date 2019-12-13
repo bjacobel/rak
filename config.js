@@ -28,7 +28,7 @@ const config = {
   GAProperty: 'UA-34138258-8',
 
   // AWS Region you would like services to be created in
-  Region: 'us-east-2',
+  Region: 'us-east-1',
 };
 
 if (!module.parent && process.argv[2]) {
