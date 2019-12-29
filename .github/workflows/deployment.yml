@@ -68,12 +68,12 @@ jobs:
       - name: Notify Sentry of deploy
         uses: bjacobel/sentry-cli-action@master
         with:
-          args: releases -o ${{ steps.config.outputs.SentryOrg }} -p ${{ steps.config.outputs.SentryProject }} new ${{ github.sha }}
+          args: releases new -o ${{ steps.config.outputs.SentryOrg }} -p ${{ steps.config.outputs.SentryProject }} ${{ github.sha }}
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Add sourcemaps to Sentry
         uses: bjacobel/sentry-cli-action@master
         with:
-          args: releases -o ${{ steps.config.outputs.SentryOrg }} -p ${{ steps.config.outputs.SentryProject }} files ${{ github.sha }} upload-sourcemaps dist
+          args: releases files -o ${{ steps.config.outputs.SentryOrg }} -p ${{ steps.config.outputs.SentryProject }} ${{ github.sha }} upload-sourcemaps dist
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
