@@ -6,7 +6,7 @@ export const setup = () => {
   if (LOG_ERRORS) {
     /* eslint-disable no-underscore-dangle */
     if (!window.__SENTRY_READY__) {
-      init({ dsn: RAVEN_ENDPT });
+      init({ dsn: RAVEN_ENDPT, release: RELEASE });
       window.__SENTRY_READY__ = true;
     }
     /* eslint-enable no-underscore-dangle */
@@ -16,8 +16,6 @@ export const setup = () => {
 export default (ex, context) => {
   if (LOG_ERRORS) {
     setup(); // memoized, it is fine to call this on every log
-
-    configureScope(scope => scope.setExtra('release', RELEASE));
 
     if (context) {
       configureScope(scope => scope.setExtra('context', context));
