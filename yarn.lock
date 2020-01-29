@@ -931,10 +931,10 @@
     http-proxy-agent "^2.1.0"
     lodash "^3.6.0"
 
-"@bjacobel/perf@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@bjacobel/perf/-/perf-0.0.5.tgz#232cbb5263fa7a9c2f403e5c44a77ff4301695ae"
-  integrity sha512-cT7yj0CDwfcfmU4tguWfROxAa5vi6len9hExU49DOVXi8Zu919tgcFFEOvSTiX2lebFr869arscdYnQqkASPDg==
+"@bjacobel/perf@0.0.6":
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/@bjacobel/perf/-/perf-0.0.6.tgz#b94748023c9f9751119cb8530d7335b68085e633"
+  integrity sha512-qztomP+Gro8IVkmvF6YOxod9dR56lqT1CXHNJcRbuBi2tOJmxspkSw/ffnY+2iTsWdEeoGLRG6g19MUXL3XIaQ==
   dependencies:
     chalk "^3.0.0"
     chrome-launcher "^0.12.0"
