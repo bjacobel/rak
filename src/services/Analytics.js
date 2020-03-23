@@ -10,7 +10,7 @@ export default class Analytics {
       window.ga =
         window.ga ||
         // eslint-disable-next-line func-names
-        function(...args) {
+        function (...args) {
           (window.ga.q = window.ga.q || []).push(args);
         };
       window.ga.l = +new Date();
