@@ -48,7 +48,7 @@
     "html-webpack-plugin": "^4.0.0",
     "jest-cli": "^26.0.0",
     "mini-css-extract-plugin": "^0.12.0",
-    "postcss": "^8.0.1",
+    "postcss": "^7.0.39",
     "postcss-font-magician": "^2.2.1",
     "postcss-loader": "^6.2.0",
     "postcss-modules-values": "^4.0.0",
@@ -64,6 +64,9 @@
     "webpack": "^5.64.2",
     "webpack-cli": "^4.0.0",
     "webpack-dev-server": "^4.5.0"
+  },
+  "resolutions": {
+    "postcss-advanced-variables": "csstools/postcss-advanced-variables#05ebd99c8"
   },
   "engines": {
     "node": "^16.0.0"
@@ -84,6 +87,7 @@
     "type": "git"
   },
   "scripts": {
+    "postinstall": "cd node_modules/postcss-advanced-variables && [ ! -f index.js ] && npm i && $(npm bin)/rollup -c .rollup.js || true",
     "awsUtils": "node aws/utils",
     "style": "prettier -l --ignore-path .eslintignore \"**/*.{js,jsx,json,md,html,yaml,yml,css}\"",
     "lint": "yarn --silent style && eslint . && stylelint src/stylesheets/*.css",
