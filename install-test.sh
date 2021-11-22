@@ -11,6 +11,7 @@ yarn init -y
 npx yalc add rak
 node node_modules/rak/install.js
 yarn run test
+yarn run lint
 
 diff yarn.lock ../yarn.lock
 
