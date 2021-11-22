@@ -2,7 +2,6 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 const config = require('./config.js');
@@ -101,13 +100,6 @@ module.exports = (env = {}, { mode } = {}) => {
         favicon: './src/assets/images/favicon.ico',
         title: config.ProjectName,
         inject: true,
-      }),
-      new ScriptExtHtmlWebpackPlugin({
-        defaultAttribute: 'defer',
-        preload: {
-          test: /\.js$/,
-          chunks: 'async',
-        },
       }),
       !isProd && new webpack.HotModuleReplacementPlugin(),
       isProd &&
