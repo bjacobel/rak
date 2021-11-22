@@ -49,7 +49,7 @@ module.exports = (env = {}, { mode } = {}) => {
         },
         {
           test: /\.css$/,
-          loaders: [
+          use: [
             isProd ? { loader: MiniCssExtractPlugin.loader } : { loader: 'style-loader' },
             cssLoader,
             { loader: 'postcss-loader' },
@@ -67,15 +67,11 @@ module.exports = (env = {}, { mode } = {}) => {
       extensions: ['.js', '.json', '.css'],
       modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
     },
-    node: {
-      constants: false,
-    },
     optimization: {
-      noEmitOnErrors: true,
+      emitOnErrors: false,
       splitChunks: {
         chunks: 'async',
         minChunks: 1,
-        name: true,
         cacheGroups: {
           vendor: {
             test: /[\\/]node_modules[\\/]/,
