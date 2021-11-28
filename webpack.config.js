@@ -16,8 +16,8 @@ module.exports = (env = {}, { mode } = {}) => {
   const cssLoader = {
     loader: 'css-loader',
     options: {
-      esModule: false,
       modules: {
+        namedExport: true,
         localIdentName: '[name]__[local]___[hash:base64:5]',
       },
       importLoaders: 1,
@@ -40,7 +40,7 @@ module.exports = (env = {}, { mode } = {}) => {
       rules: [
         {
           test: /\.(png|jpe?g|gif|svg)(\?[a-z0-9=]+)?$/,
-          use: 'file-loader',
+          type: 'asset',
         },
         {
           test: /\.js$/,
@@ -64,7 +64,7 @@ module.exports = (env = {}, { mode } = {}) => {
       ],
     },
     resolve: {
-      extensions: ['.js', '.json', '.css'],
+      extensions: ['.js', '.json'],
       modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
     },
     optimization: {
@@ -102,7 +102,6 @@ module.exports = (env = {}, { mode } = {}) => {
         title: config.ProjectName,
         inject: true,
       }),
-      !isProd && new webpack.HotModuleReplacementPlugin(),
       isProd &&
         new MiniCssExtractPlugin({
           filename: '[name].[contenthash].css',
@@ -111,9 +110,10 @@ module.exports = (env = {}, { mode } = {}) => {
     ].filter(Boolean),
     devServer: {
       hot: true,
-      publicPath: '/',
       historyApiFallback: true,
-      overlay: true,
+      devMiddleware: {
+        publicPath: '/',
+      },
     },
     performance: {
       maxAssetSize: 350000,

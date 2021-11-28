@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import styles from '../stylesheets/main.css';
+import { data as dataStyle, logo } from '../stylesheets/main.css';
 import { link } from '../stylesheets/link.css';
 import { getDataAsync } from '../actions/data';
 
@@ -24,8 +24,8 @@ class Main extends Component {
 
     return (
       <>
-        <div className={styles.logo} />
-        <h3 className={styles.data}>{data.text || ''}</h3>
+        <div className={logo} />
+        <h3 className={dataStyle}>{data.text || ''}</h3>
         <Link className={link} to="/child/foo">
           Routing demo
         </Link>
