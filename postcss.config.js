@@ -1,6 +1,7 @@
-const autoprefixer = require('autoprefixer');
-const precss = require('precss');
 const stylelint = require('stylelint');
+const nested = require('postcss-nested');
+const modulesValues = require('postcss-modules-values');
+const presetEnv = require('postcss-preset-env');
 const fontMagician = require('postcss-font-magician')({
   // this is required due to a weird bug where if we let PFM use the `//` protocol Webpack style-loader
   // thinks it's a relative URL and won't load the font when sourceMaps are also enabled
@@ -9,5 +10,5 @@ const fontMagician = require('postcss-font-magician')({
 });
 
 module.exports = {
-  plugins: [stylelint, fontMagician, precss, autoprefixer],
+  plugins: [stylelint, nested, modulesValues, fontMagician, presetEnv],
 };
