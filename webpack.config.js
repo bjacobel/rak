@@ -16,6 +16,7 @@ module.exports = (env = {}, { mode } = {}) => {
   const cssLoader = {
     loader: 'css-loader',
     options: {
+      esModule: false,
       modules: {
         localIdentName: '[name]__[local]___[hash:base64:5]',
       },
