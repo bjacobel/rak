@@ -1,6 +1,6 @@
 <img src="https://rak.bjacobel.com/logo.svg" alt="Rak" width="200px">
 
-[![Build Status](https://travis-ci.org/bjacobel/rak.svg?branch=master)](https://travis-ci.org/bjacobel/rak) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Renovate badge](https://badges.renovateapi.com/github/bjacobel/rak)](https://renovatebot.com/)
+[![Build Status](https://github.com/bjacobel/rak/actions/workflows/integration/badge.svg](https://github.com/bjacobel/rak/actions/workflows/frontend-ci.yaml) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Renovate badge](https://badges.renovateapi.com/github/bjacobel/rak)](https://renovatebot.com/)
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
 
@@ -19,12 +19,12 @@ Rak includes and configures the following components to help you build a rock-so
 - [Prettier](https://prettier.io/)
 - [Jest](https://facebook.github.io/jest/)
 - [Enzyme](http://airbnb.io/enzyme/)
-- [.travis.yml](https://docs.travis-ci.com/user/customizing-the-build) configured to lint, test, build and deploy to S3/CloudFront
+- [GitHub Actions workflows](https://docs.github.com/en/actions/learn-github-actions) configured to lint, test, build and deploy to S3/CloudFront
 - [CloudFormation](https://aws.amazon.com/cloudformation/) template to set up those AWS resources for you
 
 ### Using it in a project
 
-Rak requires Node 12. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a Travis CI account.
+Rak requires Node 16. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a GitHub account.
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
@@ -47,6 +47,7 @@ and commit your project to git:
 and start developing! Your next steps might include:
 
 - Configuring project information (like domain, name and analytics/error logging IDs) in `./config.js`.
+- Pushing your repo to GitHub. (Public and private repos are supported.)
 - Setting up [GitHub Actions](https://github.com/features/actions) for your repo.
   - Add your `AWS_ACCESS_TOKEN_ID` and `AWS_SECRET_ACCESS_TOKEN` to the Secrets for your repo at `https://github.com/[username]/[repo]/settings/secrets`
   - Also add other optional environment variables, like `SENTRY_AUTH_TOKEN` for deploy tracking and sourcemap support in Sentry.
@@ -79,7 +80,7 @@ This will take about 30 minutes. While it's going, leaving the `yarn awsUtils la
 Once it's reached the `CREATE_COMPLETE` status:
 
 1. Get the nameservers (`ns-xxx.awsdns-xxx.tld`) for your new Route53 hosted zone, and point your domain to these nameservers in your registrar's DNS console. These changes may take a while to take effect.
-2. Push or merge your code to the `master` branch. Travis will test, lint, bundle and deploy your code to S3, and you should see it at your domain shortly.
+2. Push or merge your code to the `master` branch. GitHub Actions will test, lint, bundle and deploy your code to S3, and you should see it at your domain shortly.
 
 ### Thanks to
 
