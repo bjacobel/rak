@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   extends: ['eslint-config-airbnb', 'eslint-config-prettier'],
   rules: {
     'max-classes-per-file': 0,

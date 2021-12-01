@@ -129,6 +129,9 @@ const isBin = fileAbsPath => {
 
     execSync('rm -rf yalc* .yalc');
 
+    console.log('\nFormatting all files with prettier...\n');
+    execSync('yarn prettier --write --ignore-path .eslintignore .');
+
     console.log('\nDone!');
   });
 })();
