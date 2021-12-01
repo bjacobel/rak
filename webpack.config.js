@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
-const config = require('./config.js');
+const config = require('./config');
 
 module.exports = (env = {}, { mode } = {}) => {
   const isProd = env.production || ['production', 'staging'].includes(process.env.NODE_ENV) || mode === 'production';
