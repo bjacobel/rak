@@ -1,7 +1,11 @@
 import Analytics from 'services/Analytics';
-import * as constants from 'src/constants';
 
-jest.mock('constants');
+const mockTrackAnalyticsConstant = jest.fn().mockReturnValue(false);
+jest.mock('src/constants', () => ({
+  get TRACK_ANALYTICS() {
+    return mockTrackAnalyticsConstant();
+  },
+}));
 
 describe('Analytics service', () => {
   describe('constructor', () => {
@@ -40,7 +44,7 @@ describe('Analytics service', () => {
     let analytics;
 
     beforeEach(() => {
-      constants.TRACK_ANALYTICS = true;
+      mockTrackAnalyticsConstant.mockReturnValueOnce(true);
       analytics = new Analytics();
       window.ga = jest.fn();
     });

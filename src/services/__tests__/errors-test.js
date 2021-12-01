@@ -1,10 +1,15 @@
 import { init, captureException, configureScope } from '@sentry/browser';
 
 import logToRaven from 'services/errors';
-import * as constants from 'src/constants';
 
-jest.mock('constants');
 jest.mock('@sentry/browser');
+
+const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
+jest.mock('src/constants', () => ({
+  get LOG_ERRORS() {
+    return mockLogErrorsConstant();
+  },
+}));
 
 const err = new Error('err');
 
@@ -18,7 +23,7 @@ describe('error logging service', () => {
 
   describe('in production mode', () => {
     beforeEach(() => {
-      constants.LOG_ERRORS = true;
+      mockLogErrorsConstant.mockReturnValue(true);
     });
 
     it("sets up Raven if it hasn't been 'installed' yet", () => {
@@ -45,7 +50,7 @@ describe('error logging service', () => {
 
   describe('in development mode', () => {
     beforeEach(() => {
-      constants.LOG_ERRORS = false;
+      mockLogErrorsConstant.mockReturnValue(false);
     });
 
     it("does not call Raven initialize, even if it isn't installed", () => {
