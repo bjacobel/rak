@@ -102,10 +102,9 @@ const isBin = fileAbsPath => {
 
       if (srcFileRelFromSrcRoot === 'package.json') {
         const packageDotJson = require(srcFileAbsPath);
-        return dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
+        dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
       } else {
-        return fs
-          .createReadStream(srcFileAbsPath)
+        fs.createReadStream(srcFileAbsPath)
           .pipe(
             isBin(srcFileAbsPath)
               ? new Transform({ transform: noopTransform })

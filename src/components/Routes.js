@@ -22,17 +22,15 @@ export default class Routes extends Component {
 
   render() {
     return (
-      <>
-        <BrowserRouter>
-          <div>
-            <Switch>
-              <GARoute ga={this.ga} path="/" exact component={Main} />
-              <GARoute ga={this.ga} path="/child/:id" component={Child} />
-              <GARoute ga={this.ga} component={NotFound} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </>
+      <BrowserRouter>
+        <div>
+          <Switch>
+            <GARoute ga={this.ga} path="/" exact component={Main} />
+            <GARoute ga={this.ga} path="/child/:id" component={Child} />
+            <GARoute ga={this.ga} component={NotFound} />
+          </Switch>
+        </div>
+      </BrowserRouter>
     );
   }
 }

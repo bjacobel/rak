@@ -1,38 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Router matches snapshot 1`] = `
-<Fragment>
-  <BrowserRouter>
-    <div>
-      <Switch>
-        <GARoute
-          component={
-            Object {
-              "$$typeof": Symbol(react.memo),
-              "WrappedComponent": [MockFunction],
-              "apply": [MockFunction],
-              "bind": [MockFunction],
-              "call": [MockFunction],
-              "compare": null,
-              "displayName": "Connect(Main)",
-              "type": [MockFunction],
-            }
+<BrowserRouter>
+  <div>
+    <Switch>
+      <GARoute
+        component={
+          Object {
+            "$$typeof": Symbol(react.memo),
+            "WrappedComponent": [MockFunction],
+            "apply": [MockFunction],
+            "bind": [MockFunction],
+            "call": [MockFunction],
+            "compare": null,
+            "displayName": "Connect(Main)",
+            "type": [MockFunction],
           }
-          exact={true}
-          ga={Object {}}
-          path="/"
-        />
-        <GARoute
-          component={[MockFunction]}
-          ga={Object {}}
-          path="/child/:id"
-        />
-        <GARoute
-          component={[MockFunction]}
-          ga={Object {}}
-        />
-      </Switch>
-    </div>
-  </BrowserRouter>
-</Fragment>
+        }
+        exact={true}
+        ga={Object {}}
+        path="/"
+      />
+      <GARoute
+        component={[MockFunction]}
+        ga={Object {}}
+        path="/child/:id"
+      />
+      <GARoute
+        component={[MockFunction]}
+        ga={Object {}}
+      />
+    </Switch>
+  </div>
+</BrowserRouter>
 `;
