@@ -2,7 +2,7 @@
 
 set -e
 
-npx yalc publish
+npx yalc publish --no-dev-mod
 
 mkdir -p my-new-project
 pushd my-new-project
