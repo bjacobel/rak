@@ -3,6 +3,7 @@ const { ref, equals } = require('@mapbox/cloudfriend');
 const HostedZone = require('./stack/HostedZone');
 const DNSRecord = require('./stack/DNSRecord');
 const DNSRecordWWW = require('./stack/DNSRecordWWW');
+const DNSRecordCAA = require('./stack/DNSRecordCAA');
 const CloudFrontDistribution = require('./stack/CloudFrontDistribution');
 const S3Bucket = require('./stack/S3Bucket');
 const S3BucketPolicy = require('./stack/S3BucketPolicy');
@@ -34,6 +35,7 @@ const template = {
     CloudFrontDistribution,
     DNSRecord,
     DNSRecordWWW,
+    DNSRecordCAA,
     HostedZone,
     S3Bucket,
     S3BucketPolicy,
