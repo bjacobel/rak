@@ -25,9 +25,15 @@ export default class Routes extends Component {
       <BrowserRouter>
         <div>
           <Switch>
-            <GARoute ga={this.ga} path="/" exact component={Main} />
-            <GARoute ga={this.ga} path="/child/:id" component={Child} />
-            <GARoute ga={this.ga} component={NotFound} />
+            <GARoute ga={this.ga} path="/" exact>
+              <Main />
+            </GARoute>
+            <GARoute ga={this.ga} path="/child/:id">
+              <Child />
+            </GARoute>
+            <GARoute ga={this.ga}>
+              <NotFound />
+            </GARoute>
           </Switch>
         </div>
       </BrowserRouter>
