@@ -1,4 +1,4 @@
-import Analytics from 'services/Analytics';
+import GA from 'services/GA';
 
 const mockTrackAnalyticsConstant = jest.fn().mockReturnValue(false);
 jest.mock('src/constants', () => ({
@@ -7,23 +7,23 @@ jest.mock('src/constants', () => ({
   },
 }));
 
-describe('Analytics service', () => {
+describe('Google Analytics service', () => {
   describe('constructor', () => {
     it('(tries to) load code from google', () => {
       document.body.appendChild = jest.fn();
-      new Analytics(); // eslint-disable-line no-new
+      new GA(); // eslint-disable-line no-new
       expect(document.body.appendChild).toHaveBeenCalledWith(expect.any(Element));
     });
 
     it('puts stuff on window.ga', () => {
-      new Analytics(); // eslint-disable-line no-new
+      new GA(); // eslint-disable-line no-new
       expect(window.ga).toBeDefined();
     });
   });
 
   describe('when TRACK_ANALYTICS is disabled', () => {
     beforeEach(() => {
-      new Analytics(); // eslint-disable-line no-new
+      new GA(); // eslint-disable-line no-new
       window.ga = jest.fn();
     });
 
@@ -45,7 +45,7 @@ describe('Analytics service', () => {
 
     beforeEach(() => {
       mockTrackAnalyticsConstant.mockReturnValueOnce(true);
-      analytics = new Analytics();
+      analytics = new GA();
       window.ga = jest.fn();
     });
 
