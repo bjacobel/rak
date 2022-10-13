@@ -4,7 +4,7 @@ import { GA_ID, TRACK_ANALYTICS } from '../constants';
 
 // @TODO: I'd really like to not install ga onto window; it should be self-contained by this class
 
-export default class Analytics {
+export default class GA {
   constructor() {
     if (!window.ga) {
       window.ga =
@@ -20,6 +20,12 @@ export default class Analytics {
       script.async = true;
       script.src = 'https://www.google-analytics.com/analytics.js';
       document.body.appendChild(script);
+    }
+  }
+
+  set(attr, value) {
+    if (TRACK_ANALYTICS) {
+      window.ga('set', attr, value);
     }
   }
 

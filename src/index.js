@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 
 import reducer from './reducers';
+import Analytics from './components/Analytics';
 import Routes from './components/Routes';
 import { setup as sentrySetup } from './services/errors';
 import { SHOW_DEV_TOOLS } from './constants';
@@ -21,6 +22,7 @@ const rootEl = document.getElementById('main');
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
+      <Analytics />
       <Routes />
     </Provider>,
     rootEl,
