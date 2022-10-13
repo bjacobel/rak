@@ -7,5 +7,8 @@ module.exports = {
   moduleDirectories: [__dirname, 'node_modules', 'src'],
   snapshotSerializers: ['enzyme-to-json/serializer'],
   setupFiles: ['./jest.setup.js'],
-  testURL: 'http://localhost',
+  testEnvironment: 'jsdom',
+  testEnvironmentOptions: {
+    url: 'http://localhost',
+  },
 };

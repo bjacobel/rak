@@ -46,6 +46,7 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "html-webpack-plugin": "^5.5.0",
     "jest-cli": "^29.0.0",
+    "jest-environment-jsdom": "^29.1.2",
     "mini-css-extract-plugin": "^2.4.5",
     "postcss": "^8.4.4",
     "postcss-font-magician": "^3.0.0",
