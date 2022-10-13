@@ -20,6 +20,13 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 0,
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
+    ],
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
   },
   parserOptions: {

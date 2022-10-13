@@ -1,36 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Router matches snapshot 1`] = `
-<BrowserRouter>
-  <div>
-    <Switch>
-      <GARoute
-        component={
-          {
-            "$$typeof": Symbol(react.memo),
-            "WrappedComponent": [MockFunction],
-            "apply": [MockFunction],
-            "bind": [MockFunction],
-            "call": [MockFunction],
-            "compare": null,
-            "displayName": "Connect(Main)",
-            "type": [MockFunction],
-          }
-        }
-        exact={true}
-        ga={{}}
-        path="/"
-      />
-      <GARoute
-        component={[MockFunction]}
-        ga={{}}
-        path="/child/:id"
-      />
-      <GARoute
-        component={[MockFunction]}
-        ga={{}}
-      />
-    </Switch>
-  </div>
-</BrowserRouter>
+<Router>
+  <Connect(Main)
+    path="/"
+  />
+  <_default
+    path="/child/:id"
+  />
+  <_default
+    default={true}
+  />
+</Router>
 `;

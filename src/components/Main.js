@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link } from '@reach/router';
 
 import { data as dataStyle, logo } from '../stylesheets/main.css';
 import { link } from '../stylesheets/link.css';
