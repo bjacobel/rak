@@ -6,7 +6,7 @@ exports[`Router matches snapshot 1`] = `
     <Switch>
       <GARoute
         component={
-          Object {
+          {
             "$$typeof": Symbol(react.memo),
             "WrappedComponent": [MockFunction],
             "apply": [MockFunction],
@@ -18,17 +18,17 @@ exports[`Router matches snapshot 1`] = `
           }
         }
         exact={true}
-        ga={Object {}}
+        ga={{}}
         path="/"
       />
       <GARoute
         component={[MockFunction]}
-        ga={Object {}}
+        ga={{}}
         path="/child/:id"
       />
       <GARoute
         component={[MockFunction]}
-        ga={Object {}}
+        ga={{}}
       />
     </Switch>
   </div>
