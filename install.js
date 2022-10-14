@@ -83,7 +83,7 @@ const isBin = fileAbsPath => {
 
 (() => {
   console.log("\nInstalling Rak's setup requirements...\n");
-  execSync('yarn add replacestream --no-lockfile --silent', {
+  execSync('yarn add replacestream --modules-folder ./node_modules --no-lockfile --silent', {
     stdio: [0, 1, 2],
   });
   const replaceStream = require('replacestream');
