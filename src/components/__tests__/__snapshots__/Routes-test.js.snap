@@ -2,7 +2,7 @@
 
 exports[`Router matches snapshot 1`] = `
 <Router>
-  <Connect(Main)
+  <_default
     path="/"
   />
   <_default

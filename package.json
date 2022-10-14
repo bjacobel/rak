@@ -5,13 +5,11 @@
   "dependencies": {
     "@reach/router": "^1.3.4",
     "@sentry/browser": "^7.0.0",
+    "@tanstack/react-query": "^4.10.3",
     "core-js": "^3.0.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.3",
-    "react-dom": "^16.8.3",
-    "react-redux": "~8.0.0",
-    "redux": "^4.0.0",
-    "redux-thunk": "^2.2.0"
+    "react-dom": "^16.8.3"
   },
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
@@ -55,7 +53,6 @@
     "postcss-preset-env": "^7.0.1",
     "prettier": "^2.0.1",
     "react-test-renderer": "^16.2.0",
-    "redux-mock-store": "^1.5.1",
     "style-loader": "^3.3.1",
     "stylelint": "^14.13.0",
     "stylelint-config-css-modules": "^4.0.0",
@@ -71,7 +68,6 @@
   "keywords": [
     "boilerplate",
     "react",
-    "redux",
     "scaffold",
     "skeleton",
     "starter",

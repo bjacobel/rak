@@ -9,7 +9,7 @@ Rak (React App Kit) is an opinionated skeleton to quickly set up a project with 
 Rak includes and configures the following components to help you build a rock-solid, scalable app with best practices and zero configuration.
 
 - [React](https://facebook.github.io/react/)
-- [Redux](http://redux.js.org/)
+- [React Query](https://tanstack.com/query/v4)
 - [Webpack](https://webpack.github.io/) (with [HMR](https://webpack.github.io/docs/hot-module-replacement.html))
 - [Babel](https://babeljs.io/) (with [babel-preset-env](https://github.com/babel/babel-preset-env) and [React](http://babeljs.io/docs/plugins/preset-react/) presets)
 - [PostCSS](http://postcss.org/) (with [CSS Modules](https://github.com/css-modules/css-modules) and [precss](https://github.com/jonathantneal/precss) syntax)
