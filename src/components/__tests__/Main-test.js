@@ -1,32 +1,36 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { useQuery } from '@tanstack/react-query';
 
+import log from 'services/errors';
 import Main from 'components/Main';
 
+jest.mock('@tanstack/react-query');
+jest.mock('services/errors');
+jest.mock('@reach/router', () => ({
+  Link: ({ to, children }) => <a href={to}>{children}</a>,
+}));
+
 describe('main component', () => {
-  describe('un-Connected component', () => {
-    it('matches snapshot', () => {
-      expect(shallow(<Main.WrappedComponent data={{ text: 'foo' }} getDataAsync={jest.fn()} />)).toMatchSnapshot();
-    });
+  it('matches snapshot', () => {
+    useQuery.mockReturnValueOnce({ data: { text: 'foo' } });
+    expect(mount(<Main />)).toMatchSnapshot();
+  });
 
-    it("renders an h3 with data if it didn't hit an error", () => {
-      const main = shallow(<Main.WrappedComponent data={{ text: 'foo' }} getDataAsync={jest.fn()} />);
+  it("renders an h3 with data if it didn't hit an error", () => {
+    useQuery.mockReturnValueOnce({ data: { text: 'foo' } });
+    const main = mount(<Main />);
 
-      expect(main.find('h3').length).toBe(1);
-      expect(main.find('h3').text()).toEqual('foo');
-    });
+    expect(main.find('h3').length).toBe(1);
+    expect(main.find('h3').text()).toEqual('foo');
+  });
 
-    it('renders no data but an error if data-fetching hits an error', () => {
-      const main = shallow(<Main.WrappedComponent data={{}} errors={['error']} getDataAsync={jest.fn()} />);
+  it('renders nothing and logs error if data-fetching hits an error', () => {
+    const error = new Error('mock error');
+    useQuery.mockReturnValueOnce({ error });
+    const main = mount(<Main />);
 
-      expect(main.find('h3').length).toBe(1);
-      expect(main.find('h3').text()).toEqual('');
-    });
-
-    it('calls getDataAsync on mount', () => {
-      const getDataAsync = jest.fn();
-      shallow(<Main.WrappedComponent data={{ text: 'foo' }} getDataAsync={getDataAsync} />);
-      expect(getDataAsync).toHaveBeenCalled();
-    });
+    expect(main.find('h3').length).toBe(0);
+    expect(log).toHaveBeenCalledWith(error);
   });
 });
