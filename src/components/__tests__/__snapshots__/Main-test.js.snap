@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`main component un-Connected component matches snapshot 1`] = `
-<Fragment>
+exports[`main component matches snapshot 1`] = `
+<_default>
   <div />
   <h3>
     foo
@@ -9,12 +9,20 @@ exports[`main component un-Connected component matches snapshot 1`] = `
   <Link
     to="/child/foo"
   >
-    Routing demo
+    <a
+      href="/child/foo"
+    >
+      Routing demo
+    </a>
   </Link>
   <Link
     to="/asdf"
   >
-    404 demo
+    <a
+      href="/asdf"
+    >
+      404 demo
+    </a>
   </Link>
-</Fragment>
+</_default>
 `;
