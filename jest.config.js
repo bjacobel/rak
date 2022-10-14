@@ -5,8 +5,7 @@ module.exports = {
     '^.+\\.css$': '<rootDir>/__mocks__/stylesheets.js',
   },
   moduleDirectories: [__dirname, 'node_modules', 'src'],
-  snapshotSerializers: ['enzyme-to-json/serializer'],
-  setupFiles: ['./jest.setup.js'],
+  setupFilesAfterEnv: ['./jest.setup.js'],
   testEnvironment: 'jsdom',
   testEnvironmentOptions: {
     url: 'http://localhost',
