@@ -2,7 +2,7 @@
 
 [![Build Status](https://github.com/bjacobel/rak/actions/workflows/frontend-ci.yaml/badge.svg)](https://github.com/bjacobel/rak/actions/workflows/frontend-ci.yaml) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
-Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Redux, Webpack & friends.
+Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Babel, Webpack & friends.
 
 ### What's inside
 
@@ -30,17 +30,16 @@ Start a new Project with Rak by creating an empty directory and installing `rak`
 
     mkdir my-new-project
     cd my-new-project
-    yarn add rak
 
-Next, run the new `rak` command-line executable. It doesn't take any arguments, and will set up a project using the name of the folder you created as the project name.
+Next, run `rak` using `npx`. It doesn't take any arguments, and will set up a project using the name of the folder you created as the project name.
 
-    $(yarn bin)/rak
+    npx rak
 
-Some details about your newly created folder structure and dependencies will be printed while Rak is setting up. After it's done, you can uninstall rak if you want:
+You can also use the latest master version of `rak` by running:
 
-    yarn remove rak
+    npx bjacobel/rak
 
-and commit your project to git:
+Some details about your newly created folder structure and dependencies will be printed while Rak is setting up. After it's done, commit your project to git:
 
     git init && git add --all && git commit -m "Initial commit"
 
@@ -56,7 +55,7 @@ and start developing! Your next steps might include:
   - Coverage stats will be automatically uploaded, but you'll need to authorize Codecov against your GitHub account and add the app to the repo to get pull request comments with coverage information.
   - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.
 - Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
-- Removing or modifying the example actions/reducers/services to do... whatever your new app does.
+- Removing or modifying the example components and services to do... whatever your new app does.
 
 ### Deployment
 
