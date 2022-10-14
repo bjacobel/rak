@@ -1,6 +1,6 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { useParams } from '@reach/router';
+import { render } from '@testing-library/react';
 
 import Child from 'components/Child';
 
@@ -9,23 +9,22 @@ jest.mock('@reach/router');
 describe('child component', () => {
   it('matches snapshot', () => {
     useParams.mockReturnValueOnce({ id: 'foo' });
-    expect(shallow(<Child />)).toMatchSnapshot();
+    const { asFragment } = render(<Child />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('displays the param it recieves in props', () => {
     useParams.mockReturnValueOnce({ id: 'foo' });
-    const child = shallow(<Child />);
+    const { getByText } = render(<Child />);
 
-    expect(child.find('h3').length).toBe(1);
-    expect(child.find('h3').text()).toEqual('received param: foo');
+    expect(getByText('received param: foo')).toBeInTheDocument();
   });
 
   it('has a link back to home', () => {
     useParams.mockReturnValueOnce({ id: 'foo' });
-    const child = shallow(<Child />);
-    const homeLink = child.find('Link');
+    const { getByRole } = render(<Child />);
+    const homeLink = getByRole('link');
 
-    expect(homeLink.length).toBe(1);
     expect(homeLink.prop('to')).toEqual('/');
   });
 });
