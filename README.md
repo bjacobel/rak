@@ -18,7 +18,7 @@ Rak includes and configures the following components to help you build a rock-so
 - [ESLint](http://eslint.org/) (with [Airbnb's style guide](http://airbnb.io/javascript/))
 - [Prettier](https://prettier.io/)
 - [Jest](https://facebook.github.io/jest/)
-- [Enzyme](http://airbnb.io/enzyme/)
+- [React Testing Library](https://testing-library.com/)
 - [GitHub Actions workflows](https://docs.github.com/en/actions/learn-github-actions) configured to lint, test, build and deploy to S3/CloudFront
 - [CloudFormation](https://aws.amazon.com/cloudformation/) template to set up those AWS resources for you
 
