@@ -1,7 +1,7 @@
 /* eslint-disable import/no-import-module-exports */
 
 import React, { StrictMode } from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import Analytics from './components/Analytics';
@@ -12,15 +12,15 @@ sentrySetup();
 const queryClient = new QueryClient();
 
 const rootEl = document.getElementById('main');
+const root = createRoot(rootEl);
 const render = () => {
-  ReactDOM.render(
+  root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <Analytics />
         <Routes />
       </QueryClientProvider>
     </StrictMode>,
-    rootEl,
   );
 };
 
