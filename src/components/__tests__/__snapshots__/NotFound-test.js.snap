@@ -1,14 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`404 component matches snapshot 1`] = `
-<div>
-  <h1>
-    404: page not found
-  </h1>
-  <Link
-    to="/"
+<DocumentFragment>
+  <div
+    style="outline: none;"
+    tabindex="-1"
   >
-    Home
-  </Link>
-</div>
+    <div>
+      <h1>
+        404: page not found
+      </h1>
+      <a
+        aria-current="page"
+        href="/"
+      >
+        Home
+      </a>
+    </div>
+  </div>
+</DocumentFragment>
 `;
