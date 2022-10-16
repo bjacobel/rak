@@ -1,6 +1,6 @@
 /* eslint-disable import/no-import-module-exports */
 
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
@@ -14,10 +14,12 @@ const queryClient = new QueryClient();
 const rootEl = document.getElementById('main');
 const render = () => {
   ReactDOM.render(
-    <QueryClientProvider client={queryClient}>
-      <Analytics />
-      <Routes />
-    </QueryClientProvider>,
+    <StrictMode>
+      <QueryClientProvider client={queryClient}>
+        <Analytics />
+        <Routes />
+      </QueryClientProvider>
+    </StrictMode>,
     rootEl,
   );
 };
