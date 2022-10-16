@@ -10,11 +10,6 @@ describe('error rendering component', () => {
       expect(asFragment()).toMatchSnapshot();
     });
 
-    it('matches snapshot without an error', () => {
-      const { asFragment } = unwrappedRender(<ErrorComponent error={new Error('idk lol')} />);
-      expect(asFragment()).toMatchSnapshot();
-    });
-
     it('has error string in document', () => {
       const errString = 'idk lol';
       const { getByTestId } = unwrappedRender(<ErrorComponent error={new Error(errString)} />);

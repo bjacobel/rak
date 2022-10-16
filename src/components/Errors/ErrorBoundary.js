@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import log from 'services/errors';
+import { LOG_ERRORS } from 'constants';
 import ErrorComponent from './ErrorComponent';
 
 export default class ErrorBoundary extends Component {
@@ -15,7 +16,9 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    log(error, errorInfo);
+    if (LOG_ERRORS) {
+      log(error, errorInfo);
+    }
   }
 
   render() {
