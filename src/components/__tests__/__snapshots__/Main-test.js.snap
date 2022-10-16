@@ -1,28 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`main component matches snapshot 1`] = `
-<_default>
-  <div />
-  <h3>
-    foo
-  </h3>
-  <Link
-    to="/child/foo"
+<DocumentFragment>
+  <div
+    style="outline: none;"
+    tabindex="-1"
   >
+    <div
+      role="banner"
+    />
+    <h3>
+      an opinionated skeleton to quickly set up a new React app
+    </h3>
     <a
       href="/child/foo"
     >
       Routing demo
     </a>
-  </Link>
-  <Link
-    to="/asdf"
-  >
     <a
       href="/asdf"
     >
       404 demo
     </a>
-  </Link>
-</_default>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`main component renders error if data-fetching errors 1`] = `
+<DocumentFragment>
+  <div
+    style="outline: none;"
+    tabindex="-1"
+  >
+    <span>
+      ErrorComponent
+    </span>
+  </div>
+</DocumentFragment>
 `;

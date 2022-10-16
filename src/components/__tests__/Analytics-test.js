@@ -1,9 +1,9 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { navigate } from '@reach/router';
 
 import Analytics from 'components/Analytics';
 import GA from 'services/GA';
+import { unwrappedRender } from 'testing/rtl';
 
 jest.mock('services/GA');
 
@@ -14,12 +14,12 @@ describe('Analytics component', () => {
   });
 
   it('inits the GA class', () => {
-    mount(<Analytics />);
+    unwrappedRender(<Analytics />);
     expect(GA).toHaveBeenCalled();
   });
 
   it('calls the analytics pageview fn when you navigate to a new route', () => {
-    mount(<Analytics />);
+    unwrappedRender(<Analytics />);
     navigate('/child/1');
     expect(GA.prototype.pageview).toHaveBeenCalledTimes(1);
   });

@@ -1,30 +1,22 @@
 import React from 'react';
-import { useParams } from '@reach/router';
-import { render } from '@testing-library/react';
 
 import Child from 'components/Child';
-
-jest.mock('@reach/router');
+import { render } from 'testing/rtl';
 
 describe('child component', () => {
   it('matches snapshot', () => {
-    useParams.mockReturnValueOnce({ id: 'foo' });
-    const { asFragment } = render(<Child />);
+    const { asFragment } = render(<Child path="/child/:id" />, { route: '/child/foo' });
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it('displays the param it recieves in props', () => {
-    useParams.mockReturnValueOnce({ id: 'foo' });
-    const { getByText } = render(<Child />);
-
+  it('displays the param it recieves in props', async () => {
+    const { getByText } = render(<Child path="/child/:id" />, { route: '/child/foo' });
     expect(getByText('received param: foo')).toBeInTheDocument();
   });
 
-  it('has a link back to home', () => {
-    useParams.mockReturnValueOnce({ id: 'foo' });
-    const { getByRole } = render(<Child />);
+  it('has a link back to home', async () => {
+    const { getByRole } = render(<Child path="/child/:id" />, { route: '/child/foo' });
     const homeLink = getByRole('link');
-
-    expect(homeLink.prop('to')).toEqual('/');
+    expect(new URL(homeLink.href).pathname).toEqual('/');
   });
 });

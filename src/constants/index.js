@@ -1,8 +1,8 @@
 // injected by DefinePlugin
-/* globals projectConfig */
 
 export const TRACK_ANALYTICS = process.env.NODE_ENV === 'production';
 export const LOG_ERRORS = process.env.NODE_ENV === 'production';
+export const SHOW_STACK = process.env.NODE_ENV !== 'production';
 export const DATA = {
   text: 'an opinionated skeleton to quickly set up a new React app',
 };
