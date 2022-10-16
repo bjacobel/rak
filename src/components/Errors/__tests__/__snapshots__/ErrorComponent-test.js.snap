@@ -7,32 +7,3 @@ exports[`error rendering component in dev mode matches snapshot without an error
   </h3>
 </DocumentFragment>
 `;
-
-exports[`error rendering component in dev mode matches snapshot without an error 2`] = `
-<DocumentFragment>
-  <h3>
-    Something went wrong.
-  </h3>
-  <pre
-    data-testid="stack"
-  >
-    Error: idk lol
-    at Object.&lt;anonymous&gt; (/Users/bjacobel/code/rak/src/components/Errors/__tests__/ErrorComponent-test.js:14:69)
-    at Promise.then.completed (/Users/bjacobel/code/rak/node_modules/jest-circus/build/utils.js:333:28)
-    at new Promise (&lt;anonymous&gt;)
-    at callAsyncCircusFn (/Users/bjacobel/code/rak/node_modules/jest-circus/build/utils.js:259:10)
-    at _callCircusTest (/Users/bjacobel/code/rak/node_modules/jest-circus/build/run.js:277:40)
-    at processTicksAndRejections (node:internal/process/task_queues:96:5)
-    at _runTest (/Users/bjacobel/code/rak/node_modules/jest-circus/build/run.js:209:3)
-    at _runTestsForDescribeBlock (/Users/bjacobel/code/rak/node_modules/jest-circus/build/run.js:97:9)
-    at _runTestsForDescribeBlock (/Users/bjacobel/code/rak/node_modules/jest-circus/build/run.js:91:9)
-    at _runTestsForDescribeBlock (/Users/bjacobel/code/rak/node_modules/jest-circus/build/run.js:91:9)
-    at run (/Users/bjacobel/code/rak/node_modules/jest-circus/build/run.js:31:3)
-    at runAndTransformResultsToJestFormat (/Users/bjacobel/code/rak/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapterInit.js:136:21)
-    at jestAdapter (/Users/bjacobel/code/rak/node_modules/jest-circus/build/legacy-code-todo-rewrite/jestAdapter.js:92:19)
-    at runTestInternal (/Users/bjacobel/code/rak/node_modules/jest-runner/build/runTest.js:407:16)
-    at runTest (/Users/bjacobel/code/rak/node_modules/jest-runner/build/runTest.js:491:34)
-    at Object.worker (/Users/bjacobel/code/rak/node_modules/jest-runner/build/testWorker.js:133:12)
-  </pre>
-</DocumentFragment>
-`;
