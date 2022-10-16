@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 import { useQuery } from '@tanstack/react-query';
 
 import { getData } from 'services/data';
-import ErrorComponent from 'components/Errors/ErrorComponent';
+import ErrorComponent from 'components/errors/ErrorComponent';
 import { data as dataStyle, logo } from '../stylesheets/main.css';
 import { link } from '../stylesheets/link.css';
 

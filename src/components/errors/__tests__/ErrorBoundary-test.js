@@ -2,7 +2,7 @@ import React from 'react';
 
 import { unwrappedRender } from 'testing/rtl';
 import log from 'services/errors';
-import ErrorBoundary from 'components/Errors/ErrorBoundary';
+import ErrorBoundary from 'components/errors/ErrorBoundary';
 
 const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
 jest.mock('services/errors');
