@@ -4,10 +4,10 @@ import { getData } from 'services/data';
 import { DATA } from '../../constants';
 import Main from 'components/Main';
 import { render, waitFor } from 'testing/rtl';
-import ErrorComponent from 'components/Errors/ErrorComponent';
+import ErrorComponent from 'components/errors/ErrorComponent';
 
 jest.mock('services/data');
-jest.mock('components/Errors/ErrorComponent', () => jest.fn(() => <span>ErrorComponent</span>));
+jest.mock('components/errors/ErrorComponent', () => jest.fn(() => <span>ErrorComponent</span>));
 
 describe('main component', () => {
   beforeEach(() => {
