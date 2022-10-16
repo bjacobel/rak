@@ -1,36 +1,42 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import { useQuery } from '@tanstack/react-query';
 
-import log from 'services/errors';
+import { getData } from 'services/data';
+import { DATA } from '../../constants';
 import Main from 'components/Main';
+import { render, waitFor } from 'testing/rtl';
+import ErrorComponent from 'components/Errors/ErrorComponent';
 
-jest.mock('@tanstack/react-query');
-jest.mock('services/errors');
-jest.mock('@reach/router', () => ({
-  Link: ({ to, children }) => <a href={to}>{children}</a>,
-}));
+jest.mock('services/data');
+jest.mock('components/Errors/ErrorComponent', () => jest.fn(() => <span>ErrorComponent</span>));
 
 describe('main component', () => {
-  it('matches snapshot', () => {
-    useQuery.mockReturnValueOnce({ data: { text: 'foo' } });
-    expect(mount(<Main />)).toMatchSnapshot();
+  beforeEach(() => {
+    getData.mockImplementation(() => Promise.resolve(DATA));
   });
 
-  it("renders an h3 with data if it didn't hit an error", () => {
-    useQuery.mockReturnValueOnce({ data: { text: 'foo' } });
-    const main = mount(<Main />);
+  it('matches snapshot', async () => {
+    const { asFragment, getByRole } = render(<Main path="/" />);
 
-    expect(main.find('h3').length).toBe(1);
-    expect(main.find('h3').text()).toEqual('foo');
+    await waitFor(() => expect(getByRole('banner')).toBeInTheDocument());
+
+    expect(asFragment()).toMatchSnapshot();
   });
 
-  it('renders nothing and logs error if data-fetching hits an error', () => {
+  it("renders an h3 with data if it didn't hit an error", async () => {
+    const { getByText } = render(<Main path="/" />);
+
+    await waitFor(() => expect(getByText(DATA.text)).toBeInTheDocument());
+  });
+
+  it('renders error if data-fetching errors', async () => {
     const error = new Error('mock error');
-    useQuery.mockReturnValueOnce({ error });
-    const main = mount(<Main />);
+    getData.mockImplementationOnce(() => {
+      throw error;
+    });
 
-    expect(main.find('h3').length).toBe(0);
-    expect(log).toHaveBeenCalledWith(error);
+    const { asFragment } = render(<Main path="/" />);
+    await waitFor(() => expect(ErrorComponent).toHaveBeenCalled());
+
+    expect(asFragment()).toMatchSnapshot();
   });
 });

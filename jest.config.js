@@ -1,6 +1,6 @@
 module.exports = {
   collectCoverageFrom: ['src/**/*.js'],
-  coveragePathIgnorePatterns: ['polyfills.js'],
+  coveragePathIgnorePatterns: ['polyfills.js', 'testing/.*.js'],
   moduleNameMapper: {
     '^.+\\.css$': '<rootDir>/__mocks__/stylesheets.js',
   },

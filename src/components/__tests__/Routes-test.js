@@ -1,32 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { navigate } from '@reach/router';
 
+import { unwrappedRender } from 'testing/rtl';
 import Routes from 'components/Routes';
-import Main from 'components/Main';
-import Child from 'components/Child';
-import NotFound from 'components/NotFound';
+
+jest.mock('components/Main', () => jest.fn().mockReturnValue('Main'));
+jest.mock('components/Child', () => jest.fn().mockReturnValue('Child'));
+jest.mock('components/NotFound', () => jest.fn().mockReturnValue('NotFound'));
 
 describe('Router', () => {
-  it('matches snapshot', () => {
-    expect(shallow(<Routes />)).toMatchSnapshot();
-  });
-
-  it('has a home route', () => {
+  it('navigates to Main on /', () => {
     navigate('/');
-    const routes = shallow(<Routes />);
-    expect(routes.find(Main).length).toBe(1);
+    const { getByText } = unwrappedRender(<Routes />);
+    expect(getByText('Main')).toBeInTheDocument();
   });
 
-  it('has a parameterized route for child views', () => {
+  it('navigates to Child on /child/:id', () => {
     navigate('/child/1');
-    const routes = shallow(<Routes />);
-    expect(routes.find(Child).length).toBe(1);
+    const { getByText } = unwrappedRender(<Routes />);
+    expect(getByText('Child')).toBeInTheDocument();
   });
 
-  it('has a fallthrough 404', () => {
-    navigate('/asdfasaddf');
-    const routes = shallow(<Routes />);
-    expect(routes.find(NotFound).length).toBe(1);
+  it('navigates to NotFound by default', () => {
+    navigate('/asdf');
+    const { getByText } = unwrappedRender(<Routes />);
+    expect(getByText('NotFound')).toBeInTheDocument();
   });
 });

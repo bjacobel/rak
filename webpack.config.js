@@ -85,6 +85,10 @@ module.exports = (env = {}, { mode } = {}) => {
         new TerserPlugin({
           terserOptions: {
             ecma: 8,
+            mangle: {
+              keep_fnames: /Error$/,
+              keep_classnames: /Error$/,
+            },
           },
         }),
       ],

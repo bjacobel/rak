@@ -1,25 +1,25 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 
+import { render } from 'testing/rtl';
 import NotFound from 'components/NotFound';
 
 describe('404 component', () => {
   it('matches snapshot', () => {
-    expect(shallow(<NotFound />)).toMatchSnapshot();
+    const { asFragment } = render(<NotFound default />);
+    expect(asFragment()).toMatchSnapshot();
   });
 
   it('displays 404 message', () => {
-    const notFound = shallow(<NotFound />);
+    const { getByText } = render(<NotFound default />);
 
-    expect(notFound.find('h1').length).toBe(1);
-    expect(notFound.find('h1').text()).toEqual('404: page not found');
+    expect(getByText('404: page not found')).toBeInTheDocument();
   });
 
   it('has a link back to home', () => {
-    const notFound = shallow(<NotFound />);
-    const homeLink = notFound.find('Link');
+    const { getByRole } = render(<NotFound default />);
+    const homeLink = getByRole('link');
 
-    expect(homeLink.length).toBe(1);
-    expect(homeLink.prop('to')).toEqual('/');
+    expect(homeLink).toBeInTheDocument();
+    expect(new URL(homeLink.href).pathname).toEqual('/');
   });
 });
