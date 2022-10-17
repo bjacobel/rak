@@ -1,5 +1,3 @@
-// injected by DefinePlugin
-
 export const TRACK_ANALYTICS = process.env.NODE_ENV === 'production';
 export const LOG_ERRORS = process.env.NODE_ENV === 'production';
 export const SHOW_STACK = process.env.NODE_ENV !== 'production';

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 const stylelint = require('stylelint');
 const nested = require('postcss-nested');
 const modulesValues = require('postcss-modules-values');
