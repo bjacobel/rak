@@ -1,3 +1,11 @@
+### v0.3.0
+
+- Update to Webpack 5
+- Update to Node 16
+- Update to React 18 and `createRoot` API
+- Migrate to Testing Library from Enzyme
+- Update most other components
+
 ### v0.2.0
 
 - Implement [module/nomodule pattern](https://philipwalton.com/articles/deploying-es2015-code-in-production-today/) for better code size in browsers that support ES2015
