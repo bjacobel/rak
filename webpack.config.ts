@@ -1,13 +1,14 @@
-const path = require('path');
-const webpack = require('webpack');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const TerserPlugin = require('terser-webpack-plugin');
+import path from 'path';
+import webpack from 'webpack';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import TerserPlugin from 'terser-webpack-plugin';
 
-const config = require('./config');
+import config from './config';
 
-module.exports = (env = {}, { mode } = {}) => {
-  const isProd = env.production || ['production', 'staging'].includes(process.env.NODE_ENV) || mode === 'production';
+export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } = {}) => {
+  const nodeEnv = process.env.NODE_ENV || 'unknown';
+  const isProd = env.production || ['production', 'staging'].includes(nodeEnv) || mode === 'production';
 
   if (isProd) {
     process.env.BABEL_ENV = 'production';
@@ -43,6 +44,11 @@ module.exports = (env = {}, { mode } = {}) => {
           type: 'asset',
         },
         {
+          test: /\.tsx?$/,
+          include: path.join(__dirname, 'src'),
+          use: 'ts-loader',
+        },
+        {
           test: /\.js$/,
           include: path.join(__dirname, 'src'),
           use: 'babel-loader',
@@ -64,7 +70,7 @@ module.exports = (env = {}, { mode } = {}) => {
       ],
     },
     resolve: {
-      extensions: ['.js', '.json'],
+      extensions: ['.js', '.ts', '.tsx', '.json'],
       modules: [__dirname, path.resolve(__dirname, 'src'), 'node_modules'],
     },
     optimization: {
@@ -84,7 +90,7 @@ module.exports = (env = {}, { mode } = {}) => {
       minimizer: [
         new TerserPlugin({
           terserOptions: {
-            ecma: 8,
+            ecma: 2020,
             mangle: {
               keep_fnames: /Error$/,
               keep_classnames: /Error$/,

@@ -1,6 +1,8 @@
 module.exports = {
   root: true,
-  extends: ['eslint-config-airbnb', 'eslint-config-prettier'],
+  extends: ['eslint-config-airbnb', 'eslint-config-prettier', 'plugin:@typescript-eslint/recommended'],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
   rules: {
     'max-classes-per-file': 0,
     'no-else-return': 0,
@@ -15,6 +17,7 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
+    'import/extensions': [2, 'never'],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.html.jsx'] }],
     'react/prefer-stateless-function': 0,
     'react/destructuring-assignment': 0,
@@ -43,7 +46,13 @@ module.exports = {
     jest: true,
   },
   settings: {
-    'import/resolver': 'webpack',
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
+      webpack: {},
+    },
     'import/core-modules': ['path', 'stream'],
   },
   globals: {

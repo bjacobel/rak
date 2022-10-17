@@ -3,6 +3,13 @@ import React from 'react';
 import { unwrappedRender } from 'testing/rtl';
 import ErrorComponent from '../ErrorComponent';
 
+const mockShowStackConstant = jest.fn().mockReturnValue(true);
+jest.mock('constants', () => ({
+  get SHOW_STACK() {
+    return mockShowStackConstant();
+  },
+}));
+
 describe('error rendering component', () => {
   describe('in dev mode', () => {
     it('matches snapshot without an error', () => {
@@ -19,15 +26,10 @@ describe('error rendering component', () => {
 
   describe('in prod mode', () => {
     it('does not print stack even with an error', () => {
-      jest.resetModules();
-      jest.doMock('../../../constants', () => ({
-        SHOW_STACK: false,
-      }));
-      // eslint-disable-next-line global-require
-      const ScopedErrorComponent = require('../ErrorComponent').default;
+      mockShowStackConstant.mockReturnValueOnce(true);
 
       const errString = 'idk lol';
-      const { queryByText } = unwrappedRender(<ScopedErrorComponent error={new Error(errString)} />);
+      const { queryByText } = unwrappedRender(<ErrorComponent error={new Error(errString)} />);
       expect(queryByText(errString)).not.toBeInTheDocument();
     });
   });
