@@ -3,38 +3,28 @@
 exports[`main component matches snapshot 1`] = `
 <DocumentFragment>
   <div
-    style="outline: none;"
-    tabindex="-1"
+    role="banner"
+  />
+  <h3>
+    an opinionated skeleton to quickly set up a new React app
+  </h3>
+  <a
+    href="/child/foo"
   >
-    <div
-      role="banner"
-    />
-    <h3>
-      an opinionated skeleton to quickly set up a new React app
-    </h3>
-    <a
-      href="/child/foo"
-    >
-      Routing demo
-    </a>
-    <a
-      href="/asdf"
-    >
-      404 demo
-    </a>
-  </div>
+    Routing demo
+  </a>
+  <a
+    href="/asdf"
+  >
+    404 demo
+  </a>
 </DocumentFragment>
 `;
 
 exports[`main component renders error if data-fetching errors 1`] = `
 <DocumentFragment>
-  <div
-    style="outline: none;"
-    tabindex="-1"
-  >
-    <span>
-      ErrorComponent
-    </span>
-  </div>
+  <span>
+    ErrorComponent
+  </span>
 </DocumentFragment>
 `;

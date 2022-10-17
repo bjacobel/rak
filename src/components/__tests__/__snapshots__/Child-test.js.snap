@@ -2,20 +2,15 @@
 
 exports[`child component matches snapshot 1`] = `
 <DocumentFragment>
-  <div
-    style="outline: none;"
-    tabindex="-1"
-  >
-    <div>
-      <h3>
-        received param: foo
-      </h3>
-      <a
-        href="/"
-      >
-        Home
-      </a>
-    </div>
+  <div>
+    <h3>
+      received param: foo
+    </h3>
+    <a
+      href="/"
+    >
+      Home
+    </a>
   </div>
 </DocumentFragment>
 `;
