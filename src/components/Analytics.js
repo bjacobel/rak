@@ -1,9 +1,9 @@
-import React, { useEffect, useMemo } from 'react';
-import { Router, useLocation } from '@reach/router';
+import { useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import GA from '../services/GA';
 
-const LocationTracker = () => {
+export default () => {
   const location = useLocation();
 
   const ga = useMemo(() => new GA());
@@ -11,14 +11,8 @@ const LocationTracker = () => {
   useEffect(() => {
     if (!ga) return;
     ga.set('page', location.pathname + location.search);
-    ga.pageview('send', 'pageview');
+    ga.pageview();
   }, [location, ga]);
 
   return null;
 };
-
-export default () => (
-  <Router primary={false}>
-    <LocationTracker path="*" />
-  </Router>
-);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 import { notFound } from '../stylesheets/notFound.css';
 import { link } from '../stylesheets/link.css';

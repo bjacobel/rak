@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useParams } from '@reach/router';
+import { Link, useParams } from 'react-router-dom';
 
 import { id } from '../stylesheets/child.css';
 import { link } from '../stylesheets/link.css';

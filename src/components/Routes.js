@@ -1,14 +1,14 @@
 import React from 'react';
-import { Router } from '@reach/router';
+import { Routes, Route } from 'react-router-dom';
 
 import NotFound from './NotFound';
 import Child from './Child';
 import Main from './Main';
 
 export default () => (
-  <Router>
-    <Main path="/" />
-    <Child path="/child/:id" />
-    <NotFound default />
-  </Router>
+  <Routes>
+    <Route element={<Main />} path="/" />
+    <Route element={<Child />} path="/child/:id" />
+    <Route element={<NotFound />} path="*" />
+  </Routes>
 );
