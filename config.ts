@@ -1,3 +1,7 @@
+export interface ProjectConfig {
+  readonly [configVal: string]: string;
+}
+
 /**
  * Rak's CloudFormation template supports both apps hosted at the root domain (e.g., https://rak.com)
  * and apps hosted on a subdomain (what is configured below, https://rak.bjacobel.com).
@@ -5,7 +9,7 @@
  * case, and will add extra resources (an additional A record and SAN for www.ProjectDomain).
  * You still need both values even if they are the same.
  */
-const config = {
+const config: ProjectConfig = {
   // The common name for your project. Used for naming CloudFormation stacks and CloudFront distros.
   ProjectName: 'rak',
 
@@ -36,4 +40,4 @@ if (!module.parent && process.argv[2]) {
   console.log(config[param] || 'Not passed a valid config param.');
 }
 
-module.exports = config;
+export default config;
