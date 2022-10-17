@@ -1,6 +1,6 @@
 <img src="https://rak.bjacobel.com/logo.svg" alt="Rak" width="200px">
 
-[![Build Status](https://github.com/bjacobel/rak/actions/workflows/frontend-ci.yaml/badge.svg)](https://github.com/bjacobel/rak/actions/workflows/frontend-ci.yaml) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
+[![Build Status](https://github.com/bjacobel/rak/actions/workflows/integration.yml/badge.svg?branch=master&event=push)](https://github.com/bjacobel/rak/actions/workflows/integration.yml) [![codecov](https://codecov.io/gh/bjacobel/rak/branch/master/graph/badge.svg)](https://codecov.io/gh/bjacobel/rak) [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
 
 Rak (React App Kit) is an opinionated skeleton to quickly set up a project with React, Babel, Webpack & friends.
 
