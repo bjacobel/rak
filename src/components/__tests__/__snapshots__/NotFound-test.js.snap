@@ -2,21 +2,15 @@
 
 exports[`404 component matches snapshot 1`] = `
 <DocumentFragment>
-  <div
-    style="outline: none;"
-    tabindex="-1"
-  >
-    <div>
-      <h1>
-        404: page not found
-      </h1>
-      <a
-        aria-current="page"
-        href="/"
-      >
-        Home
-      </a>
-    </div>
+  <div>
+    <h1>
+      404: page not found
+    </h1>
+    <a
+      href="/"
+    >
+      Home
+    </a>
   </div>
 </DocumentFragment>
 `;

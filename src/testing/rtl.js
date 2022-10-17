@@ -1,7 +1,8 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { Router, createHistory, createMemorySource, LocationProvider } from '@reach/router';
+import { MemoryRouter } from 'react-router-dom';
 
 const queryClient = new QueryClient({
   logger: {
@@ -15,26 +16,17 @@ const queryClient = new QueryClient({
     },
   },
 });
-const Providers = ({ children }) => <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>;
 
-const renderWithRouterAndWrappers = (ui, options) => {
-  const defaultRouteOptions = {
-    route: '/',
-    history: createHistory(createMemorySource(options && options.route ? options.route : '/')),
-  };
-  const renderOptions = { ...defaultRouteOptions, ...options };
-
+const customRender = (ui, options) => {
+  const route = options && options.route ? options.route : '/';
   return {
+    user: userEvent.setup(),
     ...render(
-      <LocationProvider history={renderOptions.history}>
-        <Router>{ui}</Router>
-      </LocationProvider>,
-      {
-        wrapper: Providers,
-        ...options,
-      },
+      <QueryClientProvider client={queryClient}>
+        <MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>
+      </QueryClientProvider>,
+      options,
     ),
-    history: renderOptions.history,
   };
 };
 
@@ -42,4 +34,4 @@ const renderWithRouterAndWrappers = (ui, options) => {
 export * from '@testing-library/react';
 
 // override render method
-export { renderWithRouterAndWrappers as render, render as unwrappedRender };
+export { customRender as render, render as unwrappedRender };

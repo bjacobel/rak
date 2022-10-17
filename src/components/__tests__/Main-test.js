@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import { getData } from 'services/data';
 import { DATA } from '../../constants';
@@ -10,12 +11,18 @@ jest.mock('services/data');
 jest.mock('components/errors/ErrorComponent', () => jest.fn(() => <span>ErrorComponent</span>));
 
 describe('main component', () => {
+  let main;
   beforeEach(() => {
     getData.mockImplementation(() => Promise.resolve(DATA));
+    main = (
+      <Routes>
+        <Route element={<Main />} path="/" />
+      </Routes>
+    );
   });
 
   it('matches snapshot', async () => {
-    const { asFragment, getByRole } = render(<Main path="/" />);
+    const { asFragment, getByRole } = render(main);
 
     await waitFor(() => expect(getByRole('banner')).toBeInTheDocument());
 
@@ -23,7 +30,7 @@ describe('main component', () => {
   });
 
   it("renders an h3 with data if it didn't hit an error", async () => {
-    const { getByText } = render(<Main path="/" />);
+    const { getByText } = render(main);
 
     await waitFor(() => expect(getByText(DATA.text)).toBeInTheDocument());
   });
@@ -34,7 +41,7 @@ describe('main component', () => {
       throw error;
     });
 
-    const { asFragment } = render(<Main path="/" />);
+    const { asFragment } = render(main);
     await waitFor(() => expect(ErrorComponent).toHaveBeenCalled());
 
     expect(asFragment()).toMatchSnapshot();

@@ -3,6 +3,7 @@
 import React, { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { BrowserRouter } from 'react-router-dom';
 
 import Analytics from './components/Analytics';
 import Routes from './components/Routes';
@@ -17,8 +18,10 @@ const render = () => {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <Analytics />
-        <Routes />
+        <BrowserRouter>
+          <Analytics />
+          <Routes />
+        </BrowserRouter>
       </QueryClientProvider>
     </StrictMode>,
   );
