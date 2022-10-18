@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
-import { GA_ID, TRACK_ANALYTICS } from 'constants/index';
+import { GA_ID, TRACK_ANALYTICS } from '../constants';
 
 // @TODO: I'd really like to not install ga onto window; it should be self-contained by this class
 
@@ -10,7 +10,7 @@ export default class GA {
       window.ga =
         window.ga ||
         // eslint-disable-next-line func-names
-        function (...args) {
+        function (...args: unknown[]) {
           (window.ga.q = window.ga.q || []).push(args);
         };
       window.ga.l = +new Date();
@@ -23,7 +23,7 @@ export default class GA {
     }
   }
 
-  set(attr, value) {
+  set(attr: string, value: string | number) {
     if (TRACK_ANALYTICS) {
       window.ga('set', attr, value);
     }
@@ -35,7 +35,7 @@ export default class GA {
     }
   }
 
-  event(category, action, value) {
+  event(category: string, action: string, value: string | number) {
     if (TRACK_ANALYTICS) {
       window.ga('send', 'event', category, action, Number.isNaN(value) ? undefined : value);
     }
