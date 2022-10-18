@@ -1,5 +1,5 @@
 import { getData } from 'services/data';
-import { DATA } from 'src/constants';
+import { DATA } from 'constants/index';
 
 describe('data services', () => {
   describe('getData', () => {

@@ -5,7 +5,7 @@ import logToRaven from 'services/errors';
 jest.mock('@sentry/browser');
 
 const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
-jest.mock('src/constants', () => ({
+jest.mock('constants/index', () => ({
   get LOG_ERRORS() {
     return mockLogErrorsConstant();
   },

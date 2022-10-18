@@ -6,7 +6,7 @@ import ErrorBoundary from 'components/errors/ErrorBoundary';
 
 const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
 jest.mock('services/errors');
-jest.mock('../../../constants', () => ({
+jest.mock('constants/index', () => ({
   get LOG_ERRORS() {
     return mockLogErrorsConstant();
   },
