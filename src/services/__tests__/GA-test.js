@@ -1,7 +1,7 @@
 import GA from 'services/GA';
 
 const mockTrackAnalyticsConstant = jest.fn().mockReturnValue(false);
-jest.mock('src/constants', () => ({
+jest.mock('constants/index', () => ({
   get TRACK_ANALYTICS() {
     return mockTrackAnalyticsConstant();
   },

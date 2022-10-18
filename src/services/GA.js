@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 
-import { GA_ID, TRACK_ANALYTICS } from '../constants';
+import { GA_ID, TRACK_ANALYTICS } from 'constants/index';
 
 // @TODO: I'd really like to not install ga onto window; it should be self-contained by this class
 

@@ -1,6 +1,6 @@
 import { init, captureException, configureScope } from '@sentry/browser';
 
-import { LOG_ERRORS, RAVEN_ENDPT, RELEASE } from '../constants';
+import { LOG_ERRORS, RAVEN_ENDPT, RELEASE } from 'constants/index';
 
 export const setup = () => {
   if (LOG_ERRORS) {

@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import { getData } from 'services/data';
-import { DATA } from '../../constants';
+import { DATA } from 'constants/index';
 import Main from 'components/Main';
 import { render, waitFor } from 'testing/rtl';
 import ErrorComponent from 'components/errors/ErrorComponent';

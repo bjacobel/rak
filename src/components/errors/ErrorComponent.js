@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { SHOW_STACK } from '../../constants';
+import { SHOW_STACK } from 'constants/index';
 import { errorHeader } from './style.css';
 
 export default ({ error }) => (
