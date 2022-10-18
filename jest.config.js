@@ -1,4 +1,6 @@
+/** @type {import('ts-jest').JestConfigWithTsJest} */
 module.exports = {
+  preset: 'ts-jest/presets/js-with-babel-esm',
   collectCoverageFrom: ['src/**/*.js'],
   coveragePathIgnorePatterns: ['polyfills.js', 'testing/.*.js'],
   moduleNameMapper: {
