@@ -12,4 +12,11 @@ module.exports = {
   testEnvironmentOptions: {
     url: 'http://localhost',
   },
+  globals: {
+    'ts-jest': {
+      diagnostics: {
+        warnOnly: true,
+      },
+    },
+  },
 };
