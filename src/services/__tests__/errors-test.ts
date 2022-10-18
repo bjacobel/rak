@@ -1,6 +1,6 @@
 import { init, captureException, configureScope } from '@sentry/browser';
 
-import logToRaven from 'services/errors';
+import logToRaven from '../errors';
 
 jest.mock('@sentry/browser');
 
@@ -16,11 +16,10 @@ const err = new Error('err');
 describe('error logging service', () => {
   beforeEach(() => {
     console.error = jest.fn();
-    init.mockReset();
-    captureException.mockReset();
-    configureScope.mockReset();
+    jest.mocked(init).mockReset();
+    jest.mocked(captureException).mockReset();
+    jest.mocked(configureScope).mockReset();
   });
-
   describe('in production mode', () => {
     beforeEach(() => {
       mockLogErrorsConstant.mockReturnValue(true);

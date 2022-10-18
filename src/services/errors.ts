@@ -1,6 +1,12 @@
 import { init, captureException, configureScope } from '@sentry/browser';
 
-import { LOG_ERRORS, RAVEN_ENDPT, RELEASE } from 'constants/index';
+import { LOG_ERRORS, RAVEN_ENDPT, RELEASE } from '../constants';
+
+declare global {
+  interface Window {
+    __SENTRY_READY__?: boolean;
+  }
+}
 
 export const setup = () => {
   if (LOG_ERRORS) {
@@ -13,7 +19,7 @@ export const setup = () => {
   }
 };
 
-export default (ex, context) => {
+export default (ex: Error, context?: unknown) => {
   if (LOG_ERRORS) {
     setup(); // memoized, it is fine to call this on every log
 
