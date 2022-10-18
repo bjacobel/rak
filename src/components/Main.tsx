@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 
-import { getData } from 'services/data';
-import ErrorComponent from 'components/errors/ErrorComponent';
+import { getData, Data } from '../services/data';
+import ErrorComponent from './errors/ErrorComponent';
 import { data as dataStyle, logo } from '../stylesheets/main.css';
 import { link } from '../stylesheets/link.css';
 
 export default () => {
-  const { isLoading, data, error } = useQuery(['data'], getData);
+  const { isLoading, data, error } = useQuery<Data>(['data'], getData);
 
   if (error) {
     return <ErrorComponent error={error} />;
@@ -21,7 +21,7 @@ export default () => {
   return (
     <>
       <div role="banner" className={logo} />
-      <h3 className={dataStyle}>{data.text || ''}</h3>
+      <h3 className={dataStyle}>{data!.text || ''}</h3>
       <Link className={link} to="/child/foo">
         Routing demo
       </Link>
