@@ -5,7 +5,7 @@ import { id } from '../stylesheets/child.css';
 import { link } from '../stylesheets/link.css';
 
 export default () => {
-  const params = useParams();
+  const params = useParams<{ id: string }>();
   return (
     <div>
       <h3 className={id}>{`received param: ${params.id}`}</h3>

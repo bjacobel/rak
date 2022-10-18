@@ -1,19 +1,21 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import { getData } from 'services/data';
-import { DATA } from 'constants/index';
-import Main from 'components/Main';
-import { render, waitFor } from 'testing/rtl';
-import ErrorComponent from 'components/errors/ErrorComponent';
+import { getData } from '../../services/data';
+import { DATA } from '../../constants';
+import Main from '../Main';
+import { render, waitFor } from '../../testing/rtl';
+import ErrorComponent from '../errors/ErrorComponent';
 
-jest.mock('services/data');
-jest.mock('components/errors/ErrorComponent', () => jest.fn(() => <span>ErrorComponent</span>));
+jest.mock('../../services/data');
+
+jest.mock('../errors/ErrorComponent', () => jest.fn(() => <span>ErrorComponent</span>));
 
 describe('main component', () => {
-  let main;
+  let main: ReactNode;
+
   beforeEach(() => {
-    getData.mockImplementation(() => Promise.resolve(DATA));
+    jest.mocked(getData).mockImplementation(() => Promise.resolve(DATA));
     main = (
       <Routes>
         <Route element={<Main />} path="/" />
@@ -37,11 +39,12 @@ describe('main component', () => {
 
   it('renders error if data-fetching errors', async () => {
     const error = new Error('mock error');
-    getData.mockImplementationOnce(() => {
+    jest.mocked(getData).mockImplementationOnce(() => {
       throw error;
     });
 
     const { asFragment } = render(main);
+
     await waitFor(() => expect(ErrorComponent).toHaveBeenCalled());
 
     expect(asFragment()).toMatchSnapshot();

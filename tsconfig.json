@@ -6,7 +6,8 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "jsx": "react"
   },
   "ts-node": {
     "compilerOptions": {

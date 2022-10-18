@@ -6,7 +6,7 @@ import GA from '../services/GA';
 export default () => {
   const location = useLocation();
 
-  const ga = useMemo(() => new GA());
+  const ga = useMemo(() => new GA(), []);
 
   useEffect(() => {
     if (!ga) return;

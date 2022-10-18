@@ -1,26 +1,29 @@
 import React from 'react';
 
-import { render } from 'testing/rtl';
-import log from 'services/errors';
-import ErrorBoundary from 'components/errors/ErrorBoundary';
+import { render } from '../../../testing/rtl';
+import log from '../../../services/errors';
+import ErrorBoundary from '../ErrorBoundary';
 
 const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
-jest.mock('services/errors');
-jest.mock('constants/index', () => ({
+
+jest.mock('../../../services/errors');
+
+jest.mock('../../../constants', () => ({
   get LOG_ERRORS() {
     return mockLogErrorsConstant();
   },
 }));
 
-const IntentionallyThrows = ({ error }) => {
+const IntentionallyThrows = ({ error }: { error: Error }) => {
   throw error;
 };
 
 describe('ErrorBoundary component', () => {
-  let consoleError;
+  let consoleError: () => void;
 
   beforeAll(() => {
     consoleError = console.error;
+
     console.error = jest.fn();
   });
 
@@ -35,6 +38,7 @@ describe('ErrorBoundary component', () => {
         <IntentionallyThrows error={error} />
       </ErrorBoundary>,
     );
+
     expect(log).not.toHaveBeenCalled();
   });
 
@@ -47,6 +51,7 @@ describe('ErrorBoundary component', () => {
         <IntentionallyThrows error={error} />
       </ErrorBoundary>,
     );
+
     expect(log).toHaveBeenCalledWith(error, expect.any(Object));
   });
 });
