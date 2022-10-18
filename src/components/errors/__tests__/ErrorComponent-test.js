@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { unwrappedRender } from 'testing/rtl';
+import { render } from 'testing/rtl';
 import ErrorComponent from '../ErrorComponent';
 
 const mockShowStackConstant = jest.fn().mockReturnValue(true);
@@ -13,13 +13,13 @@ jest.mock('constants', () => ({
 describe('error rendering component', () => {
   describe('in dev mode', () => {
     it('matches snapshot without an error', () => {
-      const { asFragment } = unwrappedRender(<ErrorComponent />);
+      const { asFragment } = render(<ErrorComponent />);
       expect(asFragment()).toMatchSnapshot();
     });
 
     it('has error string in document', () => {
       const errString = 'idk lol';
-      const { getByTestId } = unwrappedRender(<ErrorComponent error={new Error(errString)} />);
+      const { getByTestId } = render(<ErrorComponent error={new Error(errString)} />);
       expect(getByTestId('stack').innerHTML).toMatch(`Error: ${errString}`);
     });
   });
@@ -29,7 +29,7 @@ describe('error rendering component', () => {
       mockShowStackConstant.mockReturnValueOnce(true);
 
       const errString = 'idk lol';
-      const { queryByText } = unwrappedRender(<ErrorComponent error={new Error(errString)} />);
+      const { queryByText } = render(<ErrorComponent error={new Error(errString)} />);
       expect(queryByText(errString)).not.toBeInTheDocument();
     });
   });
