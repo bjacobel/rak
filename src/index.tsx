@@ -13,7 +13,7 @@ sentrySetup();
 const queryClient = new QueryClient();
 
 const rootEl = document.getElementById('main');
-const root = createRoot(rootEl);
+const root = createRoot(rootEl!);
 const render = () => {
   root.render(
     <StrictMode>

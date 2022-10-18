@@ -1,5 +1,5 @@
-import React from 'react';
-import { render } from '@testing-library/react';
+import React, { ReactNode } from 'react';
+import { render, RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { MemoryRouter } from 'react-router-dom';
@@ -20,7 +20,7 @@ const queryClient = new QueryClient({
   },
 });
 
-const customRender = (ui, options) => {
+const customRender = (ui: ReactNode, options?: RenderOptions & { route?: string }) => {
   const route = options && options.route ? options.route : '/';
   return {
     user: userEvent.setup(),

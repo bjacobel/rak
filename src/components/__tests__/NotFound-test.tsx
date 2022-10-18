@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import { render } from 'testing/rtl';
-import NotFound from 'components/NotFound';
+import { render } from '../../testing/rtl';
+import NotFound from '../NotFound';
 
 describe('404 component', () => {
-  let notFound;
+  let notFound: ReactNode;
+
   beforeEach(() => {
     notFound = (
       <Routes>
@@ -16,6 +17,7 @@ describe('404 component', () => {
 
   it('matches snapshot', () => {
     const { asFragment } = render(notFound);
+
     expect(asFragment()).toMatchSnapshot();
   });
 
@@ -30,6 +32,7 @@ describe('404 component', () => {
     const homeLink = getByRole('link');
 
     expect(homeLink).toBeInTheDocument();
-    expect(new URL(homeLink.href).pathname).toEqual('/');
+
+    expect(new URL((homeLink as HTMLLinkElement).href).pathname).toEqual('/');
   });
 });

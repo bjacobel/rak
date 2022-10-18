@@ -1,6 +1,11 @@
 module.exports = {
   root: true,
-  extends: ['eslint-config-airbnb', 'eslint-config-prettier', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'eslint-config-airbnb',
+    'eslint-config-prettier',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
+  ],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   rules: {
@@ -18,7 +23,7 @@ module.exports = {
       },
     ],
     'import/extensions': [2, 'never'],
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.html.jsx'] }],
+    'react/jsx-filename-extension': [2, { extensions: ['.js', '.html.jsx', '.tsx'] }],
     'react/prefer-stateless-function': 0,
     'react/destructuring-assignment': 0,
     'react/prop-types': 0,
@@ -31,6 +36,7 @@ module.exports = {
       },
     ],
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
+    '@typescript-eslint/no-non-null-assertion': 0,
   },
   parserOptions: {
     ecmaVersion: 2020,
@@ -51,7 +57,6 @@ module.exports = {
     },
     'import/resolver': {
       typescript: {},
-      webpack: {},
     },
     'import/core-modules': ['path', 'stream'],
   },

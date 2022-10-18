@@ -3,13 +3,13 @@ import { createRoot } from 'react-dom/client';
 jest.mock('react-dom/client');
 
 describe('app entry point', () => {
-  let render;
+  let render: () => void;
 
   beforeEach(() => {
     render = jest.fn();
-    createRoot.mockReturnValue({
+    jest.mocked(createRoot).mockReturnValue(({
       render,
-    });
+    } as unknown) as ReturnType<typeof createRoot>);
   });
 
   it('renders the react app', () => {

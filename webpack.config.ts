@@ -28,7 +28,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
 
   return {
     entry: {
-      main: './src/index.js',
+      main: './src/index.tsx',
     },
     mode: isProd ? 'production' : 'development',
     output: {
