@@ -1,12 +1,12 @@
 import React from 'react';
 
-import { unwrappedRender } from 'testing/rtl';
+import { render } from 'testing/rtl';
 import log from 'services/errors';
 import ErrorBoundary from 'components/errors/ErrorBoundary';
 
 const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
 jest.mock('services/errors');
-jest.mock('constants', () => ({
+jest.mock('../../../constants', () => ({
   get LOG_ERRORS() {
     return mockLogErrorsConstant();
   },
@@ -30,7 +30,7 @@ describe('ErrorBoundary component', () => {
 
   it('does not log to error service when LOG_ERRORS is false', () => {
     const error = new Error('mock render error');
-    unwrappedRender(
+    render(
       <ErrorBoundary>
         <IntentionallyThrows error={error} />
       </ErrorBoundary>,
@@ -38,11 +38,11 @@ describe('ErrorBoundary component', () => {
     expect(log).not.toHaveBeenCalled();
   });
 
-  it('does not log to error service when LOG_ERRORS is false', () => {
+  it('logs to error service when LOG_ERRORS is true', () => {
     mockLogErrorsConstant.mockReturnValue(true);
 
     const error = new Error('mock render error');
-    unwrappedRender(
+    render(
       <ErrorBoundary>
         <IntentionallyThrows error={error} />
       </ErrorBoundary>,

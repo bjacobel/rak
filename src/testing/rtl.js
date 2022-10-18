@@ -37,4 +37,4 @@ const customRender = (ui, options) => {
 export * from '@testing-library/react';
 
 // override render method
-export { customRender as render, render as unwrappedRender };
+export { customRender as render };
