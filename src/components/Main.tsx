@@ -8,7 +8,7 @@ import { data as dataStyle, logo } from '../stylesheets/main.css';
 import { link } from '../stylesheets/link.css';
 
 export default () => {
-  const { isLoading, data, error } = useQuery<Data>(['data'], getData);
+  const { isLoading, data, error } = useQuery<Data, Error>(['data'], getData);
 
   if (error) {
     return <ErrorComponent error={error} />;
