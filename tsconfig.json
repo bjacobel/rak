@@ -7,7 +7,16 @@
     "moduleResolution": "node",
     "strict": true,
     "skipLibCheck": true,
-    "jsx": "react"
+    "jsx": "react",
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCase",
+          "customMatcher": "\\.css$"
+        }
+      }
+    ]
   },
   "ts-node": {
     "compilerOptions": {
