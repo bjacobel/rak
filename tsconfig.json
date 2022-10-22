@@ -8,6 +8,7 @@
     "strict": true,
     "skipLibCheck": true,
     "jsx": "react",
+    "outDir": "lib",
     "plugins": [
       {
         "name": "typescript-plugin-css-modules",
