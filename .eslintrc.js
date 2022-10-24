@@ -22,7 +22,13 @@ module.exports = {
         'newlines-between': 'always',
       },
     ],
-    'import/extensions': [2, 'never'],
+    'import/extensions': [
+      2,
+      'never',
+      {
+        css: 'always',
+      },
+    ],
     'react/jsx-filename-extension': [2, { extensions: ['.js', '.html.jsx', '.tsx'] }],
     'react/prefer-stateless-function': 0,
     'react/destructuring-assignment': 0,

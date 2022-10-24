@@ -10,6 +10,7 @@ module.exports = api => ({
       },
     ],
     '@babel/preset-react',
+    '@babel/preset-typescript',
   ],
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',
