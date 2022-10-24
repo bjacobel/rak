@@ -9,7 +9,16 @@
     "skipLibCheck": true,
     "jsx": "react",
     "noEmit": true,
-    "isolatedModules": true
+    "isolatedModules": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "camelCase",
+          "customMatcher": "\\.css$"
+        }
+      }
+    ]
   },
   "ts-node": {
     "compilerOptions": {
