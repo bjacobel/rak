@@ -101,6 +101,8 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
         'process.env.GITHUB_SHA': JSON.stringify(process.env.GITHUB_SHA || 'unreleased'),
+        __SENTRY_DEBUG__: !isProd,
+        __SENTRY_TRACING__: !isProd,
         process: undefined,
         projectConfig: JSON.stringify(config),
       }),
