@@ -1,14 +1,16 @@
-.center {
+import { css } from '@linaria/core';
+
+export const center = css`
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-}
+`;
 
-.open-sans {
+export const openSans = css`
   font-family: 'Open Sans', sans-serif;
-}
+`;
 
-.roboto-mono {
+export const robotoMono = css`
   font-family: 'Roboto Mono', monospace;
-}
+`;
