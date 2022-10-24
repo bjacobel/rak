@@ -1,3 +1,11 @@
+### v0.4.0
+
+- Add TypeScript support
+- Move most source to TypeScript
+- Remove custom PostCSS setup (modules / precss-ish)
+- Add [Linaria](https://github.com/callstack/linaria)
+- Add CSS minification
+
 ### v0.3.0
 
 - Update to Webpack 5

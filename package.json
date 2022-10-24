@@ -98,7 +98,7 @@
     "start": "webpack-dev-server",
     "test": "jest --coverage && ./install-test.sh"
   },
-  "version": "0.3.0",
+  "version": "0.4.0",
   "browserslist": [
     "> 1% in US"
   ]
