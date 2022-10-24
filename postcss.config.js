@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 
+const calc = require('postcss-calc');
 const presetEnv = require('postcss-preset-env');
 const fontMagician = require('postcss-font-magician')({
   // this is required due to a weird bug where if we let PFM use the `//` protocol Webpack style-loader
@@ -10,5 +11,5 @@ const fontMagician = require('postcss-font-magician')({
 });
 
 module.exports = {
-  plugins: [fontMagician, presetEnv],
+  plugins: [calc, fontMagician, presetEnv],
 };
