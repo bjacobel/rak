@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-css-modules'],
+  extends: ['@linaria/stylelint-config-standard-linaria'],
   rules: {
     'string-quotes': 'single',
   },
