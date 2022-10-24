@@ -13,7 +13,7 @@ module.exports = {
     'no-else-return': 0,
     'no-console': 0,
     'default-param-last': 0,
-    'import/prefer-default-export': 1,
+    'import/prefer-default-export': 0,
     'import/no-extraneous-dependencies': [2, { devDependencies: true, packageDir: __dirname }],
     'import/order': [
       2,
