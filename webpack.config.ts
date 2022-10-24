@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
+import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 
 import config from './config';
 
@@ -93,6 +94,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
             },
           },
         }),
+        new CssMinimizerPlugin(),
       ],
     },
     plugins: [
@@ -109,8 +111,8 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         inject: true,
       }),
       new MiniCssExtractPlugin({
-        filename: '[name].[contenthash].css',
-        chunkFilename: '[id].[contenthash].css',
+        filename: isProd ? '[name].[contenthash].css' : '[name].css',
+        chunkFilename: isProd ? '[id].[contenthash].css' : '[id].css',
       }),
     ].filter(Boolean),
     devServer: {
