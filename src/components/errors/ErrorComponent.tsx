@@ -1,11 +1,16 @@
+import { styled } from '@linaria/react';
 import React from 'react';
 
 import { SHOW_STACK } from '../../constants';
-import { errorHeader } from './style.css';
+import { robotoMono } from '../../stylesheets/shared.css';
+
+const MonoHeader = styled.h3`
+  ${robotoMono}
+`;
 
 const ErrorComponent = ({ error }: { error?: Error }) => (
   <>
-    <h3 className={errorHeader}>Something went wrong.</h3>
+    <MonoHeader>Something went wrong.</MonoHeader>
     {SHOW_STACK && error && error.stack && <pre data-testid="stack">{error.stack}</pre>}
   </>
 );

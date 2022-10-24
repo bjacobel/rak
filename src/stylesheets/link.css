@@ -1,9 +1,0 @@
-.link {
-  composes: center from './shared.css';
-  composes: open-sans from './shared.css';
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: underline;
-  }
-}

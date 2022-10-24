@@ -1,11 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
+import { styled } from '@linaria/react';
 
 import { getData, Data } from '../services/data';
 import ErrorComponent from './errors/ErrorComponent';
-import { data as dataStyle, logo } from '../stylesheets/main.css';
-import { link } from '../stylesheets/link.css';
+import { lightgrey } from '../stylesheets/colors.css';
+import { center, openSans } from '../stylesheets/shared.css';
+import StyledLink from './StyledLink';
+
+const DataHeader = styled.h3`
+  ${center}
+  ${openSans}
+  ${lightgrey}
+  font-style: italic;
+`;
+
+const Logo = styled.div`
+  height: 100px;
+  background-image: url('../assets/images/logo.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 export default () => {
   const { isLoading, data, error } = useQuery<Data, Error>(['data'], getData);
@@ -20,14 +35,10 @@ export default () => {
 
   return (
     <>
-      <div role="banner" className={logo} />
-      <h3 className={dataStyle}>{data!.text || ''}</h3>
-      <Link className={link} to="/child/foo">
-        Routing demo
-      </Link>
-      <Link className={link} to="/asdf">
-        404 demo
-      </Link>
+      <Logo role="banner" />
+      <DataHeader>{data!.text || ''}</DataHeader>
+      <StyledLink to="/child/foo">Routing demo</StyledLink>
+      <StyledLink to="/asdf">404 demo</StyledLink>
     </>
   );
 };

@@ -46,7 +46,16 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         {
           test: /\.[jt]sx?$/,
           include: path.join(__dirname, 'src'),
-          use: 'babel-loader',
+          use: [
+            'babel-loader',
+            {
+              loader: '@linaria/webpack5-loader',
+              options: {
+                sourceMap: !isProd,
+                preprocessor: 'none',
+              },
+            },
+          ],
         },
         {
           test: /\.css$/,

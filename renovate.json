@@ -16,6 +16,10 @@
     {
       "packagePatterns": ["^stylelint"],
       "groupName": "Stylelint packages"
+    },
+    {
+      "packagePatterns": ["^@linaria"],
+      "groupName": "Linaria packages"
     }
   ]
 }

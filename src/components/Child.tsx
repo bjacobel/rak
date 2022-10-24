@@ -1,17 +1,24 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { styled } from '@linaria/react';
+import { useParams } from 'react-router-dom';
 
-import { id } from '../stylesheets/child.css';
-import { link } from '../stylesheets/link.css';
+import { center, openSans } from '../stylesheets/shared.css';
+import { lightgrey } from '../stylesheets/colors.css';
+import StyledLink from './StyledLink';
+
+const Child = styled.h3`
+  ${center}
+  ${openSans}
+  ${lightgrey}
+  font-style: italic;
+`;
 
 export default () => {
   const params = useParams<{ id: string }>();
   return (
     <div>
-      <h3 className={id}>{`received param: ${params.id}`}</h3>
-      <Link className={link} to="/">
-        Home
-      </Link>
+      <Child>{`received param: ${params.id}`}</Child>
+      <StyledLink to="/">Home</StyledLink>
     </div>
   );
 };
