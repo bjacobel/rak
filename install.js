@@ -15,9 +15,15 @@ const noopTransform = (chunk, encoding, callback) => {
 
 const config = require('./config');
 
-const ignorePaths = ['.git', '.npmignore', 'install.js', 'install-test.sh', 'node_modules', 'CHANGELOG.md'].map(x =>
-  path.resolve(__dirname, x),
-);
+const ignorePaths = [
+  '.git',
+  '.npmignore',
+  'install.js',
+  'install-test.sh',
+  'node_modules',
+  'CHANGELOG.md',
+  'yarn-error.log',
+].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
 
@@ -86,7 +92,7 @@ const isBin = fileAbsPath => {
   execSync('yarn add replacestream --modules-folder ./node_modules --no-lockfile --silent', {
     stdio: [0, 1, 2],
   });
-  const replaceStream = require('replacestream');
+  const replaceStream = require(path.join(process.cwd(), 'node_modules/replacestream'));
 
   console.log("\nSetting up new Rak project's file structure...\n");
   const newProjectRoot = process.cwd();
