@@ -14,18 +14,6 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
     process.env.BABEL_ENV = 'production';
   }
 
-  const cssLoader = {
-    loader: 'css-loader',
-    options: {
-      modules: {
-        namedExport: true,
-        localIdentName: '[name]__[local]___[hash:base64:5]',
-      },
-      importLoaders: 1,
-      sourceMap: !isProd,
-    },
-  };
-
   return {
     entry: {
       main: './src/index.tsx',
@@ -52,7 +40,6 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
               loader: '@linaria/webpack5-loader',
               options: {
                 sourceMap: !isProd,
-                preprocessor: 'none',
               },
             },
           ],
@@ -60,8 +47,15 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         {
           test: /\.css$/,
           use: [
-            isProd ? { loader: MiniCssExtractPlugin.loader } : { loader: 'style-loader' },
-            cssLoader,
+            {
+              loader: MiniCssExtractPlugin.loader,
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: !isProd,
+              },
+            },
             { loader: 'postcss-loader' },
           ],
         },
@@ -114,11 +108,10 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         title: config.ProjectName,
         inject: true,
       }),
-      isProd &&
-        new MiniCssExtractPlugin({
-          filename: '[name].[contenthash].css',
-          chunkFilename: '[id].[contenthash].css',
-        }),
+      new MiniCssExtractPlugin({
+        filename: '[name].[contenthash].css',
+        chunkFilename: '[id].[contenthash].css',
+      }),
     ].filter(Boolean),
     devServer: {
       hot: true,
