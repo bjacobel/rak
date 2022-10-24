@@ -91,7 +91,7 @@
   },
   "scripts": {
     "awsUtils": "ts-node aws/utils",
-    "style": "prettier -l --ignore-path .eslintignore . && eslint . && stylelint src/*",
+    "style": "prettier -l --ignore-path .eslintignore . && eslint . && stylelint 'src/**/*.{js,ts,tsx}'",
     "validate": "tsc --noEmit",
     "lint": "yarn --silent style && yarn --silent validate",
     "start": "webpack-dev-server",
