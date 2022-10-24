@@ -44,12 +44,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
           type: 'asset',
         },
         {
-          test: /\.tsx?$/,
-          include: path.join(__dirname, 'src'),
-          use: 'ts-loader',
-        },
-        {
-          test: /\.js$/,
+          test: /\.[jt]sx?$/,
           include: path.join(__dirname, 'src'),
           use: 'babel-loader',
         },
@@ -62,10 +57,8 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
           ],
         },
         {
-          test: /\.html\.jsx$/,
-          use: {
-            loader: '@bjacobel/vhtml-loader',
-          },
+          test: /\.html\.tsx$/,
+          use: [{ loader: '@bjacobel/vhtml-loader' }],
         },
       ],
     },
@@ -107,7 +100,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         projectConfig: JSON.stringify(config),
       }),
       new HtmlWebpackPlugin({
-        template: './src/index.html.jsx',
+        template: './src/index.html.tsx',
         favicon: './src/assets/images/favicon.ico',
         title: config.ProjectName,
         inject: true,
