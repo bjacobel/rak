@@ -6,6 +6,7 @@ const fontMagician = require('postcss-font-magician')({
   // thinks it's a relative URL and won't load the font when sourceMaps are also enabled
   protocol: 'https:',
   display: 'swap',
+  formats: 'woff2',
 });
 
 module.exports = {
