@@ -5,7 +5,7 @@ import ErrorComponent from '../ErrorComponent';
 
 const mockShowStackConstant = jest.fn().mockReturnValue(true);
 
-jest.mock('./../../constants', () => ({
+jest.mock('../../../constants', () => ({
   get SHOW_STACK() {
     return mockShowStackConstant();
   },
