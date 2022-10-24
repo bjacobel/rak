@@ -39,6 +39,12 @@ describe('Google Analytics service', () => {
         expect(window.ga).not.toHaveBeenCalled();
       });
     });
+
+    describe('Analytics.set()', () => {
+      it("doesn't do anything", () => {
+        expect(window.ga).not.toHaveBeenCalled();
+      });
+    });
   });
 
   describe('when TRACK_ANALYTICS is enabled', () => {
@@ -64,6 +70,13 @@ describe('Google Analytics service', () => {
         const value = 5;
         analytics.event(category, action, value);
         expect(window.ga).toHaveBeenCalledWith('send', 'event', category, action, value);
+      });
+    });
+
+    describe('Analytics.set()', () => {
+      it("calls ga('set', attr, value)", () => {
+        analytics.set('attr', 'value');
+        expect(window.ga).toHaveBeenCalledWith('set', 'attr', 'value');
       });
     });
   });
