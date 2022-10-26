@@ -1028,10 +1028,10 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@bjacobel/cloudformer-node@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@bjacobel/cloudformer-node/-/cloudformer-node-0.0.15.tgz#39463d5399deb6527107f7e955258a01b2f1857a"
-  integrity sha512-sZtYaDzDLYhdYwvz2YS9KKqGEU4Yjatr9ebsQDO1w2H+R6GFGaAMcbrHSBPyc+7wjPdNylRG6L11oi/dcjUPog==
+"@bjacobel/cloudformer-node@^0.0.16":
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/@bjacobel/cloudformer-node/-/cloudformer-node-0.0.16.tgz#7b2484c7f67e982b75228f64de2d800633125ad7"
+  integrity sha512-g61Bg4QrDjvtdKsYjTWayYXnJCZL9ALU6B9pODwILQ7aXPgXogCAMZQpHdslQywSJfL4WVc4CapAdCEyze9NXw==
   dependencies:
     aws-sdk "^2.1.21"
     commander "^2.8.1"
