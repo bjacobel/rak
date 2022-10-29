@@ -120,7 +120,7 @@ module.exports = {
       Handler: 'provider.handler',
       MemorySize: 128,
       Role: getAtt('LambdaRole', 'Arn'),
-      Runtime: 'python3.6',
+      Runtime: 'python3.9',
       Timeout: 300,
     },
   },
