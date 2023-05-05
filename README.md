@@ -25,7 +25,7 @@ Rak includes and configures the following components to help you build a rock-so
 
 ### Using it in a project
 
-Rak requires Node 16. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a GitHub account.
+Rak requires Node 18. In addition, to use the automatic AWS deployment features, you'll need both an AWS account and a GitHub account.
 
 Start a new Project with Rak by creating an empty directory and installing `rak` into it.
 
