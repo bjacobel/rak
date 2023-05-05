@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
         with:
-          node-version: '16.x'
+          node-version: '18.x'
       - name: 'Checkout'
         uses: actions/checkout@master
       - name: Grab config
@@ -18,7 +18,7 @@ jobs:
         run: |
           echo "::set-output name=Region::$(node config Region)"
           echo "::set-output name=ProjectFQDomain::$(node config ProjectFQDomain)"
-      - uses: aws-actions/configure-aws-credentials@v1-node16
+      - uses: aws-actions/configure-aws-credentials@v2
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
