@@ -4,7 +4,8 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import WebpackManifestPlugin from 'webpack-manifest-plugin';
+import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
+import { GenerateSW } from 'workbox-webpack-plugin';
 
 import config from './config';
 
@@ -117,7 +118,13 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         filename: isProd ? '[name].[contenthash].css' : '[name].css',
         chunkFilename: isProd ? '[id].[contenthash].css' : '[id].css',
       }),
-      new WebpackManifestPlugin(),
+      new WebpackManifestPlugin({}),
+      isProd &&
+        new GenerateSW({
+          exclude: [/\.map$/, /asset-manifest\.json$/],
+          dontCacheBustURLsMatching: /\.\w{8}\./,
+          navigateFallback: '/index.html',
+        }),
     ].filter(Boolean),
     devServer: {
       hot: !isProd,
