@@ -20,6 +20,7 @@ Rak includes and configures the following components to help you build a rock-so
 - [Prettier](https://prettier.io/)
 - [Jest](https://facebook.github.io/jest/)
 - [React Testing Library](https://testing-library.com/)
+- [Offline caching](https://web.dev/learn/pwa/caching/) with a [Workbox Service Worker](https://developer.chrome.com/docs/workbox/)
 - [GitHub Actions workflows](https://docs.github.com/en/actions/learn-github-actions) configured to lint, test, build and deploy to S3/CloudFront
 - [CloudFormation](https://aws.amazon.com/cloudformation/) template to set up those AWS resources for you
 
@@ -57,6 +58,18 @@ and start developing! Your next steps might include:
   - Make sure to update the badge at the top of the readme to point to your new Codecov SVG.
 - Updating the readme to remove all the stuff about the boilerplate and to say a bit about your new project.
 - Removing or modifying the example components and services to do... whatever your new app does.
+
+### Development
+
+The offline-caching service worker doesn't play nicely with HMR or webpack-dev-werver, so it's disabled by default. To enable it, you can either build the site in production mode, or use the `SW_ENABLE` environment variable:
+
+    SW_ENABLE=true yarn webpack
+
+You should see `LOG from GenerateSW` in the output. Don't use this option with WDS (`yarn start`); you'll kill your browser.
+
+When building flat files locally, its important to serve them with a server that implements a correct 404 redirection behavior. Use:
+
+    npx http-server dist -a localhost --proxy http://localhost:8080\?
 
 ### Deployment
 

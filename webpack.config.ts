@@ -4,14 +4,16 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
-import { WebpackManifestPlugin } from 'webpack-manifest-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
 
 import config from './config';
 
+const HASH_DIGEST_LENGTH = 20;
+
 export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } = {}) => {
   const nodeEnv = process.env.NODE_ENV || 'unknown';
   const isProd = env.production || ['production', 'staging'].includes(nodeEnv) || mode === 'production';
+  const swEnable = process.env.SW_ENABLE === 'true' || isProd;
 
   if (isProd) {
     process.env.BABEL_ENV = 'production';
@@ -26,6 +28,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
       path: `${__dirname}/dist`,
       filename: isProd ? '[name].[chunkhash].js' : '[name].js',
       publicPath: isProd ? '/' : 'http://localhost:8080/',
+      hashDigestLength: HASH_DIGEST_LENGTH,
     },
     devtool: 'source-map',
     module: {
@@ -103,6 +106,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(isProd ? 'production' : 'development'),
         'process.env.GITHUB_SHA': JSON.stringify(process.env.GITHUB_SHA || 'unreleased'),
+        'process.env.SW_ENABLE': JSON.stringify(swEnable),
         __SENTRY_DEBUG__: !isProd,
         __SENTRY_TRACING__: !isProd,
         process: undefined,
@@ -118,14 +122,30 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         filename: isProd ? '[name].[contenthash].css' : '[name].css',
         chunkFilename: isProd ? '[id].[contenthash].css' : '[id].css',
       }),
-      new WebpackManifestPlugin({}),
-      isProd &&
+      swEnable &&
         new GenerateSW({
-          exclude: [/\.map$/, /asset-manifest\.json$/],
-          dontCacheBustURLsMatching: /\.\w{8}\./,
-          navigateFallback: '/index.html',
+          clientsClaim: true,
+          skipWaiting: true,
+          exclude: [/\.map$/, /\.LICENSE.txt$/],
+          dontCacheBustURLsMatching: new RegExp(`\\.[a-z0-9]{${HASH_DIGEST_LENGTH}}\\.`),
+          directoryIndex: 'index.html',
+          runtimeCaching: [
+            {
+              urlPattern: /images/,
+              handler: 'CacheFirst',
+            },
+            {
+              urlPattern: /^https:\/\/fonts.(?:googleapis|gstatic).com\/(.*)/,
+              handler: 'CacheFirst',
+            },
+            {
+              urlPattern: /.*/,
+              handler: 'NetworkFirst',
+            },
+          ],
         }),
     ].filter(Boolean),
+    ignoreWarnings: [/GenerateSW/],
     devServer: {
       hot: !isProd,
       historyApiFallback: true,

@@ -9,7 +9,7 @@ import Analytics from './components/Analytics';
 import Routes from './components/Routes';
 import { setup as sentrySetup } from './services/errors';
 import { IS_PROD } from './constants';
-import { register } from './utils/serviceworker';
+import { register } from './utils/sw-loader';
 
 sentrySetup();
 const queryClient = new QueryClient();
@@ -21,7 +21,6 @@ const render = () => {
     <StrictMode>
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>
-          <Analytics />
           <Routes />
         </BrowserRouter>
       </QueryClientProvider>
