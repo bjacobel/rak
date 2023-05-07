@@ -1,5 +1,6 @@
 export const IS_PROD = process.env.NODE_ENV === 'production';
 export const SHOW_DEV_TOOLS = !IS_PROD;
+export const SHOW_STACK = !IS_PROD;
 export const TRACK_ANALYTICS = IS_PROD;
 export const LOG_ERRORS = IS_PROD;
 export const DATA = {
