@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Switch } from 'wouter';
 
 import { render } from '../../testing/rtl';
 import NotFound from '../NotFound';
@@ -9,9 +9,9 @@ describe('404 component', () => {
 
   beforeEach(() => {
     notFound = (
-      <Routes>
-        <Route element={<NotFound />} path="*" />
-      </Routes>
+      <Switch>
+        <Route component={NotFound} path="*" />
+      </Switch>
     );
   });
 

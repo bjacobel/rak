@@ -2,7 +2,8 @@ import React, { ReactNode } from 'react';
 import { render, RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
-import { MemoryRouter } from 'react-router-dom';
+import { Router } from 'wouter';
+import { memoryLocation } from 'wouter/memory-location';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -13,12 +14,13 @@ const queryClient = new QueryClient({
 });
 
 const customRender = (ui: ReactNode, options?: RenderOptions & { route?: string }) => {
-  const route = options && options.route ? options.route : '/';
+  const path = options && options.route ? options.route : '/';
+  const { hook } = memoryLocation({ path, static: true });
   return {
     user: userEvent.setup(),
     ...render(
       <QueryClientProvider client={queryClient}>
-        <MemoryRouter initialEntries={[route]}>{ui}</MemoryRouter>
+        <Router hook={hook}>{ui}</Router>
       </QueryClientProvider>,
       options,
     ),

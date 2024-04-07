@@ -40,6 +40,7 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'react/require-default-props': 0,
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
     '@typescript-eslint/no-non-null-assertion': 0,
   },

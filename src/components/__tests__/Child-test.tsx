@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'wouter';
 
 import Child from '../Child';
 import { render } from '../../testing/rtl';
@@ -9,9 +9,9 @@ describe('child component', () => {
 
   beforeEach(() => {
     child = (
-      <Routes>
-        <Route element={<Child />} path="/child/:id" />;
-      </Routes>
+      <Switch>
+        <Route component={Child} path="/child/:id" />;
+      </Switch>
     );
   });
 

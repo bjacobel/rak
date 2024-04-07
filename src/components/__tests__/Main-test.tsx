@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'wouter';
 
 import { getData } from '../../services/data';
 import { DATA } from '../../constants';
@@ -17,9 +17,9 @@ describe('main component', () => {
   beforeEach(() => {
     jest.mocked(getData).mockImplementation(() => Promise.resolve(DATA));
     main = (
-      <Routes>
-        <Route element={<Main />} path="/" />
-      </Routes>
+      <Switch>
+        <Route component={Main} path="/" />
+      </Switch>
     );
   });
 

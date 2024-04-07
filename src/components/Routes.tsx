@@ -1,14 +1,14 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Switch, Route } from 'wouter';
 
 import NotFound from './NotFound';
 import Child from './Child';
 import Main from './Main';
 
 export default () => (
-  <Routes>
-    <Route element={<Main />} path="/" />
-    <Route element={<Child />} path="/child/:id" />
-    <Route element={<NotFound />} path="*" />
-  </Routes>
+  <Switch>
+    <Route component={Main} path="/" />
+    <Route component={Child} path="/child/:id" />
+    <Route component={NotFound} path="*" />
+  </Switch>
 );
