@@ -30,7 +30,7 @@ export default () => {
   }
 
   if (isLoading) {
-    return 'loading spinner';
+    return <span>loading...</span>;
   }
 
   return (
