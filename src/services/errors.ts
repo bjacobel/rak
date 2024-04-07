@@ -17,12 +17,12 @@ export const setup = () => {
   }
 };
 
-export default (ex: Error, context?: string) => {
+export default (ex: Error, context?: unknown) => {
   if (LOG_ERRORS) {
     setup(); // memoized, it is fine to call this on every log
 
     if (context) {
-      client.setExtra('context', context);
+      client.setExtra('context', context as string);
     }
 
     client.report(ex);

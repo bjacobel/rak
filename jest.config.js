@@ -1,3 +1,5 @@
+const esmDependencies = ['wouter', '@micro-sentry/core', '@micro-sentry/breadcrumbs-plugin'];
+
 module.exports = {
   collectCoverageFrom: ['src/**/*.{js,ts,jsx}', '!src/**/*.css.ts'],
   coveragePathIgnorePatterns: ['polyfills.js', 'testing/.*.js'],
@@ -7,4 +9,5 @@ module.exports = {
   testEnvironmentOptions: {
     url: 'http://localhost',
   },
+  transformIgnorePatterns: [`/node_modules/(?!(${esmDependencies.join('|')}))`],
 };
