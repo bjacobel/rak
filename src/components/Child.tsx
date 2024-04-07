@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@linaria/react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'wouter';
 
 import { center, openSans } from '../stylesheets/shared.css';
 import { lightgrey } from '../stylesheets/colors.css';
