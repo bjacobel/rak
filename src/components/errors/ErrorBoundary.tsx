@@ -22,7 +22,7 @@ export default class ErrorBoundary extends Component<PropsWithChildren, State> {
 
   componentDidCatch(error: Error, errorInfo: unknown) {
     if (LOG_ERRORS) {
-      log(error, errorInfo);
+      log(error, errorInfo as string);
     }
   }
 

@@ -39,6 +39,7 @@ export default () => {
       <DataHeader>{data!.text || ''}</DataHeader>
       <StyledLink to="/child/foo">Routing demo</StyledLink>
       <StyledLink to="/asdf">404 demo</StyledLink>
+      <StyledLink to="/error">Error</StyledLink>
     </>
   );
 };

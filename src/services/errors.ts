@@ -1,33 +1,31 @@
-import { init, captureException, configureScope } from '@sentry/browser';
+import { BrowserMicroSentryClient } from '@micro-sentry/browser';
+import { BreadcrumbsPlugin } from '@micro-sentry/breadcrumbs-plugin';
 
 import { LOG_ERRORS, RAVEN_ENDPT, RELEASE } from '../constants';
 
-declare global {
-  interface Window {
-    __SENTRY_READY__?: boolean;
-  }
-}
+let client: BrowserMicroSentryClient;
 
 export const setup = () => {
   if (LOG_ERRORS) {
-    /* eslint-disable no-underscore-dangle */
-    if (!window.__SENTRY_READY__) {
-      init({ dsn: RAVEN_ENDPT, release: RELEASE });
-      window.__SENTRY_READY__ = true;
+    if (!client) {
+      client = new BrowserMicroSentryClient({
+        dsn: RAVEN_ENDPT,
+        release: RELEASE,
+        plugins: [BreadcrumbsPlugin],
+      });
     }
-    /* eslint-enable no-underscore-dangle */
   }
 };
 
-export default (ex: Error, context?: unknown) => {
+export default (ex: Error, context?: string) => {
   if (LOG_ERRORS) {
     setup(); // memoized, it is fine to call this on every log
 
     if (context) {
-      configureScope(scope => scope.setExtra('context', context));
+      client.setExtra('context', context);
     }
 
-    captureException(ex);
+    client.report(ex);
   }
 
   return window.console && console.error && console.error(ex);
