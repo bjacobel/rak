@@ -1,6 +1,9 @@
 name: 'Integration'
 on:
   - push
+concurrency:
+  group: ${{ github.ref }}-integration
+  cancel-in-progress: true
 jobs:
   lint-test:
     name: 'Lint/Test'

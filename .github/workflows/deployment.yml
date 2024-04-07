@@ -3,11 +3,21 @@ on:
   push:
     branches:
       - master
+concurrency:
+  group: ${{ github.ref }}-deployment
+  cancel-in-progress: true
 jobs:
   build:
     name: 'Build and deploy static site'
     runs-on: ubuntu-latest
     steps:
+      - name: Wait for CI to succeed
+        uses: lewagon/wait-on-check-action@master
+        with:
+          ref: ${{ github.ref }}
+          check-name: 'Lint/Test'
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          wait-interval: 10
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
