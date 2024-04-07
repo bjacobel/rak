@@ -8,6 +8,9 @@ import { BrowserRouter } from 'react-router-dom';
 import Analytics from './components/Analytics';
 import Routes from './components/Routes';
 import { setup as sentrySetup } from './services/errors';
+import { IS_PROD } from './constants';
+import { register } from './utils/sw-loader';
+import PWAUpdater from './components/PWAUpdater';
 
 sentrySetup();
 const queryClient = new QueryClient();
@@ -18,6 +21,7 @@ const render = () => {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
+        <PWAUpdater />
         <BrowserRouter>
           <Analytics />
           <Routes />
@@ -27,7 +31,9 @@ const render = () => {
   );
 };
 
-if (module.hot) {
+register();
+
+if (module.hot && !IS_PROD) {
   module.hot.accept('./components/Routes', () => {
     render();
   });

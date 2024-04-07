@@ -11,6 +11,9 @@ export default (
       <title>{htmlWebpackPlugin.options.title}</title>
     </head>
     <body>
+      <noscript>
+        <h1>This application requires JavaScript to function. Please enable JavaScript and reload.</h1>
+      </noscript>
       <div id="main" />
     </body>
   </html>
