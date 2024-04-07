@@ -44,7 +44,7 @@ jobs:
           aws s3 sync dist s3://${{ steps.config.outputs.ProjectFQDomain }} \
             --acl public-read \
             --cache-control max-age=31536000
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: ./dist
@@ -62,7 +62,7 @@ jobs:
         run: |
           echo "::set-output name=SentryOrg::$(node config SentryOrg)"
           echo "::set-output name=SentryProject::$(node config SentryProject)"
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           name: dist
           path: dist
