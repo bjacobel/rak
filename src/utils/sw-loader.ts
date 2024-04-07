@@ -1,4 +1,5 @@
 import { Workbox } from 'workbox-window';
+
 import { SW_FILENAME } from '../constants';
 
 export const register = () => {
