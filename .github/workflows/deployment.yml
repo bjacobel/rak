@@ -25,7 +25,7 @@ jobs:
           aws-region: ${{ steps.config.outputs.Region }}
       - name: Cache node_modules
         id: cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: node_modules
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
@@ -44,7 +44,7 @@ jobs:
           aws s3 sync dist s3://${{ steps.config.outputs.ProjectFQDomain }} \
             --acl public-read \
             --cache-control max-age=31536000
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: dist
           path: ./dist
