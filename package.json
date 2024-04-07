@@ -61,7 +61,7 @@
     "postcss": "^8.4.6",
     "postcss-calc": "^9.0.0",
     "postcss-font-magician": "^4.0.0",
-    "postcss-loader": "^7.0.0",
+    "postcss-loader": "^8.0.0",
     "postcss-preset-env": "^9.0.0",
     "prettier": "^3.2.5",
     "style-loader": "^3.3.1",
