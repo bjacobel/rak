@@ -7,9 +7,9 @@ describe('app entry point', () => {
 
   beforeEach(() => {
     render = jest.fn();
-    jest.mocked(createRoot).mockReturnValue(({
+    jest.mocked(createRoot).mockReturnValue({
       render,
-    } as unknown) as ReturnType<typeof createRoot>);
+    } as unknown as ReturnType<typeof createRoot>);
   });
 
   it('renders the react app', () => {
