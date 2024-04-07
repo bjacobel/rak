@@ -10,6 +10,7 @@ import Routes from './components/Routes';
 import { setup as sentrySetup } from './services/errors';
 import { IS_PROD } from './constants';
 import { register } from './utils/sw-loader';
+import PWAUpdater from './components/PWAUpdater';
 
 sentrySetup();
 const queryClient = new QueryClient();
@@ -20,7 +21,9 @@ const render = () => {
   root.render(
     <StrictMode>
       <QueryClientProvider client={queryClient}>
+        <PWAUpdater />
         <BrowserRouter>
+          <Analytics />
           <Routes />
         </BrowserRouter>
       </QueryClientProvider>
