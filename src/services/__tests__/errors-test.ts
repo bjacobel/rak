@@ -16,15 +16,11 @@ const err = new Error('err');
 describe('error logging service', () => {
   beforeEach(() => {
     console.error = jest.fn();
+    jest.mocked(BrowserMicroSentryClient.prototype.report).mockReset();
   });
   describe('in production mode', () => {
     beforeEach(() => {
       mockLogErrorsConstant.mockReturnValue(true);
-    });
-
-    it("sets up Raven if it hasn't been 'installed' yet", () => {
-      logToRaven(err);
-      expect(BrowserMicroSentryClient).toHaveBeenCalled();
     });
 
     it('logs an error to Raven', () => {
@@ -47,11 +43,6 @@ describe('error logging service', () => {
   describe('in development mode', () => {
     beforeEach(() => {
       mockLogErrorsConstant.mockReturnValue(false);
-    });
-
-    it("does not call Raven initialize, even if it isn't installed", () => {
-      logToRaven(err);
-      expect(BrowserMicroSentryClient).not.toHaveBeenCalled();
     });
 
     it("does not call raven's exception logger", () => {

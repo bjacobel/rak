@@ -18,6 +18,11 @@ exports[`main component matches snapshot 1`] = `
   >
     404 demo
   </a>
+  <a
+    href="/error"
+  >
+    Error
+  </a>
 </DocumentFragment>
 `;
 
