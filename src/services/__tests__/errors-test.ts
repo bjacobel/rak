@@ -1,8 +1,8 @@
-import { init, captureException, configureScope } from '@sentry/browser';
+import { BrowserMicroSentryClient } from '@micro-sentry/browser';
 
 import logToRaven from '../errors';
 
-jest.mock('@sentry/browser');
+jest.mock('@micro-sentry/browser');
 
 const mockLogErrorsConstant = jest.fn().mockReturnValue(false);
 jest.mock('constants/index', () => ({
@@ -16,9 +16,6 @@ const err = new Error('err');
 describe('error logging service', () => {
   beforeEach(() => {
     console.error = jest.fn();
-    jest.mocked(init).mockReset();
-    jest.mocked(captureException).mockReset();
-    jest.mocked(configureScope).mockReset();
   });
   describe('in production mode', () => {
     beforeEach(() => {
@@ -27,18 +24,18 @@ describe('error logging service', () => {
 
     it("sets up Raven if it hasn't been 'installed' yet", () => {
       logToRaven(err);
-      expect(init).toHaveBeenCalled();
+      expect(BrowserMicroSentryClient).toHaveBeenCalled();
     });
 
     it('logs an error to Raven', () => {
       logToRaven(err);
-      expect(captureException).toHaveBeenCalled();
+      expect(BrowserMicroSentryClient.prototype.report).toHaveBeenCalled();
     });
 
     it('can set extra context in scope', () => {
       const context = { foo: 'bar' };
       logToRaven(err, context);
-      expect(configureScope).toHaveBeenCalled();
+      expect(BrowserMicroSentryClient.prototype.setExtra).toHaveBeenCalled();
     });
 
     it('logs the error to the console too', () => {
@@ -54,12 +51,12 @@ describe('error logging service', () => {
 
     it("does not call Raven initialize, even if it isn't installed", () => {
       logToRaven(err);
-      expect(init).not.toHaveBeenCalled();
+      expect(BrowserMicroSentryClient).not.toHaveBeenCalled();
     });
 
     it("does not call raven's exception logger", () => {
       logToRaven(err);
-      expect(captureException).not.toHaveBeenCalled();
+      expect(BrowserMicroSentryClient.prototype.report).not.toHaveBeenCalled();
     });
 
     it('logs to console', () => {
