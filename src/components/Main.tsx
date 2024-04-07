@@ -23,7 +23,7 @@ const Logo = styled.div`
 `;
 
 export default () => {
-  const { isLoading, data, error } = useQuery<Data, Error>(['data'], getData);
+  const { isLoading, data, error } = useQuery<Data, Error>({ queryKey: ['data'], queryFn: getData });
 
   if (error) {
     return <ErrorComponent error={error} />;
