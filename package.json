@@ -29,7 +29,7 @@
     "@linaria/stylelint-config-standard-linaria": "^4.1.4",
     "@linaria/webpack5-loader": "^4.1.7",
     "@mapbox/cloudfriend": "^8.1.0",
-    "@testing-library/dom": "^9.0.0",
+    "@testing-library/dom": "^10.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
