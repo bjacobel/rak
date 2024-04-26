@@ -59,7 +59,7 @@
     "jest-environment-jsdom": "^29.1.2",
     "mini-css-extract-plugin": "^2.6.1",
     "postcss": "^8.4.6",
-    "postcss-calc": "^9.0.0",
+    "postcss-calc": "^10.0.0",
     "postcss-font-magician": "^4.0.0",
     "postcss-loader": "^8.0.0",
     "postcss-preset-env": "^9.0.0",
