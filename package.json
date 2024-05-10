@@ -97,7 +97,7 @@
     "awsUtils": "ts-node aws/utils",
     "style": "prettier -l --ignore-path .eslintignore . && eslint . && stylelint 'src/**/*.{js,ts,tsx}'",
     "validate": "tsc --noEmit",
-    "lint": "yarn --silent style && yarn --silent validate",
+    "lint": "yarn --silent run style && yarn --silent run validate",
     "start": "webpack-dev-server",
     "test": "jest --coverage && ./install-test.sh",
     "prepublish": "webpack -c install/src/webpack.config.ts"
