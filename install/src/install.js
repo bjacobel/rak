@@ -24,6 +24,7 @@ const ignorePaths = [
   'node_modules',
   'CHANGELOG.md',
   'yarn-error.log',
+  '.yarn',
 ].map(x => path.resolve(__dirname, x));
 
 const flatten = list => list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
@@ -101,14 +102,9 @@ const isBin = fileAbsPath => {
       if (srcFileRelFromSrcRoot === 'package.json') {
         promisify(fs.readFile)(srcFileAbsPath, 'utf-8')
           .then(JSON.parse)
-          .then(
-            contents =>
-              new Promise((_resolve, _reject) => {
-                dstFile.write(clean(contents, newProjectName));
-                dstFile.on('finish', _resolve).on('error', _reject);
-              }),
-          )
-          .then(resolve)
+          .then(contents => {
+            dstFile.write(clean(contents, newProjectName), e => (e ? reject(e) : resolve()));
+          })
           .catch(reject);
       } else {
         fs.createReadStream(srcFileAbsPath)
@@ -132,7 +128,7 @@ const isBin = fileAbsPath => {
     execSync('command -v tree > /dev/null && tree . -aIC "node_modules|.yalc" || true', { stdio: [0, 1, 2] });
 
     console.log('\nInstalling dependencies of your new Rak project...\n');
-    execSync('yarn install --immutable', { stdio: [0, 1, 2] });
+    execSync('yarn install', { stdio: [0, 1, 2] });
 
     execSync('rm -rf yalc* .yalc');
 
