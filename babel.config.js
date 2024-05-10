@@ -11,7 +11,7 @@ module.exports = api => ({
     ],
     '@babel/preset-react',
     '@babel/preset-typescript',
-    '@linaria',
+    '@wyw-in-js',
   ],
   plugins: [
     '@babel/plugin-proposal-object-rest-spread',

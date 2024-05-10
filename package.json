@@ -26,7 +26,6 @@
     "@bjacobel/cloudformer-node": "^0.0.16",
     "@bjacobel/vhtml-loader": "^2.3.0",
     "@linaria/stylelint-config-standard-linaria": "^4.1.4",
-    "@linaria/webpack5-loader": "^4.1.7",
     "@mapbox/cloudfriend": "^8.1.0",
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
