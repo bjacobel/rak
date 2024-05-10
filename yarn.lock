@@ -84,7 +84,7 @@
     json5 "^2.2.3"
     semver "^6.3.1"
 
-"@babel/generator@^7.18.9", "@babel/generator@^7.21.5", "@babel/generator@^7.24.1", "@babel/generator@^7.7.2":
+"@babel/generator@^7.21.5", "@babel/generator@^7.24.1", "@babel/generator@^7.7.2":
   version "7.24.4"
   resolved "https://registry.yarnpkg.com/@babel/generator/-/generator-7.24.4.tgz#1fc55532b88adf952025d5d2d1e71f946cb1c498"
   integrity sha512-Xd6+v6SnjWVx/nus+y0l1sxMOTOMBkyL4+BIdbALyatQnAe/SRVjANeDPSCYaX+i1iJmuGSKf3Z+E+V/va1Hvw==
@@ -484,12 +484,12 @@
     js-tokens "^4.0.0"
     picocolors "^1.0.0"
 
-"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.18.13", "@babel/parser@^7.21.8", "@babel/parser@^7.24.0", "@babel/parser@^7.24.1":
+"@babel/parser@^7.1.0", "@babel/parser@^7.14.7", "@babel/parser@^7.21.8", "@babel/parser@^7.24.0", "@babel/parser@^7.24.1":
   version "7.24.4"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.24.4.tgz#234487a110d89ad5a3ed4a8a566c36b9453e8c88"
   integrity sha512-zTvEBcghmeBma9QIGunWevvBAp4/Qu9Bdq+2k0Ot4fVMD6v3dsC9WOcRSKk7tRRyBM/53yKMJko9xOatGQAwSg==
 
-"@babel/parser@^7.24.5":
+"@babel/parser@^7.23.5", "@babel/parser@^7.24.5":
   version "7.24.5"
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.24.5.tgz#4a4d5ab4315579e5398a82dcf636ca80c3392790"
   integrity sha512-EOv5IK8arwh3LI47dz1b0tKUb/1uhHAnHJOrjgtQMIpu1uXd9mlFrJg9IUgGUgZ41Ch0K8REPTYpO7B76b4vJg==
@@ -1786,7 +1786,7 @@
     "@babel/parser" "^7.24.0"
     "@babel/types" "^7.24.0"
 
-"@babel/traverse@^7.18.9", "@babel/traverse@^7.19.0", "@babel/traverse@^7.21.5", "@babel/traverse@^7.7.2":
+"@babel/traverse@^7.19.0", "@babel/traverse@^7.21.5", "@babel/traverse@^7.7.2":
   version "7.24.1"
   resolved "https://registry.yarnpkg.com/@babel/traverse/-/traverse-7.24.1.tgz#d65c36ac9dd17282175d1e4a3c49d5b7988f530c"
   integrity sha512-xuU6o9m68KeqZbQuDt2TcKSxUw/mrsvavlEqQ1leZ/B+C9tk6E4sRWy97WaXgvq5E+nU3cXMxv3WKOCanVMCmQ==
@@ -2506,14 +2506,14 @@
   dependencies:
     "@wyw-in-js/processor-utils" "^0.5.3"
 
-"@linaria/postcss-linaria@^4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@linaria/postcss-linaria/-/postcss-linaria-4.1.4.tgz#6c17d9cfbef42ec5fd95ed46094b693dea9ae890"
-  integrity sha512-5SSRxHdH4CEhHvmPdZ1g1G1VL2pdMDIuFh16HreF2UFQujZIL357mkq829jb0wu4/OnM5oYKiWp4GAvboz0UNA==
+"@linaria/postcss-linaria@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@linaria/postcss-linaria/-/postcss-linaria-6.2.0.tgz#6a6e82e80bd7d4f3d389583b114a728a276e29e8"
+  integrity sha512-PvmhOZA1oGLuwq810RsusCDGs5MceRe0P+l1NjT2zO9JVvnMU7IdobItWiZdzStgobCNWkrVsEnCWcbDnFeZzg==
   dependencies:
-    "@babel/generator" "^7.18.9"
-    "@babel/parser" "^7.18.13"
-    "@babel/traverse" "^7.18.9"
+    "@babel/generator" "^7.23.5"
+    "@babel/parser" "^7.23.5"
+    "@babel/traverse" "^7.23.5"
     stylelint "^14.11.0"
 
 "@linaria/react@^6.2.1":
@@ -2530,12 +2530,12 @@
     resolve "^1.22.8"
     ts-invariant "^0.10.3"
 
-"@linaria/stylelint-config-standard-linaria@^4.1.4":
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/@linaria/stylelint-config-standard-linaria/-/stylelint-config-standard-linaria-4.1.4.tgz#965b01e80619dbfba82bb32e936d41c37d854ffe"
-  integrity sha512-FFJqMJ0VJ5rT/DBFJi75JOu/5aIwU5NJZdjx7MB7IM7UORjhEpuziI6eKXRb9wU23/vpatDZE9DEAAfeY8qk/A==
+"@linaria/stylelint-config-standard-linaria@^6.2.0":
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/@linaria/stylelint-config-standard-linaria/-/stylelint-config-standard-linaria-6.2.0.tgz#5353fa1497d847ed05f336bdfd7ff75328e3b064"
+  integrity sha512-I9lPM/PCCyhaHryXdh+92ShbwQp/6rVwbTz0dGL7hcYShGpy3DSmieTNOl1O0tv6waVg5Gpx+QUi6RvtAg0MRA==
   dependencies:
-    "@linaria/postcss-linaria" "^4.1.4"
+    "@linaria/postcss-linaria" "^6.2.0"
     stylelint "^14.11.0"
     stylelint-config-standard "^28.0.0"
 
