@@ -7,6 +7,7 @@
  */
 
 const { ref, join, getAtt, region, sub } = require('@mapbox/cloudfriend');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const config = require('app/config');
 
 module.exports = {

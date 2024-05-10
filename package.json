@@ -25,6 +25,11 @@
     "url": "git@github.com:bjacobel/rak.git",
     "type": "git"
   },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.2.5"
+  },
   "scripts": {
     "deploy-utils": "ts-node deploy/utils",
     "style": "prettier -l --ignore-path .eslintignore . && eslint . && stylelint 'src/**/*.{js,ts,tsx}'",

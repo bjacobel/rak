@@ -1,4 +1,5 @@
 const { ref, equals } = require('@mapbox/cloudfriend');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const config = require('app/config');
 
 const HostedZone = require('./stack/HostedZone');

@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+// eslint-disable-next-line import/no-extraneous-dependencies
 const config = require('app/config');
 
 module.exports = () => {

@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 const config = require('app/config');
+
 const { template, parameters } = require('../template');
 
 // Required because cloudformer-node sets up its region config as a import-time side effect (ugh)
