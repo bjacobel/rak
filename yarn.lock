@@ -3441,6 +3441,14 @@
   resolved "https://registry.yarnpkg.com/@webpack-cli/serve/-/serve-2.0.3.tgz#c00c48d19340224242842e38b8f7b76c308bbd3f"
   integrity sha512-Bwxd73pHuYc0cyl7vulPp2I6kAYtmJPkfUivbts7by6wDAVyFdKzGX3AksbvCRyNVFUJu7o2ZTcWXdT90T3qbg==
 
+"@wyw-in-js/babel-preset@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@wyw-in-js/babel-preset/-/babel-preset-0.5.3.tgz#22b2c872ccafd85a172b05e9dcdb96f7b891deaa"
+  integrity sha512-qce06y0hp9XTdJ+L/WbcT+MLognK/jqMrCgJaAtwel/TUmyFJXlSAA+MczmAJSR/rmPVwdnRIHw7dMHAyzgjxg==
+  dependencies:
+    "@babel/core" "^7.23.5"
+    "@wyw-in-js/transform" "0.5.3"
+
 "@wyw-in-js/processor-utils@0.5.3", "@wyw-in-js/processor-utils@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@wyw-in-js/processor-utils/-/processor-utils-0.5.3.tgz#eb1cf796d4f454f7496454e775f0137c64dd1c79"

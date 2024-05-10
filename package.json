@@ -38,6 +38,7 @@
     "@types/webpack-env": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
+    "@wyw-in-js/babel-preset": "^0.5.3",
     "@wyw-in-js/webpack-loader": "^0.5.3",
     "autoprefixer": "^10.4.19",
     "aws-sdk": "^2.1594.0",
