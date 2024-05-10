@@ -31,7 +31,8 @@
     "validate": "tsc --noEmit",
     "lint": "yarn --silent style && yarn --silent validate",
     "start": "webpack-dev-server -c app/webpack.config.ts",
-    "test": "jest --coverage && ./install-test.sh"
+    "test": "jest --coverage && ./install-test.sh",
+    "jest": "jest -c app/jest.config.js"
   },
   "browserslist": [
     "> 1% in US"

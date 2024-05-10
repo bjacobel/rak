@@ -15,8 +15,4 @@ const ErrorComponent = ({ error }: { error?: Error }) => (
   </>
 );
 
-ErrorComponent.defaultProps = {
-  error: undefined,
-};
-
 export default ErrorComponent;
