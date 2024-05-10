@@ -25,7 +25,7 @@
     "@babel/preset-typescript": "^7.24.1",
     "@bjacobel/cloudformer-node": "^0.0.16",
     "@bjacobel/vhtml-loader": "^2.3.0",
-    "@linaria/stylelint-config-standard-linaria": "^4.1.4",
+    "@linaria/stylelint-config-standard-linaria": "^6.2.0",
     "@mapbox/cloudfriend": "^8.1.0",
     "@testing-library/dom": "^9.0.0",
     "@testing-library/jest-dom": "^5.16.5",
