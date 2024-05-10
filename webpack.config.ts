@@ -43,7 +43,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
           use: [
             'babel-loader',
             {
-              loader: '@linaria/webpack5-loader',
+              loader: '@wyw-in-js/webpack-loader',
               options: {
                 sourceMap: !isProd,
               },
