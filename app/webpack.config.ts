@@ -6,7 +6,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
 
-import config from './config';
+import config from 'app/config';
 
 const HASH_DIGEST_LENGTH = 20;
 
@@ -21,7 +21,7 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
 
   return {
     entry: {
-      main: './src/index.tsx',
+      main: path.join(__dirname, 'src/index.tsx'),
     },
     mode: isProd ? 'production' : 'development',
     output: {
@@ -113,8 +113,8 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
         projectConfig: JSON.stringify(config),
       }),
       new HtmlWebpackPlugin({
-        template: './src/index.html.tsx',
-        favicon: './src/assets/images/favicon.ico',
+        template: path.join(__dirname, 'src/index.html.tsx'),
+        favicon: path.join(__dirname, 'src/assets/images/favicon.ico'),
         title: config.ProjectName,
         inject: true,
       }),

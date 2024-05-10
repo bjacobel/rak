@@ -7,8 +7,7 @@
  */
 
 const { ref, join, getAtt, region, sub } = require('@mapbox/cloudfriend');
-
-const config = require('../../config');
+const config = require('app/config');
 
 module.exports = {
   Certificate: {

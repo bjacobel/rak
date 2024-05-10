@@ -1,6 +1,5 @@
 const AWS = require('aws-sdk');
-
-const config = require('../../config');
+const config = require('app/config');
 
 module.exports = () => {
   // Invalidate objects in the CloudFront distro associated with this project.
