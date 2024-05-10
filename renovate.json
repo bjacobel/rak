@@ -18,7 +18,7 @@
       "groupName": "Stylelint packages"
     },
     {
-      "packagePatterns": ["^@linaria"],
+      "packagePatterns": ["^@linaria", "^@wyw-in-js"],
       "groupName": "Linaria packages"
     }
   ]
