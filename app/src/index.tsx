@@ -16,7 +16,7 @@ sentrySetup();
 const queryClient = new QueryClient();
 
 const rootEl = document.getElementById('main');
-const root = createRoot(rootEl!);
+const root = createRoot(rootEl!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
 const render = () => {
   root.render(
     <StrictMode>

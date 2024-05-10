@@ -31,7 +31,9 @@
     "eslint": "^8.0.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "eslint-import-resolver-typescript": "^3.5.1",
+    "check-peer-dependencies": "^4.2.0"
   },
   "scripts": {
     "deploy-utils": "ts-node deploy/utils",

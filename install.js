@@ -2,7 +2,7 @@
 
 // Some funkiness here because this file is NOT run through Babel, just Node LTS
 /* eslint-env { parserOptions: { ecmaVersion: 8 }, env: { node: true } } */
-/* eslint-disable global-require, import/no-dynamic-require, import/no-unresolved, @typescript-eslint/no-var-requires */
+/* eslint-disable global-require, @typescript-eslint/no-var-requires */
 
 const fs = require('fs');
 const path = require('path');

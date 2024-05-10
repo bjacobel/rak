@@ -5,7 +5,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
-
+// eslint-disable-next-line import/no-extraneous-dependencies
 import config from 'app/config';
 
 const HASH_DIGEST_LENGTH = 20;

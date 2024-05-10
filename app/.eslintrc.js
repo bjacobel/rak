@@ -1,6 +1,13 @@
 module.exports = {
-  extends: ['plugin:react-hooks/recommended'],
+  extends: [
+    'eslint-config-airbnb',
+    'plugin:react-hooks/recommended',
+    'eslint-config-prettier',
+    'plugin:@typescript-eslint/recommended',
+  ],
   rules: {
+    'no-else-return': 0,
+    'no-console': 0,
     'max-classes-per-file': 0,
     'default-param-last': 0,
     'import/prefer-default-export': 0,
@@ -17,5 +24,20 @@ module.exports = {
     ],
     'react/require-default-props': 0,
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
+    'import/no-extraneous-dependencies': [2, { devDependencies: true }],
+    'import/order': [
+      2,
+      {
+        groups: [['builtin', 'external']],
+        'newlines-between': 'always',
+      },
+    ],
+    'import/extensions': [
+      2,
+      'never',
+      {
+        css: 'always',
+      },
+    ],
   },
 };

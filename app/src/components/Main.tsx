@@ -29,14 +29,14 @@ export default () => {
     return <ErrorComponent error={error} />;
   }
 
-  if (isLoading) {
+  if (!data || isLoading) {
     return <span>loading...</span>;
   }
 
   return (
     <>
       <Logo role="banner" />
-      <DataHeader>{data!.text || ''}</DataHeader>
+      <DataHeader>{data.text || ''}</DataHeader>
       <StyledLink to="/child/foo">Routing demo</StyledLink>
       <StyledLink to="/asdf">404 demo</StyledLink>
       <StyledLink to="/error">Error</StyledLink>
