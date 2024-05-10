@@ -1,6 +1,6 @@
 {
   "author": "Brian Jacobel <brian@bjacobel.com> (https://bjacobel.com)",
-  "bin": "install.js",
+  "bin": "install/lib/index.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
     "@linaria/core": "^6.2.0",
@@ -11,6 +11,7 @@
     "core-js": "^3.0.1",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "replacestream": "^4.0.3",
     "workbox-window": "^7.0.0",
     "wouter": "^3.1.0"
   },
@@ -34,6 +35,7 @@
     "@types/google.analytics": "^0.0.46",
     "@types/jest": "^29.1.2",
     "@types/node": "^20.12.5",
+    "@types/replacestream": "^4",
     "@types/webpack-env": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.59.2",
     "@typescript-eslint/parser": "^5.59.2",
@@ -97,10 +99,12 @@
     "validate": "tsc --noEmit",
     "lint": "yarn --silent style && yarn --silent validate",
     "start": "webpack-dev-server",
-    "test": "jest --coverage && ./install-test.sh"
+    "test": "jest --coverage && ./install-test.sh",
+    "prepublish": "webpack -c install/src/webpack.config.ts"
   },
   "version": "0.4.0",
   "browserslist": [
     "> 1% in US"
-  ]
+  ],
+  "packageManager": "yarn@1.22.21+sha1.1959a18351b811cdeedbd484a8f86c3cc3bbaf72"
 }

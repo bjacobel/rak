@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-// Some funkiness here because this file is NOT run through Babel, just Node LTS
 /* eslint-env { parserOptions: { ecmaVersion: 8 }, env: { node: true } } */
 /* eslint-disable global-require, import/no-dynamic-require, import/no-unresolved, @typescript-eslint/no-var-requires */
 
@@ -8,17 +7,19 @@ const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 const { Transform } = require('stream');
+const { promisify } = require('util');
+const replaceStream = require('replacestream');
 
 const noopTransform = (chunk, encoding, callback) => {
   callback(undefined, chunk);
 };
 
-const config = require('./config');
+const config = require('../../config');
 
 const ignorePaths = [
   '.git',
   '.npmignore',
-  'install.js',
+  'install',
   'install-test.sh',
   'node_modules',
   'CHANGELOG.md',
@@ -38,6 +39,7 @@ const clean = (pDJ, projName) => {
     'optionalDependencies',
     'readme',
     'readmeFilename',
+    'repository',
   ];
   const newPackageJson = {};
 
@@ -51,11 +53,6 @@ const clean = (pDJ, projName) => {
   newPackageJson.scripts.test = 'jest';
 
   newPackageJson.name = projName;
-
-  newPackageJson.repository = {
-    ...newPackageJson.repository,
-    url: newPackageJson.repository.url.replace(config.ProjectName, projName),
-  };
 
   return JSON.stringify(newPackageJson, null, 2);
 };
@@ -88,17 +85,12 @@ const isBin = fileAbsPath => {
 };
 
 (() => {
-  console.log("\nInstalling Rak's setup requirements...\n");
-  execSync('yarn add replacestream --modules-folder ./node_modules --no-lockfile --silent', {
-    stdio: [0, 1, 2],
-  });
-  const replaceStream = require(path.join(process.cwd(), 'node_modules/replacestream'));
-
   console.log("\nSetting up new Rak project's file structure...\n");
   const newProjectRoot = process.cwd();
   const newProjectName = path.parse(newProjectRoot).name;
-  const copyPromises = flatten(rreaddir(__dirname)).map(srcFileAbsPath => {
-    const srcFileRelFromSrcRoot = path.relative(__dirname, srcFileAbsPath);
+  const sourceRoot = path.join(__dirname, '../..');
+  const copyPromises = flatten(rreaddir(sourceRoot)).map(srcFileAbsPath => {
+    const srcFileRelFromSrcRoot = path.relative(sourceRoot, srcFileAbsPath);
     const dstFileAbsPath = path.join(newProjectRoot, srcFileRelFromSrcRoot);
     const dstFileSubfolder = path.parse(dstFileAbsPath).dir;
 
@@ -107,8 +99,17 @@ const isBin = fileAbsPath => {
       const dstFile = fs.createWriteStream(dstFileAbsPath);
 
       if (srcFileRelFromSrcRoot === 'package.json') {
-        const packageDotJson = require(srcFileAbsPath);
-        dstFile.write(clean(packageDotJson, newProjectName), () => resolve());
+        promisify(fs.readFile)(srcFileAbsPath, 'utf-8')
+          .then(JSON.parse)
+          .then(
+            contents =>
+              new Promise((_resolve, _reject) => {
+                dstFile.write(clean(contents, newProjectName));
+                dstFile.on('finish', _resolve).on('error', _reject);
+              }),
+          )
+          .then(resolve)
+          .catch(reject);
       } else {
         fs.createReadStream(srcFileAbsPath)
           .pipe(
@@ -130,13 +131,13 @@ const isBin = fileAbsPath => {
     // Will only tree if tree is installed
     execSync('command -v tree > /dev/null && tree . -aIC "node_modules|.yalc" || true', { stdio: [0, 1, 2] });
 
-    console.log('\nInstalling devDependencies of your new Rak project...\n');
-    execSync('yarn --pure-lockfile', { stdio: [0, 1, 2] });
+    console.log('\nInstalling dependencies of your new Rak project...\n');
+    execSync('yarn install --immutable', { stdio: [0, 1, 2] });
 
     execSync('rm -rf yalc* .yalc');
 
     console.log('\nFormatting all files with prettier...\n');
-    execSync('yarn prettier --write --ignore-path .eslintignore .');
+    execSync('yarn run prettier --write --ignore-path .eslintignore .', { stdio: [0, 1, 2] });
 
     console.log('\nDone!');
   });
