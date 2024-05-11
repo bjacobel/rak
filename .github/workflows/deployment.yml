@@ -48,7 +48,7 @@ jobs:
           NODE_ENV: production
           GITHUB_SHA: ${{ github.sha }}
       - name: Verify bucket exists
-        run: if [ "$(yarn --silent awsUtils bucketExists)" = "false" ]; then exit 1; fi
+        run: if [ "$(yarn --silent deploy-utils bucketExists)" = "false" ]; then exit 1; fi
       - name: Upload dist to bucket
         run: |
           aws s3 sync dist s3://${{ steps.config.outputs.ProjectFQDomain }} \
@@ -59,7 +59,7 @@ jobs:
           name: dist
           path: ./dist
       - name: Invalidate CloudFront
-        run: yarn awsUtils invalidate "/index.html"
+        run: yarn deploy-utils invalidate "/index.html"
   sentry:
     name: 'Track Deploy In Sentry'
     runs-on: ubuntu-latest

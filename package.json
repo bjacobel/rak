@@ -94,7 +94,7 @@
     "type": "git"
   },
   "scripts": {
-    "awsUtils": "ts-node aws/utils",
+    "deploy-utils": "ts-node deploy/utils",
     "style": "prettier -l --ignore-path .eslintignore . && eslint . && stylelint 'src/**/*.{js,ts,tsx}'",
     "validate": "tsc --noEmit",
     "lint": "yarn --silent style && yarn --silent validate",
