@@ -41,7 +41,10 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
           test: /\.[jt]sx?$/,
           include: path.join(__dirname, 'src'),
           use: [
-            'babel-loader',
+            {
+              loader: 'babel-loader',
+              options: { root: __dirname, rootMode: 'upward' },
+            },
             {
               loader: '@wyw-in-js/webpack-loader',
               options: {

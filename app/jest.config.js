@@ -10,4 +10,5 @@ module.exports = {
     url: 'http://localhost',
   },
   transformIgnorePatterns: [`/node_modules/(?!(${esmDependencies.join('|')}))`],
+  transform: { '\\.[jt]sx?$': ['babel-jest', { rootMode: 'upward' }] },
 };
