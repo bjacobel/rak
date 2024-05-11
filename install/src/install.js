@@ -51,7 +51,7 @@ const clean = (pDJ, projName) => {
   });
 
   delete newPackageJson.scripts.postinstall;
-  newPackageJson.scripts.test = 'jest';
+  newPackageJson.scripts.test = 'jest -c app/jest.config.js';
 
   newPackageJson.name = projName;
 

@@ -1,4 +1,4 @@
-dist/*
+app/dist/*
 coverage/*
 node_modules/*
 my-new-project
