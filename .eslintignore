@@ -1,5 +1,5 @@
 app/dist/*
-coverage/*
+app/coverage/*
 node_modules/*
 my-new-project
 install/lib/*
