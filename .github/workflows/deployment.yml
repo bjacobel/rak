@@ -57,7 +57,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: dist
-          path: ./dist
+          path: ./app/dist
       - name: Invalidate CloudFront
         run: yarn run deploy-utils invalidate "/index.html"
   sentry:
