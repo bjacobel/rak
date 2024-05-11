@@ -18,6 +18,8 @@ jobs:
           check-name: 'Lint/Test'
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           wait-interval: 10
+      - name: Enable Corepack before setting up Node
+        run: corepack enable
       - uses: actions/setup-node@v4
         with:
           node-version: 20.x
@@ -41,7 +43,7 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Install
         if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install --frozen-lockfile --ignore-scripts
+        run: yarn install --immutable
       - name: Build
         run: yarn webpack
         env:
