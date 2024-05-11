@@ -128,7 +128,7 @@ const isBin = fileAbsPath => {
     execSync('command -v tree > /dev/null && tree . -aIC "node_modules|.yalc" || true', { stdio: [0, 1, 2] });
 
     console.log('\nInstalling dependencies of your new Rak project...\n');
-    execSync('yarn install', { stdio: [0, 1, 2] });
+    execSync('yarn install --immutable', { stdio: [0, 1, 2] });
 
     execSync('rm -rf yalc* .yalc');
 
