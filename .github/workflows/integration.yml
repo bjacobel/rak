@@ -26,15 +26,15 @@ jobs:
       - name: Validate peer dependencies
         run: yarn check-peer-dependencies --runOnlyOnRootDependencies
       - name: Lint
-        run: yarn lint
+        run: yarn run lint
       - name: Test
-        run: yarn test --coverage
+        run: yarn run test --coverage
       - uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: ./coverage
       - name: Build
-        run: yarn webpack
+        run: yarn run build
         env:
           NODE_ENV: production
   codecov:
