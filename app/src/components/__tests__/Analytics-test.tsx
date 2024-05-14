@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Analytics from '../Analytics';
 import GA from '../../services/GA';
 import { render } from '../../testing/rtl';

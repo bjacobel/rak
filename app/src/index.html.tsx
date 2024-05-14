@@ -1,7 +1,5 @@
 /* globals htmlWebpackPlugin */
 
-import React from 'react';
-
 export default (
   <html lang="en">
     <head>

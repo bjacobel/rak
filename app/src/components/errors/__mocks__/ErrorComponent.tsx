@@ -1,5 +1,3 @@
-import React from 'react';
-
 export default () => (
   <>
     <h3 className="errorHeader">Something went wrong.</h3>

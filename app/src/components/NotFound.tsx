@@ -1,5 +1,4 @@
 import { styled } from '@linaria/react';
-import React from 'react';
 
 import { center, openSans } from '../stylesheets/shared.css';
 import StyledLink from './StyledLink';

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-import-module-exports */
 
-import React, { StrictMode } from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 

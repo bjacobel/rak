@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Switch, Route } from 'wouter';
 
 import { getData } from '../../services/data';

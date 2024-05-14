@@ -13,6 +13,7 @@ module.exports = {
       },
     ],
     'react/require-default-props': 0,
+    'react/react-in-jsx-scope': 0,
     'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
   },
 };

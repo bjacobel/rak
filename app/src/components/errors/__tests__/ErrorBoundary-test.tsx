@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render } from '../../../testing/rtl';
 import log from '../../../services/errors';
 import ErrorBoundary from '../ErrorBoundary';

@@ -1,4 +1,4 @@
-import React, { Component, PropsWithChildren } from 'react';
+import { Component, PropsWithChildren } from 'react';
 
 import log from '../../services/errors';
 import { LOG_ERRORS } from '../../constants';

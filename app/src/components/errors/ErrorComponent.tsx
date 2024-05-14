@@ -1,5 +1,4 @@
 import { styled } from '@linaria/react';
-import React from 'react';
 
 import { SHOW_STACK } from '../../constants';
 import { robotoMono } from '../../stylesheets/shared.css';

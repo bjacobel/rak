@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { render } from '../../../testing/rtl';
 import ErrorComponent from '../ErrorComponent';
 
