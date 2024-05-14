@@ -17,6 +17,7 @@
   },
   "description": "Opinionated skeleton to quickly set up a new React app.",
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.575.0",
     "@babel/core": "^7.24.5",
     "@babel/plugin-transform-react-jsx-source": "^7.24.1",
     "@babel/plugin-transform-runtime": "^7.24.3",
