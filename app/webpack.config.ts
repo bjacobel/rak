@@ -42,14 +42,14 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
           include: path.join(__dirname, 'src'),
           use: [
             {
-              loader: 'babel-loader',
-              options: { root: __dirname, rootMode: 'upward' },
-            },
-            {
               loader: '@wyw-in-js/webpack-loader',
               options: {
                 sourceMap: !isProd,
               },
+            },
+            {
+              loader: 'babel-loader',
+              options: { root: __dirname, rootMode: 'upward' },
             },
           ],
         },
