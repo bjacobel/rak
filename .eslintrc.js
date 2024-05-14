@@ -1,11 +1,6 @@
 module.exports = {
   root: true,
-  extends: [
-    'eslint-config-airbnb',
-    'eslint-config-prettier',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
+  extends: ['eslint-config-airbnb', 'eslint-config-prettier', 'plugin:@typescript-eslint/recommended'],
   parser: '@typescript-eslint/parser',
   plugins: ['@typescript-eslint'],
   rules: {
@@ -29,19 +24,6 @@ module.exports = {
         css: 'always',
       },
     ],
-    'react/jsx-filename-extension': [2, { extensions: ['.js', '.html.jsx', '.tsx'] }],
-    'react/prefer-stateless-function': 0,
-    'react/destructuring-assignment': 0,
-    'react/jsx-props-no-spreading': 0,
-    'react/function-component-definition': [
-      2,
-      {
-        namedComponents: 'arrow-function',
-        unnamedComponents: 'arrow-function',
-      },
-    ],
-    'react/require-default-props': 0,
-    'jsx-a11y/anchor-is-valid': [2, { specialLink: ['to'] }],
     '@typescript-eslint/no-non-null-assertion': 0,
   },
   parserOptions: {
