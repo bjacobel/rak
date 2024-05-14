@@ -1,3 +1,5 @@
+const path = require('path'); // eslint-disable-line
+
 const esmDependencies = ['wouter', '@micro-sentry/core', '@micro-sentry/breadcrumbs-plugin'];
 
 module.exports = {
@@ -10,5 +12,5 @@ module.exports = {
     url: 'http://localhost',
   },
   transformIgnorePatterns: [`/node_modules/(?!(${esmDependencies.join('|')}))`],
-  transform: { '\\.[jt]sx?$': ['babel-jest', { rootMode: 'upward' }] },
+  transform: { '\\.[jt]sx?$': ['babel-jest', { configFile: path.join(__dirname, '.babelrc.js') }] },
 };

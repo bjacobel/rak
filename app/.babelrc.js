@@ -8,12 +8,7 @@ module.exports = api => ({
         modules: api.env('test') ? 'commonjs' : false,
       },
     ],
-    [
-      '@babel/preset-react',
-      {
-        runtime: 'automatic',
-      },
-    ],
+    ['@babel/preset-react', { runtime: 'automatic' }],
     '@babel/preset-typescript',
     '@wyw-in-js',
   ],
