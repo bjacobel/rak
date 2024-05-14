@@ -1,16 +1,15 @@
-const AWS = require('aws-sdk');
+const { S3Client, HeadBucketCommand } = require('@aws-sdk/client-s3');
 
 const config = require('../../config');
 
-module.exports = () => {
-  const s3 = new AWS.S3({
-    region: config.Region,
-  });
-  return s3.headBucket({ Bucket: config.ProjectFQDomain }, err => {
-    if (err) {
-      console.log('false');
-    } else {
-      console.log('true');
-    }
-  });
+module.exports = async () => {
+  const s3 = new S3Client({ region: config.Region });
+  const cmd = new HeadBucketCommand({ Bucket: config.ProjectFQDomain });
+
+  try {
+    await s3.send(cmd);
+    console.log('true');
+  } catch {
+    console.log('false');
+  }
 };
