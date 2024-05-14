@@ -4,12 +4,16 @@ module.exports = api => ({
       '@babel/preset-env',
       {
         useBuiltIns: 'usage',
-        corejs: 3,
+        corejs: '3.37',
         modules: api.env('test') ? 'commonjs' : false,
-        exclude: ['transform-regenerator'],
       },
     ],
-    '@babel/preset-react',
+    [
+      '@babel/preset-react',
+      {
+        runtime: 'automatic',
+      },
+    ],
     '@babel/preset-typescript',
     '@wyw-in-js',
   ],
