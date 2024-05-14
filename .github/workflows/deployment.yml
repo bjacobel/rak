@@ -51,7 +51,7 @@ jobs:
         run: if [ "$(yarn run --silent deploy-utils bucketExists)" = "false" ]; then exit 1; fi
       - name: Upload dist to bucket
         run: |
-          aws s3 sync dist s3://${{ steps.config.outputs.ProjectFQDomain }} \
+          aws s3 sync app/dist s3://${{ steps.config.outputs.ProjectFQDomain }} \
             --acl public-read \
             --cache-control max-age=31536000
       - uses: actions/upload-artifact@v4
