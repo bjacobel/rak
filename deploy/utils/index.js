@@ -1,4 +1,4 @@
-const invalidate = require('./invalidate');
+const invalidate = require('./invalidate').default;
 const launch = require('./launch');
 const bucketExists = require('./bucketExists');
 
