@@ -1,8 +1,8 @@
-const { S3Client, HeadBucketCommand } = require('@aws-sdk/client-s3');
+import { S3Client, HeadBucketCommand } from '@aws-sdk/client-s3';
 
-const config = require('../../config');
+import config from '../../config';
 
-module.exports = async () => {
+export default async () => {
   const s3 = new S3Client({ region: config.Region });
   const cmd = new HeadBucketCommand({ Bucket: config.ProjectFQDomain });
 
