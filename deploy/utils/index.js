@@ -1,6 +1,6 @@
 const invalidate = require('./invalidate').default;
 const launch = require('./launch');
-const bucketExists = require('./bucketExists');
+const bucketExists = require('./bucketExists').default;
 
 const utilName = process.argv[2];
 (() => {
