@@ -1,54 +1,38 @@
-const AWS = require('aws-sdk');
+import { CloudFrontClient, ListDistributionsCommand, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront';
 
-const config = require('../../config');
+import { getErrorMessage } from './errors';
+import config from '../../config';
 
-module.exports = () => {
+export default async () => {
   // Invalidate objects in the CloudFront distro associated with this project.
-  const cloudfront = new AWS.CloudFront({
+  const cloudfront = new CloudFrontClient({
     region: config.Region,
   });
-  return new Promise((resolve, reject) => {
-    cloudfront.listDistributions({}, (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        const distro = data.DistributionList.Items.find(x => x.Aliases.Items.includes(config.ProjectFQDomain));
-        if (distro) {
-          resolve(distro.Id);
-        } else {
-          reject(new Error('No distribution matching ProjectFQDomain found'));
-        }
-      }
-    });
-  })
-    .then(
-      DistributionId =>
-        new Promise((resolve, reject) => {
-          cloudfront.createInvalidation(
-            {
-              DistributionId,
-              InvalidationBatch: {
-                CallerReference: `${Date.now()}`,
-                Paths: {
-                  Quantity: process.argv.slice(3).length,
-                  Items: [...process.argv.slice(3)],
-                },
-              },
+  try {
+    const { DistributionList } = await cloudfront.send(new ListDistributionsCommand({}));
+    const distro = DistributionList?.Items?.find(x => x?.Aliases?.Items?.includes(config.ProjectFQDomain));
+    if (distro) {
+      const { Invalidation } = await cloudfront.send(
+        new CreateInvalidationCommand({
+          DistributionId: distro.Id,
+          InvalidationBatch: {
+            CallerReference: `${Date.now()}`,
+            Paths: {
+              Quantity: process.argv.slice(3).length,
+              Items: [...process.argv.slice(3)],
             },
-            (err, data) => {
-              if (err) {
-                reject(err);
-              } else {
-                resolve(data.Invalidation.Id);
-              }
-            },
-          );
+          },
         }),
-    )
-    .then(invalidationId => {
-      console.log(`Invalidation with id ${invalidationId} in progress.`);
-    })
-    .catch(err => {
-      console.error(`Error: ${err.message}\nTry invalidaing the distribution through the AWS console.`);
-    });
+      );
+      if (Invalidation) {
+        console.log(`Created invalidation request with id: ${Invalidation.Id}`);
+      } else {
+        throw new Error('Invalidation request failed');
+      }
+    } else {
+      throw new Error('No distribution matching ProjectFQDomain found');
+    }
+  } catch (e: unknown) {
+    console.error(`Error: ${getErrorMessage(e)}\nTry invalidaing the distribution through the AWS console.`);
+  }
 };
