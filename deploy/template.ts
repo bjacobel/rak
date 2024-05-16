@@ -1,16 +1,16 @@
-const { ref, equals } = require('@mapbox/cloudfriend');
+import { ref, equals } from '@mapbox/cloudfriend';
 
-const HostedZone = require('./stack/HostedZone');
-const DNSRecord = require('./stack/DNSRecord');
-const DNSRecordWWW = require('./stack/DNSRecordWWW');
-const DNSRecordCAA = require('./stack/DNSRecordCAA');
-const CloudFrontDistribution = require('./stack/CloudFrontDistribution');
-const S3Bucket = require('./stack/S3Bucket');
-const S3BucketPolicy = require('./stack/S3BucketPolicy');
-const ValidatedCertificate = require('./stack/ValidatedCertificate');
-const config = require('../config');
+import HostedZone from './stack/HostedZone';
+import DNSRecord from './stack/DNSRecord';
+import DNSRecordWWW from './stack/DNSRecordWWW';
+import DNSRecordCAA from './stack/DNSRecordCAA';
+import CloudFrontDistribution from './stack/CloudFrontDistribution';
+import S3Bucket from './stack/S3Bucket';
+import S3BucketPolicy from './stack/S3BucketPolicy';
+import ValidatedCertificate from './stack/ValidatedCertificate';
+import config from '../config';
 
-const template = {
+const tpl = {
   Description: `CloudFormation stack for ${config.ProjectName} project`,
   AWSTemplateFormatVersion: '2010-09-09',
   Parameters: {
@@ -43,7 +43,5 @@ const template = {
   },
 };
 
-module.exports = {
-  template: JSON.stringify(template),
-  parameters: Object.keys(template.Parameters),
-};
+export const template = JSON.stringify(tpl);
+export const parameters = Object.keys(tpl.Parameters);
