@@ -1,6 +1,6 @@
-const { ref } = require('@mapbox/cloudfriend');
+import { ref } from '@mapbox/cloudfriend';
 
-module.exports = {
+export default {
   Type: 'AWS::S3::Bucket',
   Properties: {
     BucketName: ref('ProjectFQDomain'),

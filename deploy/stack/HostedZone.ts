@@ -1,6 +1,6 @@
-const { ref, join } = require('@mapbox/cloudfriend');
+import { ref, join } from '@mapbox/cloudfriend';
 
-module.exports = {
+export default {
   Condition: 'CreateHostedZone',
   Type: 'AWS::Route53::HostedZone',
   Properties: {

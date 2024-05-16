@@ -1,6 +1,6 @@
-const { ref, getAtt, join } = require('@mapbox/cloudfriend');
+import { ref, getAtt, join } from '@mapbox/cloudfriend';
 
-module.exports = {
+export default {
   Type: 'AWS::Route53::RecordSet',
   Properties: {
     HostedZoneName: join([ref('ProjectDomain'), '.']),

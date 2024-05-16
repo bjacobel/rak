@@ -1,6 +1,6 @@
-const { ref, getAtt, join } = require('@mapbox/cloudfriend');
+import { ref, getAtt, join } from '@mapbox/cloudfriend';
 
-module.exports = {
+export default {
   // Only create this resource if ProjectDomain and ProjectFQDomain are the same.
   // This adds a www.<ProjectDomain> route that works equally.
   Condition: 'CreateWWW',
