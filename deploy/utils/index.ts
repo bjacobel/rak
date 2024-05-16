@@ -1,6 +1,6 @@
-const invalidate = require('./invalidate').default;
-const launch = require('./launch');
-const bucketExists = require('./bucketExists').default;
+import invalidate from './invalidate';
+import launch from './launch';
+import bucketExists from './bucketExists';
 
 const utilName = process.argv[2];
 (() => {
