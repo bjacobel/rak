@@ -6,11 +6,11 @@
  * It piggybacks off work done by these fine folks: https://github.com/binxio/cfn-certificate-provider
  */
 
-const { ref, join, getAtt, region, sub } = require('@mapbox/cloudfriend');
+import { ref, join, getAtt, region, sub } from '@mapbox/cloudfriend';
 
-const config = require('../../config');
+import config from '../../config';
 
-module.exports = {
+export default {
   Certificate: {
     Type: 'Custom::Certificate',
     Properties: {
