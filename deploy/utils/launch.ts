@@ -1,5 +1,5 @@
 import { template, parameters } from '../template';
-import config from '../../config';
+import config, { ProjectConfig } from '../../config';
 
 // Required because cloudformer-node sets up its region config as a import-time side effect (ugh)
 process.env.AWS_DEFAULT_REGION = config.Region;
@@ -11,7 +11,7 @@ export default () => {
   stack.apply(
     template,
     {
-      Parameters: Object.keys(config)
+      Parameters: (Object.keys(config) as Array<keyof ProjectConfig>)
         .filter(x => parameters.includes(x))
         .reduce((prev, curr) => ({ ...prev, [curr]: config[curr] }), {}),
       Tags: {
