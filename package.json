@@ -103,7 +103,7 @@
     "lint": "yarn run --silent style && yarn run --silent validate",
     "build": "webpack -c app/webpack.config.ts",
     "start": "webpack-dev-server -c app/webpack.config.ts",
-    "jest": "jest -c app/jest.config.js",
+    "jest": "jest -c app/jest.config.ts",
     "test": "yarn run --silent jest --coverage && ./install-test.sh",
     "prepublish": "webpack -c install/src/webpack.config.ts"
   },
