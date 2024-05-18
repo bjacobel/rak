@@ -29,11 +29,11 @@ const config = {
 
   // AWS Region you would like services to be created in
   Region: 'us-east-1',
-};
+} as const;
 
 if (!module.parent && process.argv[2]) {
-  const param = process.argv[2];
+  const param = process.argv[2] as keyof typeof config;
   console.log(config[param] || 'Not passed a valid config param.');
 }
 
-module.exports = config;
+export default config;
