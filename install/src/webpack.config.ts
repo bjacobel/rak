@@ -33,14 +33,7 @@ export default {
       {
         test: /\.ts$/,
         include: path.join(__dirname, '../../'),
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-typescript'],
-            },
-          },
-        ],
+        use: ['babel-loader'],
       },
     ],
   },
