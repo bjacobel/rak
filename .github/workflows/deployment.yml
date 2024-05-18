@@ -26,8 +26,8 @@ jobs:
       - name: Grab config
         id: config
         run: |
-          echo "Region=$(node config Region)" >> $GITHUB_OUTPUT
-          echo "ProjectFQDomain=$(node config ProjectFQDomain)" >> $GITHUB_OUTPUT
+          echo "Region=$(npx -y ts-node config Region)" >> $GITHUB_OUTPUT
+          echo "ProjectFQDomain=$(npx -y ts-node config ProjectFQDomain)" >> $GITHUB_OUTPUT
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -70,8 +70,8 @@ jobs:
       - name: Grab config
         id: config
         run: |
-          echo "SentryOrg=$(node config SentryOrg)" >> $GITHUB_OUTPUT
-          echo "SentryProject=$(node config SentryProject)" >> $GITHUB_OUTPUT
+          echo "SentryOrg=$(npx -y ts-node config SentryOrg)" >> $GITHUB_OUTPUT
+          echo "SentryProject=$(npx -y ts-node config SentryProject)" >> $GITHUB_OUTPUT
       - uses: actions/download-artifact@v4
         with:
           name: dist
