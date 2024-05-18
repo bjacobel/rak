@@ -4,6 +4,10 @@ import bucketExists from './bucketExists';
 
 const utilName = process.argv[2];
 (() => {
+  if (!utilName) {
+    console.log('invalidate | launch | bucketExists');
+    return null;
+  }
   switch (utilName) {
     case 'invalidate':
       return invalidate();

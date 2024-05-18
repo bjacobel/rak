@@ -37,6 +37,8 @@ jobs:
         run: yarn run build
         env:
           NODE_ENV: production
+      - name: Check deploy utils
+        run: yarn deploy-utils
   codecov:
     name: 'Upload coverage'
     needs: lint-test
