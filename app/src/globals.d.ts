@@ -1,7 +1,7 @@
-import { ProjectConfig } from '../../config';
+import config from '../../config';
 
 declare global {
-  const projectConfig: ProjectConfig;
+  const projectConfig: typeof config;
   const htmlWebpackPlugin: {
     options: {
       title: string;
