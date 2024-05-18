@@ -95,11 +95,11 @@
     "type": "git"
   },
   "scripts": {
-    "deploy-utils": "ts-node -P deploy/tsconfig.json deploy/utils",
+    "deploy-utils": "ts-node deploy/utils",
     "stylelint": "stylelint --config app/stylelint.config.js 'app/src/**/*.{js,ts,tsx}'",
     "prettier": "prettier -l --ignore-path .eslintignore . ",
     "style": "yarn run --silent prettier && eslint . && yarn run --silent stylelint",
-    "validate": "tsc -p app/tsconfig.json && tsc -p deploy/tsconfig.json",
+    "validate": "tsc",
     "lint": "yarn run --silent style && yarn run --silent validate",
     "build": "webpack -c app/webpack.config.ts",
     "start": "webpack-dev-server -c app/webpack.config.ts",
