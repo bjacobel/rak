@@ -29,6 +29,7 @@
     "@bjacobel/vhtml-loader": "^2.3.0",
     "@linaria/stylelint-config-standard-linaria": "^6.2.0",
     "@mapbox/cloudfriend": "^8.1.0",
+    "@schemastore/package": "^0.0.10",
     "@testing-library/dom": "^10.0.0",
     "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^15.0.0",
