@@ -25,4 +25,23 @@ export default {
       }),
     ],
   },
+  resolve: {
+    extensions: ['.js', '.ts'],
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        include: path.join(__dirname, '../../'),
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-typescript'],
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
