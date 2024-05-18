@@ -23,16 +23,6 @@ jobs:
           node-version: 20.x
       - name: 'Checkout'
         uses: actions/checkout@master
-      - name: Grab config
-        id: config
-        run: |
-          echo "Region=$(npx -y ts-node config Region)" >> $GITHUB_OUTPUT
-          echo "ProjectFQDomain=$(npx -y ts-node config ProjectFQDomain)" >> $GITHUB_OUTPUT
-      - uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ steps.config.outputs.Region }}
       - name: Cache node_modules
         id: cache
         uses: actions/cache@v4
@@ -47,6 +37,16 @@ jobs:
         env:
           NODE_ENV: production
           GITHUB_SHA: ${{ github.sha }}
+      - name: Grab config
+        id: config
+        run: |
+          echo "Region=$(yarn ts-node config Region)" >> $GITHUB_OUTPUT
+          echo "ProjectFQDomain=$(yarn ts-node config ProjectFQDomain)" >> $GITHUB_OUTPUT
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ steps.config.outputs.Region }}
       - name: Verify bucket exists
         run: if [ "$(yarn run --silent deploy-utils bucketExists)" = "false" ]; then exit 1; fi
       - name: Upload dist to bucket
@@ -67,11 +67,17 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@master
+      - name: Cache node_modules
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-${{ hashFiles('yarn.lock') }}
       - name: Grab config
         id: config
         run: |
-          echo "SentryOrg=$(npx -y ts-node config SentryOrg)" >> $GITHUB_OUTPUT
-          echo "SentryProject=$(npx -y ts-node config SentryProject)" >> $GITHUB_OUTPUT
+          echo "SentryOrg=$(yarn ts-node config SentryOrg)" >> $GITHUB_OUTPUT
+          echo "SentryProject=$(yarn ts-node config SentryProject)" >> $GITHUB_OUTPUT
       - uses: actions/download-artifact@v4
         with:
           name: dist
