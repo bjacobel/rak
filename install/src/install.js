@@ -14,7 +14,7 @@ const noopTransform = (chunk, encoding, callback) => {
   callback(undefined, chunk);
 };
 
-const config = require('../../config');
+const config = require('../../config').default;
 
 const ignorePaths = [
   '.git',
