@@ -17,5 +17,5 @@
       "module": "CommonJS"
     }
   },
-  "include": ["app/**/*", "deploy/**/*", "node_modules/@testing-library/jest-dom/types/jest.d.ts"]
+  "include": ["app/**/*", "deploy/**/*", "install/src/**/*", "node_modules/@testing-library/jest-dom/types/jest.d.ts"]
 }

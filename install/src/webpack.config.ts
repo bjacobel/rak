@@ -4,7 +4,7 @@ import TerserPlugin from 'terser-webpack-plugin';
 // webpack is the wrong tool for this job - I'm only using it because I refuse to let the dep list for this project grow any more
 export default {
   entry: {
-    main: path.resolve(__dirname, 'install.js'),
+    main: path.resolve(__dirname, 'install.ts'),
   },
   output: {
     filename: 'index.js',

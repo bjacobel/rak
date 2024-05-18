@@ -1,20 +1,27 @@
 #!/usr/bin/env node
 
 /* eslint-env { parserOptions: { ecmaVersion: 8 }, env: { node: true } } */
-/* eslint-disable global-require, import/no-dynamic-require, import/no-unresolved, @typescript-eslint/no-var-requires */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const { Transform } = require('stream');
-const { promisify } = require('util');
-const replaceStream = require('replacestream');
+import fs, { EncodingOption } from 'fs';
+import { Blob } from 'buffer';
+import path from 'path';
+import { execSync } from 'child_process';
+import { Transform } from 'stream';
+import { promisify } from 'util';
+import replaceStream from 'replacestream';
+import { JSONSchemaForNPMPackageJsonFiles as PackageJson } from '@schemastore/package';
 
-const noopTransform = (chunk, encoding, callback) => {
+import config from '../../config';
+
+type DirTree = Array<string | DirTree>;
+
+const noopTransform = (
+  chunk: Blob,
+  encoding: EncodingOption,
+  callback: (error: Error | undefined, nextChunk: Blob) => void,
+) => {
   callback(undefined, chunk);
 };
-
-const config = require('../../config').default;
 
 const ignorePaths = [
   '.git',
@@ -27,9 +34,13 @@ const ignorePaths = [
   '.yarn',
 ].map(x => path.resolve(__dirname, x));
 
-const flatten = list => list.reduce((a, b) => a.concat(Array.isArray(b) ? flatten(b) : b), []);
+const flatten = (tree: DirTree): string[] =>
+  tree.reduce(
+    (accum: string[], curr: string | DirTree) => accum.concat(Array.isArray(curr) ? flatten(curr) : curr),
+    [],
+  );
 
-const clean = (pDJ, projName) => {
+const clean = (pDJ: PackageJson, projName: string) => {
   const blacklist = [
     'bin',
     'bugs',
@@ -42,7 +53,7 @@ const clean = (pDJ, projName) => {
     'readmeFilename',
     'repository',
   ];
-  const newPackageJson = {};
+  const newPackageJson: PackageJson = {};
 
   Object.keys(pDJ).forEach(key => {
     if (!blacklist.includes(key) && !key.startsWith('_')) {
@@ -50,16 +61,16 @@ const clean = (pDJ, projName) => {
     }
   });
 
-  delete newPackageJson.scripts.postinstall;
-  delete newPackageJson.scripts.prepublish;
-  newPackageJson.scripts.test = 'jest -c app/jest.config.ts';
+  delete newPackageJson.scripts!.postinstall;
+  delete newPackageJson.scripts!.prepublish;
+  newPackageJson.scripts!.test = 'jest -c app/jest.config.ts';
 
   newPackageJson.name = projName;
 
   return JSON.stringify(newPackageJson, null, 2);
 };
 
-const rreaddir = root =>
+const rreaddir = (root: string): DirTree =>
   fs.readdirSync(root).map(file => {
     const fileAbsPath = path.join(root, file);
 
@@ -75,7 +86,7 @@ const rreaddir = root =>
     }
   });
 
-const isBin = fileAbsPath => {
+const isBin = (fileAbsPath: string) => {
   switch (path.extname(fileAbsPath)) {
     case '.ico':
       return true;
@@ -96,7 +107,7 @@ const isBin = fileAbsPath => {
     const dstFileAbsPath = path.join(newProjectRoot, srcFileRelFromSrcRoot);
     const dstFileSubfolder = path.parse(dstFileAbsPath).dir;
 
-    return new Promise((resolve, reject) => {
+    return new Promise<void>((resolve, reject) => {
       fs.mkdirSync(dstFileSubfolder, { recursive: true });
       const dstFile = fs.createWriteStream(dstFileAbsPath);
 
