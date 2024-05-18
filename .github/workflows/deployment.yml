@@ -65,8 +65,15 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
       - name: 'Checkout'
         uses: actions/checkout@master
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
       - name: Cache node_modules
         id: cache
         uses: actions/cache@v4
@@ -78,10 +85,6 @@ jobs:
         run: |
           echo "SentryOrg=$(yarn run --silent ts-node config SentryOrg)" >> $GITHUB_OUTPUT
           echo "SentryProject=$(yarn run --silent ts-node config SentryProject)" >> $GITHUB_OUTPUT
-      - uses: actions/download-artifact@v4
-        with:
-          name: dist
-          path: dist
       - name: Notify Sentry of deploy
         uses: bjacobel/sentry-cli-action@master
         with:
