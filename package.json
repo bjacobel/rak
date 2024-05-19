@@ -38,6 +38,7 @@
     "@types/google.analytics": "^0.0.46",
     "@types/jest": "^29.1.2",
     "@types/node": "^20.12.5",
+    "@types/react-helmet": "^6.1.11",
     "@types/replacestream": "^4",
     "@types/webpack-env": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^7.9.0",
