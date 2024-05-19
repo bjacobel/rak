@@ -25,6 +25,8 @@ module.exports = {
       },
     ],
     '@typescript-eslint/no-non-null-assertion': 0,
+    '@typescript-eslint/no-unused-vars': [2, { varsIgnorePattern: '^__' }],
+    'no-underscore-dangle': 0,
   },
   parserOptions: {
     ecmaVersion: 2020,
