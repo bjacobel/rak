@@ -2,7 +2,6 @@
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HelmetProvider } from 'react-helmet-async';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import Analytics from './components/Analytics';
@@ -22,16 +21,14 @@ const root = createRoot(rootEl!);
 const render = () => {
   root.render(
     <StrictMode>
-      <HelmetProvider>
-        <QueryClientProvider client={queryClient}>
-          <ErrorBoundary>
-            <PWAUpdater />
-            <CommonMeta />
-            <Analytics />
-            <Routes />
-          </ErrorBoundary>
-        </QueryClientProvider>
-      </HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ErrorBoundary>
+          <PWAUpdater />
+          <CommonMeta />
+          <Analytics />
+          <Routes />
+        </ErrorBoundary>
+      </QueryClientProvider>
     </StrictMode>,
   );
 };
