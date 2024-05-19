@@ -86,17 +86,10 @@ jobs:
           echo "SentryOrg=$(yarn run --silent ts-node config SentryOrg)" >> $GITHUB_OUTPUT
           echo "SentryProject=$(yarn run --silent ts-node config SentryProject)" >> $GITHUB_OUTPUT
       - name: Notify Sentry of deploy
-        uses: bjacobel/sentry-cli-action@master
+        uses: getsentry/action-release@v1
         with:
-          args: releases new ${{ github.sha }}
-        env:
-          SENTRY_ORG: ${{ steps.config.outputs.SentryOrg }}
-          SENTRY_PROJECT: ${{ steps.config.outputs.SentryProject }}
-          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
-      - name: Add sourcemaps to Sentry
-        uses: bjacobel/sentry-cli-action@master
-        with:
-          args: releases files ${{ github.sha }} upload-sourcemaps dist
+          environment: production
+          sourcemaps: ./dist
         env:
           SENTRY_ORG: ${{ steps.config.outputs.SentryOrg }}
           SENTRY_PROJECT: ${{ steps.config.outputs.SentryProject }}
