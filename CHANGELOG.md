@@ -1,3 +1,11 @@
+### v0.5.0
+
+- Replace react-router with wouter
+- Replace Sentry with @micro-sentry
+- Implement react-helmet
+- Improvements for mobile / PWA installation
+- Additional Typescript conversion including Cloudformation stack
+
 ### v0.4.0
 
 - Add TypeScript support
