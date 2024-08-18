@@ -1,3 +1,7 @@
+### v0.5.1
+
+- Fix install.js script
+
 ### v0.5.0
 
 - Replace react-router with wouter
