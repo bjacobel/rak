@@ -1,5 +1,6 @@
 import path from 'path';
 import TerserPlugin from 'terser-webpack-plugin';
+import { BannerPlugin, Compilation } from 'webpack';
 
 // webpack is the wrong tool for this job - I'm only using it because I refuse to let the dep list for this project grow any more
 export default {
@@ -37,4 +38,11 @@ export default {
       },
     ],
   },
+  plugins: [
+    new BannerPlugin({
+      raw: true,
+      banner: '#!/usr/bin/env node',
+      stage: Compilation.PROCESS_ASSETS_STAGE_REPORT,
+    }),
+  ],
 };
