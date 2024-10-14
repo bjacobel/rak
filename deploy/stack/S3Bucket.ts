@@ -10,5 +10,12 @@ export default {
     VersioningConfiguration: {
       Status: 'Suspended',
     },
+    OwnershipControls: {
+      Rules: [
+        {
+          ObjectOwnership: 'BucketOwnerPreferred',
+        },
+      ],
+    },
   },
 };
