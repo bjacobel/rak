@@ -4,7 +4,9 @@ export default {
   Type: 'AWS::S3::Bucket',
   Properties: {
     BucketName: ref('ProjectFQDomain'),
-    AccessControl: 'PublicRead',
+    PublicAccessBlockConfiguration: {
+      BlockPublicPolicy: 'FALSE',
+    },
     VersioningConfiguration: {
       Status: 'Suspended',
     },
