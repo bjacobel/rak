@@ -5,7 +5,10 @@ export default {
   Properties: {
     BucketName: ref('ProjectFQDomain'),
     PublicAccessBlockConfiguration: {
-      BlockPublicPolicy: 'FALSE',
+      BlockPublicAcls: 'TRUE',
+      BlockPublicPolicy: 'TRUE',
+      IgnorePublicAcls: 'TRUE',
+      RestrictPublicBuckets: 'TRUE',
     },
     VersioningConfiguration: {
       Status: 'Suspended',
@@ -13,7 +16,7 @@ export default {
     OwnershipControls: {
       Rules: [
         {
-          ObjectOwnership: 'BucketOwnerPreferred',
+          ObjectOwnership: 'BucketOwnerEnforced',
         },
       ],
     },

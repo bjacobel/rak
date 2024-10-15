@@ -4,6 +4,7 @@ import HostedZone from './stack/HostedZone';
 import DNSRecord from './stack/DNSRecord';
 import DNSRecordWWW from './stack/DNSRecordWWW';
 import DNSRecordCAA from './stack/DNSRecordCAA';
+import OriginAccessControl from './stack/OriginAccessControl';
 import CloudFrontDistribution from './stack/CloudFrontDistribution';
 import S3Bucket from './stack/S3Bucket';
 import S3BucketPolicy from './stack/S3BucketPolicy';
@@ -32,6 +33,7 @@ const tpl = {
     CreateHostedZone: equals(ref('ExistingHostedZone'), 'false'),
   },
   Resources: {
+    OriginAccessControl,
     CloudFrontDistribution,
     DNSRecord,
     DNSRecordWWW,

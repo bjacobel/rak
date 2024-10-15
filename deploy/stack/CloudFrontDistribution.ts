@@ -1,4 +1,4 @@
-import { ref, join } from '@mapbox/cloudfriend';
+import { ref, join, getAtt } from '@mapbox/cloudfriend';
 
 export default {
   Type: 'AWS::CloudFront::Distribution',
@@ -32,6 +32,7 @@ export default {
           DomainName: join([ref('ProjectFQDomain'), '.s3.amazonaws.com']),
           Id: join(['S3-', ref('ProjectName')]),
           S3OriginConfig: {},
+          OriginAccessControlId: getAtt('OriginAccessControl', 'Id'),
         },
       ],
       ViewerCertificate: {

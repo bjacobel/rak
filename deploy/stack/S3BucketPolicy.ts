@@ -1,4 +1,4 @@
-import { ref, join } from '@mapbox/cloudfriend';
+import { ref, join, getAtt } from '@mapbox/cloudfriend';
 
 export default {
   Type: 'AWS::S3::BucketPolicy',
@@ -9,11 +9,26 @@ export default {
       Id: 'Policy1453859091536',
       Statement: [
         {
-          Sid: 'Stmt1453859083693',
+          Sid: 'AllowCloudFrontServicePrincipalReadOnly',
           Effect: 'Allow',
-          Principal: '*',
-          Action: 's3:GetObject',
-          Resource: join(['arn:aws:s3:::', ref('ProjectFQDomain'), '/*']),
+          Principal: {
+            Service: 'cloudfront.amazonaws.com',
+          },
+          Action: ['s3:GetObject', 's3:ListBucket'],
+          Resource: [
+            join(['arn:aws:s3:::', ref('ProjectFQDomain')]),
+            join(['arn:aws:s3:::', ref('ProjectFQDomain'), '/*']),
+          ],
+          Condition: {
+            StringEquals: {
+              'AWS:SourceArn': join([
+                'arn:aws:cloudfront::',
+                ref('AWS::AccountId'),
+                ':distribution/',
+                getAtt('CloudFrontDistribution', 'Id'),
+              ]),
+            },
+          },
         },
       ],
     },
