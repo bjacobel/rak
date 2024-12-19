@@ -76,7 +76,7 @@
     "ts-node": "^10.9.1",
     "typescript": "^5.0.0",
     "webpack": "^5.82.0",
-    "webpack-cli": "^5.1.0",
+    "webpack-cli": "^6.0.0",
     "webpack-dev-server": "^5.0.0",
     "workbox-webpack-plugin": "^7.0.0"
   },
