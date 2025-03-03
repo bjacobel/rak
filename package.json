@@ -48,7 +48,7 @@
     "autoprefixer": "^10.4.19",
     "aws-sdk": "^2.1594.0",
     "babel-jest": "^29.0.0",
-    "babel-loader": "^9.0.0",
+    "babel-loader": "^10.0.0",
     "check-peer-dependencies": "^4.2.0",
     "css-loader": "^7.0.0",
     "css-minimizer-webpack-plugin": "^7.0.0",
