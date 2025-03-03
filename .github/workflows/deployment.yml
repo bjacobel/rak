@@ -85,7 +85,7 @@ jobs:
           echo "SentryOrg=$(yarn run --silent ts-node config SentryOrg)" >> $GITHUB_OUTPUT
           echo "SentryProject=$(yarn run --silent ts-node config SentryProject)" >> $GITHUB_OUTPUT
       - name: Notify Sentry of deploy
-        uses: getsentry/action-release@v1
+        uses: getsentry/action-release@v3
         with:
           environment: production
           sourcemaps: ./dist
