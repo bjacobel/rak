@@ -1,3 +1,9 @@
+### v0.6.0
+
+- Upgrade to React 19
+- Remove react-helmet (see: [Support for Document Metadata](https://react.dev/blog/2024/12/05/react-19#support-for-metadata-tags))
+- Upgrade to Node 22
+
 ### v0.5.1
 
 - Fix install.js script
