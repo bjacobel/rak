@@ -63,13 +63,13 @@ and start developing! Your next steps might include:
 
 The offline-caching service worker doesn't play nicely with HMR or webpack-dev-werver, so it's disabled by default. To enable it, you can either build the site in production mode, or use the `SW_ENABLE` environment variable:
 
-    SW_ENABLE=true yarn webpack
+    SW_ENABLE=true yarn build
 
 You should see `LOG from GenerateSW` in the output. Don't use this option with WDS (`yarn start`); you'll kill your browser.
 
 When building flat files locally, its important to serve them with a server that implements a correct 404 redirection behavior. Use:
 
-    npx http-server dist -a localhost --proxy http://localhost:8080\?
+    npx http-server app/dist -a localhost --proxy http://localhost:8080\?
 
 ### Deployment
 
