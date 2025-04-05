@@ -3,8 +3,8 @@
   "bin": "install/lib/index.js",
   "bugs": "https://github.com/bjacobel/rak/issues",
   "dependencies": {
-    "@linaria/core": "^6.2.0",
-    "@linaria/react": "^6.2.1",
+    "@linaria/core": "^6.3.0",
+    "@linaria/react": "^6.3.0",
     "@micro-sentry/breadcrumbs-plugin": "^1.0.2",
     "@micro-sentry/browser": "^7.0.5",
     "@tanstack/react-query": "^5.71.0",
