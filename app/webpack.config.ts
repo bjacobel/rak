@@ -4,6 +4,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import TerserPlugin from 'terser-webpack-plugin';
 import CssMinimizerPlugin from 'css-minimizer-webpack-plugin';
+import FaviconsWebpackPlugin from 'favicons-webpack-plugin';
 import { GenerateSW } from 'workbox-webpack-plugin';
 
 import config from '../config';
@@ -114,13 +115,21 @@ export default (env: Record<string, unknown> = {}, { mode }: { mode?: string } =
       }),
       new HtmlWebpackPlugin({
         template: path.join(__dirname, './src/index.html.tsx'),
-        favicon: path.join(__dirname, './src/assets/images/favicon.ico'),
         title: config.ProjectName,
         inject: true,
       }),
       new MiniCssExtractPlugin({
         filename: isProd ? '[name].[contenthash].css' : '[name].css',
         chunkFilename: isProd ? '[id].[contenthash].css' : '[id].css',
+      }),
+      new FaviconsWebpackPlugin({
+        logo: path.resolve(__dirname, './src/assets/images/favicon.svg'),
+        favicons: {
+          appName: config.ProjectName,
+          appShortName: config.ProjectName,
+          background: '#ddd',
+          theme_color: '#333',
+        },
       }),
       swEnable &&
         new GenerateSW({
