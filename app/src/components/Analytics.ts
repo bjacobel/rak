@@ -1,19 +1,19 @@
 import { useEffect, useMemo } from 'react';
 import { useLocation, useSearch } from 'wouter';
 
-import GA from '../services/GA';
+import Umami from '../services/Umami';
 
 export default () => {
-  const location = useLocation();
+  const [location] = useLocation();
   const search = useSearch();
 
-  const ga = useMemo(() => new GA(), []);
+  const umami = useMemo(() => new Umami(), []);
 
   useEffect(() => {
-    if (!ga) return;
-    ga.set('page', location + search);
-    ga.pageview();
-  }, [location, search, ga]);
+    if (umami) {
+      umami.track(props => ({ ...props, url: location + search }));
+    }
+  }, [location, search, umami]);
 
   return null;
 };
