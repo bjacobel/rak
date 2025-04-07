@@ -4,7 +4,7 @@ export default (
   <html lang="en">
     <head>
       <meta charSet="UTF-8" />
-      <link rel="preconnect" href="https://www.google-analytics.com" />
+      <link rel="preconnect" href="https://cloud.umami.is" />
       <title>{htmlWebpackPlugin.options.title}</title>
     </head>
     <body>

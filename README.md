@@ -61,7 +61,7 @@ and start developing! Your next steps might include:
 
 ### Development
 
-The offline-caching service worker doesn't play nicely with HMR or webpack-dev-werver, so it's disabled by default. To enable it, you can either build the site in production mode, or use the `SW_ENABLE` environment variable:
+The offline-caching service worker doesn't play nicely with HMR or webpack-dev-server, so it's disabled by default. To enable it, you can either build the site in production mode, or use the `SW_ENABLE` environment variable:
 
     SW_ENABLE=true yarn build
 

@@ -25,7 +25,7 @@ const config = {
   RavenDSN: 'https://a47a3c1a936941379cb5e0318bb4333a@sentry.io/114591',
 
   // Configuration for Google Analytics
-  GAProperty: 'UA-34138258-8',
+  UmamiWebsite: 'db14929f-62c2-42cc-8d01-6ccd03b2e94a',
 
   // AWS Region you would like services to be created in
   Region: 'us-east-1',
