@@ -20,8 +20,9 @@ describe('Umami Analytics service', () => {
     let analytics: Umami;
     beforeEach(() => {
       analytics = new Umami(); // eslint-disable-line no-new
-      // @ts-expect-error assigning mock to window
-      window.umami = jest.fn();
+      window.umami = {
+        track: jest.fn(),
+      };
     });
 
     describe('analytics.track', () => {
@@ -37,10 +38,9 @@ describe('Umami Analytics service', () => {
     beforeEach(() => {
       mockTrackAnalyticsConstant.mockReturnValueOnce(true);
       analytics = new Umami();
-      // @ts-expect-error assigning mock to window
-      window.umami = jest.fn(() => ({
+      window.umami = {
         track: jest.fn(),
-      }));
+      };
     });
 
     describe('analytics.track', () => {
