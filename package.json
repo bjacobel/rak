@@ -37,7 +37,7 @@
     "@testing-library/user-event": "^14.4.3",
     "@types/google.analytics": "^0.0.46",
     "@types/jest": "^30.0.0",
-    "@types/node": "^22.0.0",
+    "@types/node": "^22.18.1",
     "@types/react": "^19.0.12",
     "@types/react-dom": "^19.0.4",
     "@types/react-helmet": "^6.1.11",
@@ -86,7 +86,7 @@
     "workbox-webpack-plugin": "^7.0.0"
   },
   "engines": {
-    "node": "^22.0.0"
+    "node": "^22.19.0"
   },
   "keywords": [
     "boilerplate",
