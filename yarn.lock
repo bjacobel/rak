@@ -139,7 +139,7 @@
     "@smithy/util-utf8" "^2.0.0"
     tslib "^2.6.2"
 
-"@aws-sdk/client-cloudformation@^3.577.0":
+"@aws-sdk/client-cloudformation@^3.577.0", "@aws-sdk/client-cloudformation@^3.848.0":
   version "3.883.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-cloudformation/-/client-cloudformation-3.883.0.tgz#1b3134d626719df8b3c2e0259840b3776f8ac27d"
   integrity sha512-5Zl79ZpzsjhopoCy/JzEzUXvky7Tp3a4Cfe3dnmlWY6xuTqW5Ob0Qvi0JOSD7tAi1MW91xcrwED1VGVlzGzz+w==
@@ -3336,12 +3336,12 @@
     stylelint "^14.11.0"
     stylelint-config-standard "^28.0.0"
 
-"@mapbox/cloudfriend@^8.1.0":
-  version "8.1.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/cloudfriend/-/cloudfriend-8.1.0.tgz#4e4e68994063fb3af482609ebbac30189c9668d2"
-  integrity sha512-DrtkR0lgkRJYJoD5aISZDahiP6jSCASyCkXQhV0581yy07t4l0KCvhtM3ZT88cSmBHsVmgwfWPveslHQm9i9Nw==
+"@mapbox/cloudfriend@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/cloudfriend/-/cloudfriend-9.0.0.tgz#cc9983716d9da1833211a2bfb81fe60372c550eb"
+  integrity sha512-TFxgG+HroInoTEwBm9jHcsRHlU/ID66Yo76JrdZvPURq+GD5xqUl9xLHQX9sH5KV3L35KnG7pgRiconYnuhL5A==
   dependencies:
-    aws-sdk "^2.1425.0"
+    "@aws-sdk/client-cloudformation" "^3.848.0"
     minimist "^1.2.6"
     redent "^2.0.0"
 
@@ -5437,7 +5437,7 @@ aws-sdk@^2.1.21:
     uuid "8.0.0"
     xml2js "0.6.2"
 
-aws-sdk@^2.1425.0, aws-sdk@^2.1594.0:
+aws-sdk@^2.1594.0:
   version "2.1618.0"
   resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1618.0.tgz#591b27e0ea38dcfd2d1492dc31aaf98a39ee1035"
   integrity sha512-yfDi9cOpT+dnKMHaR8aFhRyISMItQrRW0v5usaNh7WvXl/YVN1YI0tMSdF1riqaOpbwKgk7162YBj+RoALimHg==
