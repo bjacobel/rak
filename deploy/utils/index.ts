@@ -1,6 +1,7 @@
 import invalidate from './invalidate';
 import launch from './launch';
 import bucketExists from './bucketExists';
+import dryRun from './dryRun';
 
 const utilName = process.argv[2];
 (() => {
@@ -15,6 +16,8 @@ const utilName = process.argv[2];
       return launch();
     case 'bucketExists':
       return bucketExists();
+    case 'dry-run':
+      return dryRun();
     default:
       return console.error(`Error: No such util "${utilName}"`);
   }

@@ -1,27 +1,34 @@
-import { template, parameters } from '../template';
+import {
+  CloudFormationClient,
+  CreateStackCommand,
+  DescribeStacksCommand,
+  UpdateStackCommand,
+} from '@aws-sdk/client-cloudformation';
+
+import { StackDefinition } from '../template';
 import config from '../../config';
 
-// Required because cloudformer-node sets up its region config as a import-time side effect (ugh)
-process.env.AWS_DEFAULT_REGION = config.Region;
-// eslint-disable-next-line import/order, import/first
-import Stack from '@bjacobel/cloudformer-node';
-
-export default () => {
-  const stack = new Stack(config.ProjectName);
-  stack.apply(
-    template,
-    {
-      Parameters: (Object.keys(config) as Array<keyof typeof config>)
-        .filter(x => parameters.includes(x))
-        .reduce((prev, curr) => ({ ...prev, [curr]: config[curr] }), {}),
-      Tags: {
-        Name: config.ProjectName,
-      },
-      Capabilities: ['CAPABILITY_IAM'],
-    },
-    result => console.log(result),
-  );
-  console.log(`Check on the progress of the stack in the AWS console:
-    \rhttps://console.aws.amazon.com/cloudformation/home#/stacks?filter=active\n
-    \rLeaving this process running will tail CloudFormation stack events to the console as well.\n`);
+export default async () => {
+  const client = new CloudFormationClient(config);
+  const describeCommand = new DescribeStacksCommand({
+    StackName: config.ProjectName,
+  });
+  let command: CreateStackCommand | UpdateStackCommand;
+  try {
+    await client.send(describeCommand);
+    command = new UpdateStackCommand(StackDefinition);
+  } catch (e) {
+    if ((e as Error).name !== 'ValidationError') {
+      command = new CreateStackCommand(StackDefinition);
+    }
+  }
+  try {
+    const response = await client.send(command!);
+    console.log(
+      `View your launch results:
+    \rhttps://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/stackinfo?stackId=${response.StackId}`,
+    );
+  } catch (e) {
+    console.error('Error launching stack:', e);
+  }
 };

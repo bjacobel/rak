@@ -1,3 +1,4 @@
+import { Capability } from '@aws-sdk/client-cloudformation';
 import { ref, equals } from '@mapbox/cloudfriend';
 
 import HostedZone from './stack/HostedZone';
@@ -47,3 +48,18 @@ const tpl = {
 
 export const template = JSON.stringify(tpl);
 export const parameters = Object.keys(tpl.Parameters);
+
+export const StackDefinition = {
+  StackName: config.ProjectName,
+  TemplateBody: template,
+  Parameters: (Object.entries(config) as Array<[keyof typeof config, string]>)
+    .filter(([key]) => parameters.includes(key))
+    .map(([key, value]) => ({ ParameterKey: key, ParameterValue: value })),
+  Tags: [
+    {
+      Key: 'Name',
+      Value: config.ProjectName,
+    },
+  ],
+  Capabilities: ['CAPABILITY_IAM'] as Capability[],
+};
