@@ -5017,15 +5017,23 @@
   resolved "https://registry.yarnpkg.com/@webpack-cli/serve/-/serve-3.0.1.tgz#bd8b1f824d57e30faa19eb78e4c0951056f72f00"
   integrity sha512-sbgw03xQaCLiT6gcY/6u3qBDn01CWw/nbaXl3gTdTFuJJ75Gffv3E3DBpgvY2fkkrdS1fpjaXNOmJlnbtKauKg==
 
-"@wyw-in-js/babel-preset@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@wyw-in-js/babel-preset/-/babel-preset-0.6.0.tgz#416c666314de84ea108d2dc6261066b93144ff9c"
-  integrity sha512-BJwM89pKYagrw9+Go65547ujUHAgzfdBPRrdX3YpjOOMhD8zkV/m3u6bvnetMk4zBrLrMvCpGbFsLM7+qLewhg==
+"@wyw-in-js/babel-preset@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@wyw-in-js/babel-preset/-/babel-preset-0.7.0.tgz#0b784e692e7cacd7d25152048ad753af76aecfb8"
+  integrity sha512-WG0EP1GlEppKFq3+kyLZ4DPwxxUtzIorKUIFPtX8qFY2IK6e5X9noB78Z7gjj36IUu8bbVorKI9pWBtHzOPR9w==
   dependencies:
     "@babel/core" "^7.23.5"
-    "@wyw-in-js/transform" "0.6.0"
+    "@wyw-in-js/transform" "0.7.0"
 
-"@wyw-in-js/processor-utils@0.6.0", "@wyw-in-js/processor-utils@^0.6.0":
+"@wyw-in-js/processor-utils@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@wyw-in-js/processor-utils/-/processor-utils-0.7.0.tgz#b63c59f4c3ccb8888c07d8ea46cea5a77e8349e8"
+  integrity sha512-mQokCsSa1KcCnPoyCNaQ4fBkI3/owsqUiu0rpaNKx6Hu4co0GE62fvOTQrPWoto+7JJMdg+WP1jm6PPovoTXOA==
+  dependencies:
+    "@babel/generator" "^7.23.5"
+    "@wyw-in-js/shared" "0.7.0"
+
+"@wyw-in-js/processor-utils@^0.6.0":
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/@wyw-in-js/processor-utils/-/processor-utils-0.6.0.tgz#9e37c6c8ca3425cb7ba5afc2dfd5101aba972c31"
   integrity sha512-5YAZMUmF+S2HaqheKfew6ybbYBMnF10PjIgI7ieyuFxCohyqJNF4xdo6oHftv2z5Z4vCQ0OZHtDOQyDImBYwmg==
@@ -5042,10 +5050,19 @@
     find-up "^5.0.0"
     minimatch "^9.0.3"
 
-"@wyw-in-js/transform@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@wyw-in-js/transform/-/transform-0.6.0.tgz#97cb8040980435f9bd73b5bf320f23185a844be6"
-  integrity sha512-/Rxw8e3KcmSjnqWs/6flmpcNTa4jLw8NViIyNwqem498AfSWXrPnYf3RyjWed9zDVL72q7Xjei6TcRqMupl3Eg==
+"@wyw-in-js/shared@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@wyw-in-js/shared/-/shared-0.7.0.tgz#777fa86714b0b9d73b99ea51372e7afb6b341d0e"
+  integrity sha512-gDgtGMkYDZAdjOcXMIDF1ncqRAx0IvkGmCteoCNSQNa+qmoJDs20wXMbpRa3Zs/wo2Mr409IX0EWRI541wBrKA==
+  dependencies:
+    debug "^4.3.4"
+    find-up "^5.0.0"
+    minimatch "^9.0.3"
+
+"@wyw-in-js/transform@0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@wyw-in-js/transform/-/transform-0.7.0.tgz#ff623ccdf328f99497ea73b46cf9578d5efe840e"
+  integrity sha512-HqsHTS2HjueB3/6ELWDkmWFstWD92Yw62fsGeUtS6tj+GQkLjqRjvShLwt941cxBLnBfWQz6t1fn3yjgpclucA==
   dependencies:
     "@babel/core" "^7.23.5"
     "@babel/generator" "^7.23.5"
@@ -5054,8 +5071,8 @@
     "@babel/template" "^7.22.15"
     "@babel/traverse" "^7.23.5"
     "@babel/types" "^7.23.5"
-    "@wyw-in-js/processor-utils" "0.6.0"
-    "@wyw-in-js/shared" "0.6.0"
+    "@wyw-in-js/processor-utils" "0.7.0"
+    "@wyw-in-js/shared" "0.7.0"
     babel-merge "^3.0.0"
     cosmiconfig "^8.0.0"
     happy-dom "^15.11.0"
@@ -5063,13 +5080,13 @@
     stylis "^4.3.0"
     ts-invariant "^0.10.3"
 
-"@wyw-in-js/webpack-loader@^0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@wyw-in-js/webpack-loader/-/webpack-loader-0.6.0.tgz#630ddea52fc45b46996b96cf54ef02481aa1b863"
-  integrity sha512-MIgY1DgQKMIbElNbPdckr2CDfq3U7dd8Dd8Mnkhz4SJoS0Vl0M98CnxkrWpXKspYZ8ZMafLd+a5yI/Ksug1Fkg==
+"@wyw-in-js/webpack-loader@^0.7.0":
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/@wyw-in-js/webpack-loader/-/webpack-loader-0.7.0.tgz#416a3db4b535c07814ae1713e8d4d47bed46eebf"
+  integrity sha512-AVwfTf2ZXWEG2CE4OahdBSxqzt17IO5rRIHRU9NecC5uJKg2CRq6QEz7BfIcCtb4is+a6dqGjH3FGpUzEElLaQ==
   dependencies:
-    "@wyw-in-js/shared" "0.6.0"
-    "@wyw-in-js/transform" "0.6.0"
+    "@wyw-in-js/shared" "0.7.0"
+    "@wyw-in-js/transform" "0.7.0"
 
 "@xtuc/ieee754@^1.2.0":
   version "1.2.0"
