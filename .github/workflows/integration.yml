@@ -29,7 +29,7 @@ jobs:
         run: yarn run lint
       - name: Test
         run: yarn run test --coverage
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: coverage
           path: ./app/coverage
@@ -47,7 +47,7 @@ jobs:
       # checkout only needed because codecov wants to know app file structure during upload
       - name: 'Checkout'
         uses: actions/checkout@master
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@v8
         with:
           name: coverage
       - uses: codecov/codecov-action@v5
